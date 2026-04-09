@@ -1,14 +1,8 @@
-import { 
-  Plane, 
-  Camera, 
-  Users, 
-  Utensils, 
-  DollarSign, 
-  Info,
-  LucideIcon
+import {
+  Plane, Camera, Users, Utensils, DollarSign, Info, Shield, Globe,
+  Clock, MapPin, Thermometer, BookOpen, LucideIcon
 } from "lucide-react";
 
-// TypeScript interfaces
 interface QuickFacts {
   bestTime: string;
   duration: string;
@@ -31,20 +25,26 @@ interface EssentialInfo {
 }
 
 export interface Guide {
-  // Basic info (from your existing structure)
   id: string;
   title: string;
   description: string;
   image: string;
   continent: string;
+  continentSlug: string;
+  country: string;
+  countrySlug: string;
+  countryFlag: string;
   rating: number;
   downloads: string;
   pages: number;
-  googleDriveUrl: string;
+  googleDriveUrl?: string;
+  amazonUrl?: string;
+  gumroadUrl?: string;
   tags: string[];
   featured?: boolean;
-  
-  // Enhanced info (for detail page)
+  tag?: string;
+  tagColor?: string;
+  price?: string;
   subtitle: string;
   heroImage: string;
   quickFacts: QuickFacts;
@@ -60,3203 +60,2291 @@ interface ContinentGuides {
 }
 
 export const allGuidesData: ContinentGuides = {
+
+  /* ═══════════════════════════════════════
+     AFRICA
+  ═══════════════════════════════════════ */
   africa: [
     {
-      // Basic info
       id: "kenya-safari",
       title: "Ultimate Kenya Safari Guide",
-      description: "Complete guide to Kenya's national parks, wildlife, and safari planning",
-      image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=400&h=250&fit=crop",
-      continent: "Africa",
-      rating: 4.9,
-      downloads: "5.2k",
-      pages: 85,
-      googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-      tags: ["Safari", "Wildlife", "Nature"],
-      featured: true,
-      
-      // Enhanced info
+      description: "Complete guide to Kenya's national parks, wildlife, and the Great Migration",
+      image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=500&fit=crop",
+      continent: "Africa", continentSlug: "africa",
+      country: "Kenya", countrySlug: "kenya", countryFlag: "🇰🇪",
+      rating: 4.9, downloads: "5.2k", pages: 85, price: "$14.99",
+      tags: ["Safari", "Wildlife", "Nature"], featured: true, tag: "Staff Pick", tagColor: "bg-amber-500",
       subtitle: "The Ultimate Safari Adventure",
       heroImage: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&h=1080&fit=crop",
-      
-      quickFacts: {
-        bestTime: "July-October (Great Migration), January-February",
-        duration: "7-10 days recommended",
-        budget: "$$ - Moderate",
-        highlights: 35,
-        language: "English & Swahili",
-        currency: "Kenyan Shilling (KES)"
-      },
-      
-      overview: "Kenya is the beating heart of African safari, where the drama of the wild unfolds daily across vast savannas. Witness the Great Migration, track the Big Five, and immerse yourself in the rich Maasai culture. From the iconic Maasai Mara to pristine Indian Ocean beaches, Kenya offers the Africa of your dreams.",
-      
+      quickFacts: { bestTime: "July–October (Great Migration)", duration: "7–10 days", budget: "$$ Moderate", highlights: 35, language: "English & Swahili", currency: "Kenyan Shilling (KES)" },
+      overview: "Kenya is the beating heart of African safari, where the drama of the wild unfolds daily across vast savannas. Witness the Great Migration, track the Big Five, and immerse yourself in rich Maasai culture. From the iconic Maasai Mara to pristine Indian Ocean beaches, Kenya offers the Africa of your dreams.",
       destinations: [
-        {
-          name: "Maasai Mara",
-          description: "Home to the world-famous Great Migration and incredible year-round wildlife viewing. Experience close encounters with lions, elephants, and cheetahs across endless plains.",
-          image: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Amboseli National Park",
-          description: "Best elephant viewing in Africa with Mount Kilimanjaro as a stunning backdrop. Watch massive herds against Africa's highest peak in this photographer's paradise.",
-          image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Diani Beach",
-          description: "Pristine white sand beaches and turquoise waters of the Indian Ocean. Perfect for relaxation after your safari adventure, with coral reefs for snorkeling.",
-          image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Nairobi",
-          description: "Vibrant capital city with unique attractions like the Giraffe Centre and David Sheldrick Elephant Orphanage. Gateway to your safari adventure.",
-          image: "https://images.unsplash.com/photo-1611348524140-53c9a25263d6?w=800&h=600&fit=crop"
-        }
+        { name: "Maasai Mara", description: "Home to the world-famous Great Migration and incredible year-round wildlife viewing. Experience close encounters with lions, elephants, and cheetahs across endless plains.", image: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&h=600&fit=crop" },
+        { name: "Amboseli National Park", description: "Best elephant viewing in Africa with Mount Kilimanjaro as a stunning backdrop. Watch massive herds against Africa's highest peak in this photographer's paradise.", image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800&h=600&fit=crop" },
+        { name: "Diani Beach", description: "Pristine white sand beaches and turquoise waters of the Indian Ocean. Perfect for relaxation after your safari, with coral reefs for snorkeling.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+        { name: "Nairobi", description: "Vibrant capital city with unique attractions like the Giraffe Centre and David Sheldrick Elephant Orphanage. Gateway to your safari adventure.", image: "https://images.unsplash.com/photo-1611348524140-53c9a25263d6?w=800&h=600&fit=crop" },
       ],
-      
       essentialInfo: [
-        {
-          icon: Plane,
-          title: "Best Safari Parks",
-          description: "Maasai Mara for the migration, Amboseli for elephants, Tsavo for wilderness, Lake Nakuru for flamingos. Each offers unique wildlife experiences."
-        },
-        {
-          icon: Camera,
-          title: "Photography Tips",
-          description: "Bring telephoto lens (200-400mm), extra batteries, and dust protection. Golden hours provide the best light. Respect animal behavior."
-        },
-        {
-          icon: Users,
-          title: "Safari Vehicles",
-          description: "4x4 safari vehicles with pop-up roofs for optimal viewing. Private vehicles offer more flexibility than group tours. Book experienced guides."
-        },
-        {
-          icon: Utensils,
-          title: "What to Pack",
-          description: "Neutral-colored clothing, sun protection, binoculars, layers for cool mornings. Avoid bright colors that can disturb animals."
-        },
-        {
-          icon: DollarSign,
-          title: "Budget Planning",
-          description: "Mid-range safaris from $200-400/day. Includes accommodation, meals, and game drives. Book during shoulder season for better rates."
-        },
-        {
-          icon: Info,
-          title: "Health & Safety",
-          description: "Yellow fever vaccination required. Malaria prophylaxis recommended. Travel insurance essential. Stay in vehicle during game drives."
-        }
+        { icon: Plane, title: "Best Safari Parks", description: "Maasai Mara for the migration, Amboseli for elephants, Tsavo for wilderness, Lake Nakuru for flamingos." },
+        { icon: Camera, title: "Photography Tips", description: "Bring telephoto lens (200–400mm), extra batteries, and dust protection. Golden hours provide the best light." },
+        { icon: Users, title: "Safari Vehicles", description: "4x4 vehicles with pop-up roofs for optimal viewing. Private vehicles offer more flexibility than group tours." },
+        { icon: Utensils, title: "What to Pack", description: "Neutral-colored clothing, sun protection, binoculars, layers for cool mornings." },
+        { icon: DollarSign, title: "Budget Planning", description: "Mid-range safaris from $200–400/day including accommodation, meals, and game drives." },
+        { icon: Info, title: "Health & Safety", description: "Yellow fever vaccination required. Malaria prophylaxis recommended. Travel insurance essential." },
       ],
-      
-      highlights: [
-        "Witness the Great Migration river crossings",
-        "Track the Big Five in Maasai Mara",
-        "Hot air balloon safari at sunrise",
-        "Visit Maasai village for cultural immersion",
-        "Photograph elephants with Mt. Kilimanjaro backdrop",
-        "Spot flamingos at Lake Nakuru",
-        "Relax on Diani Beach after safari",
-        "Visit David Sheldrick Elephant Orphanage",
-        "Experience authentic bush camping",
-        "Watch predators hunt on the savanna"
-      ],
-      
-      tips: [
-        "Book safari during dry season (July-October) for best wildlife viewing",
-        "Wake up early - dawn and dusk game drives offer best animal activity",
-        "Respect wildlife - maintain safe distances and never leave vehicle",
-        "Bring binoculars to enhance viewing experience significantly",
-        "Pack dustproof bags for cameras and electronics",
-        "Wear neutral colors (khaki, olive, beige) - avoid bright colors",
-        "Stay quiet during game drives to avoid startling wildlife",
-        "Tip your safari guide generously - they make or break your experience",
-        "Book hot air balloon safari over the Mara for unforgettable views",
-        "Combine safari with beach extension in Diani or Mombasa"
-      ]
+      highlights: ["Witness the Great Migration river crossings", "Track the Big Five in Maasai Mara", "Hot air balloon safari at sunrise", "Visit Maasai village for cultural immersion", "Photograph elephants with Mt. Kilimanjaro backdrop", "Spot flamingos at Lake Nakuru", "Relax on Diani Beach after safari", "Visit David Sheldrick Elephant Orphanage", "Experience authentic bush camping", "Watch predators hunt on the savanna"],
+      tips: ["Book safari during dry season (July–October) for best wildlife viewing", "Wake up early — dawn and dusk drives offer best activity", "Respect wildlife — maintain safe distances and never leave the vehicle", "Bring binoculars to enhance the viewing experience", "Pack dustproof bags for cameras and electronics", "Wear neutral colors (khaki, olive, beige)", "Stay quiet during game drives", "Tip your safari guide generously", "Book hot air balloon safari over the Mara", "Combine safari with beach extension in Diani or Mombasa"],
     },
     {
       id: "morocco-culture",
       title: "Morocco Cultural Journey",
-      description: "Explore Morocco's imperial cities, souks, and Sahara desert",
-      image: "https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=400&h=250&fit=crop",
-      continent: "Africa",
-      rating: 4.8,
-      downloads: "3.8k",
-      pages: 72,
-      googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-      tags: ["Culture", "Cities", "Desert"],
-      featured: false,
-      
+      description: "Imperial cities, bustling souks, and the Sahara desert in one guide",
+      image: "https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=800&h=500&fit=crop",
+      continent: "Africa", continentSlug: "africa",
+      country: "Morocco", countrySlug: "morocco", countryFlag: "🇲🇦",
+      rating: 4.8, downloads: "3.8k", pages: 72, price: "$14.99",
+      tags: ["Culture", "Cities", "Desert"], featured: false,
       subtitle: "From Marrakech to the Sahara",
       heroImage: "https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=1920&h=1080&fit=crop",
-      
-      quickFacts: {
-        bestTime: "March-May, September-November",
-        duration: "7-10 days recommended",
-        budget: "$$ - Moderate",
-        highlights: 28,
-        language: "Arabic & French",
-        currency: "Moroccan Dirham (MAD)"
-      },
-      
+      quickFacts: { bestTime: "March–May, September–November", duration: "7–10 days", budget: "$$ Moderate", highlights: 28, language: "Arabic & French", currency: "Moroccan Dirham (MAD)" },
       overview: "Morocco captivates with its vibrant souks, ancient medinas, and stunning desert landscapes. Experience the magic of Marrakech, explore the blue streets of Chefchaouen, trek the Atlas Mountains, and spend nights under stars in the Sahara Desert.",
-      
       destinations: [
-        {
-          name: "Marrakech",
-          description: "The Red City with bustling souks, stunning palaces, and the famous Jemaa el-Fnaa square. A feast for all senses.",
-          image: "https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Chefchaouen",
-          description: "The Blue Pearl of Morocco with stunning blue-washed buildings nestled in the Rif Mountains.",
-          image: "https://images.unsplash.com/photo-1558969997-659ee628c2d7?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Sahara Desert",
-          description: "Experience camel treks, desert camps, and unforgettable sunrises over golden sand dunes.",
-          image: "https://images.unsplash.com/photo-1509027572446-af8401acfdc3?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Fes",
-          description: "Ancient medina with the world's oldest university and traditional tanneries. A step back in time.",
-          image: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=800&h=600&fit=crop"
-        }
+        { name: "Marrakech", description: "The Red City with bustling souks, stunning palaces, and the famous Jemaa el-Fnaa square. A feast for all senses.", image: "https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=800&h=600&fit=crop" },
+        { name: "Chefchaouen", description: "The Blue Pearl of Morocco with stunning blue-washed buildings nestled in the Rif Mountains.", image: "https://images.unsplash.com/photo-1558969997-659ee628c2d7?w=800&h=600&fit=crop" },
+        { name: "Sahara Desert", description: "Experience camel treks, desert camps, and unforgettable sunrises over golden sand dunes near Merzouga.", image: "https://images.unsplash.com/photo-1509027572446-af8401acfdc3?w=800&h=600&fit=crop" },
+        { name: "Fès", description: "Ancient medina with the world's oldest university (al-Qarawiyyin, founded 859 AD) and traditional tanneries.", image: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=800&h=600&fit=crop" },
       ],
-      
       essentialInfo: [
-        {
-          icon: Plane,
-          title: "Getting Around",
-          description: "Trains connect major cities. Private drivers recommended for desert trips. Medinas best explored on foot."
-        },
-        {
-          icon: Camera,
-          title: "Photography",
-          description: "Ask permission before photographing people. Best light in early morning and late afternoon. Vibrant colors everywhere."
-        },
-        {
-          icon: Users,
-          title: "Cultural Etiquette",
-          description: "Dress modestly, especially in religious sites. Learn basic Arabic phrases. Bargaining expected in souks."
-        },
-        {
-          icon: Utensils,
-          title: "Moroccan Cuisine",
-          description: "Try tagines, couscous, mint tea, and fresh bread. Street food is delicious and safe in tourist areas."
-        },
-        {
-          icon: DollarSign,
-          title: "Budget Tips",
-          description: "Riads offer great value. Local restaurants cheaper than tourist spots. Bargain for everything in souks."
-        },
-        {
-          icon: Info,
-          title: "Best Tips",
-          description: "Stay in traditional riads. Book Sahara tours in advance. Carry small bills for tips and small purchases."
-        }
+        { icon: Plane, title: "Getting Around", description: "Trains connect major cities. Private drivers recommended for desert trips. Medinas best on foot." },
+        { icon: Camera, title: "Photography", description: "Ask permission before photographing people. Best light in early morning and late afternoon." },
+        { icon: Users, title: "Cultural Etiquette", description: "Dress modestly especially in religious sites. Learn basic Arabic phrases. Bargaining expected in souks." },
+        { icon: Utensils, title: "Moroccan Cuisine", description: "Try tagines, couscous, mint tea, and fresh bread. Street food is delicious and safe in tourist areas." },
+        { icon: DollarSign, title: "Budget Tips", description: "Riads offer great value. Local restaurants far cheaper than tourist spots. Bargain for everything in souks." },
+        { icon: Info, title: "Best Tips", description: "Stay in traditional riads. Book Sahara tours in advance. Carry small bills for tips." },
       ],
-      
-      highlights: [
-        "Get lost in Marrakech's vibrant souks",
-        "Sleep under stars in Sahara desert camp",
-        "Explore the blue streets of Chefchaouen",
-        "Visit ancient medina of Fes",
-        "Ride camels across sand dunes",
-        "Experience traditional hammam spa",
-        "Trek in the Atlas Mountains",
-        "Enjoy mint tea on rooftop terraces",
-        "Shop for handmade carpets and pottery",
-        "Watch sunset over desert dunes"
-      ],
-      
-      tips: [
-        "Learn a few Arabic phrases - locals appreciate the effort",
-        "Dress modestly to respect local culture",
-        "Always bargain in souks - start at 30-40% of asking price",
-        "Stay hydrated, especially in desert regions",
-        "Book riads in old medinas for authentic experience",
-        "Hire official guides for complex medinas",
-        "Carry toilet paper and hand sanitizer",
-        "Try street food - it's delicious and generally safe",
-        "Take overnight desert tour for full Sahara experience",
-        "Visit hammams in afternoon when less crowded"
-      ]
+      highlights: ["Get lost in Marrakech's vibrant souks", "Sleep under stars in a Sahara desert camp", "Explore the blue streets of Chefchaouen", "Visit ancient medina of Fès", "Ride camels across sand dunes", "Experience traditional hammam spa", "Trek in the Atlas Mountains", "Enjoy mint tea on rooftop terraces", "Shop for handmade carpets and pottery", "Watch sunset over desert dunes"],
+      tips: ["Learn a few Arabic phrases — locals appreciate the effort", "Dress modestly to respect local culture", "Always bargain in souks — start at 30–40% of asking price", "Stay hydrated, especially in desert regions", "Book riads in old medinas for authentic experience", "Hire official guides for complex medinas", "Try street food — it's delicious and generally safe", "Take overnight desert tour for full Sahara experience", "Visit hammams in afternoon when less crowded", "Carry toilet paper and hand sanitizer"],
     },
     {
       id: "tanzania-adventure",
       title: "Tanzania Adventure Guide",
-      description: "Kilimanjaro, Serengeti, and Zanzibar travel essentials",
-      image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400&h=250&fit=crop",
-      continent: "Africa",
-      rating: 4.9,
-      downloads: "4.1k",
-      pages: 95,
-      googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-      tags: ["Adventure", "Safari", "Beach"],
-      featured: true,
-      
+      description: "Kilimanjaro, Serengeti migration & Zanzibar's white-sand beaches",
+      image: "https://images.unsplash.com/photo-1580500064590-dcbf3b6db11b?w=800&h=500&fit=crop",
+      continent: "Africa", continentSlug: "africa",
+      country: "Tanzania", countrySlug: "tanzania", countryFlag: "🇹🇿",
+      rating: 4.9, downloads: "4.1k", pages: 95, price: "$14.99",
+      tags: ["Adventure", "Safari", "Beach"], featured: true,
       subtitle: "Climb Africa's Highest Peak & Safari Paradise",
-      heroImage: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=1920&h=1080&fit=crop",
-      
-      quickFacts: {
-        bestTime: "June-October (Dry season), January-February",
-        duration: "10-14 days recommended",
-        budget: "$ - Moderate",
-        highlights: 42,
-        language: "Swahili & English",
-        currency: "Tanzanian Shilling (TZS)"
-      },
-      
-      overview: "Tanzania offers the ultimate African adventure combining world-class safari experiences with beach paradise and mountain climbing. Home to Mount Kilimanjaro, the vast Serengeti plains, the stunning Ngorongoro Crater, and the tropical beaches of Zanzibar, Tanzania delivers unforgettable experiences for every type of traveler.",
-      
+      heroImage: "https://images.unsplash.com/photo-1580500064590-dcbf3b6db11b?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "June–October (dry season)", duration: "10–14 days", budget: "$$ Moderate", highlights: 42, language: "Swahili & English", currency: "Tanzanian Shilling (TZS)" },
+      overview: "Tanzania offers the ultimate African adventure combining world-class safari with beach paradise and mountain climbing. Home to Mount Kilimanjaro (5,895 m), the vast Serengeti, the stunning Ngorongoro Crater, and tropical Zanzibar, Tanzania delivers unforgettable experiences.",
       destinations: [
-        {
-          name: "Serengeti National Park",
-          description: "Witness the Great Migration and endless plains teeming with wildlife. One of Africa's most iconic safari destinations with year-round game viewing.",
-          image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Mount Kilimanjaro",
-          description: "Africa's highest peak at 5,895m. Trek through five climate zones to reach the snow-capped summit - no technical climbing required.",
-          image: "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Zanzibar",
-          description: "Tropical paradise with pristine beaches, historic Stone Town, spice plantations, and turquoise waters perfect for diving and snorkeling.",
-          image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Ngorongoro Crater",
-          description: "UNESCO World Heritage Site and largest intact volcanic caldera in the world. Incredible wildlife density in a stunning natural amphitheater.",
-          image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800&h=600&fit=crop"
-        }
+        { name: "Serengeti National Park", description: "Witness the Great Migration and endless plains teeming with wildlife year-round.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop" },
+        { name: "Mount Kilimanjaro", description: "Africa's highest peak at 5,895 m. Trek through five climate zones to the snow-capped summit — no technical climbing required.", image: "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?w=800&h=600&fit=crop" },
+        { name: "Zanzibar", description: "Tropical paradise with pristine beaches, historic Stone Town (UNESCO), spice plantations, and turquoise waters.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+        { name: "Ngorongoro Crater", description: "World's largest intact volcanic caldera and a UNESCO World Heritage Site. Extraordinary wildlife density in a stunning natural amphitheater.", image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800&h=600&fit=crop" },
       ],
-      
       essentialInfo: [
-        {
-          icon: Plane,
-          title: "Getting There",
-          description: "Kilimanjaro International Airport for safari. Julius Nyerere Airport (Dar es Salaam) for Zanzibar. Internal flights connect major destinations."
-        },
-        {
-          icon: Camera,
-          title: "Kilimanjaro Trek",
-          description: "7-8 day trek recommended. Choose Machame or Lemosho routes. Book 6+ months ahead. Altitude acclimatization crucial for success."
-        },
-        {
-          icon: Users,
-          title: "Safari Experience",
-          description: "Northern circuit (Serengeti, Ngorongoro) most popular. 4-7 days ideal. Combine with Zanzibar for complete Tanzania experience."
-        },
-        {
-          icon: Utensils,
-          title: "Local Cuisine",
-          description: "Try ugali, nyama choma, pilau rice, and fresh seafood in Zanzibar. Coconut-based dishes and tropical fruits abundant on the coast."
-        },
-        {
-          icon: DollarSign,
-          title: "Budget Planning",
-          description: "Safari: $250-500/day. Kilimanjaro trek: $2,000-4,000. Zanzibar: $50-200/day. Park fees and tips add significantly to costs."
-        },
-        {
-          icon: Info,
-          title: "Essential Tips",
-          description: "Yellow fever vaccine required. Anti-malarial recommended. Visa on arrival available. US dollars widely accepted (small bills post-2013)."
-        }
+        { icon: Plane, title: "Getting There", description: "Kilimanjaro International Airport for safaris. Julius Nyerere Airport (Dar es Salaam) for Zanzibar." },
+        { icon: Camera, title: "Kilimanjaro Trek", description: "7–8 day trek recommended. Choose Machame or Lemosho routes. Book 6+ months ahead." },
+        { icon: Users, title: "Safari Experience", description: "Northern circuit (Serengeti, Ngorongoro) most popular. 4–7 days ideal." },
+        { icon: Utensils, title: "Local Cuisine", description: "Try ugali, nyama choma, pilau rice, and fresh seafood in Zanzibar." },
+        { icon: DollarSign, title: "Budget Planning", description: "Safari: $250–500/day. Kilimanjaro trek: $2,000–4,000. Zanzibar: $50–200/day." },
+        { icon: Info, title: "Essential Tips", description: "Yellow fever vaccine required. Anti-malarial recommended. US dollars widely accepted (small bills post-2013)." },
       ],
-      
-      highlights: [
-        "Summit Mount Kilimanjaro - Africa's highest peak",
-        "Witness the Great Migration in Serengeti",
-        "Explore the Ngorongoro Crater",
-        "Relax on Zanzibar's pristine beaches",
-        "Visit historic Stone Town UNESCO site",
-        "Spot tree-climbing lions in Lake Manyara",
-        "Snorkel with dolphins off Zanzibar",
-        "Experience Maasai and local cultures",
-        "Safari in Tarangire National Park",
-        "Dive at Mnemba Atoll"
-      ],
-      
-      tips: [
-        "Book Kilimanjaro trek 6+ months in advance during peak season",
-        "Acclimatize properly - choose longer routes for better summit success",
-        "Combine northern safari circuit with Zanzibar for the perfect trip",
-        "Bring warm clothing for Kilimanjaro - it's freezing at the summit",
-        "Negotiate prices for spice tours and activities in Zanzibar",
-        "Stay in Stone Town for culture, beach resorts for relaxation",
-        "Best wildlife viewing June-October, but calving season (Jan-Feb) is special",
-        "Budget extra for park fees, tips, and gear rental for Kilimanjaro",
-        "Anti-malarial medication essential, especially for Zanzibar",
-        "Learn basic Swahili phrases - 'Jambo' (hello) and 'Asante' (thank you)"
-      ]
+      highlights: ["Summit Mount Kilimanjaro", "Witness the Great Migration in Serengeti", "Explore the Ngorongoro Crater", "Relax on Zanzibar's pristine beaches", "Visit historic Stone Town UNESCO site", "Spot tree-climbing lions in Lake Manyara", "Snorkel with dolphins off Zanzibar", "Experience Maasai culture", "Safari in Tarangire National Park", "Dive at Mnemba Atoll"],
+      tips: ["Book Kilimanjaro trek 6+ months in advance", "Acclimatize properly — choose longer routes for better summit success", "Combine northern safari circuit with Zanzibar", "Bring warm clothing — summit temperatures are below freezing", "Negotiate prices for spice tours in Zanzibar", "Stay in Stone Town for culture, beach resorts for relaxation", "Best wildlife June–October, calving season (Jan–Feb) is special", "Budget extra for park fees and tips", "Anti-malarial medication essential especially for Zanzibar", "Learn basic Swahili — 'Jambo' (hello) and 'Asante' (thank you)"],
     },
     {
       id: "egypt-historical",
       title: "Ancient Egypt Explorer",
-      description: "Pyramids, temples, and Nile cruise comprehensive guide",
-      image: "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=400&h=250&fit=crop",
-      continent: "Africa",
-      rating: 4.7,
-      downloads: "6.3k",
-      pages: 78,
-      googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-      tags: ["History", "Culture", "Archaeology"],
-      featured: false,
-      
+      description: "Pyramids, temples, Nile cruises and the Valley of the Kings",
+      image: "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=800&h=500&fit=crop",
+      continent: "Africa", continentSlug: "africa",
+      country: "Egypt", countrySlug: "egypt", countryFlag: "🇪🇬",
+      rating: 4.7, downloads: "6.3k", pages: 78, price: "$14.99",
+      tags: ["History", "Culture", "Archaeology"], featured: false,
       subtitle: "Journey Through 5,000 Years of History",
       heroImage: "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=1920&h=1080&fit=crop",
-      
-      quickFacts: {
-        bestTime: "October-April (Cooler months)",
-        duration: "7-10 days recommended",
-        budget: "$ - Moderate",
-        highlights: 38,
-        language: "Arabic & English",
-        currency: "Egyptian Pound (EGP)"
-      },
-      
-      overview: "Egypt is a living museum where ancient wonders meet vibrant modern culture. Stand before the Great Pyramids of Giza, explore the Valley of the Kings, cruise the legendary Nile River, and dive into the Red Sea. From Cairo's bustling streets to Luxor's magnificent temples, Egypt offers an unforgettable journey through human history.",
-      
+      quickFacts: { bestTime: "October–April (cooler months)", duration: "7–10 days", budget: "$ Budget Friendly", highlights: 38, language: "Arabic & English", currency: "Egyptian Pound (EGP)" },
+      overview: "Egypt is a living museum where ancient wonders meet vibrant modern culture. Stand before the Great Pyramids of Giza (the only remaining Ancient Wonder of the World), explore the Valley of the Kings, cruise the legendary Nile, and dive into the Red Sea.",
       destinations: [
-        {
-          name: "Cairo & Giza",
-          description: "Home to the Great Pyramids, Sphinx, and the Egyptian Museum with King Tut's treasures. The chaotic, vibrant heart of modern Egypt.",
-          image: "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Luxor",
-          description: "The world's greatest open-air museum. Valley of the Kings, Karnak Temple, and Luxor Temple showcase ancient Thebes' grandeur.",
-          image: "https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Aswan",
-          description: "Tranquil Nile city with Nubian culture, Philae Temple, and access to Abu Simbel's colossal temples moved to save them from flooding.",
-          image: "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Red Sea Coast",
-          description: "World-class diving and snorkeling in crystal-clear waters. Sharm el-Sheikh and Hurghada offer beach resorts and underwater adventures.",
-          image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop"
-        }
+        { name: "Cairo & Giza", description: "Home to the Great Pyramids, the Sphinx, and the Grand Egyptian Museum housing King Tut's treasures.", image: "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=800&h=600&fit=crop" },
+        { name: "Luxor", description: "The world's greatest open-air museum. Valley of the Kings, Karnak Temple, and Luxor Temple showcase ancient Thebes' grandeur.", image: "https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=800&h=600&fit=crop" },
+        { name: "Aswan & Abu Simbel", description: "Tranquil Nile city with Nubian culture, Philae Temple, and the colossal temples of Abu Simbel relocated to save them from flooding.", image: "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=800&h=600&fit=crop" },
+        { name: "Red Sea Coast", description: "World-class diving and snorkeling in crystal-clear waters. Sharm el-Sheikh and Hurghada offer beach resorts and underwater adventures.", image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop" },
       ],
-      
       essentialInfo: [
-        {
-          icon: Plane,
-          title: "Getting Around",
-          description: "Fly between Cairo, Luxor, and Aswan. Nile cruises combine transport and accommodation. Trains available but slower. Domestic flights efficient."
-        },
-        {
-          icon: Camera,
-          title: "Photography",
-          description: "Separate camera fees at sites (50-300 EGP). Early morning light is best. Ask permission before photographing locals. Tripods often restricted."
-        },
-        {
-          icon: Users,
-          title: "Nile Cruises",
-          description: "3-7 night cruises between Luxor and Aswan. Book 4-5 star minimum. Include temple visits. Lunch and dinner onboard. Sunset views spectacular."
-        },
-        {
-          icon: Utensils,
-          title: "Egyptian Cuisine",
-          description: "Try koshari, ful medames, ta'ameya (falafel), and grilled meats. Fresh juices everywhere. Avoid tap water. Street food generally safe."
-        },
-        {
-          icon: DollarSign,
-          title: "Budget Tips",
-          description: "Nile cruise: $100-300/night. Temple entry: $10-20 each. Hire Egyptologists for private tours. Bargain in markets - start at 30% of asking."
-        },
-        {
-          icon: Info,
-          title: "Cultural Tips",
-          description: "Dress modestly, especially at religious sites. Remove shoes at mosques. Tip is expected (baksheesh). Friday is holy day - some sites closed."
-        }
+        { icon: Plane, title: "Getting Around", description: "Fly between Cairo, Luxor, and Aswan. Nile cruises combine transport and accommodation." },
+        { icon: Camera, title: "Photography", description: "Separate camera fees at sites (50–300 EGP). Early morning light is best." },
+        { icon: Users, title: "Nile Cruises", description: "3–7 night cruises between Luxor and Aswan. Book 4-star minimum. Include temple visits." },
+        { icon: Utensils, title: "Egyptian Cuisine", description: "Try koshari, ful medames, ta'ameya, and grilled meats. Fresh juices everywhere." },
+        { icon: DollarSign, title: "Budget Tips", description: "Nile cruise: $100–300/night. Temple entry: $10–20 each. Bargain in markets." },
+        { icon: Info, title: "Cultural Tips", description: "Dress modestly, especially at religious sites. Remove shoes at mosques. Tip is expected (baksheesh)." },
       ],
-      
-      highlights: [
-        "Stand before the Great Pyramids of Giza",
-        "Explore King Tut's tomb in Valley of the Kings",
-        "Cruise the Nile River between Luxor and Aswan",
-        "Marvel at Karnak Temple's massive columns",
-        "Visit Abu Simbel's colossal temples",
-        "See treasures at the Egyptian Museum",
-        "Dive the Red Sea's spectacular reefs",
-        "Watch Sound and Light show at Pyramids",
-        "Bargain in Khan el-Khalili bazaar",
-        "Experience traditional felucca sailing"
-      ],
-      
-      tips: [
-        "Visit Pyramids early morning to beat crowds and heat",
-        "Hire licensed Egyptologist guides - worth every penny for context",
-        "Book Nile cruise in advance, especially October-April",
-        "Carry small bills for tips (baksheesh) - expected everywhere",
-        "Dress conservatively - cover shoulders and knees at temples",
-        "Drink only bottled water and avoid ice in drinks",
-        "Negotiate taxi prices before getting in - no meters",
-        "Visit Abu Simbel at sunrise for magical lighting",
-        "Don't skip the Egyptian Museum - allow 3-4 hours minimum",
-        "Be firm but polite with persistent vendors and touts"
-      ]
+      highlights: ["Stand before the Great Pyramids of Giza", "Explore King Tut's tomb in Valley of the Kings", "Cruise the Nile between Luxor and Aswan", "Marvel at Karnak Temple's massive hypostyle hall", "Visit colossal Abu Simbel temples", "See treasures at the Grand Egyptian Museum", "Dive the Red Sea's spectacular reefs", "Watch Sound and Light show at Pyramids", "Bargain in Khan el-Khalili bazaar", "Experience traditional felucca sailing"],
+      tips: ["Visit Pyramids early morning to beat crowds and heat", "Hire licensed Egyptologist guides — worth every penny", "Book Nile cruise in advance, especially October–April", "Carry small bills for tips (baksheesh)", "Dress conservatively — cover shoulders and knees at temples", "Drink only bottled water", "Negotiate taxi prices before getting in — no meters", "Visit Abu Simbel at sunrise for magical lighting", "Don't skip the Egyptian Museum — allow 3–4 hours minimum", "Be firm but polite with persistent vendors"],
     },
     {
       id: "south-africa-complete",
       title: "South Africa Complete",
-      description: "Cape Town, Garden Route, and Kruger National Park guide",
-      image: "https://images.unsplash.com/photo-1484318571209-661cf29a69c3?w=400&h=250&fit=crop",
-      continent: "Africa",
-      rating: 4.8,
-      downloads: "5.7k",
-      pages: 92,
-      googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-      tags: ["Safari", "Wine", "Beaches"],
-      featured: true,
-      
+      description: "Cape Town, Garden Route, wine country and Kruger National Park",
+      image: "https://images.unsplash.com/photo-1484318571209-661cf29a69c3?w=800&h=500&fit=crop",
+      continent: "Africa", continentSlug: "africa",
+      country: "South Africa", countrySlug: "south-africa", countryFlag: "🇿🇦",
+      rating: 4.8, downloads: "5.7k", pages: 92, price: "$14.99",
+      tags: ["Safari", "Wine", "Beaches"], featured: true,
       subtitle: "The Rainbow Nation's Complete Adventure",
       heroImage: "https://images.unsplash.com/photo-1484318571209-661cf29a69c3?w=1920&h=1080&fit=crop",
-      
-      quickFacts: {
-        bestTime: "September-November, March-May (Spring/Fall)",
-        duration: "10-14 days recommended",
-        budget: "$ - Moderate",
-        highlights: 45,
-        language: "11 official languages (English widely spoken)",
-        currency: "South African Rand (ZAR)"
-      },
-      
-      overview: "South Africa is a world in one country - stunning Cape Town backed by Table Mountain, world-class wine regions, the wildlife-rich Kruger National Park, the scenic Garden Route, and vibrant cities. Experience Big Five safaris, shark cage diving, wine tasting, beautiful beaches, and a complex history with resilient, welcoming people.",
-      
+      quickFacts: { bestTime: "September–November, March–May", duration: "10–14 days", budget: "$ Budget Friendly", highlights: 45, language: "11 official languages (English widely spoken)", currency: "South African Rand (ZAR)" },
+      overview: "South Africa is a world in one country — stunning Cape Town backed by Table Mountain, world-class wine regions, the wildlife-rich Kruger National Park, the scenic Garden Route, and vibrant cities with a complex, fascinating history.",
       destinations: [
-        {
-          name: "Cape Town",
-          description: "One of the world's most beautiful cities. Table Mountain, V&A Waterfront, Cape Point, pristine beaches, and vibrant neighborhoods await.",
-          image: "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Kruger National Park",
-          description: "One of Africa's largest game reserves. Self-drive or guided safaris for Big Five viewing. Excellent infrastructure with camps and lodges.",
-          image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Winelands",
-          description: "Stellenbosch, Franschhoek, and Paarl offer world-class wines, gourmet dining, and stunning mountain scenery. Wine tasting tours are a highlight.",
-          image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Garden Route",
-          description: "Scenic coastal drive from Mossel Bay to Storms River. Beaches, forests, lagoons, Knysna, Plettenberg Bay, and adventure activities.",
-          image: "https://images.unsplash.com/photo-1484318571209-661cf29a69c3?w=800&h=600&fit=crop"
-        }
+        { name: "Cape Town", description: "Table Mountain, V&A Waterfront, Cape Point, pristine beaches, and vibrant neighbourhoods like Bo-Kaap.", image: "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=800&h=600&fit=crop" },
+        { name: "Kruger National Park", description: "One of Africa's largest game reserves. Self-drive or guided safaris for Big Five viewing with excellent lodge infrastructure.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop" },
+        { name: "Cape Winelands", description: "Stellenbosch, Franschhoek, and Paarl offer world-class wines, gourmet dining, and stunning mountain scenery.", image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=800&h=600&fit=crop" },
+        { name: "Garden Route", description: "Scenic coastal drive from Mossel Bay to Storms River with beaches, forests, lagoons, and Knysna's famous oysters.", image: "https://images.unsplash.com/photo-1484318571209-661cf29a69c3?w=800&h=600&fit=crop" },
       ],
-      
       essentialInfo: [
-        {
-          icon: Plane,
-          title: "Getting Around",
-          description: "Car rental essential for flexibility. Good highways connect major destinations. Domestic flights between cities. Bus tours available but limiting."
-        },
-        {
-          icon: Camera,
-          title: "Safari Options",
-          description: "Kruger for budget-friendly self-drive. Private reserves (Sabi Sands) for luxury. Addo for elephants. Hluhluwe-iMfolozi for rhinos."
-        },
-        {
-          icon: Users,
-          title: "Must-Do Activities",
-          description: "Cage diving with great whites (Gansbaai). Table Mountain hike/cable car. Cape Winelands tours. Penguin viewing at Boulders Beach."
-        },
-        {
-          icon: Utensils,
-          title: "South African Cuisine",
-          description: "Try braai (BBQ), biltong, bobotie, bunny chow, and Cape Malay curries. Excellent restaurants in cities. Wine country offers farm-to-table dining."
-        },
-        {
-          icon: DollarSign,
-          title: "Budget Planning",
-          description: "Very affordable by international standards. Safari: $150-400/day. Wine tours: $50-100. Dining and attractions good value. Favorable exchange rates."
-        },
-        {
-          icon: Info,
-          title: "Safety Tips",
-          description: "Stay alert in cities. Don't display valuables. Use Uber/taxis at night. Keep car doors locked. Townships tours with guides only. Most tourist areas safe."
-        }
+        { icon: Plane, title: "Getting Around", description: "Car rental essential for flexibility. Good highways connect major destinations. Domestic flights between cities." },
+        { icon: Camera, title: "Safari Options", description: "Kruger for budget-friendly self-drive. Private reserves (Sabi Sands) for luxury. Addo for elephants." },
+        { icon: Users, title: "Must-Do Activities", description: "Cage diving with great whites (Gansbaai). Table Mountain hike. Penguin viewing at Boulders Beach." },
+        { icon: Utensils, title: "South African Cuisine", description: "Try braai (BBQ), biltong, bobotie, bunny chow, and Cape Malay curries." },
+        { icon: DollarSign, title: "Budget Planning", description: "Very affordable by international standards. Safari: $150–400/day. Favorable exchange rates." },
+        { icon: Info, title: "Safety Tips", description: "Stay alert in cities. Don't display valuables. Use Uber/taxis at night. Keep car doors locked." },
       ],
-      
-      highlights: [
-        "Hike or cable car up Table Mountain",
-        "Safari the Big Five in Kruger National Park",
-        "Wine tasting in Stellenbosch and Franschhoek",
-        "Cage dive with great white sharks",
-        "Drive the scenic Garden Route",
-        "Visit Robben Island and apartheid museums",
-        "See African penguins at Boulders Beach",
-        "Explore Cape of Good Hope",
-        "Experience Soweto township culture",
-        "Surf or beach at Muizenberg"
-      ],
-      
-      tips: [
-        "Rent a car - public transport limited and flexibility is key",
-        "Book Boulders Beach penguin viewing tickets online to skip queues",
-        "Visit Kruger in winter (May-Sept) for easier wildlife spotting",
-        "Wine tasting - hire a designated driver or join a tour",
-        "Cape Town weather changes quickly - bring layers",
-        "Table Mountain cable car - book sunset time slots online",
-        "Tip 10-15% at restaurants, 20 Rand for petrol attendants",
-        "Download Uber app - safer than metered taxis",
-        "Combine Cape Town with safari - don't skip either",
-        "Try local SIM card for data - cheap and useful for navigation"
-      ]
-    }
-  ],
-  
-  asia: [
-    {
-      id: "japan-ultimate",
-      title: "Ultimate Japan Travel Guide",
-      description: "Tokyo, Kyoto, Osaka, and hidden gems across Japan",
-      image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=400&h=250&fit=crop",
-      continent: "Asia",
-      rating: 4.9,
-      downloads: "12.3k",
-      pages: 135,
-      googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-      tags: ["Culture", "Food", "Technology"],
-      featured: true,
-      
-      subtitle: "Land of Ancient Traditions and Modern Marvels",
-      heroImage: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&h=1080&fit=crop",
-      
-      quickFacts: {
-        bestTime: "March-May (Cherry Blossoms), September-November",
-        duration: "10-14 days recommended",
-        budget: "$$$ - Moderate to High",
-        highlights: 50,
-        language: "Japanese",
-        currency: "Japanese Yen (JPY)"
-      },
-      
-      overview: "Japan is a captivating blend of ancient traditions and cutting-edge innovation. From the neon-lit streets of Tokyo to the serene temples of Kyoto, from snow-capped mountains to tropical islands, Japan offers an extraordinary journey through contrasts. Experience the precision of Japanese craftsmanship, the warmth of its hospitality, and the depth of its culture.",
-      
-      destinations: [
-        {
-          name: "Tokyo",
-          description: "The electric metropolis where ultra-modern skyscrapers meet historic temples. Explore vibrant neighborhoods from fashionable Shibuya to traditional Asakusa.",
-          image: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Kyoto",
-          description: "Japan's ancient capital with over 2,000 temples and shrines. Walk through bamboo forests, witness geisha culture, and experience traditional tea ceremonies.",
-          image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Mount Fuji",
-          description: "Japan's iconic peak and sacred mountain. Hike to the summit or admire it from lakeside towns while soaking in natural hot springs.",
-          image: "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Osaka",
-          description: "Japan's kitchen and nightlife capital. Indulge in street food, explore bustling markets, and experience the energetic local culture.",
-          image: "https://images.unsplash.com/photo-1589452271712-64eaee10844e?w=800&h=600&fit=crop"
-        }
-      ],
-      
-      essentialInfo: [
-        {
-          icon: Plane,
-          title: "Getting There",
-          description: "Major international airports in Tokyo (Narita/Haneda) and Osaka (Kansai). Japan Rail Pass recommended for multi-city travel."
-        },
-        {
-          icon: Users,
-          title: "Transportation",
-          description: "Efficient bullet trains (shinkansen), subways, and buses. Get a Suica or Pasmo card for seamless travel."
-        },
-        {
-          icon: Utensils,
-          title: "Food & Dining",
-          description: "Experience everything from Michelin-starred restaurants to authentic ramen shops. Sushi, tempura, and wagyu beef are must-tries."
-        },
-        {
-          icon: Camera,
-          title: "Cultural Experiences",
-          description: "Tea ceremonies, sumo wrestling, cherry blossom viewing, onsen bathing, and traditional festivals throughout the year."
-        },
-        {
-          icon: DollarSign,
-          title: "Money Matters",
-          description: "Cash is still king in many places. ATMs at convenience stores accept foreign cards. Tipping is not customary."
-        },
-        {
-          icon: Info,
-          title: "Language Tips",
-          description: "English signage in major cities. Learn basic phrases and carry a translation app. Locals appreciate the effort."
-        }
-      ],
-      
-      highlights: [
-        "Experience cherry blossom season in spring",
-        "Ride the bullet train (shinkansen)",
-        "Stay in a traditional ryokan with onsen",
-        "Visit ancient temples in Kyoto",
-        "Explore Tokyo's vibrant neighborhoods",
-        "Witness a sumo wrestling tournament",
-        "Climb Mount Fuji (July-August)",
-        "Experience a traditional tea ceremony",
-        "Eat authentic sushi at Tsukiji Market",
-        "Walk through Fushimi Inari's torii gates"
-      ],
-      
-      tips: [
-        "Purchase Japan Rail Pass before arriving - saves money on intercity travel",
-        "Remove shoes when entering homes, temples, and traditional accommodations",
-        "Bowing is a sign of respect - a slight bow goes a long way",
-        "Never stick chopsticks upright in rice or pass food chopstick-to-chopstick",
-        "Visit convenience stores for affordable meals and clean restrooms",
-        "Learn to say 'Arigatou gozaimasu' (Thank you very much)",
-        "Book popular restaurants in advance, especially in Tokyo",
-        "Tattoos may restrict access to some hot springs",
-        "Carry cash - many smaller establishments don't accept cards",
-        "Download offline maps and translation apps"
-      ]
+      highlights: ["Hike or cable car up Table Mountain", "Safari the Big Five in Kruger National Park", "Wine tasting in Stellenbosch and Franschhoek", "Cage dive with great white sharks", "Drive the scenic Garden Route", "Visit Robben Island and apartheid museums", "See African penguins at Boulders Beach", "Explore Cape of Good Hope", "Experience Soweto township culture", "Surf at Muizenberg"],
+      tips: ["Rent a car — public transport limited and flexibility is key", "Book Boulders Beach penguin tickets online to skip queues", "Visit Kruger in winter (May–Sept) for easier wildlife spotting", "Wine tasting — hire a designated driver or join a tour", "Cape Town weather changes quickly — bring layers", "Table Mountain cable car — book sunset time slots online", "Tip 10–15% at restaurants, 20 Rand for petrol attendants", "Download Uber app — safer than metered taxis", "Combine Cape Town with safari", "Try local SIM card for data — cheap and useful"],
     },
-    // Add these guides to the asia array in your guidesData.ts file
-// (after the japan-ultimate guide)
+    {
+      id: "zanzibar-guide",
+      title: "Zanzibar Travel Guide",
+      description: "Spice island paradise — Stone Town, pristine beaches and dhow sailing",
+      image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=500&fit=crop",
+      continent: "Africa", continentSlug: "africa",
+      country: "Tanzania", countrySlug: "tanzania", countryFlag: "🇹🇿",
+      rating: 4.8, downloads: "4.1k", pages: 68, price: "$14.99",
+      tags: ["Beach", "Culture", "History"], featured: false,
+      subtitle: "The Spice Island — Arabic Architecture, Turquoise Water & Swahili Culture",
+      heroImage: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "June–October, December–February", duration: "7–10 days", budget: "$ Moderate", highlights: 25, language: "Swahili & English", currency: "Tanzanian Shilling (TZS) / USD" },
+      overview: "Zanzibar is a semi-autonomous archipelago off the coast of Tanzania — a spice island with an extraordinary UNESCO World Heritage city (Stone Town), some of East Africa's finest beaches, and a cultural history that blends African, Arabic, Indian, and Portuguese influences into something entirely unique. The combination with a Tanzania mainland safari makes for one of Africa's greatest itineraries.",
+      destinations: [
+        { name: "Stone Town", description: "UNESCO World Heritage city of labyrinthine alleys, carved Arabic doors, mosques, the old slave market, and the house where Freddie Mercury was born.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+        { name: "Nungwi & Kendwa", description: "The northern beaches with the finest swimming (tide doesn't expose rocks), stunning turquoise water, excellent snorkelling, and the best sunset bars.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
+        { name: "Paje & East Coast", description: "The east coast's long sweeping beaches are known for kitesurfing — consistent Indian Ocean winds make Paje one of Africa's top kitesurfing destinations.", image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&h=600&fit=crop" },
+        { name: "Spice Tours & Jozani Forest", description: "Guided spice plantation tours showing cloves, vanilla, cardamom, and nutmeg growing. Jozani Forest is the last refuge of the endangered Zanzibar red colobus monkey.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly to Zanzibar (ZNZ) directly or via Dar es Salaam. Fast ferry from Dar es Salaam (2 hrs). Most visitors combine with a mainland Tanzania safari." },
+        { icon: Camera, title: "Stone Town", description: "Get lost — the alleys have no logic, which is the point. Best in the evening when the heat subsides and the lights come on. Food stalls at Forodhani Gardens at night." },
+        { icon: Users, title: "Cultural Respect", description: "Zanzibar is predominantly Muslim — dress modestly in Stone Town (cover shoulders and knees). No public alcohol. Ramadan affects restaurant hours." },
+        { icon: Utensils, title: "Zanzibar Food", description: "Pilau rice, biryani, octopus curry, urojo (Zanzibar mix soup), Zanzibar pizza from street vendors, and the freshest tropical fruits including jackfruit and coconut." },
+        { icon: DollarSign, title: "Value", description: "Excellent value by East African standards. Budget guesthouses from $20. Beach bungalows $50–100. Top resorts $200–500. USD widely accepted." },
+        { icon: Info, title: "Beach Timing", description: "East coast (Paje) beaches are affected by tides — swim at high tide only. North coast (Nungwi) is largely tide-independent — better for swimming." },
+      ],
+      highlights: ["Get lost in Stone Town's alleys", "Swim at Nungwi's turquoise beach", "Forodhani Gardens night food market", "Spice plantation tour", "Dhow sailing at sunset", "Snorkel with sea turtles at Mnemba Atoll", "Red colobus monkeys at Jozani Forest", "Freddie Mercury's birthplace", "Kendwa Rocks beach bar at sunset", "Prison Island giant tortoises"],
+      tips: ["Stone Town: Hire a local guide for the alleys — history context transforms the experience", "Nungwi vs Paje: Nungwi for swimming, Paje for kitesurfing and a backpacker vibe", "Tide chart: Essential for east coast beaches — swim at high tide only", "Combine with Tanzania safari: 5 days safari + 5 days Zanzibar is the classic East Africa trip", "Dress modestly in Stone Town — Zanzibar is Muslim and conservative in the city", "Forodhani Gardens: Go at 7–8pm for the best night food market atmosphere", "Mnemba Atoll snorkelling: Book through a reputable dive operator — sea turtle sightings near guaranteed", "USD cash is widely preferred — small bills essential for guesthouses and local restaurants", "Zanzibar pizza from street vendors is nothing like Italian pizza — try it open-minded", "Malaria prophylaxis: Essential for all of Tanzania including Zanzibar"],
+    },
+  ],
 
-{
-  id: "thailand-adventure",
-  title: "Thailand Adventure Guide",
-  description: "Bangkok, Chiang Mai, islands, and authentic experiences",
-  image: "https://images.unsplash.com/photo-1528181304800-259b08848526?w=400&h=250&fit=crop",
-  continent: "Asia",
-  rating: 4.8,
-  downloads: "10.1k",
-  pages: 95,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Beach", "Culture", "Food"],
-  featured: true,
-  
-  subtitle: "Land of Smiles - Temples, Beaches & Street Food",
-  heroImage: "https://images.unsplash.com/photo-1528181304800-259b08848526?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "November-February (Cool season)",
-    duration: "10-14 days recommended",
-    budget: "$ - Budget Friendly",
-    highlights: 44,
-    language: "Thai",
-    currency: "Thai Baht (THB)"
-  },
-  
-  overview: "Thailand captivates with its warm hospitality, stunning temples, pristine beaches, and incredible street food. From Bangkok's vibrant chaos to Chiang Mai's cultural richness, from Phuket's beaches to Ayutthaya's ancient ruins, Thailand offers unforgettable experiences at incredible value. Experience floating markets, jungle treks, island hopping, and some of the world's best cuisine.",
-  
-  destinations: [
-    {
-      name: "Bangkok",
-      description: "Energetic capital with Grand Palace, golden temples, floating markets, rooftop bars, world-class street food, and vibrant nightlife.",
-      image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Chiang Mai",
-      description: "Northern cultural hub with 300+ temples, night markets, elephant sanctuaries, jungle treks, and laid-back mountain town atmosphere.",
-      image: "https://images.unsplash.com/photo-1534008897995-27a23e859048?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Phuket & Islands",
-      description: "Thailand's largest island with stunning beaches, island-hopping to Phi Phi and James Bond Island, diving, and beach parties.",
-      image: "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Krabi & Railay Beach",
-      description: "Dramatic limestone cliffs, pristine beaches accessible only by boat, rock climbing, kayaking, and stunning natural beauty.",
-      image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Getting Around",
-      description: "Domestic flights cheap between cities. Trains scenic but slow. Buses comfortable for medium distances. Tuk-tuks and Grab app for local transport."
-    },
-    {
-      icon: Camera,
-      title: "Temple Etiquette",
-      description: "Remove shoes before entering. Cover shoulders and knees. No pointing feet at Buddha images. Dress respectfully. Women can't touch monks."
-    },
-    {
-      icon: Users,
-      title: "Best Experiences",
-      description: "Thai cooking classes in Chiang Mai. Floating markets near Bangkok. Ethical elephant sanctuaries. Full moon parties. Island hopping tours."
-    },
-    {
-      icon: Utensils,
-      title: "Street Food Paradise",
-      description: "Pad Thai, green curry, mango sticky rice, som tam. Street food safe and delicious. Night markets food heaven. Vegetarian options plentiful."
-    },
-    {
-      icon: DollarSign,
-      title: "Budget Friendly",
-      description: "Very affordable. Street food $1-3. Nice hotels $20-50. Massage $6-10. Beach islands pricier but still reasonable. Negotiate tuk-tuk prices."
-    },
-    {
-      icon: Info,
-      title: "Important Tips",
-      description: "Visa on arrival for many nationalities. Don't touch anyone's head. King's image sacred - respect it. Always smile - it's the Thai way."
-    }
-  ],
-  
-  highlights: [
-    "Explore Bangkok's Grand Palace",
-    "Visit Wat Pho and reclining Buddha",
-    "Experience floating markets",
-    "Take Thai cooking class in Chiang Mai",
-    "Visit ethical elephant sanctuary",
-    "Island hop in Andaman Sea",
-    "Rock climb at Railay Beach",
-    "Eat street food at night markets",
-    "Ride tuk-tuk through Bangkok",
-    "Watch sunset from Phi Phi viewpoint"
-  ],
-  
-  tips: [
-    "Book hotels ahead during peak season (Nov-Feb) - fills up quickly",
-    "Negotiate tuk-tuk prices before getting in - use Grab app or walk away",
-    "Street food is safe - eat where locals eat and where food is hot",
-    "Dress modestly at temples - carry a scarf to cover shoulders",
-    "Get SIM card at airport - data plans very cheap ($10 for month)",
-    "Avoid elephant riding - visit ethical sanctuaries instead",
-    "Book islands 2-3 days min - one day not enough to enjoy",
-    "Bargain at markets (not 7-Eleven) - start at 50% asking price",
-    "Respect the King - never disrespect royal family images",
-    "Learn 'Sawadee krap/ka' (hello) and 'Khop khun krap/ka' (thank you)"
-  ]
-},
-{
-  id: "vietnam-backpacker",
-  title: "Vietnam Backpacker's Guide",
-  description: "North to South: Complete Vietnam travel guide",
-  image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=400&h=250&fit=crop",
-  continent: "Asia",
-  rating: 4.7,
-  downloads: "6.9k",
-  pages: 82,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Budget", "Culture", "Food"],
-  featured: false,
-  
-  subtitle: "Incredible Journey from Hanoi to Ho Chi Minh",
-  heroImage: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "February-April, August-October",
-    duration: "14-21 days recommended",
-    budget: "$ - Very Budget Friendly",
-    highlights: 38,
-    language: "Vietnamese",
-    currency: "Vietnamese Dong (VND)"
-  },
-  
-  overview: "Vietnam enchants backpackers with its stunning landscapes, rich history, delicious cuisine, and incredibly affordable prices. Travel from the misty mountains of Sapa to the bustling streets of Hanoi, cruise through Ha Long Bay's limestone karsts, explore ancient Hoi An, and discover vibrant Ho Chi Minh City. Vietnam offers authentic experiences and warm hospitality.",
-  
-  destinations: [
-    {
-      name: "Hanoi",
-      description: "Chaotic capital with Old Quarter street food, French colonial architecture, and gateway to northern adventures.",
-      image: "https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Ha Long Bay",
-      description: "UNESCO World Heritage Site with thousands of limestone islands rising from emerald waters. Overnight cruise essential.",
-      image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Hoi An",
-      description: "Ancient trading port with lantern-lit streets, tailor shops, riverside cafes, and nearby beaches.",
-      image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Ho Chi Minh City",
-      description: "Modern metropolis with French colonial landmarks, War Remnants Museum, and gateway to Mekong Delta.",
-      image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Getting Around",
-      description: "Overnight buses and trains connect cities. Motorbike rentals popular. Grab app for taxis. Open bus tickets for flexibility."
-    },
-    {
-      icon: Camera,
-      title: "Must-Do Experiences",
-      description: "Ha Long Bay cruise, motorbike loop in northern mountains, tailor-made clothes in Hoi An, street food tours, Cu Chi Tunnels."
-    },
-    {
-      icon: Users,
-      title: "Backpacker Scene",
-      description: "Hostels everywhere with great social atmosphere. Easy to meet travelers. Popular backpacker route well-established north to south."
-    },
-    {
-      icon: Utensils,
-      title: "Vietnamese Cuisine",
-      description: "Pho, banh mi, spring rolls, coffee, fresh seafood. Street food incredibly cheap ($1-2). Regional specialties vary significantly."
-    },
-    {
-      icon: DollarSign,
-      title: "Ultra Budget Friendly",
-      description: "Hostels $5-15/night. Meals $2-5. Beer $0.50-1. Transportation cheap. $25-30/day budget easily doable for backpackers."
-    },
-    {
-      icon: Info,
-      title: "Travel Tips",
-      description: "Visa required but easy. Bargain for everything. Traffic chaotic - be careful crossing. Learn basic Vietnamese phrases helps."
-    }
-  ],
-  
-  highlights: [
-    "Cruise Ha Long Bay overnight",
-    "Explore Hanoi Old Quarter",
-    "Motorbike through Sapa mountains",
-    "Get custom clothes in Hoi An",
-    "Discover ancient Hue Imperial City",
-    "Visit Cu Chi Tunnels near Saigon",
-    "Relax on Phu Quoc Island beaches",
-    "Navigate Mekong Delta by boat",
-    "Try authentic street food everywhere",
-    "Experience Vietnamese coffee culture"
-  ],
-  
-  tips: [
-    "Get visa in advance online - saves time at airport",
-    "Book Ha Long Bay cruise carefully - quality varies greatly",
-    "Bargain for everything except restaurants - expect 30-50% off",
-    "Cross streets slowly and steadily - traffic flows around you",
-    "Download Grab app - safer and cheaper than street taxis",
-    "Try local beer (bia hoi) - 25 cents a glass!",
-    "Pack light - buying clothes in Hoi An cheap and fun",
-    "Open bus tickets flexible but book quality companies",
-    "Learn 'xin chao' (hello) and 'cam on' (thank you)",
-    "Vietnamese coffee is amazing - try egg coffee in Hanoi"
-  ]
-},
-{
-  id: "bali-indonesia",
-  title: "Bali & Indonesia Explorer",
-  description: "Bali, Java, Komodo, and Indonesian archipelago",
-  image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&h=250&fit=crop",
-  continent: "Asia",
-  rating: 4.8,
-  downloads: "8.7k",
-  pages: 90,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Beach", "Culture", "Nature"],
-  featured: true,
-  
-  subtitle: "Island Paradise of Temples & Rice Terraces",
-  heroImage: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "April-October (Dry season)",
-    duration: "10-14 days recommended",
-    budget: "$ - Budget Friendly",
-    highlights: 40,
-    language: "Indonesian (Bahasa Indonesia)",
-    currency: "Indonesian Rupiah (IDR)"
-  },
-  
-  overview: "Bali and Indonesia offer a perfect blend of culture, nature, and beach paradise. From Bali's emerald rice terraces and spiritual temples to Java's ancient Borobudur, from Komodo dragons to pristine diving sites, Indonesia's 17,000 islands provide endless adventure. Experience Hindu ceremonies, volcanic sunrises, world-class surfing, and warm Indonesian hospitality.",
-  
-  destinations: [
-    {
-      name: "Ubud, Bali",
-      description: "Bali's cultural heart with rice terraces, monkey forest, art galleries, yoga retreats, temples, and traditional dance performances.",
-      image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Seminyak & Canggu",
-      description: "Beach towns with surf breaks, beach clubs, trendy restaurants, vibrant nightlife, and stunning sunsets over the Indian Ocean.",
-      image: "https://images.unsplash.com/photo-1559628376-f3fe5f782a2e?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Mount Bromo & Java",
-      description: "Active volcano with sunrise treks, ancient Borobudur temple, Prambanan temples, and Yogyakarta's Javanese culture.",
-      image: "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Komodo National Park",
-      description: "Home to Komodo dragons, pristine diving, Pink Beach, and dramatic volcanic landscapes. Multi-day boat trips recommended.",
-      image: "https://images.unsplash.com/photo-1555400082-2c8c6b90e3c9?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Getting Around",
-      description: "Ngurah Rai Airport in Bali. Rent scooter (be careful!) or hire driver. Domestic flights connect islands. Gojek/Grab apps for transport."
-    },
-    {
-      icon: Camera,
-      title: "Instagram Spots",
-      description: "Tegalalang Rice Terraces, Gates of Heaven (Lempuyang Temple), Tukad Cepung Waterfall, swing experiences. Go early to avoid crowds."
-    },
-    {
-      icon: Users,
-      title: "Balinese Culture",
-      description: "Hindu island in Muslim country. Daily offerings everywhere. Temple ceremonies frequent. Dress modestly with sarong. Respect sacred sites."
-    },
-    {
-      icon: Utensils,
-      title: "Indonesian Cuisine",
-      description: "Nasi goreng, mie goreng, satay, rendang, gado-gado. Warungs (local eateries) cheapest and authentic. Babi guling (roast pig) in Bali."
-    },
-    {
-      icon: DollarSign,
-      title: "Budget Paradise",
-      description: "Very affordable. Meals $2-5 at warungs. Nice hotels $30-80. Scooter rental $5/day. Massages $7-12. Splurge on accommodations, save on food."
-    },
-    {
-      icon: Info,
-      title: "Essential Tips",
-      description: "Visa on arrival ($35). Bring sarong for temples. Bargain at markets. Stay in different areas. Don't drink tap water. Travel insurance essential."
-    }
-  ],
-  
-  highlights: [
-    "Sunrise at Mount Bromo volcano",
-    "Visit Borobudur temple at dawn",
-    "Explore Tegalalang rice terraces",
-    "Snorkel with manta rays in Nusa Penida",
-    "See Komodo dragons in the wild",
-    "Sunset at Tanah Lot temple",
-    "Surf breaks in Uluwatu",
-    "Monkey Forest in Ubud",
-    "Traditional Kecak fire dance",
-    "Yoga and wellness retreats"
-  ],
-  
-  tips: [
-    "Avoid peak season (July-Aug, Dec-Jan) - crowded and expensive",
-    "Scooter rental needs international license - be very careful in traffic",
-    "Instagram spots charge entrance fees now ($3-10) - go early morning",
-    "Stay 3-4 days in Ubud, 3-4 in beach areas for balance",
-    "Book Borobudur sunrise tickets online in advance",
-    "Bring sarong for temples or buy cheap one locally",
-    "Komodo trip: 3-day liveaboard from Labuan Bajo best option",
-    "Bali belly is real - avoid tap water, ice, and unpeeled fruit",
-    "Negotiate everything except established restaurants and hotels",
-    "Learn 'Terima kasih' (thank you) and 'Selamat pagi' (good morning)"
-  ]
-},
-{
-  id: "india-golden-triangle",
-  title: "India Golden Triangle & Beyond",
-  description: "Delhi, Agra, Jaipur, and extended India routes",
-  image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&h=250&fit=crop",
-  continent: "Asia",
-  rating: 4.6,
-  downloads: "5.8k",
-  pages: 108,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Culture", "History", "Spirituality"],
-  featured: false,
-  
-  subtitle: "Incredible India - Palaces, Temples & Taj Mahal",
-  heroImage: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "October-March (Cool season)",
-    duration: "14-21 days recommended",
-    budget: "$ - Budget Friendly",
-    highlights: 42,
-    language: "Hindi & English",
-    currency: "Indian Rupee (INR)"
-  },
-  
-  overview: "India is a sensory overload of colors, flavors, spirituality, and history. The Golden Triangle (Delhi-Agra-Jaipur) showcases India's most iconic landmarks - the Taj Mahal, magnificent forts, bustling bazaars, and palatial heritage. Beyond this classic route, discover Varanasi's spiritual heart, Kerala's backwaters, Rajasthan's desert fortresses, and the Himalayan foothills.",
-  
-  destinations: [
-    {
-      name: "Delhi",
-      description: "Chaotic capital blending Mughal monuments, British colonial architecture, street food chaos, modern metro, and incredible cultural diversity.",
-      image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Agra & Taj Mahal",
-      description: "Home to the iconic Taj Mahal, Agra Fort, and Fatehpur Sikri. Sunrise at Taj is unforgettable. Beyond the monuments, explore local life.",
-      image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Jaipur (Pink City)",
-      description: "Rajasthan's capital with Amber Fort, City Palace, Hawa Mahal, vibrant bazaars, and pink-painted old city. Gateway to desert adventures.",
-      image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Varanasi",
-      description: "India's spiritual heart on the Ganges River. Witness sacred rituals, boat rides at sunrise, ancient temples, and profound spirituality.",
-      image: "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Getting Around",
-      description: "Trains connect Golden Triangle efficiently. Book AC classes for comfort. Domestic flights for longer distances. Auto-rickshaws and Uber/Ola for local travel."
-    },
-    {
-      icon: Camera,
-      title: "Photography",
-      description: "Taj Mahal at sunrise magical. Ask permission before photographing people. Camera fees at monuments. Vibrant colors everywhere for photography."
-    },
-    {
-      icon: Users,
-      title: "Cultural Sensitivity",
-      description: "Dress modestly, especially at religious sites. Remove shoes at temples. Respect local customs. Women should carry scarf for coverage. Left hand not for eating."
-    },
-    {
-      icon: Utensils,
-      title: "Indian Cuisine",
-      description: "Regional variations huge. Try curry, biryani, dal, naan, dosa, street chaats. Vegetarian options abundant. Vary spice levels. Drink bottled water only."
-    },
-    {
-      icon: DollarSign,
-      title: "Budget Friendly",
-      description: "Very affordable. Budget hotels $10-30. Meals $2-8. Trains cheap. Taj Mahal entry higher for foreigners. Bargain at markets. Tips expected."
-    },
-    {
-      icon: Info,
-      title: "Essential Preparation",
-      description: "Visa required in advance. Vaccines recommended. Be prepared for crowds, chaos, persistent touts. Patience essential. Culture shock common but rewarding."
-    }
-  ],
-  
-  highlights: [
-    "Watch sunrise at Taj Mahal",
-    "Explore Amber Fort in Jaipur",
-    "Experience Ganga Aarti in Varanasi",
-    "Shop in Delhi's Chandni Chowk",
-    "Visit Agra Fort and Fatehpur Sikri",
-    "Ride camel in Thar Desert",
-    "Enjoy traditional Rajasthani thali",
-    "Witness spiritual rituals on Ganges",
-    "Explore colorful bazaars everywhere",
-    "Stay in heritage haveli hotels"
-  ],
-  
-  tips: [
-    "Book Taj Mahal tickets online in advance - skip long queues",
-    "Visit Taj at sunrise - fewer crowds and beautiful light",
-    "Use reputable tour companies or guides - avoid street touts",
-    "Drink only bottled water - seal check before opening",
-    "Dress modestly - cover shoulders and knees at religious sites",
-    "Bargain hard in markets - start at 30-40% of asking price",
-    "Be firm with touts and scam artists - say no and walk away",
-    "Book train tickets well in advance - Tatkal for last minute",
-    "Prepare for Delhi belly - bring medication, eat carefully",
-    "Learn 'Namaste' and basic Hindi phrases - locals appreciate it"
-  ]
-}
-  ],
-  
+  /* ═══════════════════════════════════════
+     EUROPE
+  ═══════════════════════════════════════ */
   europe: [
+    {
+      id: "london-guide",
+      title: "London Travel Guide",
+      description: "The complete guide to Britain's iconic capital — museums, pubs & royal history",
+      image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "United Kingdom", countrySlug: "united-kingdom", countryFlag: "🇬🇧",
+      rating: 4.9, downloads: "11.4k", pages: 118, price: "$14.99",
+      tags: ["City", "History", "Culture"], featured: true, tag: "Bestseller", tagColor: "bg-rose-500",
+      subtitle: "Royal History, World-Class Museums & Iconic Landmarks",
+      heroImage: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–September (warmest)", duration: "5–7 days minimum", budget: "$$$ Expensive", highlights: 55, language: "English", currency: "British Pound (GBP)" },
+      overview: "London is one of the world's great capital cities — a place where 2,000 years of history sits alongside cutting-edge culture, world-class museums, diverse food scenes, and iconic landmarks. From Buckingham Palace to the Tate Modern, from the Tower of London to Notting Hill, London rewards every type of traveller.",
+      destinations: [
+        { name: "Westminster & Royal London", description: "Buckingham Palace, Westminster Abbey, the Houses of Parliament, Big Ben, and St. James's Park. The ceremonial heart of Britain.", image: "https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?w=800&h=600&fit=crop" },
+        { name: "The City & Tower of London", description: "The ancient walled City of London, the Tower of London housing the Crown Jewels, Tower Bridge, and the modern Shard skyscraper.", image: "https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=800&h=600&fit=crop" },
+        { name: "South Bank & Museums", description: "The Tate Modern, Shakespeare's Globe, Borough Market, Southwark Cathedral, and the London Eye all line the south bank of the Thames.", image: "https://images.unsplash.com/photo-1520637736862-4d197d17c55a?w=800&h=600&fit=crop" },
+        { name: "Notting Hill & West London", description: "The famous Portobello Road market, colourful Victorian terraces, Hyde Park, Kensington Palace, and the Victoria & Albert Museum.", image: "https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "The Tube (Underground) is your best friend. Get an Oyster card or use contactless payment. Buses brilliant for above-ground views." },
+        { icon: Camera, title: "Free Museums", description: "The British Museum, Natural History Museum, V&A, National Gallery, Tate Modern, Science Museum — all free entry, all world-class." },
+        { icon: Users, title: "Day Trips", description: "Windsor Castle (40 min), Stonehenge (2 hrs), Oxford (1 hr), Cambridge (1 hr), Bath (1.5 hrs) all easily reached by train." },
+        { icon: Utensils, title: "Food Scene", description: "Borough Market for artisan produce, Dishoom for Indian, Bao for Taiwanese, Padella for pasta. Traditional pubs serve excellent food too." },
+        { icon: DollarSign, title: "Budget Tips", description: "London is expensive. Stay in Zone 2 hotels to save money. Eat at markets. Pre-book attractions online for discounts." },
+        { icon: Info, title: "Cultural Notes", description: "Stand on the right on escalators. Queue politely. Tip 10–15% in restaurants. The weather is famously unpredictable — always carry a layer." },
+      ],
+      highlights: ["Explore the British Museum's 8 million artefacts", "Watch the Changing of the Guard at Buckingham Palace", "Admire the Crown Jewels in the Tower of London", "Walk across Tower Bridge", "Visit the Tate Modern in a former power station", "Stroll through Hyde Park", "Shop on Carnaby Street and Oxford Street", "Catch a show in the West End", "Eat your way through Borough Market", "Take the Thames Clipper for riverside views"],
+      tips: ["Buy an Oyster card at the airport — cheaper than single tickets", "Pre-book popular attractions online to skip queues", "Many world-class museums are completely free", "The Tube stops around midnight — night buses or Ubers after that", "London is very walkable between central landmarks", "Afternoon tea is worth the splurge at least once", "Pub culture is essential — try a traditional Victorian pub", "Pack layers — weather changes daily", "Visit Greenwich for the Meridian Line and maritime history", "Use the Santander Cycles bike scheme for short trips"],
+    },
+    {
+      id: "scotland-guide",
+      title: "Scotland Travel Guide",
+      description: "Highlands, islands, whisky distilleries & ancient castles",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "United Kingdom", countrySlug: "united-kingdom", countryFlag: "🇬🇧",
+      rating: 4.8, downloads: "5.6k", pages: 95, price: "$14.99",
+      tags: ["Nature", "History", "Whisky"], featured: false,
+      subtitle: "Wild Highlands, Ancient Castles & Island Adventures",
+      heroImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–September (long daylight hours)", duration: "7–10 days", budget: "$$ Moderate", highlights: 40, language: "English & Scottish Gaelic", currency: "British Pound (GBP)" },
+      overview: "Scotland packs extraordinary drama into a compact country — soaring Highland mountains, brooding lochs, mysterious castles, and islands of jaw-dropping beauty. Edinburgh's Old Town is one of Europe's finest historic cities. The North Coast 500 route rivals any road trip in the world. And the whisky... the whisky is exceptional.",
+      destinations: [
+        { name: "Edinburgh", description: "Scotland's capital with the dramatic castle perched on volcanic rock, the Royal Mile, Arthur's Seat, and one of Europe's finest festival cities.", image: "https://images.unsplash.com/photo-1464817739973-0128fe77aaa1?w=800&h=600&fit=crop" },
+        { name: "Scottish Highlands", description: "Ben Nevis, Glencoe, the Cairngorms National Park, and Loch Ness. Wild, remote, and breathtakingly beautiful.", image: "https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?w=800&h=600&fit=crop" },
+        { name: "Isle of Skye", description: "The jewel of the Hebrides with the Cuillin mountains, Fairy Pools, Quiraing, and Old Man of Storr. One of Britain's most spectacular islands.", image: "https://images.unsplash.com/photo-1512036666432-2181c1f26420?w=800&h=600&fit=crop" },
+        { name: "Speyside Whisky Trail", description: "The heartland of Scotch whisky with more distilleries than anywhere on Earth. Tour Glenfiddich, Macallan, and dozens of others.", image: "https://images.unsplash.com/photo-1527960471264-932f39eb5846?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Rent a car for the Highlands — public transport is limited. Train to Inverness from Edinburgh is spectacular. Ferries to islands." },
+        { icon: Camera, title: "North Coast 500", description: "Scotland's answer to Route 66. 500-mile circular route from Inverness around the north coast. Allow 5–7 days minimum." },
+        { icon: Users, title: "Outdoor Activities", description: "Munro bagging (hills over 3,000 ft), wild swimming in lochs, mountain biking, sea kayaking, and wildlife watching for red deer and golden eagles." },
+        { icon: Utensils, title: "Scottish Cuisine", description: "Smoked salmon, Cullen skink, haggis (better than it sounds), cranachan, and shortbread. Craft beer and gin scenes are thriving." },
+        { icon: DollarSign, title: "Wild Camping", description: "Scotland has a legal right to wild camp on most land. Completely free and the best way to experience the Highlands." },
+        { icon: Info, title: "Midges Warning", description: "Tiny biting insects (midges) plague the Highlands June–August especially at dawn and dusk. Bring repellent with DEET." },
+      ],
+      highlights: ["Explore Edinburgh Castle and the Royal Mile", "Hike up Arthur's Seat for city panoramas", "Drive the North Coast 500", "Trek through dramatic Glencoe valley", "Visit Eilean Donan Castle", "Tour Glenfiddich distillery in Speyside", "Spot the Fairy Pools on Skye", "Climb Ben Nevis — Britain's highest peak", "Watch for red deer in the Cairngorms", "Attend the Edinburgh Festival in August"],
+      tips: ["Book Edinburgh accommodation early if visiting during Festival (August)", "Rent a car — the Highlands are impossible to explore by public transport", "Pack waterproofs even in summer — weather is unpredictable", "Wild camping is legal in Scotland — take full advantage", "Invest in midge repellent (DEET-based) for Highland visits", "The Royal Mile is touristy — explore Old Town's closes and wynds instead", "Distillery tours often include tastings — book ahead", "Skye gets very busy in summer — visit early morning for iconic shots", "The Hogmanay (New Year) celebrations in Edinburgh are world-famous", "Check the ScotRail website for train scenic route options"],
+    },
+    {
+      id: "ireland-guide",
+      title: "Ireland Travel Guide",
+      description: "Cliffs, castles, pubs, and Ireland's wild Atlantic way",
+      image: "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Ireland", countrySlug: "ireland", countryFlag: "🇮🇪",
+      rating: 4.8, downloads: "4.9k", pages: 88, price: "$14.99",
+      tags: ["Nature", "Culture", "Pubs"], featured: false,
+      subtitle: "Emerald Cliffs, Craic & Ireland's Wild Atlantic Way",
+      heroImage: "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–September (long evenings)", duration: "7–10 days", budget: "$$ Moderate", highlights: 38, language: "English & Irish (Gaeilge)", currency: "Euro (EUR)" },
+      overview: "Ireland's landscape is impossibly green — a patchwork of rolling hills, dramatic cliffs, ancient ring forts, and sheep-dotted fields stretching to the sea. The Wild Atlantic Way coastal route is one of Europe's great drives. Dublin balances Georgian architecture with a vibrant pub scene. And the Irish themselves are famously warm and conversational.",
+      destinations: [
+        { name: "Dublin", description: "Trinity College housing the Book of Kells, the Guinness Storehouse, Temple Bar, Georgian squares, and some of Europe's best pub culture.", image: "https://images.unsplash.com/photo-1549180030-48bf079fb38a?w=800&h=600&fit=crop" },
+        { name: "Cliffs of Moher & the Burren", description: "Ireland's most iconic cliffs plunge 214 m into the Atlantic. The adjacent Burren limestone landscape hosts unique Arctic and Mediterranean flora side by side.", image: "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?w=800&h=600&fit=crop" },
+        { name: "Ring of Kerry", description: "Ireland's most famous scenic drive through County Kerry, passing Killarney National Park, Torc Waterfall, and coastal peninsulas.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
+        { name: "Galway & Connemara", description: "Ireland's most vibrant small city with a thriving arts and food scene. Connemara's bogs, mountains, and white-sand beaches are breathtaking.", image: "https://images.unsplash.com/photo-1565073624497-7144969bd4ac?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Rent a car for the best experience. Drive on the left. Roads are narrow in the west. Dublin Bus and DART rail cover the capital." },
+        { icon: Camera, title: "Wild Atlantic Way", description: "2,500 km coastal route from Donegal to Cork. The most dramatic sections are County Clare, Kerry, and Connemara." },
+        { icon: Users, title: "Pub Culture", description: "Traditional Irish pubs are social institutions. Live trad music sessions (céilís) happen spontaneously — ask locals which pubs have music." },
+        { icon: Utensils, title: "Irish Food", description: "Irish stew, smoked salmon, soda bread, oysters in Galway, and seafood chowder on the west coast. Breakfast fry-ups are legendary." },
+        { icon: DollarSign, title: "Budget Tips", description: "Ireland can be expensive. Self-catering saves money. Many attractions are free or cheap. Avoid tourist-trap restaurants near attractions." },
+        { icon: Info, title: "Practical Info", description: "Weather is famously unpredictable — pack layers and waterproofs year-round. Driving on the left surprises many visitors." },
+      ],
+      highlights: ["Stand on the Cliffs of Moher at sunrise", "Pull a perfect pint of Guinness in Dublin", "Drive the Wild Atlantic Way", "Explore medieval Kilkenny Castle", "Walk on the Dingle Peninsula", "See the Aran Islands by ferry", "Visit the Book of Kells at Trinity College", "Attend trad music session in a country pub", "Hike to Skellig Michael's monastic beehive huts", "Wander Killarney National Park"],
+      tips: ["Rent a car — you can't properly see Ireland without one", "Book popular B&Bs and guesthouses ahead in summer", "Cliffs of Moher arrive at opening time to beat tour buses", "Irish country roads are very narrow — drive slowly", "Pub sessions happen spontaneously — ask locals where to find them", "Weather changes hourly — always carry waterproofs", "Skellig Michael requires advance booking — worth every effort", "Try Galway oysters at the Galway International Oyster Festival (September)", "Dublin accommodation is expensive — consider staying in suburbs and commuting", "Tipping: 10–15% in restaurants, not expected in pubs for drinks"],
+    },
+    {
+      id: "portugal-guide",
+      title: "Portugal Travel Guide",
+      description: "Lisbon, Porto, the Algarve coast and Portugal's hidden gems",
+      image: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Portugal", countrySlug: "portugal", countryFlag: "🇵🇹",
+      rating: 4.8, downloads: "8.2k", pages: 102, price: "$14.99",
+      tags: ["Cities", "Beach", "Food"], featured: true, tag: "Top Rated", tagColor: "bg-blue-500",
+      subtitle: "Fado, Pastéis de Nata & Atlantic Coastlines",
+      heroImage: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "April–June, September–October", duration: "7–12 days", budget: "$ Budget Friendly", highlights: 45, language: "Portuguese", currency: "Euro (EUR)" },
+      overview: "Portugal is Western Europe's most underrated destination. Lisbon tumbles down seven hills to the Tagus River with its pastel-coloured buildings and melancholic fado music. Porto's medieval riverfront is a UNESCO treasure. The Algarve beaches are among Europe's finest. And everywhere: incredible food, outstanding wine, and extraordinary value.",
+      destinations: [
+        { name: "Lisbon", description: "Portugal's hilly capital with Alfama's Moorish alleyways, the grand Belém Tower, electric trams, viewpoints (miradouros), and world-class pastries.", image: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=600&fit=crop" },
+        { name: "Porto", description: "A UNESCO World Heritage riverside city. The Ribeira quarter, port wine lodges in Vila Nova de Gaia, azulejo tiles, and Livraria Lello bookshop.", image: "https://images.unsplash.com/photo-1564594985645-4427056e22e2?w=800&h=600&fit=crop" },
+        { name: "Algarve Coast", description: "Portugal's sun-drenched south coast with golden limestone cliffs, sea caves, golden beaches, and charming fishing villages around Lagos and Sagres.", image: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=800&h=600&fit=crop" },
+        { name: "Sintra", description: "A UNESCO-listed fairy-tale town 30 minutes from Lisbon with Pena Palace, Quinta da Regaleira's Initiation Well, and misty forest walks.", image: "https://images.unsplash.com/photo-1513735539098-54517a5e197c?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Excellent intercity trains (CP) and Rede Expressos buses. Lisbon and Porto have good urban transport. Rent car for Algarve and inland areas." },
+        { icon: Camera, title: "Sintra Day Trip", description: "30-minute train from Lisbon Rossio station. Book Pena Palace tickets online in advance. Allow a full day — it's worth it." },
+        { icon: Users, title: "Fado Music", description: "Authentic fado (melancholic folk music) is best heard in Alfama, Lisbon. Clubs perform from 9 pm. A UNESCO Intangible Cultural Heritage." },
+        { icon: Utensils, title: "Portuguese Cuisine", description: "Pastel de nata (custard tarts), bacalhau (salt cod — 365 ways to cook it), bifanas, francesinha in Porto, fresh grilled fish everywhere." },
+        { icon: DollarSign, title: "Excellent Value", description: "One of Western Europe's most affordable destinations. Meals from €10–15. A glass of port wine: €3–5. Many museums free on Sunday mornings." },
+        { icon: Info, title: "Practical Tips", description: "Seven hills in Lisbon mean lots of climbing. Use trams or tuk-tuks for steep sections. Streets wet in winter — good shoes essential." },
+      ],
+      highlights: ["Ride Tram 28 through Alfama's narrow streets", "Eat a fresh pastel de nata at Pastéis de Belém", "Watch sunset from a miradouro with a glass of wine", "Cross the Dom Luís Bridge in Porto on foot", "Visit port wine cellars in Vila Nova de Gaia", "Kayak through Algarve sea caves", "Explore Sintra's Pena Palace", "Hear authentic fado in a Lisbon restaurant", "Walk the coastal footpath at Cabo de São Vicente", "Tour the Jerónimos Monastery in Belém"],
+      tips: ["Lisbon is hilly — comfortable shoes are essential", "Book Pena Palace (Sintra) tickets online — sells out daily", "Port wine: White port served chilled as an aperitif is underrated", "Algarve gets crowded in July–August — visit in May or September", "Sunday mornings: many Lisbon museums are free entry", "Try the house wine (vinho da casa) — outstanding value everywhere", "Porto's francesinha sandwich is a caloric masterpiece — order it", "Tram 28 is always packed — walk the route instead for photos", "Faro in the Algarve is underrated — good base for exploring", "Night buses in Lisbon run all weekend — no need for expensive taxis"],
+    },
     {
       id: "italy-ultimate",
       title: "Ultimate Italy Guide",
-      description: "Rome, Venice, Florence, and the Amalfi Coast",
-      image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=400&h=250&fit=crop",
-      continent: "Europe",
-      rating: 4.9,
-      downloads: "9.2k",
-      pages: 120,
-      googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-      tags: ["Cities", "Food", "History"],
-      featured: true,
-      
-      subtitle: "La Dolce Vita - Art, History & Culinary Paradise",
+      description: "Rome, Venice, Florence and the Amalfi Coast — Italy without compromise",
+      image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Italy", countrySlug: "italy", countryFlag: "🇮🇹",
+      rating: 4.9, downloads: "9.2k", pages: 120, price: "$14.99",
+      tags: ["Cities", "Food", "History"], featured: true, tag: "Bestseller", tagColor: "bg-rose-500",
+      subtitle: "La Dolce Vita — Art, History & Culinary Paradise",
       heroImage: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1920&h=1080&fit=crop",
-      
-      quickFacts: {
-        bestTime: "April-June, September-October",
-        duration: "10-14 days recommended",
-        budget: "$$ - Moderate to High",
-        highlights: 52,
-        language: "Italian",
-        currency: "Euro (EUR)"
-      },
-      
-      overview: "Italy is a masterpiece of art, history, and gastronomy. From Rome's ancient ruins to Venice's romantic canals, from Florence's Renaissance treasures to the Amalfi Coast's dramatic beauty, Italy captivates at every turn. Experience world-class museums, dine on authentic pasta and pizza, sip wine in Tuscany, and embrace la dolce vita.",
-      
+      quickFacts: { bestTime: "April–June, September–October", duration: "10–14 days", budget: "$$ Moderate to High", highlights: 52, language: "Italian", currency: "Euro (EUR)" },
+      overview: "Italy is a masterpiece of art, history, and gastronomy. From Rome's ancient ruins to Venice's romantic canals, from Florence's Renaissance treasures to the Amalfi Coast's dramatic beauty, Italy captivates at every turn. Dine on authentic pasta, sip wine in Tuscany, and embrace la dolce vita.",
       destinations: [
-        {
-          name: "Rome",
-          description: "The Eternal City with 3,000 years of history. Colosseum, Vatican Museums, Trevi Fountain, and incredible food in every corner.",
-          image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Venice",
-          description: "The floating city of canals, gondolas, and stunning architecture. St. Mark's Square, Bridge of Sighs, and endless romantic charm.",
-          image: "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Florence",
-          description: "Birthplace of the Renaissance. Duomo, Uffizi Gallery, David statue, and Tuscan countryside. Art and architecture at its finest.",
-          image: "https://images.unsplash.com/photo-1541832676-9b763b7548c6?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Amalfi Coast",
-          description: "Stunning coastal villages like Positano and Ravello clinging to cliffs. Turquoise waters, lemon groves, and Mediterranean paradise.",
-          image: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=800&h=600&fit=crop"
-        }
+        { name: "Rome", description: "The Eternal City — Colosseum, Vatican Museums, Trevi Fountain, and incredible food in every neighbourhood for 3,000 years of history.", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&h=600&fit=crop" },
+        { name: "Venice", description: "The floating city of canals, gondolas, and stunning Gothic architecture. St. Mark's Basilica, Doge's Palace, and endless romantic charm.", image: "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=800&h=600&fit=crop" },
+        { name: "Florence", description: "Birthplace of the Renaissance. The Duomo, Uffizi Gallery, Michelangelo's David, and the Tuscan countryside beyond.", image: "https://images.unsplash.com/photo-1541832676-9b763b7548c6?w=800&h=600&fit=crop" },
+        { name: "Amalfi Coast", description: "Stunning cliff-hanging villages like Positano and Ravello, turquoise waters, lemon groves, and Mediterranean paradise.", image: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=800&h=600&fit=crop" },
       ],
-      
       essentialInfo: [
-        {
-          icon: Plane,
-          title: "Getting Around",
-          description: "High-speed trains connect major cities efficiently. Rome, Florence, Venice easily done by train. Rent car for Tuscany and Amalfi Coast."
-        },
-        {
-          icon: Camera,
-          title: "Must-See Museums",
-          description: "Vatican Museums (book ahead!), Uffizi Gallery, Accademia (David). Roma Pass and Firenze Card save money and time. Early entry tours worth it."
-        },
-        {
-          icon: Users,
-          title: "Cultural Etiquette",
-          description: "Dress modestly in churches. Shoulders and knees covered. Say 'Buongiorno' when entering shops. Tipping not obligatory but appreciated."
-        },
-        {
-          icon: Utensils,
-          title: "Italian Cuisine",
-          description: "Each region has specialties. Rome: carbonara, cacio e pepe. Naples: pizza. Florence: bistecca. Aperitivo hour is sacred. Gelato daily!"
-        },
-        {
-          icon: DollarSign,
-          title: "Budget Tips",
-          description: "Eat where locals eat - away from tourist sites. Aperitivo = cheap dinner. Free days at museums monthly. Book accommodation early for best rates."
-        },
-        {
-          icon: Info,
-          title: "Booking Tips",
-          description: "Reserve Colosseum, Vatican, Last Supper, Uffizi months ahead. Skip-the-line tickets essential in high season. Book trains early for discounts."
-        }
+        { icon: Plane, title: "Getting Around", description: "High-speed Trenitalia and Italo trains connect major cities. Rent car for Tuscany and Amalfi Coast." },
+        { icon: Camera, title: "Must-See Museums", description: "Vatican Museums (book months ahead!), Uffizi Gallery, Accademia (David). Book online to skip queues." },
+        { icon: Users, title: "Cultural Etiquette", description: "Dress modestly in churches — shoulders and knees covered. Say 'Buongiorno' when entering shops." },
+        { icon: Utensils, title: "Italian Cuisine", description: "Each region has specialties. Rome: carbonara. Naples: pizza. Florence: bistecca Fiorentina. Gelato is non-negotiable." },
+        { icon: DollarSign, title: "Budget Tips", description: "Eat where locals eat, away from tourist sites. Book museum passes. Trains booked early get discounts." },
+        { icon: Info, title: "Booking Tips", description: "Reserve Colosseum, Vatican, Last Supper, and Uffizi months ahead. Skip-the-line essential in high season." },
       ],
-      
-      highlights: [
-        "Explore the Colosseum and Roman Forum",
-        "Tour Vatican Museums and Sistine Chapel",
-        "Ride gondola through Venice canals",
-        "See Michelangelo's David in Florence",
-        "Drive the stunning Amalfi Coast",
-        "Wine tasting in Tuscany vineyards",
-        "Authentic pizza in Naples",
-        "Sunset views from Cinque Terre",
-        "Shop designer fashion in Milan",
-        "Visit Pompeii ruins"
-      ],
-      
-      tips: [
-        "Book Colosseum, Vatican, and Uffizi Gallery tickets months in advance",
-        "Avoid eating near major tourist attractions - prices inflated, quality poor",
-        "High-speed trains are excellent - no need to fly between cities",
-        "Siesta is real - shops close 1-4pm in smaller towns",
-        "Free water fountains (nasoni) throughout Rome - bring refillable bottle",
-        "Gelato test: if it's piled high and bright colors, it's tourist trap",
-        "Learn basic Italian phrases - locals appreciate the effort",
-        "Visit Amalfi Coast in shoulder season - summer is crowded",
-        "Rome: Stay in Trastevere or Monti for authentic neighborhoods",
-        "Cover up in churches or you'll be turned away"
-      ]
-    },
-    {
-      id: "france-romantic",
-      title: "Romantic France",
-      description: "Paris, Provence, and French Riviera complete guide",
-      image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&h=250&fit=crop",
-      continent: "Europe",
-      rating: 4.8,
-      downloads: "8.5k",
-      pages: 105,
-      googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-      tags: ["Romance", "Food", "Wine"],
-      featured: true,
-      
-      subtitle: "The Art of Living - From Paris to Provence",
-      heroImage: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1920&h=1080&fit=crop",
-      
-      quickFacts: {
-        bestTime: "April-June, September-October",
-        duration: "10-14 days recommended",
-        budget: "$$ - Moderate to High",
-        highlights: 48,
-        language: "French",
-        currency: "Euro (EUR)"
-      },
-      
-      overview: "France embodies elegance, romance, and the art of living well. From Paris's iconic landmarks to Provence's lavender fields, from the French Riviera's glamorous beaches to Burgundy's wine estates, France offers endless charm. Experience world-class cuisine, magnificent châteaux, artistic masterpieces, and that je ne sais quoi that makes France unforgettable.",
-      
-      destinations: [
-        {
-          name: "Paris",
-          description: "The City of Light with the Eiffel Tower, Louvre, Notre-Dame, and endless café culture. Romantic walks along the Seine and world-class dining.",
-          image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Provence",
-          description: "Lavender fields, hilltop villages, Roman ruins, and outdoor markets. Aix-en-Provence, Avignon, and the Luberon valley offer authentic French charm.",
-          image: "https://images.unsplash.com/photo-1549577705-d2eb1a7a3367?w=800&h=600&fit=crop"
-        },
-        {
-          name: "French Riviera (Côte d'Azur)",
-          description: "Glamorous Mediterranean coast. Nice, Cannes, Monaco, and Saint-Tropez offer beaches, luxury yachts, and stunning coastal beauty.",
-          image: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Loire Valley",
-          description: "Fairy-tale châteaux along the Loire River. Chambord, Chenonceau, and Amboise showcase Renaissance splendor amid beautiful gardens.",
-          image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&h=600&fit=crop"
-        }
-      ],
-      
-      essentialInfo: [
-        {
-          icon: Plane,
-          title: "Getting Around",
-          description: "TGV high-speed trains excellent for intercity travel. Paris metro efficient. Rent car for Provence and Loire Valley for village exploration."
-        },
-        {
-          icon: Camera,
-          title: "Paris Highlights",
-          description: "Eiffel Tower (book in advance), Louvre (Wed/Fri evenings less crowded), Versailles (go early), Musée d'Orsay, Sacré-Cœur, Latin Quarter strolls."
-        },
-        {
-          icon: Users,
-          title: "French Etiquette",
-          description: "Always greet with 'Bonjour/Bonsoir'. Say 'Au revoir' when leaving shops. Don't rush meals - dining is an experience. Dress smartly, especially evenings."
-        },
-        {
-          icon: Utensils,
-          title: "French Cuisine",
-          description: "Prix fixe menus offer value. Boulangeries for fresh bread and pastries. Wine regions: Bordeaux, Burgundy, Champagne. Michelin-starred dining accessible."
-        },
-        {
-          icon: DollarSign,
-          title: "Budget Tips",
-          description: "Paris Museum Pass saves money and time. Lunch menus cheaper than dinner. Picnic with market finds. Free museums first Sunday monthly. Stay outside Paris."
-        },
-        {
-          icon: Info,
-          title: "Best Experiences",
-          description: "Sunset from Eiffel Tower. Champagne tasting in Reims. Lavender fields (July). Market days in Provence. Coastal walks on Riviera. Château wine tours."
-        }
-      ],
-      
-      highlights: [
-        "Climb the Eiffel Tower at sunset",
-        "Explore the Louvre and see Mona Lisa",
-        "Stroll Champs-Élysées and Arc de Triomphe",
-        "Visit Palace of Versailles",
-        "Tour Loire Valley châteaux",
-        "Wine tasting in Bordeaux or Burgundy",
-        "Lavender fields of Provence (summer)",
-        "Walk the Promenade des Anglais in Nice",
-        "Day trip to Monaco and Monte Carlo",
-        "Cruise the Seine at night"
-      ],
-      
-      tips: [
-        "Learn basic French - even trying makes a huge difference in treatment",
-        "Book Eiffel Tower tickets 60 days in advance online",
-        "Visit Louvre on Wednesday or Friday evenings - fewer crowds",
-        "Bakeries close one day a week - check or you'll miss fresh bread",
-        "Provence lavender peaks mid-June to mid-July",
-        "Paris Museum Pass (2/4/6 days) saves money if visiting multiple sites",
-        "Restaurants serve dinner starting 7:30pm - arrive too early and wait",
-        "Tap water free at restaurants - ask for 'une carafe d'eau'",
-        "Stay in Marais or Latin Quarter for authentic Paris experience",
-        "Versailles: Go Tuesday, Thursday, or weekend; avoid Monday/Friday crowds"
-      ]
-    },
-    {
-      id: "spain-culture",
-      title: "Spanish Cultural Journey",
-      description: "Barcelona, Madrid, Andalusia, and Basque Country",
-      image: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=400&h=250&fit=crop",
-      continent: "Europe",
-      rating: 4.7,
-      downloads: "7.1k",
-      pages: 98,
-      googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-      tags: ["Culture", "Food", "Architecture"],
-      featured: false,
-      
-      subtitle: "Flamenco, Tapas & Gaudí's Masterpieces",
-      heroImage: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1920&h=1080&fit=crop",
-      
-      quickFacts: {
-        bestTime: "April-June, September-October",
-        duration: "10-14 days recommended",
-        budget: "$ - Moderate",
-        highlights: 46,
-        language: "Spanish (Castilian)",
-        currency: "Euro (EUR)"
-      },
-      
-      overview: "Spain pulses with passion, creativity, and vibrant culture. From Barcelona's Gaudí architecture to Madrid's world-class museums, from Andalusia's Moorish palaces to Basque Country's culinary excellence, Spain offers incredible diversity. Experience flamenco shows, endless tapas, beautiful beaches, and warm, welcoming people who know how to live life fully.",
-      
-      destinations: [
-        {
-          name: "Barcelona",
-          description: "Gaudí's architectural wonderland with Sagrada Família, Park Güell, Gothic Quarter, Las Ramblas, and Mediterranean beaches.",
-          image: "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Madrid",
-          description: "Spain's elegant capital with Prado Museum, Royal Palace, Retiro Park, and incredible nightlife. Art, culture, and tapas excellence.",
-          image: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Andalusia",
-          description: "Southern Spain's soul. Seville's flamenco, Granada's Alhambra, Cordoba's Mezquita, white villages, and authentic Spanish passion.",
-          image: "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=800&h=600&fit=crop"
-        },
-        {
-          name: "San Sebastián",
-          description: "Basque Country's jewel with La Concha beach, pintxos bars, Michelin-starred restaurants, and stunning coastal beauty.",
-          image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&h=600&fit=crop"
-        }
-      ],
-      
-      essentialInfo: [
-        {
-          icon: Plane,
-          title: "Getting Around",
-          description: "High-speed AVE trains connect major cities. RENFE train network excellent. Budget airlines (Vueling, Ryanair) for longer distances. Rent car for rural areas."
-        },
-        {
-          icon: Camera,
-          title: "Must-See Architecture",
-          description: "Sagrada Família (book timed entry). Alhambra (reserve weeks ahead). Park Güell, Casa Batlló. Mezquita in Córdoba. Royal Palace Madrid."
-        },
-        {
-          icon: Users,
-          title: "Spanish Rhythm",
-          description: "Lunch 2-4pm, dinner 9-11pm. Siesta (2-5pm) still observed. Late nights normal - clubs open at midnight. Life happens outdoors."
-        },
-        {
-          icon: Utensils,
-          title: "Tapas Culture",
-          description: "Tapas hopping is life. Order drinks, get free snacks (Andalusia). Pintxos in Basque Country. Paella in Valencia. Jamón ibérico everywhere."
-        },
-        {
-          icon: DollarSign,
-          title: "Budget Tips",
-          description: "Menu del día (lunch special) fantastic value. Free tapas with drinks in Granada. Museums free certain days/hours. Stay in pensiones not hotels."
-        },
-        {
-          icon: Info,
-          title: "Regional Diversity",
-          description: "Each region unique - different food, customs, even languages. Catalan in Barcelona, Basque in north. Embrace regional pride and identity."
-        }
-      ],
-      
-      highlights: [
-        "Marvel at Sagrada Família in Barcelona",
-        "Explore Park Güell's mosaic wonderland",
-        "Visit Prado Museum in Madrid",
-        "Tour the Alhambra palace in Granada",
-        "Experience authentic flamenco in Seville",
-        "Tapas hopping in Madrid's La Latina",
-        "Walk La Rambla and Gothic Quarter",
-        "Watch sunset from Park Güell",
-        "Pintxos bar crawl in San Sebastián",
-        "Relax on Mediterranean beaches"
-      ],
-      
-      tips: [
-        "Book Sagrada Família and Alhambra tickets 2-3 months in advance",
-        "Embrace Spanish dining hours - restaurants don't open for dinner until 8:30pm",
-        "Free tapas with drinks in Granada - bar hop for a full meal",
-        "Siesta is real - don't expect shops open 2-5pm in smaller cities",
-        "Learn basics: 'Hola', 'Gracias', 'Por favor' - Spaniards appreciate effort",
-        "Barcelona: Watch for pickpockets on Las Ramblas and metro",
-        "Menu del día lunch specials (€10-15) offer great value",
-        "Visit Alhambra early morning or late afternoon to avoid crowds",
-        "Flamenco: Skip tourist traps, find authentic tablaos",
-        "San Sebastián: Pintxos bar order: drink + point at pintxos you want"
-      ]
+      highlights: ["Explore the Colosseum and Roman Forum", "Tour Vatican Museums and Sistine Chapel", "Ride a gondola through Venice canals", "See Michelangelo's David in Florence", "Drive the stunning Amalfi Coast", "Wine tasting in Tuscan vineyards", "Eat authentic Neapolitan pizza in Naples", "Watch sunset from Cinque Terre", "Visit Pompeii ruins", "Aperitivo hour in Milan"],
+      tips: ["Book Colosseum, Vatican, and Uffizi Gallery tickets months in advance", "Avoid eating near major tourist attractions — overpriced and poor quality", "High-speed trains are excellent — no need to fly between cities", "Siesta is real — shops close 1–4 pm in smaller towns", "Free water fountains (nasoni) throughout Rome — bring a refillable bottle", "Gelato: if it's piled high in bright colours, it's a tourist trap", "Cover up in churches or you'll be turned away", "Visit Amalfi Coast in shoulder season — summer is dangerously crowded", "Florence: Stay in Oltrarno neighbourhood for authentic experience", "Rome's pasta portions are enormous — share a starter"],
     },
     {
       id: "greece-islands",
       title: "Greek Islands Paradise",
-      description: "Santorini, Mykonos, Crete, and ancient Athens",
-      image: "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=400&h=250&fit=crop",
-      continent: "Europe",
-      rating: 4.9,
-      downloads: "6.8k",
-      pages: 88,
-      googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-      tags: ["Islands", "Beach", "History"],
-      featured: true,
-      
-      subtitle: "Ancient Ruins & Azure Waters",
+      description: "Santorini sunsets, Mykonos beaches, Crete and ancient Athens",
+      image: "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Greece", countrySlug: "greece", countryFlag: "🇬🇷",
+      rating: 4.9, downloads: "6.8k", pages: 88, price: "$14.99",
+      tags: ["Islands", "Beach", "History"], featured: true, tag: "Top Rated", tagColor: "bg-blue-500",
+      subtitle: "Ancient Ruins, Azuze Waters & Island Paradise",
       heroImage: "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=1920&h=1080&fit=crop",
-      
-      quickFacts: {
-        bestTime: "May-June, September-October",
-        duration: "10-14 days recommended",
-        budget: "$ - Moderate",
-        highlights: 40,
-        language: "Greek",
-        currency: "Euro (EUR)"
-      },
-      
-      overview: "Greece combines ancient history with stunning island beauty. Walk where philosophers once debated in Athens, watch sunsets over Santorini's caldera, party on Mykonos beaches, and explore Crete's Minoan palaces. With whitewashed villages, crystal-clear waters, delicious Mediterranean cuisine, and warm hospitality, Greece delivers unforgettable island magic.",
-      
+      quickFacts: { bestTime: "May–June, September–October", duration: "10–14 days", budget: "$ Moderate", highlights: 40, language: "Greek", currency: "Euro (EUR)" },
+      overview: "Greece combines ancient history with stunning island beauty. Walk where philosophers debated in Athens, watch sunsets over Santorini's caldera, party on Mykonos beaches, and explore Crete's Minoan palaces. With whitewashed villages, crystal-clear waters, and wonderful Mediterranean food, Greece delivers unforgettable magic.",
       destinations: [
-        {
-          name: "Santorini",
-          description: "Iconic blue-domed churches, stunning sunsets over the caldera, volcanic beaches, and romantic cliff-side villages of Oia and Fira.",
-          image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Mykonos",
-          description: "Cosmopolitan party island with beautiful beaches, windmills, Little Venice, and vibrant nightlife. Charming Cycladic architecture.",
-          image: "https://images.unsplash.com/photo-1601581987809-a874a81309c9?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Athens",
-          description: "Ancient capital with the Acropolis, Parthenon, ancient Agora, and excellent museums. Modern city with great food and nightlife.",
-          image: "https://images.unsplash.com/photo-1555993539-1732b0258235?w=800&h=600&fit=crop"
-        },
-        {
-          name: "Crete",
-          description: "Greece's largest island. Knossos Palace, Samaria Gorge, beautiful beaches, traditional villages, and incredible Cretan cuisine.",
-          image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=800&h=600&fit=crop"
-        }
+        { name: "Santorini", description: "Iconic blue-domed churches, stunning sunsets over the volcanic caldera, black sand beaches, and romantic cliff-side villages of Oia and Fira.", image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&h=600&fit=crop" },
+        { name: "Mykonos", description: "Cosmopolitan island with beautiful beaches, famous windmills, Little Venice, and vibrant nightlife. Charming Cycladic white-cube architecture.", image: "https://images.unsplash.com/photo-1601581987809-a874a81309c9?w=800&h=600&fit=crop" },
+        { name: "Athens", description: "Ancient capital with the Acropolis, Parthenon (built 447–432 BC), ancient Agora, National Archaeological Museum, and excellent modern restaurants.", image: "https://images.unsplash.com/photo-1555993539-1732b0258235?w=800&h=600&fit=crop" },
+        { name: "Crete", description: "Greece's largest island with the Knossos Palace (Minoan civilisation, 3000 BC), Samaria Gorge, beautiful beaches, and incredible Cretan cuisine.", image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=800&h=600&fit=crop" },
       ],
-      
       essentialInfo: [
-        {
-          icon: Plane,
-          title: "Island Hopping",
-          description: "Ferries connect islands (slower, cheaper). Flights available between major islands (faster). Book ferries ahead in summer. Consider open-jaw flights."
-        },
-        {
-          icon: Camera,
-          title: "Best Photo Spots",
-          description: "Oia sunset (arrive 2 hours early). Three blue domes of Santorini. Mykonos windmills. Acropolis at sunrise. Navagio Beach shipwreck."
-        },
-        {
-          icon: Users,
-          title: "Greek Island Life",
-          description: "Laid-back pace. Late dinners (9pm+). Afternoon siesta sacred. Beach clubs popular. Friendly locals love to chat. 'Siga siga' (slowly, slowly) mentality."
-        },
-        {
-          icon: Utensils,
-          title: "Greek Cuisine",
-          description: "Greek salad, moussaka, souvlaki, fresh seafood, feta cheese everywhere. Ouzo with meze. Gyros for quick bites. Farm-to-table freshness."
-        },
-        {
-          icon: DollarSign,
-          title: "Budget Tips",
-          description: "Visit shoulder season (May, Sept-Oct). Stay in apartments. Eat at tavernas, not tourist traps. Ferry cheaper than flights. Free beach access."
-        },
-        {
-          icon: Info,
-          title: "Essential Planning",
-          description: "Book Santorini/Mykonos accommodations 3-6 months ahead for summer. Visit Athens first or last. Allow 2-3 days per island. Beach clubs can be pricey."
-        }
+        { icon: Plane, title: "Island Hopping", description: "Ferries connect islands (slower, cheaper). Flights available between major islands. Book ferries ahead in summer." },
+        { icon: Camera, title: "Best Photo Spots", description: "Oia sunset (arrive 2 hours early). Santorini's three blue domes. Mykonos windmills. Acropolis at sunrise." },
+        { icon: Users, title: "Greek Island Life", description: "Laid-back pace. Late dinners (9 pm+). Afternoon siesta sacred. Friendly locals. 'Siga siga' (slowly, slowly) mentality." },
+        { icon: Utensils, title: "Greek Cuisine", description: "Greek salad, moussaka, souvlaki, fresh seafood, feta everywhere. Ouzo with meze. Farm-to-table freshness." },
+        { icon: DollarSign, title: "Budget Tips", description: "Visit shoulder season (May, Sept–Oct). Stay in apartments. Eat at tavernas. Ferry cheaper than flights." },
+        { icon: Info, title: "Essential Planning", description: "Book Santorini/Mykonos months ahead for summer. Many museums free first Sunday of each month." },
       ],
-      
-      highlights: [
-        "Watch Santorini sunset from Oia",
-        "Explore the Acropolis and Parthenon",
-        "Party on Mykonos beaches",
-        "Visit Knossos Palace in Crete",
-        "Swim in Navagio Beach (Zakynthos)",
-        "Island hop through the Cyclades",
-        "Dine at seaside tavernas",
-        "Hike Samaria Gorge in Crete",
-        "Explore Athens' Plaka neighborhood",
-        "Sail around Santorini's caldera"
-      ],
-      
-      tips: [
-        "Santorini sunset: Skip overcrowded Oia, try Imerovigli or Fira",
-        "Book Santorini hotels early - best caldera views book up months ahead",
-        "Athens: Visit Acropolis early morning (8am) to beat heat and crowds",
-        "Ferry schedules change - check Ferryhopper or Greek Ferries sites",
-        "Rent ATV/car on islands for beach exploration flexibility",
-        "Mykonos: Beach clubs charge €20-40 for sunbeds - free beaches exist",
-        "Learn 'Kalimera' (good morning), 'Efharisto' (thank you) - locals love it",
-        "Visit islands in shoulder season (May or Sept) - half the crowds, same beauty",
-        "Don't flush toilet paper - plumbing can't handle it, use bins",
-        "Greek time is relaxed - don't expect punctuality from ferries or restaurants"
-      ]
+      highlights: ["Watch Santorini sunset from Oia", "Explore the Acropolis and Parthenon", "Party on Mykonos beaches", "Visit Knossos Palace in Crete", "Swim at Navagio Beach on Zakynthos", "Island hop through the Cyclades", "Dine at seaside tavernas", "Hike Samaria Gorge in Crete", "Explore Athens' Plaka neighbourhood", "Sail around Santorini's caldera"],
+      tips: ["Santorini sunset: Try Imerovigli or Fira — less crowded than Oia", "Book Santorini hotels early — caldera-view rooms book up months ahead", "Athens: Visit Acropolis at 8 am to beat heat and crowds", "Ferry schedules change — check Ferryhopper before booking", "Rent ATV or car on islands for beach exploration flexibility", "Mykonos beach clubs charge €20–40 for sunbeds — free beaches exist nearby", "Learn 'Kalimera' (good morning) and 'Efharisto' (thank you)", "Visit islands in shoulder season — same beauty, half the crowds", "Don't flush toilet paper — plumbing can't handle it, use bins", "Greek time is relaxed — restaurants and ferries may not be punctual"],
     },
+    {
+      id: "france-romantic",
+      title: "Romantic France",
+      description: "Paris, Provence, Burgundy wine country and the glittering Riviera",
+      image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "France", countrySlug: "france", countryFlag: "🇫🇷",
+      rating: 4.8, downloads: "8.5k", pages: 105, price: "$14.99",
+      tags: ["Romance", "Food", "Wine"], featured: true,
+      subtitle: "The Art of Living — From Paris to Provence",
+      heroImage: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "April–June, September–October", duration: "10–14 days", budget: "$$ Moderate to High", highlights: 48, language: "French", currency: "Euro (EUR)" },
+      overview: "France embodies elegance, romance, and the art of living well. From Paris's iconic landmarks to Provence's lavender fields, from the French Riviera's glamorous beaches to Burgundy's wine estates, France offers endless charm. Experience world-class cuisine, magnificent châteaux, and the je ne sais quoi that makes France unforgettable.",
+      destinations: [
+        { name: "Paris", description: "The City of Light with the Eiffel Tower, the Louvre, Notre-Dame Cathedral (restored 2024), and café culture along the Seine.", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&h=600&fit=crop" },
+        { name: "Provence", description: "Lavender fields, hilltop villages, Roman ruins, and Provençal markets. Aix-en-Provence, Avignon, and the Luberon valley.", image: "https://images.unsplash.com/photo-1549577705-d2eb1a7a3367?w=800&h=600&fit=crop" },
+        { name: "French Riviera", description: "The glamorous Côte d'Azur: Nice, Cannes, Monaco, and Saint-Tropez with beaches, luxury yachts, and stunning coastal beauty.", image: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=800&h=600&fit=crop" },
+        { name: "Loire Valley", description: "Fairy-tale châteaux along the Loire River — Chambord, Chenonceau, and Amboise — amid beautiful gardens and excellent wines.", image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "TGV high-speed trains are excellent. Paris metro is efficient. Rent car for Provence and Loire Valley." },
+        { icon: Camera, title: "Paris Highlights", description: "Eiffel Tower (book in advance), Louvre (Wednesday/Friday evenings less crowded), Versailles (go early)." },
+        { icon: Users, title: "French Etiquette", description: "Always greet with 'Bonjour/Bonsoir'. Say 'Au revoir' when leaving shops. Don't rush meals." },
+        { icon: Utensils, title: "French Cuisine", description: "Prix fixe menus offer great value. Boulangeries for fresh bread. Wine regions: Bordeaux, Burgundy, Champagne." },
+        { icon: DollarSign, title: "Budget Tips", description: "Paris Museum Pass saves money and time. Lunch menus cheaper than dinner. Picnic from market produce." },
+        { icon: Info, title: "Best Experiences", description: "Sunset from the Eiffel Tower. Champagne tasting in Reims. Lavender fields in July. Market days in Provence." },
+      ],
+      highlights: ["Climb the Eiffel Tower at sunset", "Explore the Louvre and see the Mona Lisa", "Stroll the Champs-Élysées", "Visit the Palace of Versailles", "Tour Loire Valley châteaux", "Wine tasting in Bordeaux or Burgundy", "Lavender fields of Provence (summer)", "Walk the Promenade des Anglais in Nice", "Day trip to Monaco and Monte Carlo", "Cruise the Seine at night"],
+      tips: ["Learn basic French — even trying makes a huge difference", "Book Eiffel Tower tickets 60 days in advance online", "Visit the Louvre on Wednesday or Friday evenings — fewer crowds", "Bakeries close one day a week — check or you'll miss fresh bread", "Provence lavender peaks mid-June to mid-July", "Paris Museum Pass (2/4/6 days) saves money if visiting multiple sites", "Restaurants serve dinner from 7:30 pm — arriving earlier means waiting", "Tap water is free at restaurants — ask for 'une carafe d'eau'", "Stay in the Marais or Latin Quarter for authentic Paris", "Versailles: Go on Tuesday, Thursday, or weekend to avoid the busiest days"],
+    },
+    {
+      id: "spain-culture",
+      title: "Spanish Cultural Journey",
+      description: "Barcelona, Madrid, Andalusia and the Basque Country food scene",
+      image: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Spain", countrySlug: "spain", countryFlag: "🇪🇸",
+      rating: 4.7, downloads: "7.1k", pages: 98, price: "$14.99",
+      tags: ["Culture", "Food", "Architecture"], featured: false,
+      subtitle: "Flamenco, Tapas & Gaudí's Masterpieces",
+      heroImage: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "April–June, September–October", duration: "10–14 days", budget: "$ Moderate", highlights: 46, language: "Spanish (Castilian)", currency: "Euro (EUR)" },
+      overview: "Spain pulses with passion, creativity, and vibrant culture. From Barcelona's Gaudí architecture to Madrid's world-class museums, from Andalusia's Moorish palaces to Basque Country's culinary excellence, Spain offers incredible diversity, endless tapas, beautiful beaches, and warm, welcoming people.",
+      destinations: [
+        { name: "Barcelona", description: "Gaudí's architectural wonderland with the Sagrada Família (under construction since 1882), Park Güell, Gothic Quarter, and Las Ramblas.", image: "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&h=600&fit=crop" },
+        { name: "Madrid", description: "Spain's elegant capital with the Prado Museum, Royal Palace, Retiro Park, and an incredible tapas and nightlife scene.", image: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&h=600&fit=crop" },
+        { name: "Andalusia", description: "Southern Spain's soul: Seville's flamenco, Granada's Alhambra (Nasrid Palaces), Córdoba's Mezquita, and white-washed villages.", image: "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=800&h=600&fit=crop" },
+        { name: "San Sebastián", description: "Basque Country's jewel with La Concha beach, pintxos bars, more Michelin stars per square metre than anywhere on Earth.", image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "High-speed AVE trains connect major cities. Budget airlines (Vueling) for longer distances. Rent car for rural Andalusia." },
+        { icon: Camera, title: "Must-See Architecture", description: "Sagrada Família (book timed entry), Alhambra (reserve weeks ahead), Park Güell, Casa Batlló, Mezquita in Córdoba." },
+        { icon: Users, title: "Spanish Rhythm", description: "Lunch 2–4 pm, dinner 9–11 pm. Siesta (2–5 pm) still observed. Late nights normal — clubs open at midnight." },
+        { icon: Utensils, title: "Tapas Culture", description: "Tapas hopping is a way of life. Free tapas with drinks in Granada. Pintxos in Basque Country. Paella in Valencia." },
+        { icon: DollarSign, title: "Budget Tips", description: "Menu del día (lunch special) fantastic value at €10–15. Free tapas with drinks in Granada. Many museums free at certain hours." },
+        { icon: Info, title: "Regional Diversity", description: "Each region unique with different food, customs, and languages. Catalan in Barcelona, Basque in the north." },
+      ],
+      highlights: ["Marvel at the Sagrada Família in Barcelona", "Explore Park Güell's mosaic wonderland", "Visit the Prado Museum in Madrid", "Tour the Alhambra palace complex in Granada", "Experience authentic flamenco in Seville", "Tapas hopping in Madrid's La Latina", "Pintxos bar crawl in San Sebastián", "Watch sunset from Park Güell", "Swim at Barcelona's Barceloneta beach", "Explore Córdoba's Mezquita-Cathedral"],
+      tips: ["Book Sagrada Família and Alhambra 2–3 months in advance", "Embrace Spanish dining hours — dinner restaurants open at 8:30 pm", "Free tapas with drinks in Granada — bar hop for a full meal", "Siesta is real — don't expect shops to be open 2–5 pm", "Menu del día lunch specials (€10–15) offer extraordinary value", "Barcelona: Watch for pickpockets on Las Ramblas and the metro", "Flamenco: Find authentic tablaos — skip the tourist traps near attractions", "San Sebastián pintxos: Order drinks + point at pintxos you want", "Alhambra: Book Nasrid Palace timed entry months ahead", "Learn basics: 'Hola', 'Gracias', 'Por favor' — Spaniards appreciate effort"],
+    },
+    {
+      id: "iceland-guide",
+      title: "Iceland Travel Guide",
+      description: "Northern Lights, glaciers, geysers and the midnight sun",
+      image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Iceland", countrySlug: "iceland", countryFlag: "🇮🇸",
+      rating: 4.9, downloads: "7.3k", pages: 96, price: "$14.99",
+      tags: ["Northern Lights", "Nature", "Adventure"], featured: true, tag: "Staff Pick", tagColor: "bg-amber-500",
+      subtitle: "Fire, Ice & Northern Lights at the Edge of the World",
+      heroImage: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "June–August (midnight sun), September–March (Northern Lights)", duration: "7–10 days", budget: "$$$ Expensive", highlights: 40, language: "Icelandic & English", currency: "Icelandic Króna (ISK)" },
+      overview: "Iceland is unlike anywhere else on Earth — a geologically young country of erupting volcanoes, retreating glaciers, explosive geysers, cascading waterfalls, and the ethereal Northern Lights. In summer, the midnight sun allows 24-hour exploration. In winter, the aurora borealis dances across the sky in colours that seem impossible.",
+      destinations: [
+        { name: "Reykjavík", description: "The world's most northerly capital (64°N). Colourful houses, Hallgrímskirkja church, excellent restaurants, lively bar scene, and gateway to all adventures.", image: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=800&h=600&fit=crop" },
+        { name: "Golden Circle", description: "Iceland's most famous route: Þingvellir National Park (where tectonic plates meet), Geysir hot spring area, and Gullfoss waterfall.", image: "https://images.unsplash.com/photo-1535082623926-b39352a03fb7?w=800&h=600&fit=crop" },
+        { name: "South Coast", description: "Black sand beaches at Reynisfjara, Skógafoss and Seljalandsfoss waterfalls (you can walk behind the latter), Jökulsárlón glacier lagoon.", image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=800&h=600&fit=crop" },
+        { name: "Snæfellsnes Peninsula", description: "Snæfellsjökull glacier volcano (Jules Verne set Journey to the Centre of the Earth here), dramatic lava fields, sea stacks, and seal beaches.", image: "https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Rent a 4WD for the highland roads (F-roads). Ring Road (Route 1) circles the entire country — 1,332 km. No public transport in rural areas." },
+        { icon: Camera, title: "Northern Lights", description: "Best September–March away from Reykjavík light pollution. Download the Vedur app for aurora forecasts. Clear skies and high KP index needed." },
+        { icon: Users, title: "Midnight Sun", description: "June–August brings 24 hours of daylight. Great for photography but disruptive to sleep — bring eye masks. Hiking at 2 am is perfectly fine." },
+        { icon: Utensils, title: "Icelandic Food", description: "Skyr (thick yoghurt), lamb soup, Atlantic salmon, Arctic char, lobster bisque. Hotdogs from Bæjarins Beztu — Barack Obama's favourite." },
+        { icon: DollarSign, title: "Budget Reality", description: "One of Europe's most expensive countries. Self-catering saves money. Campervans popular. Budget $150–250/day minimum." },
+        { icon: Info, title: "Safety", description: "Weather changes violently and rapidly — check safetravel.is before every outing. Never walk on glaciers without a guide. F-roads need 4WD." },
+      ],
+      highlights: ["Watch the Northern Lights dance across the sky", "Soak in the Blue Lagoon geothermal spa", "Drive the entire Ring Road", "Hike on a glacier with crampons", "Walk behind Seljalandsfoss waterfall", "Snorkel between tectonic plates at Þingvellir", "See puffins nesting at Látrabjarg cliffs", "Visit erupting lava fields (if active)", "Take a whale-watching trip from Húsavík", "Experience the midnight sun in summer"],
+      tips: ["Book the Blue Lagoon far in advance — it sells out weeks ahead", "Rent a 4WD not a small car — some roads genuinely require it", "Check road.is and safetravel.is every morning before driving", "Layer up — even in summer temperatures drop suddenly", "Campervans offer flexibility and accommodation in one", "Download the 112 Iceland emergency app", "Aurora hunting: Drive away from Reykjavík to dark sky areas", "Grocery shopping instead of eating out saves significant money", "Waterfalls are slippery — wear proper grip footwear", "Book accommodation well ahead in peak summer (July–August)"],
+    },
+    {
+      id: "amsterdam-guide",
+      title: "Amsterdam Travel Guide",
+      description: "Canals, world-class museums, cycling culture and Dutch golden age art",
+      image: "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Netherlands", countrySlug: "netherlands", countryFlag: "🇳🇱",
+      rating: 4.8, downloads: "6.1k", pages: 82, price: "$14.99",
+      tags: ["City", "Art", "Canals"], featured: false,
+      subtitle: "Golden Age Art, Canals & the World's Most Cycling-Friendly City",
+      heroImage: "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "April–May (tulips), June–August (warmest)", duration: "3–5 days", budget: "$$ Moderate", highlights: 35, language: "Dutch & English", currency: "Euro (EUR)" },
+      overview: "Amsterdam is a compact, elegant city built on 90 islands connected by 1,500 bridges. The canal ring (UNESCO World Heritage) is lined with 17th-century merchant houses. The Rijksmuseum and Van Gogh Museum are among Europe's finest. And the cycling infrastructure means you can explore it all on two wheels like a local.",
+      destinations: [
+        { name: "Canal Ring (Grachtengordel)", description: "The UNESCO-listed horseshoe of Golden Age canals — Herengracht, Keizersgracht, and Prinsengracht — lined with merchant houses from the 1600s.", image: "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=800&h=600&fit=crop" },
+        { name: "Rijksmuseum & Museumplein", description: "The Netherlands' national treasure with Rembrandt's Night Watch, Vermeer's Milkmaid, and 800 years of Dutch history and art.", image: "https://images.unsplash.com/photo-1584810359583-96fc3448beaa?w=800&h=600&fit=crop" },
+        { name: "Anne Frank House", description: "The secret annex where Anne Frank hid with her family 1942–1944. One of the world's most important and moving historical sites.", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" },
+        { name: "Jordaan & De Pijp", description: "Amsterdam's most charming neighbourhoods: the Jordaan with boutiques and brown cafés, De Pijp with the Albert Cuyp market and diverse food.", image: "https://images.unsplash.com/photo-1578301978162-7aae4d755744?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Rent a bike — it's the Amsterdam way. Trams cover the centre. GVB day cards for public transport. Walking between sights is perfectly practical." },
+        { icon: Camera, title: "Museum Tips", description: "Book Rijksmuseum, Van Gogh Museum, and Anne Frank House well in advance online — they sell out daily. Amsterdam Museum Card saves money." },
+        { icon: Users, title: "Cycling Safety", description: "Bikes have absolute priority in Amsterdam. Look both ways for cyclists before crossing. Rent from Macbike or Starbikes. Follow cycle lane rules." },
+        { icon: Utensils, title: "Dutch Food", description: "Stroopwafels, bitterballen, raw herring (haring), Dutch cheese, Indonesian rijsttafel (colonial heritage), and great chips (patat) with mayonnaise." },
+        { icon: DollarSign, title: "Budget Tips", description: "I Amsterdam City Card covers transport and museums. Eat at FEBO automat for cheap snacks. Markets for fresh produce. Happy hour beer deals." },
+        { icon: Info, title: "Practical Notes", description: "Amsterdam is very small — most sights within a 20-minute walk or bike ride. Cannabis is tolerated in coffee shops but not in public spaces." },
+      ],
+      highlights: ["Cruise the historic canal ring by boat", "See Rembrandt's Night Watch at the Rijksmuseum", "Visit the Van Gogh Museum", "Tour the Anne Frank House", "Cycle through Vondelpark", "Browse the Albert Cuyp street market", "See tulips at Keukenhof Gardens (April)", "Explore the Jordaan neighbourhood's hidden courtyards (hofjes)", "Visit the Jewish Historical Museum", "Day trip to Zaanse Schans windmills"],
+      tips: ["Book the Anne Frank House months in advance — sells out daily", "Rent a bike to experience Amsterdam like a local", "Watch for cyclists at all times — they have priority everywhere", "Visit Keukenhof Gardens in April for peak tulip season", "I Amsterdam City Card saves money on multiple museums", "Brown cafés (bruine kroegen) are traditional Dutch pubs — excellent atmosphere", "Take a canal boat tour on arrival to understand the city layout", "De Pijp neighbourhood is great for food — less touristy than the centre", "Stroopwafel from a street market (not a tourist shop) is transformative", "Most Dutch people speak perfect English — no need to worry about language"],
+    },
+    {
+      id: "scandinavia-northern",
+      title: "Scandinavia & Northern Lights",
+      description: "Norway fjords, Swedish forests, Finnish lakes and Icelandic auroras",
+      image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Scandinavia", countrySlug: "scandinavia", countryFlag: "🌍",
+      rating: 4.8, downloads: "5.4k", pages: 110, price: "$14.99",
+      tags: ["Nature", "Northern Lights", "Adventure"], featured: false,
+      subtitle: "Fjords, Aurora Borealis & Nordic Life",
+      heroImage: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "June–August (midnight sun), September–March (Northern Lights)", duration: "10–14 days", budget: "$$$ Expensive", highlights: 42, language: "Norwegian/Swedish/Finnish/Danish", currency: "Norwegian/Swedish/Danish Krone & Euro" },
+      overview: "Scandinavia spans the world's most dramatic Arctic landscapes — Norway's deep fjords, Sweden's forests and lakes, Denmark's coastal beauty, and Finland's midnight sun and Northern Lights. These are countries of extraordinary natural beauty, high quality of life, innovative design, and world-leading food scenes.",
+      destinations: [
+        { name: "Norwegian Fjords", description: "Sognefjord (Norway's longest, 204 km), Geirangerfjord (UNESCO), and Hardangerfjord. Cruise, kayak, hike, or cycle through breathtaking landscapes.", image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=800&h=600&fit=crop" },
+        { name: "Stockholm, Sweden", description: "Built across 14 islands where Lake Mälaren meets the Baltic Sea. Gamla Stan (Old Town), the Vasa warship museum, and ABBA Museum.", image: "https://images.unsplash.com/photo-1508189860359-777d945909ef?w=800&h=600&fit=crop" },
+        { name: "Lapland (Finland/Sweden)", description: "The Arctic circle homeland of the Sami people. Reindeer sleigh rides, huskies, the midnight sun, and the best Northern Lights viewing in Europe.", image: "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?w=800&h=600&fit=crop" },
+        { name: "Copenhagen, Denmark", description: "Noma-inspired food scene, colourful Nyhavn harbour, Tivoli Gardens, design excellence, and the happiest people on Earth.", image: "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Scandinavian rail passes connect major cities. Flights between countries often cheapest. Hurtigruten coastal cruise excellent for Norway." },
+        { icon: Camera, title: "Northern Lights", description: "Best in Tromsø, Lapland, and the Lofoten Islands September–March. Dark, clear skies essential. Download Space Weather apps for forecasts." },
+        { icon: Users, title: "Outdoor Life", description: "Allemansrätten (right to roam) in Sweden and Finland allows camping and hiking on any land. Wild swimming, midnight sun hiking, and ski touring." },
+        { icon: Utensils, title: "Nordic Cuisine", description: "New Nordic cuisine movement (Noma's influence). Smørrebrød, gravlax, Swedish meatballs, reindeer, cloudberries, and exceptional seafood." },
+        { icon: DollarSign, title: "Budget Reality", description: "Scandinavia is expensive. Norway most costly, Denmark slightly less. Self-catering vital. Alcohol expensive — buy at airport duty free." },
+        { icon: Info, title: "Midnight Sun", description: "North of the Arctic Circle in summer — the sun doesn't set for weeks. Extraordinary but requires eye masks to sleep. Embrace it instead." },
+      ],
+      highlights: ["Cruise through Geirangerfjord", "See the Northern Lights in Tromsø", "Visit ABBA Museum in Stockholm", "Ride the Flåm Railway", "Dog sledding in Lapland", "Eat at a new Nordic restaurant in Copenhagen", "Hike to Trolltunga cliff in Norway", "Swim in a fjord in summer", "Stay in a glass igloo to see aurora overhead", "Visit Lofoten Islands by ferry"],
+      tips: ["Scandinavia is expensive — budget significantly more than Western Europe", "Norway in a Nutshell rail package is worth every krone", "Aurora viewing: book specialist tours — they know the best locations", "Buy alcohol at Systembolaget (Sweden) or airport duty free to save", "Midnight sun: Bring very good eye masks or blackout curtains", "Book Flåm Railway in advance — popular scenic route", "Tromsø is the best city base for Northern Lights hunting", "Wild camping is legal in Sweden and Finland — excellent freedom", "Glass igloo hotels in Finland need booking many months ahead", "Bergen is a better fjord base than Oslo for non-city travel"],
+    },
+
+    {
+      id: "dublin-guide",
+      title: "Dublin Travel Guide",
+      description: "Pubs, Georgian squares, Guinness and Ireland's vibrant capital city",
+      image: "https://images.unsplash.com/photo-1549180030-48bf079fb38a?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Ireland", countrySlug: "ireland", countryFlag: "🇮🇪",
+      rating: 4.8, downloads: "5.1k", pages: 78, price: "$14.99",
+      tags: ["City", "Pubs", "History"], featured: false,
+      subtitle: "The Fair City — Craic, Culture & Cobblestones",
+      heroImage: "https://images.unsplash.com/photo-1549180030-48bf079fb38a?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–September", duration: "3–5 days", budget: "$$ Moderate", highlights: 30, language: "English & Irish", currency: "Euro (EUR)" },
+      overview: "Dublin is one of Europe's most sociable capitals — a city where Georgian architecture, Viking history, and some of the world's most celebrated literature meet an irresistible pub culture. Trinity College, the Guinness Storehouse, and the cobblestoned Temple Bar quarter make Dublin endlessly walkable and endlessly welcoming.",
+      destinations: [
+        { name: "Trinity College & Book of Kells", description: "Ireland's oldest university (est. 1592) houses the stunning Long Room library and the 9th-century illuminated Book of Kells manuscript.", image: "https://images.unsplash.com/photo-1549180030-48bf079fb38a?w=800&h=600&fit=crop" },
+        { name: "Temple Bar & the Liffey", description: "Dublin's cultural quarter buzzes with galleries, street performers, markets, and the city's most characterful pubs.", image: "https://images.unsplash.com/photo-1565073624497-7144969bd4ac?w=800&h=600&fit=crop" },
+        { name: "Guinness Storehouse", description: "Seven floors tracing the history of Ireland's most famous export, crowned by the Gravity Bar with 360° city views.", image: "https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=800&h=600&fit=crop" },
+        { name: "Phoenix Park & Kilmainham", description: "One of Europe's largest city parks (1,750 acres), home to deer, the Irish President's residence, and historic Kilmainham Gaol nearby.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Dublin is very walkable in the centre. Luas trams and Dublin Bus cover the wider city. Aircoach to airport." },
+        { icon: Camera, title: "Literary Dublin", description: "James Joyce, Oscar Wilde, Samuel Beckett, and W.B. Yeats all walked these streets. Dublin is a UNESCO City of Literature." },
+        { icon: Users, title: "Pub Culture", description: "Pub sessions with live trad music are spontaneous and magical. Mulligan's, Kehoe's, and The Long Hall are classic Victorian pubs." },
+        { icon: Utensils, title: "Food Scene", description: "Irish stew, soda bread, full Irish breakfast, and a thriving modern restaurant scene in the Liberties and Ranelagh." },
+        { icon: DollarSign, title: "Budget Tips", description: "Many museums free. Book of Kells worth paying for. Eat at local cafés not Temple Bar tourist traps." },
+        { icon: Info, title: "Day Trips", description: "Howth fishing village (30 min), Glendalough monastic site (1 hr), Malahide Castle (30 min) all easily reachable." },
+      ],
+      highlights: ["Pull a pint of Guinness at the Storehouse", "See the Book of Kells at Trinity College", "Explore the Long Room library", "Wander Temple Bar's streets", "Visit Kilmainham Gaol", "Catch live trad music in a pub", "Walk along the Grand Canal", "Day trip to Howth for fresh seafood", "Tour the Chester Beatty Library (free, world-class)", "Stroll St. Stephen's Green"],
+      tips: ["Book Book of Kells tickets online — queues are long", "Temple Bar pubs are tourist traps — explore Stoneybatter or Ranelagh instead", "Sundays are quiet — perfect for museums and parks", "Irish weather is unpredictable — always carry a waterproof", "Leap Card for unlimited bus/tram travel", "Most museums are free — Chester Beatty Library is a hidden gem", "Try a full Irish breakfast at a local café not a hotel", "Walk the coastline from Dún Laoghaire to Sandycove", "DART train along the coast is spectacular and cheap", "Respect the locals — don't call them British"],
+    },
+ 
+    {
+      id: "paris-guide",
+      title: "Paris Travel Guide",
+      description: "The City of Light — Eiffel Tower, Louvre, café culture and Montmartre",
+      image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "France", countrySlug: "france", countryFlag: "🇫🇷",
+      rating: 4.9, downloads: "14.2k", pages: 95, price: "$14.99",
+      tags: ["Romance", "Art", "Food"], featured: true, tag: "Bestseller", tagColor: "bg-rose-500",
+      subtitle: "La Ville Lumière — Romance, Art & French Elegance",
+      heroImage: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "April–June, September–October", duration: "4–7 days", budget: "$$ Moderate to High", highlights: 45, language: "French", currency: "Euro (EUR)" },
+      overview: "Paris needs no introduction — the Eiffel Tower, the Louvre, Notre-Dame (restored 2024), Montmartre's artists' quarter, and the Seine winding through it all. But Paris rewards those who go deeper: the covered passages, the canal Saint-Martin, the covered market halls, and the arrondissements each with their own distinct personality.",
+      destinations: [
+        { name: "Eiffel Tower & Champ de Mars", description: "Gustave Eiffel's 1889 iron masterpiece rises 330 m above the city. Spectacular by day and magical when it sparkles at night.", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&h=600&fit=crop" },
+        { name: "The Louvre & Tuileries", description: "The world's largest art museum with 35,000 works including the Mona Lisa, Venus de Milo, and the Winged Victory of Samothrace.", image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&h=600&fit=crop" },
+        { name: "Montmartre & Sacré-Cœur", description: "Hilltop village atmosphere with the white domed basilica, artists' studios, Place du Tertre, and sweeping views over Paris.", image: "https://images.unsplash.com/photo-1549144511-f099e773c147?w=800&h=600&fit=crop" },
+        { name: "Le Marais & Saint-Germain", description: "The Marais is Paris's most fashionable quarter — Jewish delis, gay bars, Place des Vosges, and the Picasso Museum. Saint-Germain for Café de Flore.", image: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Paris Métro is excellent and cheap. Vélib' bike share everywhere. RER B to CDG airport. Walk between central sights — city is compact." },
+        { icon: Camera, title: "Museum Pass", description: "Paris Museum Pass (2/4/6 days) covers 50+ museums including Louvre, Orsay, Versailles. Skip the queues. Buy online." },
+        { icon: Users, title: "Best Views", description: "Eiffel Tower (book months ahead), Montmartre, Arc de Triomphe roof (no queue, great value), Sacré-Cœur steps at dusk." },
+        { icon: Utensils, title: "Eating in Paris", description: "Croissant at a boulangerie, lunch at a bistro (plat du jour excellent value), crêpes from street stands, wine with everything." },
+        { icon: DollarSign, title: "Budget Tips", description: "Picnic from market is very Parisian. Sunday museum free entries. Boulangeries for breakfast — far cheaper than cafés." },
+        { icon: Info, title: "Etiquette", description: "Always say 'Bonjour' when entering a shop. 'S'il vous plaît' and 'Merci' go a long way. Don't expect English to be the default." },
+      ],
+      highlights: ["Climb the Eiffel Tower at sunset", "Explore the Louvre (allow a full day)", "Wander Montmartre's village streets", "Visit Notre-Dame (restored 2024)", "Walk along the Seine at night", "Day trip to Versailles Palace", "Browse Shakespeare and Company bookshop", "Eat croissants from Du Pain et des Idées", "Canal Saint-Martin picnic on a sunny afternoon", "Explore the covered passages (Galerie Vivienne)"],
+      tips: ["Book Eiffel Tower tickets 60 days in advance — they sell out", "Visit the Louvre Wednesday or Friday evenings — less crowded", "Paris Museum Pass saves time and money at multiple sites", "Paris is very walkable — the Métro is faster but you miss so much", "Aperitivo culture: wine and snacks on the Seine banks in summer", "Try the plat du jour at a neighbourhood bistro — €12–15 for 2 courses", "Notre-Dame reopened December 2024 — book entry in advance", "Avoid eating on the Champs-Élysées — tourist trap prices", "The Marais is best explored without a plan — just wander", "Buy a carnet of 10 Métro tickets — cheaper than singles"],
+    },
+ 
+    {
+      id: "barcelona-guide",
+      title: "Barcelona Travel Guide",
+      description: "Gaudí's masterpieces, Las Ramblas, Gothic Quarter and Mediterranean beaches",
+      image: "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Spain", countrySlug: "spain", countryFlag: "🇪🇸",
+      rating: 4.9, downloads: "11.8k", pages: 88, price: "$14.99",
+      tags: ["Architecture", "Beach", "Food"], featured: true, tag: "Top Rated", tagColor: "bg-blue-500",
+      subtitle: "Gaudí, Tapas & Mediterranean Sun",
+      heroImage: "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–June, September–October", duration: "4–6 days", budget: "$$ Moderate", highlights: 40, language: "Catalan & Spanish", currency: "Euro (EUR)" },
+      overview: "Barcelona is Europe's most architecturally exhilarating city — Antoni Gaudí's organic masterpieces erupt across the urban landscape like something from a dream. The Sagrada Família has been under construction since 1882 and remains astonishing. Beyond Gaudí, Barcelona has the Gothic Quarter's medieval maze, Barceloneta beach, La Boqueria market, and one of Spain's greatest food and nightlife scenes.",
+      destinations: [
+        { name: "Sagrada Família", description: "Gaudí's unfinished basilica (under construction since 1882, completion expected c.2026) is unlike anything else on Earth. Book timed entry weeks ahead.", image: "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&h=600&fit=crop" },
+        { name: "Park Güell", description: "Mosaic terraces, gingerbread gatehouses, and sweeping city views. The monumental zone requires advance booking — the park itself is free.", image: "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=800&h=600&fit=crop" },
+        { name: "Gothic Quarter (Barri Gòtic)", description: "Medieval labyrinth of narrow lanes, Roman ruins beneath the city, the Barcelona Cathedral, and Plaça Reial's colonnaded square.", image: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&h=600&fit=crop" },
+        { name: "Barceloneta & Waterfront", description: "City beach with promenade, Port Olímpic, Frank Gehry's golden Fish sculpture, and the working-class neighbourhood that feels genuinely Catalan.", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Metro T-Casual 10-trip card saves money. Barcelona is very walkable between Gothic Quarter, Eixample, and Barceloneta." },
+        { icon: Camera, title: "Gaudí Sites", description: "Sagrada Família, Park Güell, Casa Batlló, Casa Milà (La Pedrera), Palau Güell. Book all in advance — queues are brutal without tickets." },
+        { icon: Users, title: "Pickpocket Warning", description: "Las Ramblas and the Gothic Quarter have the highest pickpocket rates in Europe. Use a money belt, don't use phone while walking." },
+        { icon: Utensils, title: "Food & Drink", description: "La Boqueria market, tapas in El Born, pintxos in the Gothic Quarter, seafood paella at the port. Vermouth culture is strong — try it at noon." },
+        { icon: DollarSign, title: "Budget Tips", description: "La Boqueria is touristy — try Mercat de Santa Caterina instead. Many Gaudí buildings require paid entry. Set menu lunch is excellent value." },
+        { icon: Info, title: "Catalan Culture", description: "Barcelona is in Catalonia — a distinct culture with its own language. 'Gràcies' (Catalan) or 'Gracias' (Spanish) both appreciated." },
+      ],
+      highlights: ["Marvel at the Sagrada Família interior", "Explore Park Güell's mosaic terraces", "Walk the Gothic Quarter's medieval lanes", "Tour Casa Batlló at night", "Swim at Barceloneta beach", "La Boqueria market in the morning", "Drinks at a rooftop bar at sunset", "Explore El Born neighbourhood", "See Picasso Museum", "Watch FC Barcelona at Camp Nou (if fixtures allow)"],
+      tips: ["Book Sagrada Família 2–3 months ahead — it sells out completely", "Park Güell monumental zone: Book in advance; free areas are beautiful too", "Las Ramblas is for walking through, not lingering — pickpockets everywhere", "Best tapas in El Born and Gràcia neighbourhoods, not tourist areas", "Barcelona nightlife starts at midnight — don't arrive at a club before 1am", "T-Casual metro card — buy 10-trip card, much cheaper than singles", "Beaches get very crowded July–August — May/June or September are best", "Montjuïc hill by cable car for views and the Font Màgica fountains at night", "Set lunch menus at restaurants offer incredible value (€12–15)", "Casa Batlló evening experience is spectacular but expensive — worth it once"],
+    },
+ 
+    {
+      id: "lisbon-guide",
+      title: "Lisbon Travel Guide",
+      description: "Trams, pastéis de nata, fado music and hills overlooking the Tagus",
+      image: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Portugal", countrySlug: "portugal", countryFlag: "🇵🇹",
+      rating: 4.9, downloads: "9.3k", pages: 82, price: "$14.99",
+      tags: ["City", "Food", "Culture"], featured: true, tag: "Staff Pick", tagColor: "bg-amber-500",
+      subtitle: "Seven Hills, Fado & the World's Best Custard Tarts",
+      heroImage: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "March–May, September–October", duration: "3–5 days", budget: "$ Budget Friendly", highlights: 35, language: "Portuguese", currency: "Euro (EUR)" },
+      overview: "Lisbon is Europe's most enchanting capital — a sun-drenched city of yellow trams climbing impossibly steep hills, Moorish alleyways in Alfama, Art Nouveau cafés, and the melancholic beauty of fado music drifting from a doorway. And the pastéis de nata from Pastéis de Belém alone are worth the flight.",
+      destinations: [
+        { name: "Alfama & São Jorge Castle", description: "Lisbon's oldest district — a Moorish labyrinth of tiled houses, laundry lines, miradouros (viewpoints), and fado restaurants.", image: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=600&fit=crop" },
+        { name: "Belém", description: "UNESCO Jerónimos Monastery, the Tower of Belém, Monument to the Discoveries, and the original Pastéis de Belém bakery (queue is worth it).", image: "https://images.unsplash.com/photo-1513735539098-54517a5e197c?w=800&h=600&fit=crop" },
+        { name: "Baixa & Chiado", description: "Pombaline grid of the lower city, Rossio Square, the Time Out Market, and Chiado's bookshops, cafés, and Pessoa statue.", image: "https://images.unsplash.com/photo-1564594985645-4427056e22e2?w=800&h=600&fit=crop" },
+        { name: "LX Factory & Alcântara", description: "Converted 19th-century industrial complex now housing restaurants, vintage shops, a Sunday market, and Lisbon's coolest creative spaces.", image: "https://images.unsplash.com/photo-1558369981-f9ca78462e61?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Tram 28 (iconic but crowded — try walking the same route). Metro for speed. Walking the hills is the best way to discover Lisbon." },
+        { icon: Camera, title: "Viewpoints (Miradouros)", description: "Miradouro da Graça, Portas do Sol, and Santa Catarina for sunset. Each neighbourhood has its own hidden viewpoint." },
+        { icon: Users, title: "Fado", description: "Authentic fado in Alfama restaurants — book ahead. Clube de Fado and Tasca do Chico are respected. Avoid tourist fado shows near Rossio." },
+        { icon: Utensils, title: "Must Eat", description: "Pastel de nata (custard tart), bacalhau (salt cod), prego sandwich, bifanas, and the Time Out Market for variety." },
+        { icon: DollarSign, title: "Best Value in Europe", description: "Coffee €0.80. Pastel de nata €1.20. Wine from €2 a glass. Lisbon remains one of Western Europe's most affordable capitals." },
+        { icon: Info, title: "Hills Warning", description: "Lisbon's seven hills are genuinely steep — wear comfortable shoes with good grip. Wet cobblestones are treacherous." },
+      ],
+      highlights: ["Ride Tram 28 through Alfama", "Eat a fresh pastel de nata at Pastéis de Belém", "Watch fado in a candlelit Alfama restaurant", "Explore Jerónimos Monastery", "Sunrise from Miradouro da Graça", "Wander Mouraria neighbourhood", "Sunday market at LX Factory", "Day trip to Sintra's fairy-tale palaces", "Sunset from São Pedro de Alcântara miradouro", "Walk across the 25 de Abril bridge (or view it)"],
+      tips: ["Tram 28 is packed — walk the Alfama route instead for the same experience", "Pastéis de Belém: Queue moves fast — worth every minute", "Hire a tuk-tuk for the steep hills if feet are tired", "Time Out Market: Great for lunch but expensive for dinner", "Day trip to Sintra is essential — buy combined train+palace ticket", "Alfama at night is magical but watch your belongings", "Most museums have free entry on Sunday mornings until 2pm", "Uber is cheap and excellent in Lisbon — better than taxis", "Learn 'Obrigado/a' (thank you) — locals genuinely appreciate it", "Avoid restaurants near Praça do Comércio — tourist trap prices"],
+    },
+ 
+    {
+      id: "porto-guide",
+      title: "Porto Travel Guide",
+      description: "Port wine cellars, Ribeira waterfront, azulejo tiles and São Bento station",
+      image: "https://images.unsplash.com/photo-1564594985645-4427056e22e2?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Portugal", countrySlug: "portugal", countryFlag: "🇵🇹",
+      rating: 4.8, downloads: "7.1k", pages: 72, price: "$14.99",
+      tags: ["Wine", "Culture", "Food"], featured: false,
+      subtitle: "Port Wine, Azulejo Tiles & Portugal's Most Soulful City",
+      heroImage: "https://images.unsplash.com/photo-1564594985645-4427056e22e2?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "April–June, September–October", duration: "3–4 days", budget: "$ Budget Friendly", highlights: 28, language: "Portuguese", currency: "Euro (EUR)" },
+      overview: "Porto is Portugal's second city and many visitors' favourite — a UNESCO World Heritage riverside city of extraordinary beauty. The azulejo tile facades, the iron Dom Luís bridge, the port wine lodges of Vila Nova de Gaia across the river, and the incredible São Bento station with its 20,000-tile mural make Porto one of Europe's most rewarding cities.",
+      destinations: [
+        { name: "Ribeira & Dom Luís Bridge", description: "UNESCO-listed riverside quarter with colourful terraced houses, outdoor restaurants, and the double-deck iron bridge (1886) crossing the Douro.", image: "https://images.unsplash.com/photo-1564594985645-4427056e22e2?w=800&h=600&fit=crop" },
+        { name: "Vila Nova de Gaia (Port Wine)", description: "The south bank of the Douro is lined with port wine lodge warehouses. Tour Sandeman, Graham's, or Taylor's and taste the real thing at source.", image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=800&h=600&fit=crop" },
+        { name: "São Bento Station", description: "Portugal's most beautiful train station covered floor-to-ceiling with 20,000 azulejo tiles depicting Portuguese history. Entirely free to enter.", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" },
+        { name: "Clerigos & Foz", description: "The baroque Clérigos tower for panoramic views, Livraria Lello bookshop (one of the world's most beautiful), and the Atlantic-facing Foz neighbourhood.", image: "https://images.unsplash.com/photo-1513735539098-54517a5e197c?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Porto Airport (OPO) well-connected. Metro Line E direct to city centre (€2.60, 30 min). Most sights walkable from the centre." },
+        { icon: Camera, title: "Best Photo Spots", description: "Dom Luís Bridge at sunset, São Bento station tiles, Ribeira reflections at golden hour, azulejo facades on Rua de Santa Catarina." },
+        { icon: Users, title: "Port Wine", description: "Book a tasting at a lodge in Gaia — €10–20 for 2–3 wines. Graham's Six Grapes and Sandeman tours are excellent. Go in the afternoon." },
+        { icon: Utensils, title: "Porto Food", description: "Francesinha (the iconic cheese-and-meat sandwich in spiced beer sauce), bacalhau, tripe (Porto's signature), fresh seafood, and prego rolls." },
+        { icon: DollarSign, title: "Budget", description: "Porto is very affordable. Meal for two with wine €25–35. Port wine tasting €10–15. Coffee €0.70. Day trip to Douro Valley worth every cent." },
+        { icon: Info, title: "Day Trips", description: "Douro Valley wine country (1.5 hrs) — riverboat cruise or train. Braga's Bom Jesus sanctuary. Guimarães UNESCO birthplace of Portugal." },
+      ],
+      highlights: ["Cross Dom Luís Bridge on foot at sunset", "Tour a port wine lodge in Gaia", "Stand inside São Bento station", "Walk Livraria Lello bookshop", "Explore Ribeira waterfront", "Eat a francesinha at Café Santiago", "View from Clérigos tower", "Day trip to Douro Valley by boat", "Explore Foz neighbourhood by tram", "Bica coffee standing at the bar"],
+      tips: ["Livraria Lello charges entry (€8) — redeemable on book purchase", "Walk across Dom Luís Bridge upper level — incredible views, free", "Porto is hilly — good shoes essential", "Douro Valley day trip: Take the train from São Bento — spectacular scenery", "Port wine: Vintage port is incredible — splurge on at least one glass", "Francesinha: Only at lunch — too heavy for dinner", "Bom Jesus funicular in Braga is charming — great day trip", "Most churches are free — extraordinary azulejo interiors", "Porto card (1/2/3 days) covers transport and museum entry", "Foz neighbourhood is quieter and local — great for evening strolls"],
+    },
+ 
+    {
+      id: "dolomites-guide",
+      title: "Dolomites Travel Guide",
+      description: "UNESCO mountain peaks, via ferrata, skiing and Alta Via trekking routes",
+      image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Italy", countrySlug: "italy", countryFlag: "🇮🇹",
+      rating: 4.9, downloads: "4.8k", pages: 82, price: "$14.99",
+      tags: ["Mountains", "Hiking", "Skiing"], featured: false,
+      subtitle: "Europe's Most Dramatic Mountains — Hiking, Skiing & Alpine Culture",
+      heroImage: "https://images.unsplash.com/photo-1548013146-72479768bada?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "June–September (hiking), December–March (skiing)", duration: "5–7 days", budget: "$$ Moderate", highlights: 30, language: "Italian & Ladin", currency: "Euro (EUR)" },
+      overview: "The Dolomites are a UNESCO World Heritage Site and one of the world's most jaw-dropping mountain landscapes — rose-coloured vertical rock towers rising from green alpine meadows. Based across the South Tyrol region, they offer world-class skiing in winter (Cortina, Val Gardena, Alta Badia) and extraordinary via ferrata and trekking in summer.",
+      destinations: [
+        { name: "Tre Cime di Lavaredo", description: "The Dolomites' most iconic landmark — three colossal rock towers rising from a plateau at 2,999 m. The 10-km circular trail is unmissable.", image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=800&h=600&fit=crop" },
+        { name: "Val Gardena & Sassolungo", description: "The most beautiful valley in the Dolomites. Ortisei, Santa Cristina, and Selva are charming Ladin-speaking mountain towns with exceptional cable cars.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
+        { name: "Cortina d'Ampezzo", description: "Italy's glamorous ski resort and 2026 Winter Olympics host. Stunning setting beneath the Tofane and Cinque Torri formations.", image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=800&h=600&fit=crop" },
+        { name: "Lago di Braies", description: "The emerald jewel of the Dolomites — a glacial lake surrounded by vertical walls. Row a wooden boat at sunrise before the crowds arrive.", image: "https://images.unsplash.com/photo-1534282810564-3e43ff28efee?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly to Venice (VCE), Innsbruck, or Verona. Rent a car — essential for exploring. Many valleys have summer shuttle buses to reduce traffic." },
+        { icon: Camera, title: "Photography", description: "Enrosadira (Dolomite alpenglow) — the rocks turn orange-pink at sunrise and sunset. Tre Cime and Lago di Braies are exceptional at dawn." },
+        { icon: Users, title: "Via Ferrata", description: "Iron-peg climbing routes of all difficulties — a Dolomites speciality. Hire equipment in resort towns. Guides available for beginners." },
+        { icon: Utensils, title: "Alpine Cuisine", description: "South Tyrolean food blends Italian and Austrian. Speck (cured ham), canederli dumplings, Kaiserschmarrn, polenta, and exceptional local wines." },
+        { icon: DollarSign, title: "Costs", description: "Mountain huts (rifugi) offer basic beds from €40–80. Self-drive is cheapest. Alta Via 1 hut-to-hut trek covers 10 days of the best scenery." },
+        { icon: Info, title: "Planning", description: "Book rifugi months ahead for summer. Dolomite Superski pass for winter. Book Tre Cime parking or use shuttle buses (no cars on some roads)." },
+      ],
+      highlights: ["Hike the Tre Cime di Lavaredo circuit", "Row a boat on Lago di Braies at dawn", "Via ferrata on the Cinque Torri", "Ski Val Gardena's Sella Ronda circuit", "Sunrise alpenglow on the Pale di San Martino", "Cable car up to Sass Pordoi for 360° views", "Multi-day Alta Via 1 trekking route", "Visit rifugio for local food mid-hike", "Explore Ortisei's Ladin culture", "Drive the Great Dolomites Road"],
+      tips: ["Book Tre Cime parking in advance or use the shuttle — cars banned after 9am in summer", "Lago di Braies: Arrive before 7am or after 6pm — it gets overwhelmingly crowded", "Via ferrata kit: Helmet, harness, and lanyards required — rent in resort", "Alta Via 1: Book all rifugi 3–4 months ahead for July/August", "Alpenglow (enrosadira): Best in June when snow still on peaks", "South Tyrol has bilingual Italian/German signs — both languages used", "August is the busiest month — June/September much more peaceful", "Dolomite roads are narrow and winding — drive slowly", "Rifugi serve excellent food — lunch on the mountain is part of the experience", "Download the Komoot app for offline Dolomite trail maps"],
+    },
+ 
+    {
+      id: "lake-garda-guide",
+      title: "Lake Garda Travel Guide",
+      description: "Italy's largest lake — lemon groves, medieval villages and turquoise waters",
+      image: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Italy", countrySlug: "italy", countryFlag: "🇮🇹",
+      rating: 4.7, downloads: "3.9k", pages: 68, price: "$14.99",
+      tags: ["Lake", "Villages", "Relaxation"], featured: false,
+      subtitle: "La Dolce Vita by the Lake — Villas, Villages & Venetian Charm",
+      heroImage: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–June, September–October", duration: "5–7 days", budget: "$$ Moderate", highlights: 25, language: "Italian", currency: "Euro (EUR)" },
+      overview: "Lake Garda is Italy's largest lake and one of Europe's most beautiful — a 52-km stretch of turquoise water framed by olive groves, lemon terraces, and the dramatic limestone cliffs of the Baldo massif. The southern shores are wider and warmer (Sirmione, Desenzano); the northern end narrows into a fjord-like gorge with Riva del Garda as the adventure sports capital.",
+      destinations: [
+        { name: "Sirmione", description: "A narrow peninsula jutting into the lake with the moated Scaligero Castle, Roman Grotte di Catullo ruins, and thermal spas.", image: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=800&h=600&fit=crop" },
+        { name: "Limone sul Garda", description: "The most photogenic village on the lake — terraced lemon groves clinging to cliffs, a tiny harbour, and the clearest water for swimming.", image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800&h=600&fit=crop" },
+        { name: "Riva del Garda", description: "The northern fjord town with a Venetian tower, the most dramatic mountain scenery, and a world-class windsurfing scene (consistent thermal winds).", image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=800&h=600&fit=crop" },
+        { name: "Malcesine & Monte Baldo", description: "A perfectly preserved medieval village with a cable car rising 1,800 m to Monte Baldo — paragliding, hiking, and extraordinary lake views.", image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly to Verona (VRN) or Brescia. Rent a car for flexibility — ferries cross the lake and connect many villages." },
+        { icon: Camera, title: "Lake Ferries", description: "The Navigarda ferry service connects all major towns. Day tickets allow unlimited hops. The slow ferry from Desenzano to Riva is spectacular." },
+        { icon: Users, title: "Windsurfing", description: "Riva del Garda and Torbole are world-famous for windsurfing — the Ora thermal winds blow reliably every afternoon. Lessons available." },
+        { icon: Utensils, title: "Local Food", description: "Lake fish (sardines, perch, trout), Garda olive oil (some of Italy's finest), local white wines, fresh pasta, and lemon-based everything in Limone." },
+        { icon: DollarSign, title: "Budget Tips", description: "Stay in Desenzano or Peschiera — cheaper than Sirmione. Ferry day passes save money. Picnic with local produce instead of restaurant lunches." },
+        { icon: Info, title: "Best Season", description: "May and September are ideal — warm enough to swim, without August's crowds. July–August very busy and expensive." },
+      ],
+      highlights: ["Swim in Limone's crystal-clear waters", "Ferry hop between villages", "Visit Sirmione's medieval castle", "Cable car to Monte Baldo summit", "Paraglide from Monte Baldo", "Windsurf at Riva del Garda", "Explore Roman ruins at Grotte di Catullo", "Sunset from Punta San Vigilio", "Taste Garda extra-virgin olive oil", "Drive the SS45bis lake road"],
+      tips: ["Sirmione in July–August is unbearably crowded — visit in May or September", "Ferry passes offer great value — get the weekly pass if staying 5+ days", "Monte Baldo cable car: Book online and go early — long queues in summer", "Limone sul Garda is tourist-heavy — stay there to enjoy it at dawn and dusk", "Riva del Garda is better value than southern lake towns", "Lake water is coldest in May, warmest in August", "Gardaland theme park near Peschiera — families only, not for solo travellers", "Thermal spa in Sirmione: Book Aquaria weeks ahead in summer", "Garda olive oil is extraordinary — buy a bottle to take home", "The SS45bis road from Riva to Gargnano is one of Italy's most scenic drives"],
+    },
+ 
+    {
+      id: "santorini-guide",
+      title: "Santorini Travel Guide",
+      description: "Blue domes, caldera sunsets, black beaches and volcanic wine",
+      image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Greece", countrySlug: "greece", countryFlag: "🇬🇷",
+      rating: 4.9, downloads: "8.7k", pages: 65, price: "$14.99",
+      tags: ["Romance", "Views", "Islands"], featured: true, tag: "Most Romantic", tagColor: "bg-pink-500",
+      subtitle: "The World's Most Iconic Sunset — Caldera Views & Aegean Magic",
+      heroImage: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–June, September–October", duration: "4–6 days", budget: "$$$ Expensive", highlights: 22, language: "Greek", currency: "Euro (EUR)" },
+      overview: "Santorini sits inside a collapsed volcanic caldera — a dramatic crescent of cliffs dropping 300 m to the sea, topped by the iconic white cubic villages of Fira and Oia. The famous sunset from Oia is overrated in its crowdedness but underrated in its actual beauty. Black and red volcanic beaches, exceptional local wines from Assyrtiko grapes, and the extraordinary caldera boat trip make Santorini genuinely special.",
+      destinations: [
+        { name: "Oia", description: "The postcard village at Santorini's northern tip — blue-domed churches, caldera-view terraces, and the world's most photographed sunset. Arrive early.", image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&h=600&fit=crop" },
+        { name: "Fira & Imerovigli", description: "The island's capital with the best restaurants and nightlife. Imerovigli sits higher on the caldera ridge — fewer crowds, same jaw-dropping views.", image: "https://images.unsplash.com/photo-1601581987809-a874a81309c9?w=800&h=600&fit=crop" },
+        { name: "Caldera Boat Trip", description: "Sail to the volcanic islands of Nea Kameni and Palea Kameni — swim in hot springs, climb the active volcano, and see Santorini from the water.", image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=800&h=600&fit=crop" },
+        { name: "Perissa & Akrotiri", description: "The black sand beach at Perissa is atmospheric and volcanic. Akrotiri's Minoan settlement (3,600 years old) rivals Pompeii and is far less visited.", image: "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly direct to Santorini (JTR) or ferry from Athens Piraeus (8 hrs) or high-speed catamaran (5 hrs). ATV or car hire on the island." },
+        { icon: Camera, title: "Sunset Strategy", description: "Oia sunset: Arrive 2+ hours early for a spot. Alternatively: watch from Imerovigli (less crowded), from a boat, or from Fira's cable car station." },
+        { icon: Users, title: "Honeymoon Capital", description: "Santorini is Europe's top honeymoon destination. Book caldera-view rooms 6–12 months ahead. Cave hotels carved into the cliff are extraordinary." },
+        { icon: Utensils, title: "Santorini Food", description: "Fava (yellow split pea purée), tomatokeftedes (tomato fritters), fresh grilled fish, and Assyrtiko white wine — mineral, crisp, extraordinary." },
+        { icon: DollarSign, title: "Budget Reality", description: "Santorini is expensive. Caldera-view rooms €200–800+/night. Eat away from the caldera to save money. Perissa area is cheaper than Oia/Fira." },
+        { icon: Info, title: "Planning", description: "July–August is overwhelmingly crowded and hot. May, June, and September are the sweet spots. Book everything months ahead for summer." },
+      ],
+      highlights: ["Watch sunset from Oia (arrive very early)", "Sail to the volcanic hot springs", "Swim at Perissa's black sand beach", "Visit Akrotiri's Minoan excavations", "Wine tasting at Santo Wines winery", "Walk the caldera path from Fira to Oia", "Explore the village of Pyrgos", "Sunrise from Imerovigli is often better than the famous sunset", "Red Beach near Akrotiri", "Take the donkeys (or cable car) up from the old port"],
+      tips: ["Oia sunset: Arrive 2 hours early or watch from a restaurant terrace with a glass of Assyrtiko", "Cave hotels are extraordinary but book a year ahead for peak season", "Rent an ATV — cheap, fun, and the easiest way to see the whole island", "Fira to Oia caldera walk (10 km) is beautiful — do it early morning", "Akrotiri archaeological site requires advance booking — exceptional and uncrowded", "Don't miss Assyrtiko wine — it's only grown on Santorini's volcanic soil", "Kamari and Perissa beaches are much cheaper than Fira/Oia restaurants", "Cable car from old port: Use it rather than the donkeys — donkey tourism is controversial", "Ferry from Athens is cheap and fun — overnight option available", "Book everything for summer 6+ months ahead — island capacity is limited"],
+    },
+ 
+    {
+      id: "crete-guide",
+      title: "Crete Travel Guide",
+      description: "Minoan palaces, Samaria Gorge, white villages and the Mediterranean's largest island",
+      image: "https://images.unsplash.com/photo-1548484352-ea579e5233a8?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Greece", countrySlug: "greece", countryFlag: "🇬🇷",
+      rating: 4.8, downloads: "5.3k", pages: 88, price: "$14.99",
+      tags: ["History", "Beaches", "Hiking"], featured: false,
+      subtitle: "3,000 Years of History — Minoan Palaces, Wild Gorges & Blue Waters",
+      heroImage: "https://images.unsplash.com/photo-1548484352-ea579e5233a8?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–June, September–October", duration: "7–10 days", budget: "$ Moderate", highlights: 35, language: "Greek", currency: "Euro (EUR)" },
+      overview: "Crete is Greece's largest island and one of the Mediterranean's most diverse destinations — a place of extraordinary history (the Minoans built Europe's first advanced civilisation here 4,000 years ago), dramatic gorges, secluded beaches, and some of the best food in Greece. Heraklion, Chania, and the wild western coast each have distinct characters.",
+      destinations: [
+        { name: "Knossos & Heraklion", description: "The Palace of Knossos (founded 2000 BC) is the legendary labyrinth of the Minotaur — Europe's oldest city. The Heraklion Archaeological Museum houses incomparable Minoan treasures.", image: "https://images.unsplash.com/photo-1548484352-ea579e5233a8?w=800&h=600&fit=crop" },
+        { name: "Samaria Gorge", description: "Europe's longest gorge (18 km, 6 hrs descent) through the White Mountains. Ends at the pebble beach of Agia Roumeli for a boat to Chora Sfakion.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
+        { name: "Chania Old Town", description: "Venice-built harbour, a Venetian lighthouse, winding alleys of the old town, a covered market, and the most sophisticated food scene on the island.", image: "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=800&h=600&fit=crop" },
+        { name: "Elafonisi & Balos", description: "Elafonisi's rose-pink sand lagoon and Balos's triple-bay turquoise waters are among the Mediterranean's most beautiful beaches. Both require effort to reach — worth it.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Fly to Heraklion (HER) or Chania (CHQ). Rent a car — essential for western Crete's beaches. Good bus network (KTEL) between towns." },
+        { icon: Camera, title: "Knossos Visit", description: "Allow 2–3 hours. Hire a guide — the reconstructed palace needs explanation. Go early to beat the heat and cruise ship crowds." },
+        { icon: Users, title: "Samaria Gorge", description: "Book the early bus from Chania. The descent is 6 hrs — start by 7am. Ends at Agia Roumeli (boat to Sfakion included in most tour packages)." },
+        { icon: Utensils, title: "Cretan Cuisine", description: "Dakos (barley rusk salad), kalitsounia (cheese pastries), snails, lamb with stamnagathi herbs, honey, and Cretan olive oil (among Greece's finest)." },
+        { icon: DollarSign, title: "Value", description: "Crete is better value than the smaller islands. Western Crete (Chania area) is most scenic and worth the extra travel time from the airport." },
+        { icon: Info, title: "Driving Tips", description: "Western Crete roads can be extremely narrow and steep. 4WD useful for remote beaches. E4 coastal path for serious hikers." },
+      ],
+      highlights: ["Walk the Samaria Gorge", "Explore Knossos Minoan palace", "Swim at Elafonisi's pink lagoon", "Explore Chania's Venetian harbour", "Balos lagoon by boat", "Visit Spinalonga Venetian island fortress", "Try Cretan mezze feast", "Hike through Imbros Gorge (less crowded than Samaria)", "Drive the coastal road from Rethymno to Chania", "Sunset from Chania lighthouse"],
+      tips: ["Rent a car — western Crete's best beaches are inaccessible without one", "Samaria Gorge: Start the first bus down (leaves Chania at 6:15am)", "Knossos is controversial (Evans's reconstructions) but still extraordinary", "Elafonisi: Arrive before 9am or after 5pm — gets overwhelmingly crowded in July–August", "Chania old town is better than Heraklion for accommodation", "Cretan olive oil: Buy from local producers — far superior to supermarket", "Spinalonga: More powerful than Knossos for most visitors — allow half a day", "Car hire: Book through a local agency in Chania — cheaper than international brands", "Western Crete is wilder and more authentic than the eastern resort strip", "Rethymno is a beautiful, less-touristy alternative base to Heraklion and Chania"],
+    },
+ 
+    {
+      id: "munich-guide",
+      title: "Munich Travel Guide",
+      description: "Oktoberfest, BMW Museum, Englischer Garten and Bavarian culture",
+      image: "https://images.unsplash.com/photo-1577048982768-5cb3e7ddfa23?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Germany", countrySlug: "germany", countryFlag: "🇩🇪",
+      rating: 4.7, downloads: "5.9k", pages: 75, price: "$14.99",
+      tags: ["Culture", "Beer", "History"], featured: false,
+      subtitle: "Beer Gardens, Baroque Palaces & Bavaria's Capital",
+      heroImage: "https://images.unsplash.com/photo-1577048982768-5cb3e7ddfa23?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–September (warm), late September–early October (Oktoberfest)", duration: "3–5 days", budget: "$$ Moderate", highlights: 32, language: "German (Bavarian dialect)", currency: "Euro (EUR)" },
+      overview: "Munich is Germany's most liveable city and Bavaria's elegant capital — a city of great museums, baroque palaces, world-class art, enormous English Garden parks, and a beer culture that is genuinely central to Bavarian identity. Oktoberfest (late September–early October) is the world's largest beer festival, but Munich rewards visitors year-round.",
+      destinations: [
+        { name: "Marienplatz & Old Town", description: "Munich's central square with the Gothic New Town Hall (1908) and the famous Glockenspiel chimes at 11am and 12pm. Viktualienmarkt food market nearby.", image: "https://images.unsplash.com/photo-1577048982768-5cb3e7ddfa23?w=800&h=600&fit=crop" },
+        { name: "Englischer Garten", description: "One of the world's largest urban parks (larger than Central Park) with beer gardens, a Japanese teahouse, and an artificial river wave where surfers ride year-round.", image: "https://images.unsplash.com/photo-1476189256191-40b7b8de1cf6?w=800&h=600&fit=crop" },
+        { name: "Nymphenburg Palace", description: "The stunning Baroque summer palace of the Wittelsbach dynasty, with 200 hectares of formal gardens, canals, and the royal porcelain manufactory.", image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&h=600&fit=crop" },
+        { name: "Deutsches Museum", description: "One of the world's greatest science and technology museums — 73,000 exhibits including original aircraft, submarines, and space exploration artefacts.", image: "https://images.unsplash.com/photo-1508669232496-137b159c1cdb?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Munich Airport (MUC) S-Bahn train to centre (40 min). Excellent U-Bahn and tram network. City is very bikeable — MVG Rad bike share." },
+        { icon: Camera, title: "Day Trips", description: "Neuschwanstein Castle (2 hrs), Dachau Memorial (1 hr), Salzburg Austria (1.5 hrs), Berchtesgaden (2 hrs). All easily done from Munich." },
+        { icon: Users, title: "Oktoberfest", description: "Book accommodation and beer tent reservations 6–12 months ahead. Held late September to early October. Traditional Lederhosen/Dirndl welcome." },
+        { icon: Utensils, title: "Bavarian Food", description: "Weisswurst (white veal sausages with sweet mustard, morning only), pretzels, Schweinebraten (pork roast), Sauerkraut, and Masskrug (1-litre beer)." },
+        { icon: DollarSign, title: "Beer Gardens", description: "Beer garden beer is cheaper than inside the Bierhalles. Hofbräuhaus is touristy but obligatory once. Augustiner-Keller is where locals drink." },
+        { icon: Info, title: "Museum Quarter", description: "Kunstareal museum district: Alte Pinakothek, Neue Pinakothek, Pinakothek der Moderne, and Museum Brandhorst — all within walking distance." },
+      ],
+      highlights: ["Watch the Glockenspiel at Marienplatz", "Beer garden at Englischer Garten", "Day trip to Neuschwanstein Castle", "Tour Nymphenburg Palace", "Deutsches Museum (allow a full day)", "Oktoberfest beer tents (if in season)", "Viktualienmarkt for breakfast", "BMW Museum and factory tour", "Walk along the Isar river", "Pinakothek der Moderne for contemporary art"],
+      tips: ["Neuschwanstein: Book tickets online months ahead — they sell out", "Oktoberfest beer tents: Reserve a table at least 6 months ahead", "Weisswurst etiquette: Eaten before noon, suck the sausage from the skin", "Deutsches Museum: Allow 4+ hours — it's enormous", "Beer gardens: You can bring your own food but must buy drinks there", "MVG Rad bike share is excellent for the Englischer Garten", "Hofbräuhaus is mandatory but tourist-heavy — try Augustiner or Löwenbräu too", "Day trip to Salzburg is excellent on the Bayern ticket (cheap rail pass)", "Munich is very safe and clean — public transport is superb", "Bavarian Sunday: Shops mostly closed — plan accordingly"],
+    },
+ 
+    {
+      id: "berlin-guide",
+      title: "Berlin Travel Guide",
+      description: "Wall history, techno clubs, street art and Europe's most exciting art scene",
+      image: "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Germany", countrySlug: "germany", countryFlag: "🇩🇪",
+      rating: 4.8, downloads: "7.4k", pages: 82, price: "$14.99",
+      tags: ["History", "Nightlife", "Art"], featured: false,
+      subtitle: "Divided History, Reunified Energy — Europe's Most Unconventional Capital",
+      heroImage: "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–September", duration: "4–6 days", budget: "$ Budget Friendly", highlights: 38, language: "German", currency: "Euro (EUR)" },
+      overview: "Berlin is Europe's most exciting city — raw, creative, historically profound, and gloriously affordable. The Berlin Wall divided this city for 28 years; today its remnants stand as a powerful memorial while reunified Berlin has become a global capital of art, music, techno culture, and culinary creativity. Few cities offer this combination of historic weight and present-day energy.",
+      destinations: [
+        { name: "Brandenburg Gate & Memorial", description: "Berlin's most iconic landmark, built in 1791. Nearby Holocaust Memorial (2,711 concrete slabs), the Reichstag dome (book free visit), and Potsdamer Platz.", image: "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=800&h=600&fit=crop" },
+        { name: "Berlin Wall & East Side Gallery", description: "The longest remaining section of the Wall (1.3 km) transformed into an open-air gallery with 105 murals by international artists. Checkpoint Charlie nearby.", image: "https://images.unsplash.com/photo-1564769610726-59cebb6fc68d?w=800&h=600&fit=crop" },
+        { name: "Museum Island & Pergamon", description: "UNESCO World Heritage island in the Spree with five world-class museums. The Pergamon Museum houses the reconstructed Gate of Miletus and Ishtar Gate.", image: "https://images.unsplash.com/photo-1584010673922-5f47c25dab96?w=800&h=600&fit=crop" },
+        { name: "Kreuzberg & Neukölln", description: "Berlin's most creative neighbourhoods — Turkish market at Maybachufer, street art, vinyl record shops, natural wine bars, and the best international food scene.", image: "https://images.unsplash.com/photo-1577048982768-5cb3e7ddfa23?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "BER Airport to city centre via S-Bahn (40 min). Excellent U-Bahn, S-Bahn, trams, and buses. Berlin WelcomeCard for unlimited travel + museum discounts." },
+        { icon: Camera, title: "Free Attractions", description: "Holocaust Memorial, East Side Gallery, Brandenburg Gate, Topography of Terror, Memorial to the Murdered Jews — many of Berlin's most powerful sights are free." },
+        { icon: Users, title: "Nightlife", description: "Berlin's techno clubs are world-famous — Berghain (hardest door in Europe), Tresor, Watergate. Clubs open Friday night and run until Monday morning. No phones inside." },
+        { icon: Utensils, title: "Berlin Food", description: "Döner kebab (Berlin-style is better than Istanbul's, Berliners insist), currywurst, Vietnamese food in Prenzlauer Berg, and an exploding natural wine and craft food scene." },
+        { icon: DollarSign, title: "Remarkably Affordable", description: "Beer €3–4. Döner €4–6. Club entry €10–20. Apartment rentals cheap. Berlin is one of Western Europe's best-value capitals." },
+        { icon: Info, title: "History", description: "The DDR Museum, Checkpoint Charlie (commercialised but informative), Sachsenhausen concentration camp (1 hr), and Stasi Museum all essential for understanding Berlin's story." },
+      ],
+      highlights: ["Visit the Holocaust Memorial", "Walk the East Side Gallery", "See the Pergamon altar and Ishtar Gate", "Reichstag dome at sunset (book free, online)", "Currywurst at Curry 36 in Kreuzberg", "Explore Prenzlauer Berg on a Sunday", "Day trip to Potsdam's Sanssouci Palace", "Street art tour in Friedrichshain", "Turkish market at Maybachufer", "Attempt Berghain (or dance at Tresor)"],
+      tips: ["Reichstag dome: Book the free visit 2–4 weeks ahead online — it fills up", "Berghain: Dress dark, don't talk in the queue, go Sunday morning for best chance", "Berlin is enormous — pick 2–3 neighbourhoods per day, not a list of sights", "Bike hire is the best way to explore — Nextbike or Lime", "Holocaust Memorial: Walk through it slowly — the disorientation is intentional", "Döner: Mustafa's Gemüse Kebap in Kreuzberg has a queue but is genuinely the best", "Grocery stores (Aldi, Lidl) for cheap supplies — picnic in Tiergarten", "Museum Island: Buy the combined day ticket — €22 covers all 5 museums", "Berlin has no closing time — everything stays open very late", "Learn 'Bitte' (please) and 'Danke' — Germans appreciate basic effort"],
+    },
+ 
+    {
+      id: "copenhagen-guide",
+      title: "Copenhagen Travel Guide",
+      description: "Nyhavn canals, New Nordic cuisine, cycling culture and Danish design",
+      image: "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Denmark", countrySlug: "denmark", countryFlag: "🇩🇰",
+      rating: 4.8, downloads: "5.2k", pages: 72, price: "$14.99",
+      tags: ["Design", "Food", "Cycling"], featured: false,
+      subtitle: "Hygge, Noma & the World's Most Cycling-Friendly Capital",
+      heroImage: "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–August", duration: "3–5 days", budget: "$$$ Expensive", highlights: 28, language: "Danish & English", currency: "Danish Krone (DKK)" },
+      overview: "Copenhagen is Scandinavia's most accessible and joyful capital — home to the world-changing New Nordic cuisine movement, extraordinary design culture, the concept of hygge (cosy contentment), and some of the world's happiest people. Nyhavn's colourful canal-side buildings are Instagram-famous, but Copenhagen's real character lives in Nørrebro's independent shops, Frederiksberg's quiet elegance, and Tivoli Gardens at night.",
+      destinations: [
+        { name: "Nyhavn", description: "The 17th-century canal lined with colourful townhouses, sailing ships, and outdoor restaurants. Hans Christian Andersen lived here. Best in golden hour.", image: "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=800&h=600&fit=crop" },
+        { name: "Tivoli Gardens", description: "One of the world's oldest amusement parks (1843, inspiration for Disneyland). Magical in summer evenings and extraordinary at Christmas.", image: "https://images.unsplash.com/photo-1476189256191-40b7b8de1cf6?w=800&h=600&fit=crop" },
+        { name: "Nørrebro & Vesterbro", description: "Copenhagen's creative heartlands — vintage shops, coffee roasters, natural wine bars, Torvehallerne food market, and the city's best independent restaurants.", image: "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=800&h=600&fit=crop" },
+        { name: "Christiansborg & Museums", description: "The royal palace and parliament, the National Museum of Denmark, Glyptoteket sculpture museum (free on Sundays), and the stunning Copenhagen Opera House.", image: "https://images.unsplash.com/photo-1508669232496-137b159c1cdb?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "CPH Airport Metro to city (15 min). Excellent Metro and S-Tog trains. City is supremely cycleable — rent a bike for the full Copenhagen experience." },
+        { icon: Camera, title: "New Nordic Dining", description: "Noma (book 3 months ahead), Geranium (3 Michelin stars), Alchemist (exceptional). Budget: Smørrebrød at a konditori, street food at Reffen market." },
+        { icon: Users, title: "Danish Design", description: "Danish Design Museum, Louisiana Museum of Modern Art (40 min by train — stunning seaside setting), Designmuseum Danmark, and endless independent design shops." },
+        { icon: Utensils, title: "Danish Food", description: "Smørrebrød (open-face rye sandwiches), pastries (wienerbrød — far better than anything called 'Danish' elsewhere), hot dogs from street carts, fresh seafood." },
+        { icon: DollarSign, title: "Very Expensive", description: "Copenhagen is one of Europe's priciest cities. Budget €80–150/day. Supermarket picnics essential. Happy hour (happy hour) beer deals everywhere 4–7pm." },
+        { icon: Info, title: "Day Trips", description: "Louisiana Museum (45 min train). Frederiksborg Castle (40 min). Malmö Sweden via Øresund Bridge (35 min train, use Copenhagen card)." },
+      ],
+      highlights: ["Golden hour at Nyhavn", "Tivoli Gardens in the evening", "Cycle through the city like a local", "Louisiana Museum of Modern Art", "Smørrebrød at a traditional konditori", "Christiansborg palace tower (free, best views)", "Street food at Reffen market", "Round Tower for city panorama", "Visit Freetown Christiania", "Day trip to Frederiksborg Castle"],
+      tips: ["Copenhagen Card covers metro, trains, and most museums — great value if visiting 3+ museums", "Cycling is mandatory for the full Copenhagen experience — rent for the day", "Louisiana Museum: Take the train from Østerport — stunning seaside setting", "Tivoli: Evening is the best time — lights and atmosphere are magical", "Copenhagen is very expensive — budget for it or cook in your accommodation", "Smørrebrød: Try Aamanns or Schønnemann for the real thing", "Noma reservations: Check the website — they do waves of bookings", "Danish pastry: A real 'danish' (wienerbrød) from a bakery is a revelation", "Happy hour beer: Most bars have deals 4–7pm — €4–6 for craft beers", "Danes speak flawless English — but 'Tak' (thank you) is always appreciated"],
+    },
+ 
+    {
+      id: "switzerland-guide",
+      title: "Switzerland Travel Guide",
+      description: "The Alps, Interlaken, Geneva, Zurich and train journeys through mountain passes",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Switzerland", countrySlug: "switzerland", countryFlag: "🇨🇭",
+      rating: 4.8, downloads: "6.1k", pages: 92, price: "$14.99",
+      tags: ["Mountains", "Trains", "Luxury"], featured: false,
+      subtitle: "The World's Most Scenic Rail Journeys, Alpine Peaks & Swiss Precision",
+      heroImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "June–September (hiking), December–March (skiing)", duration: "7–10 days", budget: "$$$$ Very Expensive", highlights: 35, language: "German, French, Italian & Romansh", currency: "Swiss Franc (CHF)" },
+      overview: "Switzerland is four countries in one — German, French, Italian, and Romansh-speaking regions each with distinct cultures, cuisines, and characters. What unites them is the Alps — some of the world's most dramatic mountain scenery — and the world's finest train network that makes every journey an attraction in itself. Expensive? Yes. Worth it? Absolutely.",
+      destinations: [
+        { name: "Interlaken & Jungfrau Region", description: "The adventure capital between two lakes and beneath the Eiger, Mönch, and Jungfrau peaks. Jungfraujoch (Top of Europe, 3,454 m) by cogwheel train is unforgettable.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
+        { name: "Lucerne", description: "The most beautiful lakeside city in Switzerland — medieval Chapel Bridge, the Lion Monument, Mount Pilatus cable car, and Lake Lucerne boat trips.", image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop" },
+        { name: "Zermatt & the Matterhorn", description: "The car-free village at 1,620 m below the iconic Matterhorn (4,478 m). Spectacular hiking and Europe's highest ski area (Klein Matterhorn, 3,883 m).", image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=800&h=600&fit=crop" },
+        { name: "Geneva & Lausanne", description: "Geneva's lakeside UN quarter, Jet d'Eau, and watchmaking heritage. Lausanne's steep medieval old town and the Olympic Museum on Lake Geneva's shore.", image: "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Swiss Travel Pass", description: "Covers all trains, buses, and lake boats, plus many mountain railways and museums. Buy before arriving. Flexi passes available. Worth every franc." },
+        { icon: Camera, title: "Scenic Trains", description: "Glacier Express (St. Moritz to Zermatt, 8 hrs), Bernina Express (Chur to Tirano, Italy, 4 hrs), and Golden Pass (Montreux to Interlaken) are unmissable." },
+        { icon: Users, title: "Hiking", description: "700 marked hiking trails through the Alps. Schynige Platte, First Cliff Walk, Lauterbrunnen Valley, and Mont Blanc (Geneva) are exceptional." },
+        { icon: Utensils, title: "Swiss Cuisine", description: "Cheese fondue (fondue Fribourgeoise in French-speaking cantons), raclette, rösti, Zürcher Geschnetzeltes (veal with cream sauce), and Swiss chocolate." },
+        { icon: DollarSign, title: "Managing Costs", description: "Switzerland is brutally expensive. Migros/Coop supermarkets for food. Stay in hostels or mountain huts. Swiss Travel Pass is genuinely good value." },
+        { icon: Info, title: "4 Languages", description: "The German-speaking north and centre, French-speaking Romandy (west), Italian-speaking Ticino (south), and Romansh-speaking Graubünden (east)." },
+      ],
+      highlights: ["Jungfraujoch by cogwheel train", "Glacier Express scenic rail journey", "Hike Lauterbrunnen Valley", "See the Matterhorn from Zermatt", "Chapel Bridge in Lucerne", "Lake Geneva boat trip", "Mount Pilatus cable car", "Cheese fondue in a mountain hut", "Schilthorn via ferrata", "Basel's world-class Art Basel museums"],
+      tips: ["Swiss Travel Pass: Buy before arriving — significantly cheaper", "Jungfraujoch: Book ahead, go on a clear day, and take warm layers (−15°C at top)", "Glacier Express: Book months ahead for the panoramic car windows", "Switzerland is very expensive — budget CHF 150–200/day minimum", "Hiking trails are magnificently signposted — no GPS needed", "Zermatt is car-free — electric taxis only; arrive by train", "Cheese fondue etiquette: Dropping bread in the pot means buying a round of drinks", "Lauterbrunnen is far cheaper than Grindelwald for accommodation", "Migrate to local supermarkets (Migros, Coop) for breakfast and lunch", "Each Swiss region speaks different languages — a few words in the local language help"],
+    },
+ 
+    {
+      id: "croatia-plitvice-guide",
+      title: "Croatia & Plitvice Lakes Guide",
+      description: "Cascading turquoise lakes, Dubrovnik's walls, Split and the Dalmatian Coast",
+      image: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Croatia", countrySlug: "croatia", countryFlag: "🇭🇷",
+      rating: 4.8, downloads: "6.7k", pages: 85, price: "$14.99",
+      tags: ["Nature", "Beach", "History"], featured: false,
+      subtitle: "Cascading Lakes, Medieval Walls & Adriatic Islands",
+      heroImage: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–June, September–October", duration: "7–10 days", budget: "$$ Moderate", highlights: 35, language: "Croatian", currency: "Euro (EUR, from 2023)" },
+      overview: "Croatia has one of Europe's most beautiful coastlines — 1,800 km of Adriatic coast, 1,200 islands, medieval walled cities, and the extraordinary Plitvice Lakes National Park. Dubrovnik's walls (Game of Thrones' King's Landing) and Split's Diocletian's Palace are among Europe's finest Roman and medieval sites.",
+      destinations: [
+        { name: "Plitvice Lakes National Park", description: "UNESCO-listed cascade of 16 terraced turquoise lakes connected by waterfalls through karst limestone forest. The most beautiful freshwater landscape in Europe.", image: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=600&fit=crop" },
+        { name: "Dubrovnik", description: "The 'Pearl of the Adriatic' — a perfectly preserved medieval walled city on a limestone cape. Walk the walls, swim from Banje beach, and explore the old town at dawn.", image: "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=800&h=600&fit=crop" },
+        { name: "Split & Diocletian's Palace", description: "Roman Emperor Diocletian's 4th-century retirement palace is still inhabited 1,700 years later — apartments, restaurants, and bars fill the ancient spaces.", image: "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?w=800&h=600&fit=crop" },
+        { name: "Hvar Island", description: "The sunniest island in the Adriatic — lavender fields, the medieval fortress, vibrant nightlife at Carpe Diem Beach, and beautiful swimming coves.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Fly to Dubrovnik, Split, or Zagreb. Ferries connect the coast and islands. Rent a car for Plitvice and Dalmatian hinterland." },
+        { icon: Camera, title: "Plitvice Tips", description: "Book entry online (sells out in summer). Early morning arrival essential. The upper lakes are less visited. Allow a full day." },
+        { icon: Users, title: "Dubrovnik Crowds", description: "Dubrovnik is overwhelmingly crowded July–August with cruise ships. Visit May, June, September, or October for a much better experience." },
+        { icon: Utensils, title: "Croatian Cuisine", description: "Dalmatian peka (lamb or octopus slow-cooked under embers), fresh Adriatic seafood, prstaci (date mussels — controversial), truffle pasta in Istria, and Plavac Mali wine." },
+        { icon: DollarSign, title: "Budget Tips", description: "Croatia is better value than Western Europe but rising fast. Avoid tourist restaurants on the main squares. Island hopping by ferry is affordable." },
+        { icon: Info, title: "Island Hopping", description: "Jadrolinija ferry connects the islands. Hvar, Brač, Korčula, and Vis are all beautiful. Vis is the least commercialised." },
+      ],
+      highlights: ["Walk Plitvice's boardwalks above the lakes", "Walk Dubrovnik's city walls", "Explore Diocletian's Palace in Split", "Ferry to Hvar Island", "Swim at Stiniva Cove on Vis Island", "Cable car above Dubrovnik", "Kayak around Lokrum Island", "Try peka at a konoba restaurant", "Explore Korčula — claimed birthplace of Marco Polo", "Drive the Magistrala coastal road"],
+      tips: ["Plitvice: Book tickets 2–3 months ahead for summer — genuinely sells out", "Dubrovnik walls: Walk them at 8am before tour groups — transformative difference", "Split: Explore Diocletian's Palace maze at night — magical atmosphere", "July–August cruise ship season makes Dubrovnik unbearable — go in shoulder season", "Ferry booking: Jadrolinija is reliable; book ahead for car ferries in summer", "Hvar town is expensive — stay in Stari Grad for better value", "Croatian wine: Plavac Mali (Dalmatia) and Malvazija (Istria) are excellent", "Peka: Order 24 hours ahead — it requires advance preparation at the konoba", "Parking in Dubrovnik: Old town car parks are expensive — use park and ride", "Learn 'Hvala' (thank you) — locals appreciate the effort"],
+    },
+ 
+    {
+      id: "malta-guide",
+      title: "Malta Travel Guide",
+      description: "Ancient temples, the Knights of Malta, Valletta's Baroque streets and Azure Window",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Malta", countrySlug: "malta", countryFlag: "🇲🇹",
+      rating: 4.7, downloads: "3.3k", pages: 65, price: "$14.99",
+      tags: ["History", "Diving", "Culture"], featured: false,
+      subtitle: "7,000 Years of History in the Mediterranean's Smallest Country",
+      heroImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "April–June, September–November", duration: "5–7 days", budget: "$ Moderate", highlights: 25, language: "Maltese & English", currency: "Euro (EUR)" },
+      overview: "Malta is one of the world's smallest countries (316 km²) and one of the most historically dense — home to the oldest free-standing structures on Earth (the megalithic temples, 3,600 BC), Valletta (Europe's smallest capital and a UNESCO World Heritage Site), the medieval walled city of Mdina, and extraordinary World War II history. And the Mediterranean is warm, clear, and excellent for diving.",
+      destinations: [
+        { name: "Valletta", description: "Europe's smallest capital is a Baroque masterpiece built by the Knights of St. John. St. John's Co-Cathedral (Caravaggio's masterpiece inside), the Upper Barrakka Gardens, and the Grand Harbour.", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" },
+        { name: "Mdina (Silent City)", description: "The walled medieval capital at the island's centre — car-free, honey-coloured limestone streets, a Baroque cathedral, and extraordinary views across Malta.", image: "https://images.unsplash.com/photo-1571406384174-60f5a1ac1eed?w=800&h=600&fit=crop" },
+        { name: "Gozo Island", description: "Malta's quieter sister island — Azure Window (collapsed 2017 but the area remains dramatic), Dwejra inland sea, Ramla Bay's red sand, and world-class diving.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+        { name: "Megalithic Temples", description: "Ħaġar Qim and Mnajdra temples (3,600 BC) — older than Stonehenge and the Egyptian pyramids. UNESCO World Heritage and often overlooked by visitors.", image: "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Malta International Airport 10 km from Valletta. Bus network covers the island. Ferry to Gozo (25 min) from Ċirkewwa. No car needed — buses are cheap and frequent." },
+        { icon: Camera, title: "Caravaggio's Malta", description: "The Beheading of Saint John the Baptist in St. John's Co-Cathedral is Caravaggio's largest and most powerful work. The cathedral itself is extraordinary." },
+        { icon: Users, title: "WWII History", description: "Malta was the most bombed place in WWII — the George Cross was awarded to the entire island. The War Museum, Lascaris War Rooms, and underground shelters are essential." },
+        { icon: Utensils, title: "Maltese Food", description: "Pastizzi (flaky pastry with ricotta or peas — €0.30), rabbit stew (fenkata — the national dish), ftira bread, gbejniet cheese, and Kinnie bitter orange soda." },
+        { icon: DollarSign, title: "Good Value", description: "Malta is one of Mediterranean's best-value destinations. Buses €2 day pass. Pastizzi €0.30. Meals €8–15. Much cheaper than Sicily or Italy." },
+        { icon: Info, title: "Diving", description: "Malta is one of the Mediterranean's top diving destinations — exceptional visibility, WWII wrecks, and the Blue Hole in Gozo. Dive centres in most coastal towns." },
+      ],
+      highlights: ["Caravaggio at St. John's Co-Cathedral", "Walk Valletta's Baroque streets", "Explore Mdina at dawn", "Ferry to Gozo and the Dwejra Inland Sea", "Dive or snorkel the Blue Hole", "Visit the megalithic temples at Ħaġar Qim", "Grand Harbour views from Upper Barrakka", "Pastizzi from a street vendor", "Three Cities (Birgu, Senglea, Bormla) by water taxi", "Marsaxlokk Sunday fish market"],
+      tips: ["Valletta in July–August is extremely hot — visit April/May or October", "St. John's Co-Cathedral: Book the Caravaggio tour — context makes it extraordinary", "Mdina at dawn or dusk — day visitors arrive late morning and leave by afternoon", "Day-Gozo-ferry: Take the early crossing and return in the evening", "Pastizzi: Buy from a pastizzerija, not a tourist café", "Malta bus network is cheap and excellent — no car needed", "Maltese drivers are aggressive — exercise caution if you do drive", "Summer evenings in Valletta are magical — outdoor concerts and festivals", "Marsaxlokk fish market is Sunday morning only — very local and authentic", "Maltese people are genuinely warm — the island's small-town friendliness is real"],
+    },
+ 
   ],
-  
+
+  /* ═══════════════════════════════════════
+     ASIA
+  ═══════════════════════════════════════ */
+  asia: [
+    {
+      id: "japan-ultimate",
+      title: "Ultimate Japan Travel Guide",
+      description: "Tokyo nightlife, Kyoto temples, Osaka street food and hidden ryokans",
+      image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&h=500&fit=crop",
+      continent: "Asia", continentSlug: "asia",
+      country: "Japan", countrySlug: "japan", countryFlag: "🇯🇵",
+      rating: 4.9, downloads: "12.3k", pages: 135, price: "$14.99",
+      tags: ["Culture", "Food", "Technology"], featured: true, tag: "Bestseller", tagColor: "bg-rose-500",
+      subtitle: "Land of Ancient Traditions and Modern Marvels",
+      heroImage: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "March–May (cherry blossoms), September–November", duration: "10–14 days", budget: "$$$ Moderate to High", highlights: 50, language: "Japanese", currency: "Japanese Yen (JPY)" },
+      overview: "Japan is a captivating blend of ancient traditions and cutting-edge innovation. From neon-lit Tokyo to serene Kyoto temples, from snow-capped mountains to tropical islands, Japan offers an extraordinary journey through contrasts. Experience the precision of Japanese craftsmanship, the warmth of omotenashi hospitality, and the depth of a culture unlike any other.",
+      destinations: [
+        { name: "Tokyo", description: "The electric megalopolis where ultra-modern skyscrapers meet historic temples. Shibuya crossing, Senso-ji, Shinjuku's neon canyons, and the world's best ramen.", image: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=600&fit=crop" },
+        { name: "Kyoto", description: "Japan's ancient capital with over 2,000 temples and shrines. Bamboo groves of Arashiyama, Fushimi Inari's 10,000 torii gates, and geisha of Gion.", image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&h=600&fit=crop" },
+        { name: "Mount Fuji & Hakone", description: "Japan's iconic sacred peak (3,776 m). Hike the summit July–August or admire it from Hakone's hot spring ryokans with perfect reflections in the lake.", image: "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&h=600&fit=crop" },
+        { name: "Osaka", description: "Japan's kitchen and nightlife capital. Dotonbori's neon signs, Kuromon Market, takoyaki and okonomiyaki street food, and Osaka Castle.", image: "https://images.unsplash.com/photo-1589452271712-64eaee10844e?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Japan Rail Pass covers all shinkansen bullet trains. Get IC card (Suica/Pasmo) for local transport. Taxis very expensive." },
+        { icon: Camera, title: "Cultural Experiences", description: "Tea ceremonies, sumo wrestling tournaments, cherry blossom hanami, onsen bathing, and traditional festivals (matsuri) year-round." },
+        { icon: Users, title: "Cultural Rules", description: "Remove shoes when entering homes and many temples. Never stick chopsticks upright in rice. Bow as greeting. Quiet on public transport." },
+        { icon: Utensils, title: "Food & Dining", description: "Conveyor belt sushi, ramen in Fukuoka, kaiseki multi-course cuisine, wagyu beef, tempura, and convenience store food that's genuinely excellent." },
+        { icon: DollarSign, title: "Money Matters", description: "Cash is still widely used. Get yen from airport ATMs (7-Eleven ATMs most reliable). Japan Rail Pass saves significant money on intercity travel." },
+        { icon: Info, title: "Language Tips", description: "English signage in major cities. Google Translate camera function invaluable. Download offline maps — mobile data essential." },
+      ],
+      highlights: ["Experience cherry blossom season in spring", "Ride the shinkansen bullet train", "Stay in a traditional ryokan with onsen", "Walk through Fushimi Inari's torii gates", "Explore Tokyo's vibrant neighbourhoods", "Attend a sumo wrestling tournament", "Climb Mount Fuji (July–August only)", "Experience a traditional tea ceremony", "Eat authentic sushi at Tsukiji outer market", "See deer roaming free in Nara"],
+      tips: ["Purchase Japan Rail Pass before arriving — saves money on intercity travel", "Remove shoes when entering homes, temples, and traditional restaurants", "Bowing is a sign of respect — a slight bow goes a long way", "Visit convenience stores for affordable, genuinely good meals", "Book popular restaurants in advance, especially in Tokyo", "Tattoos may restrict access to some hot springs (onsen)", "Carry cash — many smaller establishments don't accept cards", "Download offline maps and translation apps before arriving", "Cherry blossom timing varies by year — follow JMA forecasts", "IC card works on nearly all public transport nationwide"],
+    },
+    {
+      id: "thailand-adventure",
+      title: "Thailand Adventure Guide",
+      description: "Bangkok temples, Chiang Mai jungles and pristine southern islands",
+      image: "https://images.unsplash.com/photo-1528181304800-259b08848526?w=800&h=500&fit=crop",
+      continent: "Asia", continentSlug: "asia",
+      country: "Thailand", countrySlug: "thailand", countryFlag: "🇹🇭",
+      rating: 4.8, downloads: "10.1k", pages: 95, price: "$14.99",
+      tags: ["Beach", "Culture", "Food"], featured: true,
+      subtitle: "Land of Smiles — Temples, Beaches & Street Food",
+      heroImage: "https://images.unsplash.com/photo-1528181304800-259b08848526?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "November–February (cool season)", duration: "10–14 days", budget: "$ Budget Friendly", highlights: 44, language: "Thai", currency: "Thai Baht (THB)" },
+      overview: "Thailand captivates with its warm hospitality, stunning temples, pristine beaches, and incredible street food. From Bangkok's vibrant chaos to Chiang Mai's cultural richness, from Phuket's beaches to Ayutthaya's ancient ruins, Thailand offers unforgettable experiences at incredible value.",
+      destinations: [
+        { name: "Bangkok", description: "Energetic capital with the Grand Palace complex, Wat Pho's giant reclining Buddha, floating markets, rooftop bars, and world-class street food.", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&h=600&fit=crop" },
+        { name: "Chiang Mai", description: "Northern cultural hub with over 300 temples, Sunday Night Market, ethical elephant sanctuaries, and a relaxed mountain-town atmosphere.", image: "https://images.unsplash.com/photo-1534008897995-27a23e859048?w=800&h=600&fit=crop" },
+        { name: "Phuket & Islands", description: "Thailand's largest island with Patong, Kata, and Kamala beaches, plus island-hopping to Phi Phi, James Bond Island, and the Similan Islands.", image: "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=800&h=600&fit=crop" },
+        { name: "Krabi & Railay Beach", description: "Dramatic limestone cliffs, pristine beaches accessible only by boat, world-class rock climbing, kayaking, and stunning natural beauty.", image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Domestic flights cheap between cities. Grab app essential for local transport. Buses comfortable for medium distances. BTS Skytrain in Bangkok." },
+        { icon: Camera, title: "Temple Etiquette", description: "Remove shoes before entering. Cover shoulders and knees. Women cannot touch monks. No pointing feet at Buddha images." },
+        { icon: Users, title: "Best Experiences", description: "Thai cooking classes in Chiang Mai, ethical elephant sanctuaries, floating markets near Bangkok, island hopping tours." },
+        { icon: Utensils, title: "Street Food Paradise", description: "Pad Thai, green curry, mango sticky rice, som tam, fresh coconut. Street food safe and delicious. Vegetarian options plentiful." },
+        { icon: DollarSign, title: "Budget Friendly", description: "Very affordable. Street food $1–3. Nice hotels $20–50. Thai massage $6–10. Islands pricier but still reasonable." },
+        { icon: Info, title: "Important Tips", description: "Visa on arrival for many nationalities. Never disrespect images of the king — criminal offence. Always smile back." },
+      ],
+      highlights: ["Explore Bangkok's Grand Palace complex", "Visit Wat Pho's giant reclining Buddha", "Experience floating markets", "Take a Thai cooking class in Chiang Mai", "Visit an ethical elephant sanctuary", "Island hop in the Andaman Sea", "Rock climb at Railay Beach", "Eat street food at Bangkok's night markets", "Watch sunset from Phi Phi viewpoint", "Explore Ayutthaya's ancient ruins"],
+      tips: ["Book hotels ahead during peak season (Nov–Feb)", "Negotiate tuk-tuk prices before getting in — use Grab app instead", "Street food is safe — eat where locals eat and where food is hot", "Dress modestly at temples — carry a scarf to cover shoulders", "Get SIM card at airport — data plans very cheap", "Avoid elephant riding — visit ethical sanctuaries instead", "Book islands with 2–3 nights minimum — one day not enough", "Bargain at markets (not 7-Eleven) — start at 50% of asking price", "Respect the king — never disrespect royal family images (this is law)", "Learn 'Sawadee krap/ka' (hello) and 'Khop khun krap/ka' (thank you)"],
+    },
+    {
+      id: "turkey-istanbul",
+      title: "Turkey & Istanbul Guide",
+      description: "Hagia Sophia, Turkish baths, Cappadocia balloons and the Turquoise Coast",
+      image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&h=500&fit=crop",
+      continent: "Asia", continentSlug: "asia",
+      country: "Turkey", countrySlug: "turkey", countryFlag: "🇹🇷",
+      rating: 4.8, downloads: "6.7k", pages: 105, price: "$14.99",
+      tags: ["History", "Culture", "Beach"], featured: true, tag: "Top Rated", tagColor: "bg-blue-500",
+      subtitle: "Where East Meets West — Mosques, Bazaars & Balloon Sunrises",
+      heroImage: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "April–May, September–October", duration: "10–14 days", budget: "$ Budget Friendly", highlights: 48, language: "Turkish", currency: "Turkish Lira (TRY)" },
+      overview: "Turkey straddles two continents and thousands of years of civilisation. Istanbul's Hagia Sophia, Blue Mosque, and Grand Bazaar sit alongside modern restaurants and rooftop bars. Cappadocia's volcanic landscape of fairy chimneys is unlike anywhere on Earth. The Aegean and Mediterranean coasts offer turquoise waters and ancient ruins.",
+      destinations: [
+        { name: "Istanbul", description: "Hagia Sophia (537 AD), the Blue Mosque, Topkapi Palace, Grand Bazaar, Spice Market, and the Bosphorus strait dividing Europe from Asia.", image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&h=600&fit=crop" },
+        { name: "Cappadocia", description: "Volcanic landscape of fairy chimneys, underground cities, cave hotels, and hot air balloon flights at sunrise — one of the world's greatest experiences.", image: "https://images.unsplash.com/photo-1570939274717-7eda259b50ed?w=800&h=600&fit=crop" },
+        { name: "Ephesus & Aegean Coast", description: "The best-preserved ancient Roman city in the Mediterranean. Nearby Pamukkale's white travertine terraces and thermal pools are extraordinary.", image: "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=800&h=600&fit=crop" },
+        { name: "Turquoise Coast (Antalya)", description: "Turkey's stunning Mediterranean coastline with ancient Lycian ruins, gulet sailing, crystal water, and charming old towns like Kaş and Ölüdeniz.", image: "https://images.unsplash.com/photo-1503917988258-f87a78e3c995?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Domestic flights very cheap between cities. Long-distance buses comfortable and affordable. Istanbul has metro, tram, and ferries." },
+        { icon: Camera, title: "Cappadocia Balloons", description: "Hot air balloon flights operate at sunrise most of the year. Book through reputable companies. Go Türkiye and Butterfly Balloons recommended." },
+        { icon: Users, title: "Cultural Tips", description: "Turkey is predominantly Muslim — dress modestly at mosques. Remove shoes before entering. Hospitality is legendary — accept tea offers." },
+        { icon: Utensils, title: "Turkish Cuisine", description: "Mezze, kebabs, döner, baklava, borek, Turkish breakfast (kahvaltı) is a serious multi-dish affair. Turkish tea (çay) and coffee culture is strong." },
+        { icon: DollarSign, title: "Excellent Value", description: "Turkey is outstanding value due to currency. Fine restaurants for €15–20. Hotels exceptional quality for money. Haggle in bazaars." },
+        { icon: Info, title: "Practical Info", description: "E-Visa required for most nationalities — get online before arriving. Carry cash for bazaars and smaller establishments." },
+      ],
+      highlights: ["Visit the magnificent Hagia Sophia", "Explore the Grand Bazaar and Spice Market", "Take a hot air balloon over Cappadocia at sunrise", "Cruise the Bosphorus between continents", "Walk ancient streets of Ephesus", "Soak in Pamukkale's travertine terraces", "Experience a traditional Turkish hammam (bath)", "Sail the Turquoise Coast by gulet", "Eat endless mezze in a seaside restaurant", "Stay in a cave hotel in Göreme"],
+      tips: ["Book Cappadocia balloon flights in advance — they fill up", "Get the E-Visa online before arriving — easier than on arrival", "Istanbul: Get an Istanbulkart for public transport — rechargeable", "Grand Bazaar: Haggling expected — start at 40–50% of asking price", "Turkish breakfast is the meal of the day — seek it out", "Pamukkale: Go in the morning before it gets crowded", "Gulet sailing along the coast: book through reputable local agencies", "Ephesus: Hire a local guide — the history context is invaluable", "Carry a scarf for mosques — shoulders and hair covered for women", "Turkish tea (çay) offered everywhere is a social ritual — accept graciously"],
+    },
+    {
+      id: "georgia-tbilisi",
+      title: "Georgia & Tbilisi Guide",
+      description: "Ancient churches, mountain villages, sulphur baths and legendary wine",
+      image: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800&h=500&fit=crop",
+      continent: "Asia", continentSlug: "asia",
+      country: "Georgia", countrySlug: "georgia", countryFlag: "🇬🇪",
+      rating: 4.7, downloads: "3.2k", pages: 78, price: "$14.99",
+      tags: ["Culture", "Wine", "Mountains"], featured: false, tag: "Hidden Gem", tagColor: "bg-purple-500",
+      subtitle: "The Caucasus' Best-Kept Secret — Wine, Mountains & Ancient History",
+      heroImage: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "April–June, September–October", duration: "7–10 days", budget: "$ Very Budget Friendly", highlights: 32, language: "Georgian & Russian (English in Tbilisi)", currency: "Georgian Lari (GEL)" },
+      overview: "Georgia is the Caucasus's rising star — an ancient nation with 8,000 years of winemaking history (it invented it), dramatic mountain landscapes, medieval churches perched on cliffs, and Tbilisi's extraordinary Old Town of carved wooden balconies. And it's still largely undiscovered by mass tourism.",
+      destinations: [
+        { name: "Tbilisi Old Town", description: "A UNESCO-listed labyrinth of carved wooden balconies, sulphur bath houses, colourful churches, and Narikala fortress above the city.", image: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800&h=600&fit=crop" },
+        { name: "Kazbegi & Caucasus Mountains", description: "Gergeti Trinity Church perched dramatically above the clouds at 2,170 m, with Mount Kazbek (5,047 m) behind. Georgia's most iconic image.", image: "https://images.unsplash.com/photo-1527576539890-dfa815648363?w=800&h=600&fit=crop" },
+        { name: "Kakheti Wine Region", description: "Georgia invented wine (UNESCO-listed tradition of qvevri clay pot winemaking). Telavi, Sighnaghi, and hundreds of family wineries in the Alazani Valley.", image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=800&h=600&fit=crop" },
+        { name: "Mtskheta", description: "Georgia's ancient capital (3rd century BC) and UNESCO World Heritage Site. Jvari Monastery and Svetitskhoveli Cathedral are Georgia's holiest sites.", image: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Marshrutka minibuses connect most destinations cheaply. Rent car or hire driver for mountains. Tbilisi metro simple and cheap." },
+        { icon: Camera, title: "Gergeti Church", description: "Hike 3 hours from Kazbegi village or hire a 4WD. Go in morning before clouds cover the mountains. Dress modestly as it's an active church." },
+        { icon: Users, title: "Georgian Hospitality", description: "Georgians are legendary hosts. Tamada (toast master) tradition at feasts (supra) is an art form. Never refuse a toast — it's deeply impolite." },
+        { icon: Utensils, title: "Georgian Cuisine", description: "Khachapuri (cheese bread), khinkali (dumplings — bite then suck the broth), churchkhela, mtsvadi (BBQ), and natural orange wines." },
+        { icon: DollarSign, title: "Exceptional Value", description: "One of Europe's cheapest destinations. Meals €3–8. Excellent wine €3–6 a bottle. Tbilisi accommodation €30–60 for good quality." },
+        { icon: Info, title: "Practical Tips", description: "No visa required for most Western nationalities. Cash preferred in smaller towns. Georgian script is unique — download translation app." },
+      ],
+      highlights: ["Hike to Gergeti Trinity Church above the clouds", "Soak in Tbilisi's ancient sulphur bath houses", "Wine tasting in Kakheti region", "Explore Tbilisi's carved wooden balcony Old Town", "Visit ancient Mtskheta UNESCO sites", "Drive the Georgian Military Highway", "Experience a traditional Georgian supra feast", "Hike in Svaneti's medieval tower villages", "Try khachapuri in a local bakery", "Watch sunset over Narikala fortress"],
+      tips: ["Georgia invented wine — drink it everywhere, especially the natural orange wines", "Gergeti Trinity Church: Go at dawn before clouds roll in (they always do)", "Georgian supra feasts: Accept everything offered — refusing food is rude", "Marshrutka minibuses are cheap and authentic — no fixed schedule", "Hire a local driver for mountain areas — roads can be challenging", "Tbilisi Old Town: Wander without a map — getting lost is the point", "Sulphur baths in Abanotubani: private rooms available, very affordable", "Sighnaghi (Kakheti) is the most picturesque wine town — stay overnight", "Don't call wine by variety name — ask for 'natural' or 'qvevri' wine", "Everyone you meet will invite you for wine — accept"],
+    },
+    {
+      id: "qatar-doha",
+      title: "Doha & Qatar Guide",
+      description: "Ultra-modern skyline, cultural souqs, desert safaris and world-class museums",
+      image: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&h=500&fit=crop",
+      continent: "Asia", continentSlug: "asia",
+      country: "Qatar", countrySlug: "qatar", countryFlag: "🇶🇦",
+      rating: 4.6, downloads: "2.8k", pages: 72, price: "$14.99",
+      tags: ["Culture", "Luxury", "Desert"], featured: false,
+      subtitle: "The Middle East's Most Ambitious Cultural Destination",
+      heroImage: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "November–March (cooler weather)", duration: "4–6 days", budget: "$$$ Expensive", highlights: 28, language: "Arabic & English", currency: "Qatari Riyal (QAR)" },
+      overview: "Qatar has transformed itself into a world-class cultural destination. The Museum of Islamic Art is one of the world's finest museums. Souq Waqif is a beautifully restored traditional bazaar. The Pearl-Qatar is a stunning artificial island. And the surrounding desert offers kite surfing, dune bashing, and nights under the stars.",
+      destinations: [
+        { name: "Doha Corniche & West Bay", description: "The futuristic skyline along the Corniche waterfront, the Museum of Islamic Art, and the gleaming towers of West Bay business district.", image: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&h=600&fit=crop" },
+        { name: "Souq Waqif", description: "Restored traditional market with spice stalls, falconry shops, Arabic coffee, shisha cafés, and authentic Middle Eastern atmosphere.", image: "https://images.unsplash.com/photo-1561621127-5d3d8f7e6e6e?w=800&h=600&fit=crop" },
+        { name: "Museum of Islamic Art", description: "I.M. Pei's masterpiece housing 1,400 years of Islamic art and artefacts from three continents. One of the world's most important cultural collections.", image: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&h=600&fit=crop" },
+        { name: "The Inland Sea (Khor Al Adaid)", description: "UNESCO-recognised natural wonder where sand dunes plunge into the sea. 4WD desert safaris, camping, and camel treks in the silence.", image: "https://images.unsplash.com/photo-1502291383928-4bb33f9fd612?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Doha Metro excellent and cheap. Karwa taxis or Careem app. Car rental for desert. Doha is very walkable along the Corniche." },
+        { icon: Camera, title: "Cultural Sites", description: "Museum of Islamic Art (free entry). National Museum of Qatar. Katara Cultural Village. Al Wakrah Souq. Al Zubarah Fort (UNESCO, 2 hours from Doha)." },
+        { icon: Users, title: "Cultural Respect", description: "Modest dress required in public. No public alcohol except in licensed hotels and restaurants. Ramadan restrictions apply during the holy month." },
+        { icon: Utensils, title: "Food Scene", description: "Exceptional Arabic cuisine at Souq Waqif. Five-star hotel restaurants. Machboos (spiced rice with meat), harees, luqaimat desserts." },
+        { icon: DollarSign, title: "Costs", description: "Qatar is expensive by regional standards but hotels have improved in value. Souq restaurants very affordable. Desert tours $50–100/person." },
+        { icon: Info, title: "Practical Tips", description: "Hayya Card available to all visitors. Alcohol served in hotels. Public displays of affection restricted. Dress modestly outside hotels." },
+      ],
+      highlights: ["Visit the Museum of Islamic Art", "Explore Souq Waqif at night", "Dune bashing in a 4WD desert safari", "Watch the Doha skyline at sunset from the Corniche", "See falconry demonstrations", "Visit Al Zubarah Fort (UNESCO)", "Kite surfing at Sealine Beach", "Tour the National Museum of Qatar", "Shop for spices and gold at the souq", "Camp under stars at Khor Al Adaid"],
+      tips: ["Visit October–April — summer temperatures exceed 45°C", "Museum of Islamic Art entry is free — don't miss it", "Souq Waqif at night is magical — go after sunset", "Desert safari: Book through reputable operators, not street touts", "Dress conservatively in public — shoulders and knees covered", "Alcohol only available in licensed hotels and restaurants", "Doha Metro is excellent — buy a Hayya card on arrival", "The Pearl-Qatar is worth an evening for waterfront dining", "Qatar's stopover visa program offers free nights if in transit", "Friday is the day of rest — many sites and malls open late"],
+    },
+    {
+      id: "vietnam-backpacker",
+      title: "Vietnam Backpacker's Guide",
+      description: "Hanoi's old quarter to Ha Long Bay to Hoi An — North to South",
+      image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&h=500&fit=crop",
+      continent: "Asia", continentSlug: "asia",
+      country: "Vietnam", countrySlug: "vietnam", countryFlag: "🇻🇳",
+      rating: 4.7, downloads: "6.9k", pages: 82, price: "$14.99",
+      tags: ["Budget", "Culture", "Food"], featured: false,
+      subtitle: "Incredible Journey from Hanoi to Ho Chi Minh City",
+      heroImage: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "February–April, August–October", duration: "14–21 days", budget: "$ Very Budget Friendly", highlights: 38, language: "Vietnamese", currency: "Vietnamese Dong (VND)" },
+      overview: "Vietnam enchants backpackers with stunning landscapes, rich history, delicious cuisine, and incredibly affordable prices. Travel from misty Sapa mountains to Hanoi's bustling streets, cruise Ha Long Bay's limestone karsts, explore ancient Hoi An, and discover vibrant Ho Chi Minh City. Vietnam offers authentic experiences and extraordinary warmth.",
+      destinations: [
+        { name: "Hanoi", description: "Chaotic capital with Old Quarter street food, French colonial architecture, Hoan Kiem Lake, and gateway to Ha Long Bay and Sapa mountains.", image: "https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=800&h=600&fit=crop" },
+        { name: "Ha Long Bay", description: "UNESCO World Heritage Site with thousands of limestone islands rising from emerald waters. Overnight cruise on a junk boat is essential.", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&h=600&fit=crop" },
+        { name: "Hoi An", description: "Ancient trading port with lantern-lit streets, tailor shops, riverside cafés, the Japanese Covered Bridge, and nearby An Bang Beach.", image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&h=600&fit=crop" },
+        { name: "Ho Chi Minh City", description: "Modern, frenetic city with French colonial landmarks, War Remnants Museum, Cu Chi Tunnels, and gateway to the Mekong Delta.", image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Overnight buses and trains connect cities. Grab app for local transport. Open bus tickets for flexibility. Motorbike rentals for adventurous types." },
+        { icon: Camera, title: "Must-Do Experiences", description: "Ha Long Bay overnight cruise, Hoi An lantern festival (14th of lunar month), motorbike loop in northern mountains, Cu Chi Tunnels." },
+        { icon: Users, title: "Backpacker Scene", description: "Excellent hostel network with great social atmosphere. Well-established north-to-south route. Easy to meet fellow travellers." },
+        { icon: Utensils, title: "Vietnamese Cuisine", description: "Pho, banh mi ($1), spring rolls, Vietnamese coffee, fresh seafood. Regional specialties vary hugely — eat everything, everywhere." },
+        { icon: DollarSign, title: "Ultra Budget Friendly", description: "Hostels $5–15/night. Meals $2–5. Beer 50 cents. Budget $25–30/day easily doable." },
+        { icon: Info, title: "Travel Tips", description: "Visa required but easy (e-visa online). Traffic chaotic — cross streets slowly and steadily. Learn basic Vietnamese phrases." },
+      ],
+      highlights: ["Cruise Ha Long Bay overnight", "Explore Hanoi Old Quarter", "Motorbike through Sapa mountains", "Get custom clothes made in Hoi An", "Visit ancient Hue Imperial City", "Explore Cu Chi Tunnels", "Relax on Phu Quoc Island", "Navigate Mekong Delta by boat", "Try authentic street food everywhere", "Experience Vietnamese coffee culture"],
+      tips: ["Get e-visa online in advance — saves time and hassle", "Book Ha Long Bay cruise carefully — quality varies enormously", "Bargain for everything except restaurants — expect 30–50% off", "Cross streets slowly and steadily — traffic flows around you", "Download Grab app — safer and cheaper than street taxis", "Try local bia hơi (fresh draft beer) — 25 cents a glass", "Pack light — buying clothes in Hoi An is cheap and fun", "Open bus tickets flexible but book reputable companies", "Vietnamese coffee (cà phê trứng — egg coffee) in Hanoi is extraordinary", "Learn 'xin chào' (hello) and 'cảm ơn' (thank you)"],
+    },
+    {
+      id: "bali-indonesia",
+      title: "Bali & Indonesia Explorer",
+      description: "Rice terraces, surf breaks, Hindu temples and the Komodo dragons",
+      image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&h=500&fit=crop",
+      continent: "Asia", continentSlug: "asia",
+      country: "Indonesia", countrySlug: "indonesia", countryFlag: "🇮🇩",
+      rating: 4.8, downloads: "8.7k", pages: 90, price: "$14.99",
+      tags: ["Beach", "Culture", "Nature"], featured: true,
+      subtitle: "Island Paradise of Temples & Rice Terraces",
+      heroImage: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "April–October (dry season)", duration: "10–14 days", budget: "$ Budget Friendly", highlights: 40, language: "Indonesian (Bahasa Indonesia)", currency: "Indonesian Rupiah (IDR)" },
+      overview: "Bali and Indonesia offer a perfect blend of culture, nature, and beach paradise. From Bali's emerald rice terraces and spiritual temples to Java's ancient Borobudur, from Komodo dragons to pristine diving sites, Indonesia's 17,000 islands provide endless adventure and one of the world's warmest welcomes.",
+      destinations: [
+        { name: "Ubud, Bali", description: "Bali's cultural heart with Tegalalang rice terraces, Sacred Monkey Forest, art galleries, yoga retreats, and traditional Kecak fire dance performances.", image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&h=600&fit=crop" },
+        { name: "Seminyak & Canggu", description: "Beach towns with surf breaks, sunset beach clubs, trendy restaurants, vibrant nightlife, and stunning Indian Ocean sunsets.", image: "https://images.unsplash.com/photo-1559628376-f3fe5f782a2e?w=800&h=600&fit=crop" },
+        { name: "Borobudur, Java", description: "The world's largest Buddhist temple (9th century, UNESCO), with 2,672 relief panels and 504 Buddha statues. Sunrise tours are extraordinary.", image: "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=800&h=600&fit=crop" },
+        { name: "Komodo National Park", description: "Home to Komodo dragons (the world's largest lizard), pristine diving, Pink Beach, and dramatic volcanic landscapes. Multi-day boat trips are the way.", image: "https://images.unsplash.com/photo-1555400082-2c8c6b90e3c9?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Ngurah Rai Airport in Bali. Rent scooter (be careful with traffic!) or hire driver for day trips. Domestic flights connect islands. Gojek/Grab for local trips." },
+        { icon: Camera, title: "Instagram Spots", description: "Tegalalang Rice Terraces, Gates of Heaven at Lempuyang Temple, Tukad Cepung Waterfall, swing experiences. Go very early to avoid crowds." },
+        { icon: Users, title: "Balinese Culture", description: "Hindu island in a predominantly Muslim country. Daily offerings (canang sari) everywhere. Temple ceremonies constant. Dress modestly with sarong." },
+        { icon: Utensils, title: "Indonesian Cuisine", description: "Nasi goreng, mie goreng, satay, babi guling (Balinese roast suckling pig), gado-gado. Warungs (local eateries) cheapest and most authentic." },
+        { icon: DollarSign, title: "Budget Paradise", description: "Very affordable. Meals $2–5 at warungs. Nice hotels $30–80. Scooter rental $5/day. Massages $7–12. Indonesian destinations are great value." },
+        { icon: Info, title: "Essential Tips", description: "Visa on arrival ($35). Bring sarong for temples. Bargain at markets. Don't drink tap water. Travel insurance essential. Bali Belly is a real risk." },
+      ],
+      highlights: ["Sunrise at Mount Bromo volcano", "Watch sunrise at Borobudur temple", "Explore Tegalalang rice terraces", "Snorkel with manta rays in Nusa Penida", "See Komodo dragons in the wild", "Sunset at Tanah Lot temple", "Surf breaks in Uluwatu", "Sacred Monkey Forest in Ubud", "Traditional Kecak fire dance performance", "Yoga and wellness retreats"],
+      tips: ["Avoid peak season (July–Aug, Dec–Jan) — very crowded and more expensive", "Scooter rental requires international licence — very careful in chaotic traffic", "Instagram spots now charge entrance fees ($3–10) — go before 7 am", "Stay 3–4 days in Ubud, 3–4 in beach areas for balance", "Book Borobudur sunrise tickets online in advance", "Bring sarong for temples or buy cheap one locally", "Komodo trip: 3-day liveaboard from Labuan Bajo is best option", "Bali belly risk — avoid tap water, ice, and unpeeled fruit", "Negotiate everything except established restaurants and hotels", "Learn 'Terima kasih' (thank you) and 'Selamat pagi' (good morning)"],
+    },
+    {
+      id: "india-golden-triangle",
+      title: "India Golden Triangle & Beyond",
+      description: "Delhi's chaos, the Taj Mahal, pink Jaipur and Kerala's backwaters",
+      image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&h=500&fit=crop",
+      continent: "Asia", continentSlug: "asia",
+      country: "India", countrySlug: "india", countryFlag: "🇮🇳",
+      rating: 4.6, downloads: "5.8k", pages: 108, price: "$14.99",
+      tags: ["Culture", "History", "Spirituality"], featured: false,
+      subtitle: "Incredible India — Palaces, Temples & Taj Mahal",
+      heroImage: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "October–March (cool season)", duration: "14–21 days", budget: "$ Budget Friendly", highlights: 42, language: "Hindi & English", currency: "Indian Rupee (INR)" },
+      overview: "India is a sensory overload of colours, flavours, spirituality, and history. The Golden Triangle (Delhi–Agra–Jaipur) showcases India's most iconic landmarks — the Taj Mahal, magnificent forts, bustling bazaars, and palatial heritage. Beyond this classic route: Varanasi's spiritual ghats, Kerala's backwaters, Rajasthan's desert fortresses.",
+      destinations: [
+        { name: "Delhi", description: "Chaotic capital blending Mughal monuments, British colonial architecture, street food chaos, the modern metro, and incredible cultural diversity.", image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&h=600&fit=crop" },
+        { name: "Agra & Taj Mahal", description: "The Taj Mahal — Shah Jahan's monument to love (completed 1653) — is the most beautiful building humans have created. Also: Agra Fort and Fatehpur Sikri.", image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&h=600&fit=crop" },
+        { name: "Jaipur (Pink City)", description: "Rajasthan's capital with Amber Fort, City Palace, Hawa Mahal (Palace of Winds), vibrant bazaars, and rose-pink painted old city walls.", image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=800&h=600&fit=crop" },
+        { name: "Varanasi", description: "India's spiritual heart on the Ganges River. Sacred ghats, dawn boat rides past funeral pyres, 2,000-year-old temples, and profound spiritual energy.", image: "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Trains connect Golden Triangle efficiently. Book 2AC class for comfort. Domestic flights for longer distances. Uber/Ola for local transport." },
+        { icon: Camera, title: "Photography", description: "Taj Mahal at sunrise is magical. Extra camera fees at many monuments. Ask permission before photographing people." },
+        { icon: Users, title: "Cultural Sensitivity", description: "Dress modestly at religious sites. Remove shoes at temples. Left hand not used for eating or giving. Respectful but firm with touts." },
+        { icon: Utensils, title: "Indian Cuisine", description: "Curry, biryani, dal, naan, street chaats, dosa, butter chicken, vegetarian thali. Regional variations are huge. Vegetarian options always available." },
+        { icon: DollarSign, title: "Budget Friendly", description: "Very affordable. Budget hotels $10–30. Meals $2–8. Trains cheap. Heritage hotels in Rajasthan worth splurging on." },
+        { icon: Info, title: "Essential Preparation", description: "Visa required in advance (e-visa available). Vaccines recommended. Prepare for crowds, chaos, and persistent touts. Patience is essential." },
+      ],
+      highlights: ["Watch sunrise at the Taj Mahal", "Explore Amber Fort in Jaipur", "Experience Ganga Aarti ceremony in Varanasi", "Shop in Delhi's Chandni Chowk", "Visit Agra Fort and Fatehpur Sikri", "Ride an elephant up to Amber Fort", "Enjoy traditional Rajasthani thali", "Witness spiritual rituals on the Ganges", "Explore colourful bazaars everywhere", "Stay in a heritage haveli hotel"],
+      tips: ["Book Taj Mahal tickets online in advance — skip long queues", "Visit Taj at sunrise — fewer crowds and incredible light", "Use reputable tour companies or guides — avoid street touts", "Drink only bottled water — check seal before opening", "Dress modestly — cover shoulders and knees at religious sites", "Bargain hard in markets — start at 30–40% of asking price", "Be firm with touts and scam artists — say no and walk away", "Book train tickets well in advance — Tatkal for last minute", "Delhi Belly: take medication, eat carefully at first", "Learn 'Namaste' and basic Hindi — locals deeply appreciate it"],
+    },
+     {
+  id: "maldives-guide",
+  title: "Maldives Paradise Guide",
+  description: "Overwater bungalows, bioluminescent beaches and world-class diving",
+  image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&h=500&fit=crop",
+  continent: "Asia", continentSlug: "asia",
+  country: "Maldives", countrySlug: "maldives", countryFlag: "🇲🇻",
+  rating: 4.9, downloads: "5.8k", pages: 72, price: "$14.99",
+  tags: ["Luxury", "Diving", "Romance"], featured: true, tag: "Most Popular", tagColor: "bg-rose-500",
+  subtitle: "Earth's Last Paradise — Overwater Villas & the Indian Ocean",
+  heroImage: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=1920&h=1080&fit=crop",
+  quickFacts: { bestTime: "November–April (dry season)", duration: "7–10 days", budget: "$$$$ Very Expensive", highlights: 25, language: "Dhivehi & English", currency: "Maldivian Rufiyaa (MVR) / USD" },
+  overview: "The Maldives is the planet's lowest-lying nation (average elevation 1.5 m above sea level) and one of its most extraordinary destinations. 1,192 coral islands in the Indian Ocean, 26 atolls, and some of Earth's clearest water (visibility often 40+ metres). Famous for overwater bungalows, bioluminescent beaches on Vaadhoo Island, and world-class diving with whale sharks, manta rays, and hammerheads.",
+  destinations: [
+    { name: "North Malé Atoll", description: "Most accessible atoll near the capital. Popular resort islands close to the airport with excellent snorkelling and diving reefs.", image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&h=600&fit=crop" },
+    { name: "Baa Atoll (UNESCO Biosphere)", description: "UNESCO Biosphere Reserve and home to Hanifaru Bay — the world's largest gathering of manta rays (May–November).", image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&h=600&fit=crop" },
+    { name: "Vaadhoo Island", description: "Famous for bioluminescent beaches — phytoplankton light up in electric blue when disturbed at night, creating one of nature's most magical spectacles.", image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&h=600&fit=crop" },
+    { name: "Malé & Local Islands", description: "The densely packed capital city with colourful buildings, the Grand Friday Mosque, fish market, and nearby local islands at a fraction of resort prices.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
+  ],
+  essentialInfo: [
+    { icon: Plane, title: "Getting There", description: "Fly to Velana International Airport (Malé). Resorts provide speedboat transfers (30–90 mins) or seaplane transfers." },
+    { icon: Camera, title: "Overwater Bungalows", description: "Direct lagoon access steps into the water. Best for snorkelling from the room. Ask for sunrise or sunset-facing rooms." },
+    { icon: Users, title: "Diving", description: "40+ metre visibility in many atolls. Whale sharks (year-round in South Ari Atoll), manta rays (Baa Atoll, May–Nov)." },
+    { icon: Utensils, title: "Food & Drink", description: "Resorts offer all-inclusive packages (recommended). Alcohol only at resorts — not on local islands." },
+    { icon: DollarSign, title: "Budget Reality", description: "Entry-level overwater bungalows $300–500/night. Luxury $1,000–5,000+. All-inclusive packages offer better value." },
+    { icon: Info, title: "Important Notes", description: "Alcohol only permitted at resort islands. Modest dress required on local islands. Climate change threatens existence." },
+  ],
+  highlights: ["Stay in an overwater bungalow", "Swim with whale sharks in South Ari Atoll", "Dive with manta rays in Baa Atoll", "See bioluminescent beaches at night", "Snorkel the house reef at sunrise", "Sunset dolphin cruise", "Sandbank picnic on a deserted island", "Scuba dive world-class walls and pinnacles", "Experience Maldivian cuisine on a local island", "Watch underwater dining at Ithaa restaurant"],
+  tips: ["Book 6–12 months ahead — top overwater villas sell out that far in advance", "All-inclusive packages are much better value than paying per meal", "Baa Atoll for manta rays: Visit May–November for Hanifaru Bay aggregations", "Seaplane transfers are spectacular — worth it for the scenery", "South Ari Atoll for whale sharks — year-round sightings", "Local guest houses on inhabited islands are 10x cheaper than resorts", "Snorkel at dawn — marine life most active at first light", "Bring reef-safe sunscreen — regular sunscreen damages coral", "Climate change: visit responsibly", "Underwater restaurants: Book 'Ithaa' (Conrad) far in advance"],
+},
+ {
+      id: "bangkok-guide",
+      title: "Bangkok Travel Guide",
+      description: "Grand Palace, floating markets, Khao San Road and street food paradise",
+      image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&h=500&fit=crop",
+      continent: "Asia", continentSlug: "asia",
+      country: "Thailand", countrySlug: "thailand", countryFlag: "🇹🇭",
+      rating: 4.8, downloads: "8.9k", pages: 75, price: "$14.99",
+      tags: ["Street Food", "Temples", "Nightlife"], featured: true, tag: "Bestseller", tagColor: "bg-rose-500",
+      subtitle: "City of Angels — Temple Chaos, Street Food & Modern Bangkok",
+      heroImage: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "November–February", duration: "4–6 days", budget: "$ Budget Friendly", highlights: 38, language: "Thai", currency: "Thai Baht (THB)" },
+      overview: "Bangkok is one of the world's great cities — chaotic, beautiful, overwhelming, and endlessly fascinating. The Grand Palace and Wat Pho are architectural wonders. The Chao Phraya river is a highway of ferries and longtail boats. The street food is among the world's finest and most affordable. And the contrast between the ancient temple district and the glass towers of Sukhumvit is Bangkok's defining tension.",
+      destinations: [
+        { name: "Grand Palace & Wat Phra Kaew", description: "The dazzling complex of royal buildings and Wat Phra Kaew (Temple of the Emerald Buddha) — Thailand's most sacred site and most spectacular architectural achievement.", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&h=600&fit=crop" },
+        { name: "Wat Pho & Wat Arun", description: "The enormous reclining Buddha at Wat Pho (46 m long) and the iconic Temple of Dawn (Wat Arun) across the river — best at sunset when it's illuminated.", image: "https://images.unsplash.com/photo-1534008897995-27a23e859048?w=800&h=600&fit=crop" },
+        { name: "Chatuchak Weekend Market", description: "The world's largest weekend market — 15,000 stalls selling everything from vintage clothing to street food to live animals. Saturday and Sunday only, 9am–6pm.", image: "https://images.unsplash.com/photo-1477495946615-20f5d5bd7a66?w=800&h=600&fit=crop" },
+        { name: "Chinatown (Yaowarat) & Street Food", description: "Bangkok's Chinatown is a neon-lit street food paradise at night — roast duck, seafood, dim sum, and Chinese-Thai fusion dishes along Yaowarat Road.", image: "https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "BTS Skytrain and MRT Metro cover the main tourist areas. Chao Phraya Express Boat for the river temples. Grab app for taxis. Avoid tuk-tuks — they overcharge tourists." },
+        { icon: Camera, title: "Temple Dress", description: "Cover shoulders and knees for all temple visits — scarves available to borrow at the Grand Palace. Remove shoes before entering temple interiors." },
+        { icon: Users, title: "Street Food Safety", description: "Bangkok street food is safe — eat where locals eat and where food is freshly cooked. Avoid pre-cooked food sitting in the heat. Pad Thai, mango sticky rice, and green curry are exceptional." },
+        { icon: Utensils, title: "Best Food Areas", description: "Yaowarat (Chinatown) for night seafood, Or Tor Kor market for quality produce, Victory Monument for regional Thai, and the Ari neighbourhood for modern Thai cafés." },
+        { icon: DollarSign, title: "Very Affordable", description: "Street food €1–2. BTS journey €0.50–1.50. Decent hotel €30–60. Massage €6–10. Bangkok is one of the world's best-value major cities." },
+        { icon: Info, title: "Heat & Pollution", description: "Bangkok's heat and humidity (35°C+) make sightseeing exhausting. Plan outdoor activities for before 10am and after 4pm. Air-conditioned malls are a legitimate refuge." },
+      ],
+      highlights: ["Grand Palace at opening time (8:30am)", "Sunset at Wat Arun from the opposite bank", "Floating market day trip (Damnoen Saduak)", "Yaowarat Chinatown at night", "Chatuchak Weekend Market", "Jim Thompson House (Thai silk legend)", "Muay Thai boxing match", "Rooftop bar at Vertigo or Sky Bar", "Chao Phraya river boat tour", "Thai massage at Wat Pho school"],
+      tips: ["Grand Palace: Arrive by 8:30am — by 10am it's overwhelmed by tour groups", "Temple touts: Ignore anyone who says a temple is 'closed today' — it's a scam for gem shops", "BTS Skytrain: Use it above the traffic — Grab below ground", "Tuk-tuks: Only use for short scenic rides; negotiate price before getting in", "Heat: January and February are the coolest months — still hot but manageable", "Pad Thai: Jay Fai (Michelin-starred street cook) has a 3-hour queue — worth planning ahead", "Chatuchak: Go early (9am) before the heat makes it unbearable", "Floating markets: Most are tourist traps — Amphawa on weekends is more authentic", "Massage: Wat Pho massage school is excellent and affordable (€8 for 30 min)", "SIM card: Buy at the airport — True Move or DTAC offer excellent tourist plans"],
+    },
+ 
+    {
+      id: "kyoto-guide",
+      title: "Kyoto Travel Guide",
+      description: "Thousands of temples, bamboo groves, geisha in Gion and authentic Japan",
+      image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&h=500&fit=crop",
+      continent: "Asia", continentSlug: "asia",
+      country: "Japan", countrySlug: "japan", countryFlag: "🇯🇵",
+      rating: 4.9, downloads: "9.7k", pages: 82, price: "$14.99",
+      tags: ["Temples", "Geisha", "Culture"], featured: true, tag: "Staff Pick", tagColor: "bg-amber-500",
+      subtitle: "Japan's Ancient Capital — 2,000 Temples, Bamboo Groves & Tea Ceremony",
+      heroImage: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "March–April (cherry blossoms), November (autumn colour)", duration: "4–6 days", budget: "$$ Moderate", highlights: 40, language: "Japanese", currency: "Japanese Yen (JPY)" },
+      overview: "Kyoto was Japan's imperial capital for over a thousand years and remains the country's cultural heart — a city of extraordinary Buddhist temples, Shinto shrines, Zen gardens, traditional machiya townhouses, and the living arts of geisha culture. With over 2,000 temples and shrines, Kyoto rewards repeated visits. Fushimi Inari's 10,000 torii gates and the Arashiyama bamboo grove are among Japan's most iconic images.",
+      destinations: [
+        { name: "Fushimi Inari Taisha", description: "The 10,000 vermillion torii gates climbing the sacred Mount Inari — Kyoto's most visited shrine. Go at 5am or after 7pm to experience it without crowds.", image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&h=600&fit=crop" },
+        { name: "Arashiyama", description: "The bamboo grove (best at dawn), Tenryu-ji Zen garden, Nonomiya Shrine, the riverboat cormorant fishing, and the monkey park above the valley.", image: "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&h=600&fit=crop" },
+        { name: "Gion & Higashiyama", description: "Kyoto's geisha district — traditional ochaya teahouses, the stone-paved Ninenzaka and Sannenzaka lanes, Kodai-ji temple, and the chance to spot a maiko or geiko in the early evening.", image: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=600&fit=crop" },
+        { name: "Kinkaku-ji & Ryoan-ji", description: "The Golden Pavilion reflected in its pond and Ryoan-ji's famous rock garden — 15 rocks arranged so one is always hidden. Two of Japan's most contemplated spaces.", image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Shinkansen from Tokyo (2h15) or Osaka (15 min). Stay near Kyoto Station or Gion for the best base. IC card (Suica/ICOCA) for all local transport." },
+        { icon: Camera, title: "Photography", description: "Fushimi Inari at dawn, Arashiyama bamboo at 6am, Gion in the evening for geisha sightings, Kinkaku-ji in morning light, and Philosopher's Path in cherry blossom season." },
+        { icon: Users, title: "Respect", description: "Don't photograph geisha without permission — it's harassment. Stay on paths in temple gardens. Speak quietly in all temple compounds. Remove shoes when indicated." },
+        { icon: Utensils, title: "Kyoto Food", description: "Kaiseki (multi-course seasonal cuisine — the pinnacle of Japanese food), yudofu (tofu hot pot), matcha everything, Nishiki Market street food, and obanzai home-style cooking." },
+        { icon: DollarSign, title: "Temple Fees", description: "Most temples charge entry (¥500–1,000). Cumulative cost can be high. Kyoto City Bus 1-day pass (¥700) covers all major sights. Many shrines are free." },
+        { icon: Info, title: "Crowds", description: "Kyoto is overwhelmingly crowded in cherry blossom (late March/April) and autumn colour (November). Book accommodation months ahead and visit popular sites at dawn." },
+      ],
+      highlights: ["Fushimi Inari at dawn before crowds", "Arashiyama bamboo grove at 6am", "Spot a geisha in Gion at dusk", "Kinkaku-ji (Golden Pavilion) in morning light", "Tea ceremony at an authentic machiya", "Philosopher's Path in cherry blossom", "Ryoan-ji rock garden at opening", "Nishiki Market street food", "Nijo Castle's nightingale floors", "Sake brewery tour in Fushimi"],
+      tips: ["Fushimi Inari: Go at 5:30am — completely empty and magical; avoid midday", "Arashiyama: Arrive before 7am — bamboo grove at 8am is already packed", "Geisha sightings: Walk Hanamikoji Street at 5:30–6:30pm on weekdays", "Kyoto Station: Buy your JR Kyoto-Osaka day pass here for Nara day trip", "Cherry blossom: Book accommodation 6+ months ahead for late March–mid April", "Autumn: Book the same — Eikan-do and Tofuku-ji for best foliage", "Day trip to Nara: 45-minute train, free deer wandering the grounds of Todai-ji", "Kyoto City Bus 1-day pass: Best value if visiting 3+ bus-accessible sights", "Nishiki Market: Morning is best before it gets crowded with tour groups", "Matcha: Try a whisked bowl at a proper tearoom, not a matcha KitKat (well, try that too)"],
+    },
+ 
+    {
+      id: "izmir-guide",
+      title: "İzmir & Aegean Turkey Guide",
+      description: "Ephesus ruins, Bodrum, the Aegean coast and authentic Turkish culture",
+      image: "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=800&h=500&fit=crop",
+      continent: "Asia", continentSlug: "asia",
+      country: "Turkey", countrySlug: "turkey", countryFlag: "🇹🇷",
+      rating: 4.7, downloads: "3.2k", pages: 72, price: "$14.99",
+      tags: ["History", "Beach", "Culture"], featured: false,
+      subtitle: "Aegean Pearl — Ephesus, Bodrum & Turkey's Most Beautiful Coast",
+      heroImage: "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "April–June, September–October", duration: "7–10 days", budget: "$ Budget Friendly", highlights: 30, language: "Turkish", currency: "Turkish Lira (TRY)" },
+      overview: "İzmir is Turkey's third-largest city and its most liberal and cosmopolitan — a modern, European-feeling Aegean city with a vibrant café culture, the ancient agora beneath the city, and a beautiful waterfront (Kordon). It's the gateway to Ephesus, Pamukkale's white terraces, and the stunning Aegean coast stretching south to Bodrum and Marmaris.",
+      destinations: [
+        { name: "Ephesus (Efes)", description: "The best-preserved ancient Roman city in the Mediterranean — the Library of Celsus, the Odeon theatre, the marble-paved Curetes Street. Visited by St. Paul and the Virgin Mary.", image: "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=800&h=600&fit=crop" },
+        { name: "Bodrum", description: "Turkey's most glamorous resort town — the Crusader Castle of St. Peter houses a superb underwater archaeology museum. White-cube architecture, gulet sailing, and the Bodrum nightlife scene.", image: "https://images.unsplash.com/photo-1503917988258-f87a78e3c995?w=800&h=600&fit=crop" },
+        { name: "Pamukkale", description: "Extraordinary white travertine terraces and thermal pools (calcium carbonate formations). The adjacent Hierapolis Greco-Roman city adds exceptional archaeological depth.", image: "https://images.unsplash.com/photo-1570939274717-7eda259b50ed?w=800&h=600&fit=crop" },
+        { name: "İzmir City", description: "The Kordon waterfront, the colourful Kemeraltı bazaar (far more authentic than Istanbul's Grand Bazaar), the ancient agora, and the most vibrant bar and café scene in Turkey.", image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly to İzmir Adnan Menderes Airport (ADB). Bodrum has its own airport (BJV). Excellent bus network (Pamukkuk, Metro) connects all major towns at low cost." },
+        { icon: Camera, title: "Ephesus Tips", description: "Go at 8am when gates open — by 10am cruise ship groups arrive en masse. Hire a local guide (€15–20) — the history context is invaluable. Bring sun protection." },
+        { icon: Users, title: "Gulet Sailing", description: "Blue Voyage (Mavi Yolculuk) — 4–7 day gulet sailing from Bodrum or Marmaris along the 'Turquoise Route.' One of the Mediterranean's greatest sailing experiences." },
+        { icon: Utensils, title: "Aegean Cuisine", description: "Aegean Turkish food is lighter than Istanbul's — olive oil dishes, fresh herbs, seafood, zeytinyağlı vegetables, meze, and the best midye dolma (stuffed mussels) in Turkey.", image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&h=600&fit=crop" },
+        { icon: DollarSign, title: "Excellent Value", description: "İzmir is significantly cheaper than Istanbul. Bodrum is more expensive in summer. Ephesus entry €15. Pamukkale €20. Turkey overall outstanding value for Western visitors." },
+        { icon: Info, title: "Pamukkale Tips", description: "Remove shoes before walking the terraces. Go early morning or late afternoon for the best light. The pools are restricted — most are preserved for viewing only." },
+      ],
+      highlights: ["Ephesus Library of Celsus at dawn", "Blue Voyage gulet sailing", "Pamukkale terraces at sunset", "Bodrum Castle underwater museum", "Kemeraltı bazaar in İzmir", "Hierapolis ancient city above Pamukkale", "Sunset from İzmir Kordon", "House of the Virgin Mary above Ephesus", "Aegean seafood meze at a waterfront taverna", "Day trip to Şirince wine village"],
+      tips: ["Ephesus: Go at opening (8am) — avoid cruise ship rush after 10am", "Pamukkale: Stay overnight to see the terraces at sunrise — dramatic and nearly empty", "Gulet sailing: Book through reputable İzmir or Bodrum agencies; avoid street touts", "İzmir bazaar: Kemeraltı is far more authentic than Istanbul's Grand Bazaar", "Pamukkale pools: Most are preserved — only walk on designated areas barefoot", "Bodrum in August: Very crowded and expensive — May, June, or September better", "Şirince village: 8 km from Ephesus, produces excellent fruit wines, beautiful village", "House of the Virgin Mary: Near Ephesus, moving and quiet — far less visited than the main site", "Turkish breakfast (kahvaltı): Order the full spread at a proper café — extraordinary", "E-Visa: Required for most nationalities — get online before arrival"],
+    },
+],
+
+  /* ═══════════════════════════════════════
+     NORTH AMERICA
+  ═══════════════════════════════════════ */
   "north-america": [
     {
-  id: "usa-national-parks",
-  title: "USA National Parks Guide",
-  description: "Complete guide to America's most stunning national parks",
-  image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=250&fit=crop",
-  continent: "North America",
-  rating: 4.9,
-  downloads: "11.2k",
-  pages: 142,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Nature", "Hiking", "Wildlife"],
-  featured: true,
-  
-  subtitle: "America's Natural Wonders - From Yosemite to Yellowstone",
-  heroImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "May-September (Summer), September-October (Fall colors)",
-    duration: "14-21 days for multi-park road trip",
-    budget: "$$ - Moderate",
-    highlights: 63,
-    language: "English",
-    currency: "US Dollar (USD)"
-  },
-  
-  overview: "America's National Parks showcase nature's grandeur at its finest. From Yosemite's granite cliffs to Yellowstone's geysers, from the Grand Canyon's vastness to Zion's red rocks, these protected lands offer world-class hiking, wildlife viewing, and outdoor adventures. Discover ancient forests, dramatic canyons, pristine lakes, and some of the planet's most iconic landscapes.",
-  
+      id: "costa-rica-guide",
+      title: "Costa Rica Travel Guide",
+      description: "Rainforests, volcanoes, wildlife and Pura Vida living on both coasts",
+      image: "https://images.unsplash.com/photo-1518259102261-b40117eabbc9?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "Costa Rica", countrySlug: "costa-rica", countryFlag: "🇨🇷",
+      rating: 4.9, downloads: "8.4k", pages: 142, price: "$14.99",
+      tags: ["Wildlife", "Adventure", "Nature"], featured: true, tag: "Bestseller", tagColor: "bg-rose-500",
+      subtitle: "Pura Vida — Where Biodiversity, Adventure & Wellbeing Meet",
+      heroImage: "https://images.unsplash.com/photo-1518259102261-b40117eabbc9?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "December–April (dry season), May–November (green season deals)", duration: "10–14 days", budget: "$$ Moderate", highlights: 55, language: "Spanish (English widely spoken in tourism)", currency: "Costa Rican Colón (CRC) + USD widely accepted" },
+      overview: "Costa Rica is a philosophy as much as a destination — 'Pura Vida' ('Pure Life') is the national spirit: a deep, unhurried appreciation for nature, community, and the present moment. This small country (the size of Switzerland) protects 6% of the world's biodiversity within its borders, with over 25% of territory designated as national parks. It abolished its army in 1948 and redirected funds to education and healthcare. The result is the happiest country in Latin America, with extraordinary wildlife, adventure sports, two stunning coastlines, and some of the world's most sustainable tourism infrastructure.",
+      destinations: [
+        { name: "Arenal Volcano & La Fortuna", description: "Arenal (1,670 m) is one of the world's most active volcanoes. Hot spring rivers flow from its flanks. The jungle around La Fortuna offers hanging bridges, white-water rafting on the Sarapiquí, ziplining, and canyoning.", image: "https://images.unsplash.com/photo-1518259102261-b40117eabbc9?w=800&h=600&fit=crop" },
+        { name: "Manuel Antonio National Park", description: "Costa Rica's most-visited park on the Pacific Coast. Squirrel monkeys, sloths, scarlet macaws, and white-faced capuchins share space with pristine beach coves and coral reefs. One of the country's most biodiverse spots.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
+        { name: "Monteverde Cloud Forest", description: "The legendary cloud forest at 1,400 m altitude where Atlantic and Pacific cloud systems collide. Quetzals, bellbirds, ocelots, and 400+ bird species. Canopy ziplines, hanging bridges, and night walks.", image: "https://images.unsplash.com/photo-1560813962-ff3d8fcf59ba?w=800&h=600&fit=crop" },
+        { name: "Osa Peninsula & Corcovado", description: "Corcovado National Park is called 'the most biologically intense place on Earth' by National Geographic. Tapirs, harpy eagles, pumas, and all four monkey species. Remote, wild, and extraordinary.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop" },
+        { name: "Nicoya Peninsula", description: "Blue Zone region — one of five places on Earth where people regularly live past 100. Surf towns (Nosara, Santa Teresa), pristine Pacific beaches, yoga retreats, and a relaxed lifestyle.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+        { name: "Tortuguero & Caribbean Coast", description: "Remote turtle nesting site on the Caribbean coast — sea turtles nest July–October. Only accessible by boat or small plane. Jungle canals, caimans, freshwater crocodiles.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "San José (SJO) or Liberia (LIR) are the main airports. Liberia is closer to Guanacaste beaches. Rent a 4WD — essential for unpaved roads to many lodges. Shared shuttles (Interbus, Grayline) connect major destinations reliably. Domestic flights (Sansa, Green Airways) save significant time across the country." },
+        { icon: Camera, title: "Wildlife & National Parks", description: "Costa Rica has 900+ bird species, 240+ mammal species, 220+ reptile species, and over 10,000 plant species. Early morning (5–8 am) is prime wildlife activity. Hire a naturalist guide — they spot what you never would. Corcovado requires guided entry only. Manuel Antonio needs advance booking." },
+        { icon: Users, title: "Adventure Activities", description: "White-water rafting (Pacuare River — world-class), ziplining (Monteverde invented it), canyoning, surfing (all skill levels, dozens of breaks), kayaking, canopy walks, volcano hikes, and night jungle walks. Costa Rica invented the modern canopy zipline tour." },
+        { icon: Utensils, title: "Food & Drink", description: "Gallo pinto (rice and beans breakfast — the national dish), casado (lunch plate), ceviche, fresh tropical fruits (star fruit, mamón chino, cas), Guanacaste specialties, and excellent local coffee (one of the world's finest). Rainforest restaurants and farm-to-table lodges increasingly excellent." },
+        { icon: DollarSign, title: "Budget Planning", description: "Costa Rica is the most expensive country in Central America but offers extraordinary value for what it delivers. Budget eco-lodges $30–60/night. Mid-range $80–150. Luxury lodges $200–600+ (truly world-class). Shared shuttles instead of private drivers save significantly. May–November (green season) has 30–50% discounts." },
+        { icon: Info, title: "Sustainability", description: "Costa Rica runs on 99%+ renewable energy (mostly hydroelectric). It's ahead of its Paris Agreement targets. Choose CST-certified (Certification for Sustainable Tourism) lodges. Don't buy wildlife products. Never touch wildlife. The country's conservation achievement is one of humanity's great success stories — forest cover restored from 21% in the 1980s to over 54% today." },
+      ],
+      highlights: ["Spot sloths, toucans, and monkeys in Manuel Antonio", "Soak in natural hot springs beneath Arenal Volcano", "Walk hanging bridges through Monteverde cloud forest", "Zipline through the jungle canopy", "Watch sea turtles nest at Tortuguero (July–October)", "White-water raft the Pacuare River", "Surf at Nosara or Santa Teresa on the Nicoya Peninsula", "See the resplendent quetzal in Monteverde", "Trek Corcovado's primary rainforest", "Watch sunset from a Pacific beach with howler monkeys calling"],
+      tips: ["Rent a 4WD — many lodges have unpaved access roads that require it", "Book Manuel Antonio and Monteverde lodges early — they fill up", "Green season (May–Nov) offers 30–50% savings and lush, beautiful landscape", "Hire local naturalist guides — they spot wildlife you'd never find alone", "Pura Vida is more than a saying — embrace the relaxed pace", "Roads defy GPS — download Maps.me offline and ask locals", "Both Pacific and Caribbean coasts have distinct characters — try both", "Protect sunscreen, coral, and reef-safe products: chemical sunscreen harms reef systems", "Start days early — 5–7 am is when wildlife is most active", "The rainy season brings brilliant green and fewer crowds — embrace it"],
+    },
+    {
+      id: "usa-national-parks",
+      title: "USA National Parks Guide",
+      description: "Yellowstone, Grand Canyon, Yosemite and 20 more iconic parks",
+      image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "United States", countrySlug: "usa", countryFlag: "🇺🇸",
+      rating: 4.9, downloads: "11.2k", pages: 142, price: "$14.99",
+      tags: ["Nature", "Hiking", "Wildlife"], featured: true, tag: "Fan Favourite", tagColor: "bg-green-500",
+      subtitle: "America's Natural Wonders — From Yosemite to Yellowstone",
+      heroImage: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–September (summer), September–October (fall colours)", duration: "14–21 days for multi-park road trip", budget: "$$ Moderate", highlights: 63, language: "English", currency: "US Dollar (USD)" },
+      overview: "America's National Parks showcase nature's grandeur at its finest. From Yosemite's granite cliffs to Yellowstone's geysers, from the Grand Canyon's vastness to Zion's red rocks, these protected lands offer world-class hiking, wildlife viewing, and outdoor adventures. The NPS protects 85 million acres across 63 designated national parks.",
+      destinations: [
+        { name: "Yosemite National Park", description: "Iconic granite cliffs, waterfalls, giant sequoias, Half Dome, and El Capitan. Rock climbers' paradise. Valley views among the most beautiful on Earth.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
+        { name: "Yellowstone National Park", description: "World's first national park (1872) with over 10,000 geothermal features, Old Faithful geyser, Grand Prismatic Spring, and the world's densest bison population.", image: "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=800&h=600&fit=crop" },
+        { name: "Grand Canyon", description: "One mile deep, 18 miles wide, 277 miles long. The South Rim is most accessible. Rim-to-rim hiking is one of America's great adventures.", image: "https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?w=800&h=600&fit=crop" },
+        { name: "Zion & Utah's Mighty Five", description: "Zion, Bryce Canyon, Canyonlands, Arches, and Capitol Reef. Utah's five national parks form the greatest concentration of park scenery in the US.", image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: DollarSign, title: "National Parks Pass", description: "$80 America the Beautiful Annual Pass covers all national parks and federal lands. Pays for itself after 3–4 parks. Buy at the first park entrance." },
+        { icon: Camera, title: "Permits & Reservations", description: "Popular trails need permits months ahead (Half Dome, Angels Landing). Campsites book 6 months out. Some parks now require timed entry passes." },
+        { icon: Users, title: "Wildlife Viewing", description: "Yellowstone: bison, elk, bears, wolves. Keep 25 yards from most animals, 100 yards from bears and wolves. Dawn and dusk best for activity." },
+        { icon: Utensils, title: "Food & Supplies", description: "Stock up at towns near parks before entering. Park restaurants are pricey. Bring a cooler for road trips. Bear-proof storage required for camping." },
+        { icon: Plane, title: "Planning Your Route", description: "Utah's Mighty Five a popular loop. California parks road trip excellent. Yellowstone–Grand Teton combo. Allow 2–3 days minimum per major park." },
+        { icon: Info, title: "Leave No Trace", description: "Pack out all trash, stay on trails, camp in designated sites, don't feed wildlife. The parks belong to everyone — treat them accordingly." },
+      ],
+      highlights: ["Hike Half Dome in Yosemite", "Watch Old Faithful erupt in Yellowstone", "Sunrise over the Grand Canyon South Rim", "Angels Landing hike in Zion", "Delicate Arch at sunset (Arches NP)", "Hike The Narrows in Zion canyon", "Wildlife spotting in Yellowstone's Lamar Valley", "See General Sherman Tree (Sequoia NP)", "Mesa Arch sunrise (Canyonlands)", "Glacier Point views over Yosemite Valley"],
+      tips: ["Buy $80 annual parks pass — pays for itself after 3 parks", "Book popular trail permits 6 months in advance (Half Dome, Angels Landing)", "Visit popular parks mid-week — weekends get extremely busy", "Arrive at trailheads before 7 am to get parking", "Download offline maps — cell service spotty in most parks", "Bring layers — weather changes quickly, mountain mornings are cold", "Stay inside parks when possible — closer to attractions, better for sunrise", "Respect wildlife — stay in vehicle, use telephoto lens, never feed animals", "Grand Canyon inner canyon: Don't hike down-and-back same day in summer", "Check current road and trail conditions before every day out"],
+    },
+    {
+      id: "new-york-city",
+      title: "New York City Complete",
+      description: "Manhattan to Brooklyn — every neighbourhood, restaurant and secret",
+      image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "United States", countrySlug: "usa", countryFlag: "🇺🇸",
+      rating: 4.8, downloads: "9.8k", pages: 88, price: "$14.99",
+      tags: ["City", "Food", "Culture"], featured: true,
+      subtitle: "The City That Never Sleeps",
+      heroImage: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "April–June, September–November", duration: "5–7 days minimum", budget: "$$$ Expensive", highlights: 50, language: "English", currency: "US Dollar (USD)" },
+      overview: "New York City is the ultimate urban experience — a melting pot of cultures, cuisines, and creativity. From Times Square's neon lights to Central Park's green oasis, from world-class museums to Brooklyn's cool neighbourhoods, NYC pulses with energy 24/7. It holds more top cultural institutions than any other city on Earth.",
+      destinations: [
+        { name: "Manhattan", description: "The heart of NYC — Times Square, Central Park (843 acres), Empire State Building, MoMA, 5th Avenue, and the grid of neighbourhoods each with its own character.", image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&h=600&fit=crop" },
+        { name: "Brooklyn", description: "Hip borough with the iconic Brooklyn Bridge, DUMBO waterfront, Williamsburg's cafés, Prospect Park, brownstone streets, and a thriving arts scene.", image: "https://images.unsplash.com/photo-1518391846015-55a9cc003b25?w=800&h=600&fit=crop" },
+        { name: "Lower Manhattan", description: "9/11 Memorial & Museum, Statue of Liberty ferry, Wall Street, Battery Park, One World Trade Center Observatory, and the original heart of the city.", image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&h=600&fit=crop" },
+        { name: "Queens & the Bronx", description: "Queens: the world's most ethnically diverse urban area. Flushing for Chinese food. Long Island City for contemporary art. The Bronx for the Yankees and the Bronx Zoo.", image: "https://images.unsplash.com/photo-1546436836-07a91091f160?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "The Subway runs 24/7 — get an OMNY card or use contactless payment. Walking in Manhattan is ideal. Yellow cabs/Uber everywhere. Avoid driving." },
+        { icon: Camera, title: "Must-See Attractions", description: "Statue of Liberty, Empire State Building, Central Park, Brooklyn Bridge walk, Times Square, MoMA, Met Museum, 9/11 Memorial, High Line." },
+        { icon: Users, title: "Broadway Shows", description: "Book ahead for top shows. TKTS booth for same-day discounts (Times Square, South Street Seaport). Matinees are cheaper. Off-Broadway also excellent." },
+        { icon: Utensils, title: "Food Scene", description: "Pizza slice $3–5 (go to Joe's Pizza). Bagels from Russ & Daughters. Diverse cuisines: Chinatown, Koreatown, Little Italy, Flushing for authentic Chinese." },
+        { icon: DollarSign, title: "Budget Tips", description: "Free: Staten Island Ferry (Statue views), High Line, Brooklyn Bridge walk, many museums on certain days. Eat at markets. Accommodation expensive — book early." },
+        { icon: Info, title: "NYC Etiquette", description: "Walk fast. Stand right on escalators. Don't stop in middle of sidewalks. Tip 18–20% in restaurants. The subway is safe but be aware of surroundings." },
+      ],
+      highlights: ["Walk across Brooklyn Bridge at sunset", "View NYC from the Empire State Building", "Stroll through Central Park", "See a Broadway show", "Visit the Statue of Liberty and Ellis Island", "Explore world-class museums", "Times Square at night", "Food tour through diverse neighbourhoods", "Walk the High Line", "DUMBO waterfront views of Manhattan skyline"],
+      tips: ["Get OMNY contactless card — cheaper than single tickets", "Book Broadway tickets in advance or use TKTS for day-of discounts", "Walk across Brooklyn Bridge early morning to avoid crowds", "Many museums have pay-what-you-wish hours — check schedules", "Avoid eating in Times Square — tourist trap prices, mediocre food", "Stay in Brooklyn or Queens for cheaper hotels with easy subway access", "Download Citymapper app — best for NYC public transit", "Central Park free concerts and events in summer", "Explore neighbourhoods on foot — Greenwich Village, SoHo, Williamsburg", "New York bagels and pizza are genuinely different from elsewhere — experience them"],
+    },
+    {
+      id: "canada-rockies",
+      title: "Canadian Rockies Adventure",
+      description: "Banff turquoise lakes, Jasper wildlife and Vancouver island life",
+      image: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "Canada", countrySlug: "canada", countryFlag: "🇨🇦",
+      rating: 4.9, downloads: "6.5k", pages: 78, price: "$14.99",
+      tags: ["Nature", "Adventure", "Wildlife"], featured: true,
+      subtitle: "Majestic Mountains, Turquoise Lakes & Wild Adventures",
+      heroImage: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "June–September (summer), December–March (skiing)", duration: "7–10 days", budget: "$$ Moderate to High", highlights: 35, language: "English & French", currency: "Canadian Dollar (CAD)" },
+      overview: "The Canadian Rockies are nature's masterpiece — towering peaks, pristine turquoise lakes (coloured by glacial rock flour), ancient glaciers, and abundant wildlife. Banff and Jasper National Parks offer world-class hiking, the legendary Icefields Parkway (National Geographic's top drive), and opportunities to spot bears, elk, and moose in the wild.",
+      destinations: [
+        { name: "Banff National Park", description: "Canada's oldest national park. Lake Louise's turquoise waters, Moraine Lake's Valley of Ten Peaks, Banff town, hot springs, and endless hiking trails.", image: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=800&h=600&fit=crop" },
+        { name: "Jasper National Park", description: "Larger, wilder, less crowded than Banff. Athabasca Falls, Maligne Lake's Spirit Island, hot springs, Dark Sky Preserve, and incredible wildlife.", image: "https://images.unsplash.com/photo-1536104968055-4d61aa56f46a?w=800&h=600&fit=crop" },
+        { name: "Icefields Parkway", description: "One of the world's most scenic drives (230 km between Banff and Jasper). Columbia Icefield, Peyto Lake viewpoint, numerous waterfalls and glaciers.", image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop" },
+        { name: "Vancouver & Victoria", description: "World-class city with Stanley Park, Granville Island market, whale watching, and the ferry to Victoria's British charm, Butchart Gardens, and whale-watching from the Pacific.", image: "https://images.unsplash.com/photo-1561584948-1b4e3b22fa5d?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly to Calgary, drive 90 minutes to Banff. Rent car essential — public transit limited in parks. 4WD recommended for shoulder season and weather." },
+        { icon: Camera, title: "Photography Spots", description: "Lake Louise sunrise, Moraine Lake at dawn (arrive 5 am in summer!), Peyto Lake viewpoint, Spirit Island (Maligne Lake), Athabasca Falls." },
+        { icon: Users, title: "Wildlife Viewing", description: "Bears, elk, moose, bighorn sheep, mountain goats common. Keep 100 m from bears, 30 m from other wildlife. Never feed animals. Carry bear spray." },
+        { icon: DollarSign, title: "Parks Canada Pass", description: "Discovery Pass $145/year (best value for 7+ days). Daily passes $10–20 per vehicle. Free for under 18. Purchase online or at park gates." },
+        { icon: Utensils, title: "Food & Dining", description: "Banff town has excellent restaurants but expensive. Pack picnics for day trips in parks. Stock up on groceries before entering parks." },
+        { icon: Info, title: "Essential Planning", description: "Book accommodation 6+ months ahead for summer. Moraine Lake requires parking reservation from May–October. Icefields Parkway best done over 2 days." },
+      ],
+      highlights: ["Sunrise at Moraine Lake", "Drive the Icefields Parkway", "Hike to Lake Agnes Tea House", "Soak in Banff Upper Hot Springs", "Columbia Icefield glacier walk", "Wildlife spotting throughout parks", "Canoe on Emerald Lake", "Johnston Canyon waterfall hike", "Sulphur Mountain gondola views", "Maligne Lake boat cruise to Spirit Island"],
+      tips: ["Visit Moraine Lake before 6 am — parking fills by 6:30 am in summer", "Book hotels 6+ months in advance — limited options, massive demand", "Parks Canada Discovery Pass saves money if visiting 7+ days", "Drive Icefields Parkway slowly — stop at every single viewpoint", "Carry bear spray on all hikes and know how to use it", "Book popular Banff restaurants weeks ahead", "Bring layers — weather changes rapidly in the mountains", "Gas stations sparse — fill up when you see them", "Jasper is less crowded than Banff but equally beautiful", "September offers fall colours and dramatically fewer crowds"],
+    },
+    {
+      id: "mexico-cultural",
+      title: "Mexico Cultural Journey",
+      description: "Aztec ruins, colonial cities, Yucatan cenotes and Pacific beach towns",
+      image: "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "Mexico", countrySlug: "mexico", countryFlag: "🇲🇽",
+      rating: 4.8, downloads: "8.1k", pages: 96, price: "$14.99",
+      tags: ["Culture", "History", "Beach"], featured: false,
+      subtitle: "Vibrant Culture, Ancient Ruins & Caribbean Beaches",
+      heroImage: "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "November–April (dry season)", duration: "10–14 days", budget: "$ Budget Friendly", highlights: 45, language: "Spanish", currency: "Mexican Peso (MXN)" },
+      overview: "Mexico captivates with its rich Mayan and Aztec heritage, colonial architecture, world-class beaches, and vibrant culture. Explore ancient pyramids, wander colonial cities like San Miguel de Allende, relax on Tulum's pristine beaches, savour authentic tacos and mezcal, and experience the warmth of Mexican hospitality.",
+      destinations: [
+        { name: "Mexico City", description: "Massive capital with world-class museums, ancient Teotihuacan pyramids (2 hours away), Frida Kahlo's Blue House, Roma Norte cafés, and incredible street food.", image: "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=800&h=600&fit=crop" },
+        { name: "Oaxaca", description: "Cultural heart with indigenous markets, mezcal distilleries, colonial architecture, vibrant art scene, and the world's most complex mole cuisine.", image: "https://images.unsplash.com/photo-1562059392-096320bccc7e?w=800&h=600&fit=crop" },
+        { name: "Tulum & Yucatan", description: "Caribbean coast with Mayan ruins overlooking turquoise seas, cenotes for swimming, Chichén Itzá (New Seven Wonders of the World), and Valladolid's cenotes.", image: "https://images.unsplash.com/photo-1578898887932-dce23a595ad4?w=800&h=600&fit=crop" },
+        { name: "San Miguel de Allende", description: "Charming UNESCO colonial town with cobblestone streets, art galleries, rooftop mezcal bars, excellent restaurants, and the stunning La Parroquia cathedral.", image: "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "ADO buses comfortable and cheap between cities. Domestic flights for longer distances. Colectivos (shared vans) in Yucatan. Mexico City metro excellent." },
+        { icon: Camera, title: "Must-Visit Ruins", description: "Teotihuacan (Mexico City), Chichén Itzá (most visited), Tulum (sea views), Palenque (jungle), Monte Albán (Oaxaca). Go early — tour buses arrive by 10 am." },
+        { icon: Users, title: "Cultural Experiences", description: "Day of the Dead (Nov 1–2). Lucha libre wrestling. Cooking classes. Mezcal/tequila tastings. Indigenous markets. Traditional dance shows." },
+        { icon: Utensils, title: "Mexican Cuisine", description: "Street tacos $1–2. Mole negro in Oaxaca. Cochinita pibil in Yucatan. Pozole, tamales, fresh seafood on both coasts. Mezcal is life." },
+        { icon: DollarSign, title: "Budget Friendly", description: "Very affordable. Nice hotels $30–80. Meals $5–15. Beer $2–3. Beaches free. ADO buses cheap. Great value throughout." },
+        { icon: Info, title: "Safety Tips", description: "Generally safe in tourist areas. Avoid displaying wealth. Use ATMs inside banks. Don't drink tap water. Travel during daylight hours for road journeys." },
+      ],
+      highlights: ["Climb Teotihuacan pyramids at sunrise", "Explore Chichén Itzá's El Castillo pyramid", "Swim in Yucatan's cenote sinkholes", "Street food tour in Mexico City", "Mezcal tasting in Oaxaca", "Beach time in Tulum", "Visit Frida Kahlo's Blue House in Coyoacán", "Colonial architecture in San Miguel de Allende", "Day of the Dead celebrations in Oaxaca", "Snorkelling in the Caribbean"],
+      tips: ["Don't drink tap water — stick to bottled or purified water", "Learn basic Spanish — helps enormously", "Visit Chichén Itzá at 8 am to avoid tour bus crowds", "Use ADO buses between cities — comfortable and very cheap", "Bargain at markets but not in established shops", "Tipping: 10–15% at restaurants, round up for taxis", "Avoid Cancún hotel zone — overpriced and not authentically Mexican", "Cenotes require biodegradable sunscreen — regular sunscreen is banned", "Mexico City altitude (2,240 m) — take it easy the first day", "Try street food where locals eat — it's safe and delicious"],
+    },
+    {
+  id: "barbados-guide",
+  title: "Barbados Island Guide",
+  description: "Rum punch, cricket, the Platinum Coast and Crop Over festival",
+  image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=500&fit=crop",
+  // ↓↓ UPDATED from "Caribbean" / "caribbean" ↓↓
+  continent: "North America", continentSlug: "north-america",
+  country: "Barbados", countrySlug: "barbados", countryFlag: "🇧🇧",
+  rating: 4.8, downloads: "3.4k", pages: 68, price: "$14.99",
+  tags: ["Beach", "Culture", "Rum"], featured: true, tag: "Top Rated", tagColor: "bg-blue-500",
+  subtitle: "The Caribbean's Most Sophisticated Island — Rum, Reefs & Rihanna's Homeland",
+  heroImage: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&h=1080&fit=crop",
+  quickFacts: { bestTime: "December–April (dry season)", duration: "7–10 days", budget: "$$$ Expensive", highlights: 28, language: "English", currency: "Barbadian Dollar (BBD) / US Dollar" },
+  overview: "Barbados punches above its weight as 'Little England' with proper infrastructure, world-class beaches, rum distilleries (Mount Gay has been producing since 1703 — the world's oldest rum brand), and a friendly, proud local culture. The Platinum Coast's calm waters sit in sharp contrast to the wild Atlantic East Coast surf. The Crop Over festival is one of the Caribbean's greatest carnivals.",
   destinations: [
-    {
-      name: "Yosemite National Park",
-      description: "Iconic granite cliffs, waterfalls, giant sequoias, and El Capitan. Half Dome hike legendary. Valley views spectacular. Rock climbing paradise.",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Yellowstone National Park",
-      description: "World's first national park with geysers, hot springs, bison herds, and wolves. Old Faithful, Grand Prismatic Spring, and wildlife everywhere.",
-      image: "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Grand Canyon",
-      description: "One mile deep, 18 miles wide. South Rim most popular. North Rim wilder. Hike rim to rim or just marvel at sunrise views.",
-      image: "https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Zion National Park",
-      description: "Red rock canyons and towering cliffs. Angels Landing hike thrilling. Narrows wade spectacular. Utah's most visited park for good reason.",
-      image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=600&fit=crop"
-    }
+    { name: "Platinum Coast (West Coast)", description: "Paynes Bay, Holetown, Mullins Bay — calm turquoise water, luxury hotels, excellent beach bars, and world-class catamaran sailing trips with sea turtles.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+    { name: "Bridgetown", description: "The capital and a UNESCO World Heritage Site. Garrison Savannah, Parliament Buildings, National Heroes Square, and excellent local rum shops.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
+    { name: "East Coast & Bathsheba", description: "Wild Atlantic surf coast with Bathsheba's dramatic mushroom rocks, rolling waves (surfers' paradise), and the traditional rural heart of Bajan culture.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+    { name: "Harrison's Cave & Interior", description: "Spectacular underground crystallized limestone caverns, Flower Forest botanical gardens, Andromeda Botanic Gardens, and parish churches dotting the inland landscape.", image: "https://images.unsplash.com/photo-1518259102261-b40117eabbc9?w=800&h=600&fit=crop" },
   ],
-  
   essentialInfo: [
-    {
-      icon: Plane,
-      title: "Planning Your Route",
-      description: "Mighty 5 (Utah parks) popular. California parks road trip excellent. Yellowstone-Grand Teton combo. Allow 2-3 days minimum per major park."
-    },
-    {
-      icon: Camera,
-      title: "Permits & Reservations",
-      description: "Popular trails need permits months ahead (Half Dome, Angels Landing). Camp sites book 6 months early. Some parks require timed entry passes."
-    },
-    {
-      icon: Users,
-      title: "Wildlife Viewing",
-      description: "Yellowstone: bison, elk, bears, wolves. Keep 25 yards from most animals, 100 yards from bears/wolves. Dawn and dusk best times."
-    },
-    {
-      icon: Utensils,
-      title: "Food & Supplies",
-      description: "Stock up before entering parks. Park restaurants pricey. Bring cooler for road trips. Bear-proof storage required in many campgrounds."
-    },
-    {
-      icon: DollarSign,
-      title: "National Parks Pass",
-      description: "$80 annual pass covers all national parks. Entry $20-35 per vehicle per park. Pass pays for itself after 3-4 parks. Buy at first park."
-    },
-    {
-      icon: Info,
-      title: "Best Time to Visit",
-      description: "Summer crowded but all facilities open. Spring wildflowers beautiful. Fall colors stunning, fewer crowds. Winter magical but limited access."
-    }
+    { icon: Plane, title: "Getting Around", description: "Rent a car — roads are well-maintained. Blue ZR buses cheap and local. Taxis everywhere but negotiate price first." },
+    { icon: Camera, title: "Rum Heritage", description: "Mount Gay Distillery (oldest rum in the world, 1703). St. Nicholas Abbey (working plantation and rum distillery, 1658)." },
+    { icon: Users, title: "Cricket Culture", description: "Barbados is the Caribbean's cricket heartland. Kensington Oval hosts Test matches. Extraordinary atmosphere." },
+    { icon: Utensils, title: "Bajan Cuisine", description: "Flying fish (national dish) with cou-cou, macaroni pie, pudding and souse, pepperpot stew. Oistins Fish Fry on Friday nights." },
+    { icon: DollarSign, title: "Budget Reality", description: "Barbados is the most expensive Eastern Caribbean island. Local rum shops and food vans are very affordable alternatives." },
+    { icon: Info, title: "Practical Tips", description: "Barbadians are called Bajans. No need for currency conversion from USD. Infrastructure is excellent." },
   ],
-  
-  highlights: [
-    "Hike Half Dome in Yosemite",
-    "Watch Old Faithful erupt in Yellowstone",
-    "Sunrise over Grand Canyon",
-    "Angels Landing hike in Zion",
-    "Delicate Arch at sunset (Arches)",
-    "Hike The Narrows in Zion",
-    "Wildlife spotting in Yellowstone",
-    "General Sherman Tree (Sequoia)",
-    "Mesa Arch sunrise (Canyonlands)",
-    "Glacier Point views (Yosemite)"
-  ],
-  
-  tips: [
-    "Buy $80 annual parks pass - pays for itself after 3 parks",
-    "Book popular trail permits 6 months in advance (Half Dome, Angels Landing)",
-    "Visit popular parks mid-week to avoid weekend crowds",
-    "Arrive at trailheads before 7am to get parking spots",
-    "Download offline maps - cell service spotty in parks",
-    "Bring layers - weather changes quickly, mornings cold even in summer",
-    "Stay inside parks when possible - closer to attractions, see sunrise",
-    "Respect wildlife - stay in car, use telephoto lens, never feed animals",
-    "Pack out all trash - leave no trace principles essential",
-    "Check road/trail conditions before visiting - snow closures common"
-  ]
+  highlights: ["Swim with sea turtles on a catamaran tour", "Tour Mount Gay Rum Distillery", "Friday night Oistins Fish Fry", "Surf the Atlantic waves at Bathsheba", "Explore Harrison's Cave", "Walk the Platinum Coast beaches", "Visit the UNESCO-listed Bridgetown Garrison", "Watch cricket at Kensington Oval", "Attend Crop Over carnival (July–August)", "Sunset cocktails at The Cliff restaurant"],
+  tips: ["Oistins Fish Fry on Friday nights is the social event of the week — don't miss it", "Swim with sea turtles: book catamaran tour rather than swimming directly", "Mount Gay Rum Tour is excellent even for non-rum-drinkers — great history", "East Coast and West Coast feel like different islands — see both", "Buy rum at the airport duty free — significantly cheaper", "Local rum shops serve rum and soda for $2 — embrace the Bajan way", "Crop Over (July–Aug) is phenomenal — book accommodation 6 months ahead", "Barbados tap water is safe to drink — among the Caribbean's best"],
 },
-{
-  id: "new-york-city",
-  title: "New York City Complete",
-  description: "Manhattan, Brooklyn, and all NYC neighborhoods",
-  image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=400&h=250&fit=crop",
-  continent: "North America",
-  rating: 4.8,
-  downloads: "9.8k",
-  pages: 88,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["City", "Food", "Culture"],
-  featured: true,
-  
-  subtitle: "The City That Never Sleeps",
-  heroImage: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "April-June, September-November",
-    duration: "5-7 days minimum",
-    budget: "$$$ - Expensive",
-    highlights: 50,
-    language: "English",
-    currency: "US Dollar (USD)"
-  },
-  
-  overview: "New York City is the ultimate urban experience - a melting pot of cultures, cuisines, and creativity. From Times Square's neon lights to Central Park's green oasis, from world-class museums to Brooklyn's cool neighborhoods, NYC pulses with energy 24/7. Experience Broadway shows, diverse food scenes, iconic landmarks, and the incomparable vibe of the Big Apple.",
-  
+ {
+  id: "curacao-guide",
+  title: "Curaçao Travel Guide",
+  description: "Dutch colonial Willemstad, coral reefs and the ABC Islands",
+  image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=500&fit=crop",
+  continent: "North America", continentSlug: "north-america",
+  country: "Curaçao", countrySlug: "curacao", countryFlag: "🇨🇼",
+  rating: 4.7, downloads: "2.1k", pages: 62, price: "$14.99",
+  tags: ["Culture", "Diving", "Beach"], featured: false,
+  subtitle: "Colourful Dutch Caribbean — Outside the Hurricane Belt",
+  heroImage: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1920&h=1080&fit=crop",
+  quickFacts: { bestTime: "Year-round (outside hurricane belt)", duration: "5–8 days", budget: "$$ Moderate", highlights: 24, language: "Papiamentu, Dutch & English", currency: "Netherlands Antillean Guilder (ANG)" },
+  overview: "Curaçao (pronounced 'KYOOR-ah-sow') is a Dutch Caribbean island outside the hurricane belt, offering reliable year-round sunshine. Willemstad's colourful UNESCO-listed Handelskade waterfront is one of the Caribbean's most photographed streets. World-class shore diving, secluded beaches, and a laid-back multicultural atmosphere make Curaçao one of the region's most underrated destinations.",
   destinations: [
-    {
-      name: "Manhattan",
-      description: "The heart of NYC with Times Square, Central Park, Empire State Building, MoMA, 5th Avenue shopping, and endless iconic sights.",
-      image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Brooklyn",
-      description: "Hip borough with Brooklyn Bridge, DUMBO waterfront, Williamsburg cafes, Prospect Park, brownstones, and thriving arts scene.",
-      image: "https://images.unsplash.com/photo-1518391846015-55a9cc003b25?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Lower Manhattan",
-      description: "Financial District with 9/11 Memorial, Statue of Liberty ferry, Wall Street, Battery Park, and One World Observatory views.",
-      image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Upper West Side",
-      description: "Cultural hub with Lincoln Center, American Museum of Natural History, Riverside Park, and classic NYC residential streets.",
-      image: "https://images.unsplash.com/photo-1546436836-07a91091f160?w=800&h=600&fit=crop"
-    }
+    { name: "Willemstad", description: "UNESCO World Heritage capital with pastel-coloured Dutch colonial buildings along Sint Annabaai, the Queen Emma pontoon bridge, Floating Market, and Fort Amsterdam.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
+    { name: "Westpunt & Beaches", description: "Cas Abao Beach (consistently rated Caribbean's best), Grote Knip's turquoise cove, and Klein Curaçao (uninhabited island with pristine reefs).", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+    { name: "Diving Sites", description: "Over 65 dive sites accessible from shore — no boat needed. Wall diving from Watamula to Mushroom Forest. Visibility 30+ metres.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
+    { name: "Christoffel National Park", description: "Curaçao's natural lungs with the highest point (Mt. Christoffel, 375 m), hiking trails, orchids, white-tailed deer, and Arawak cave paintings.", image: "https://images.unsplash.com/photo-1518259102261-b40117eabbc9?w=800&h=600&fit=crop" },
   ],
-  
   essentialInfo: [
-    {
-      icon: Plane,
-      title: "Getting Around",
-      description: "Subway runs 24/7 - get 7-day unlimited MetroCard ($34). Walking best in Manhattan. Yellow cabs/Uber everywhere. Avoid driving - parking nightmare."
-    },
-    {
-      icon: Camera,
-      title: "Must-See Attractions",
-      description: "Statue of Liberty, Empire State Building, Central Park, Brooklyn Bridge, Times Square, MoMA, Metropolitan Museum, 9/11 Memorial."
-    },
-    {
-      icon: Users,
-      title: "Broadway Shows",
-      description: "Book ahead for Hamilton, Lion King, Wicked. TKTS booth for same-day discounts (Times Square, South Street Seaport). Matinees cheaper."
-    },
-    {
-      icon: Utensils,
-      title: "Food Scene",
-      description: "Pizza slice $3-5. Food trucks everywhere. Diverse cuisines: Chinatown, Little Italy, Koreatown. Bagels mandatory. Fine dining world-class."
-    },
-    {
-      icon: DollarSign,
-      title: "Budget Tips",
-      description: "Free: Staten Island Ferry (Statue views), High Line, Brooklyn Bridge walk, many museums on certain days. Happy hour deals common. Hotel alternatives: hostels, Airbnb."
-    },
-    {
-      icon: Info,
-      title: "NYC Etiquette",
-      description: "Walk fast, stand right on escalators, don't stop in middle of sidewalk. Tip 18-20%. Don't make eye contact with crazies on subway."
-    }
+    { icon: Plane, title: "Getting Around", description: "Rent a car — excellent roads. Island is small (60 km long) — easily explored in a week by car." },
+    { icon: Camera, title: "Diving", description: "Shore diving paradise — park, kit up, and wade in. Klein Curaçao snorkelling outstanding." },
+    { icon: Users, title: "Culture", description: "Papiamentu is the local language — a fascinating Creole mix of Portuguese, Spanish, Dutch, and African languages." },
+    { icon: Utensils, title: "Local Food", description: "Keshi yena (stuffed Edam cheese), kadushi cactus soup, seafood, Gouda cheese everywhere, fresh local fish." },
+    { icon: DollarSign, title: "Value", description: "Very reasonable compared to other Caribbean islands. Tourism less inflated than Aruba or St. Maarten." },
+    { icon: Info, title: "Year-Round", description: "Curaçao sits below the hurricane belt — reliably sunny year-round. Water temperature constant 26°C." },
   ],
-  
-  highlights: [
-    "Walk across Brooklyn Bridge at sunset",
-    "View NYC from Empire State Building",
-    "Stroll through Central Park",
-    "See a Broadway show",
-    "Visit Statue of Liberty and Ellis Island",
-    "Explore world-class museums",
-    "Times Square at night",
-    "Food tour in diverse neighborhoods",
-    "Walk the High Line",
-    "DUMBO waterfront views"
-  ],
-  
-  tips: [
-    "Get 7-day unlimited MetroCard ($34) - saves money if staying 4+ days",
-    "Book Broadway tickets in advance or use TKTS for day-of discounts",
-    "Walk across Brooklyn Bridge early morning to avoid crowds",
-    "Many museums have pay-what-you-wish hours - check schedules",
-    "Avoid eating in Times Square - tourist trap prices, mediocre food",
-    "Stay in Brooklyn or Queens for cheaper hotels, still easy subway access",
-    "Download Citymapper app - best for NYC public transit navigation",
-    "Pizza slice rule: if it's good, locals eat there and line is out door",
-    "Central Park free concerts and events in summer",
-    "Explore neighborhoods on foot - Greenwich Village, SoHo, Williamsburg"
-  ]
+  highlights: ["Photograph Willemstad's colourful Handelskade", "Shore dive Curaçao's famous reefs", "Swim at Cas Abao beach", "Day trip to uninhabited Klein Curaçao", "Walk the Queen Emma floating bridge", "Explore Christoffel National Park", "Visit the Blue Curaçao liqueur distillery", "Snorkel the Mushroom Forest coral", "Taste keshi yena at a local restaurant"],
+  tips: ["Rent a car — it's the best way to explore and not expensive", "Shore diving is exceptional — you don't need a dive boat", "Willemstad photography: The coloured buildings are best at golden hour", "Cas Abao Beach charges a small entry fee — worth every cent", "Klein Curaçao day trip: Only go in calm weather — exposed ocean crossing", "Papiamentu: Learn 'Bon bini' (welcome) and 'Danki' (thank you)", "Sunscreen: Use mineral sunscreen only — chemical sunscreen destroys coral"],
 },
-{
-  id: "canada-rockies",
-  title: "Canadian Rockies Adventure",
-  description: "Banff, Jasper, and Western Canada wilderness",
-  image: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=400&h=250&fit=crop",
-  continent: "North America",
-  rating: 4.9,
-  downloads: "6.5k",
-  pages: 78,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Nature", "Adventure", "Wildlife"],
-  featured: true,
-  
-  subtitle: "Majestic Mountains, Turquoise Lakes & Wild Adventures",
-  heroImage: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "June-September (Summer), December-March (Skiing)",
-    duration: "7-10 days recommended",
-    budget: "$$ - Moderate to High",
-    highlights: 35,
-    language: "English & French",
-    currency: "Canadian Dollar (CAD)"
-  },
-  
-  overview: "The Canadian Rockies are nature's masterpiece - towering peaks, pristine turquoise lakes, ancient glaciers, and abundant wildlife. Banff and Jasper National Parks offer world-class hiking, stunning scenic drives, hot springs, and opportunities to spot bears, elk, and moose. Experience the Icefields Parkway, Lake Louise, Moraine Lake, and endless mountain adventures in one of the world's most beautiful wilderness areas.",
-  
-  destinations: [
-    {
-      name: "Banff National Park",
-      description: "Canada's oldest national park. Lake Louise, Moraine Lake, Banff town, hot springs, gondola views, and endless hiking trails.",
-      image: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Jasper National Park",
-      description: "Larger, wilder, less crowded than Banff. Athabasca Falls, Maligne Lake, hot springs, dark sky preserve, and incredible wildlife viewing.",
-      image: "https://images.unsplash.com/photo-1536104968055-4d61aa56f46a?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Icefields Parkway",
-      description: "One of world's most scenic drives. 230km between Banff and Jasper. Columbia Icefield, Peyto Lake, countless viewpoints and glaciers.",
-      image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Yoho National Park",
-      description: "Hidden gem near Banff. Takakkaw Falls, Emerald Lake, Natural Bridge, and excellent hiking less crowded than neighboring parks.",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Getting There",
-      description: "Fly to Calgary, drive 90 minutes to Banff. Rent car essential - public transit limited. Parks connected by scenic highways. Gas up frequently."
-    },
-    {
-      icon: Camera,
-      title: "Photography Spots",
-      description: "Lake Louise sunrise, Moraine Lake at dawn (arrive 5am!), Peyto Lake overlook, Spirit Island, Athabasca Falls. Golden hours magical."
-    },
-    {
-      icon: Users,
-      title: "Wildlife Viewing",
-      description: "Bears, elk, moose, bighorn sheep, mountain goats common. Keep 100m from bears, 30m from other wildlife. Never feed animals. Carry bear spray."
-    },
-    {
-      icon: Utensils,
-      title: "Food & Dining",
-      description: "Banff town has great restaurants but pricey. Pack picnics for day trips. Limited dining in smaller towns. Stock up on groceries."
-    },
-    {
-      icon: DollarSign,
-      title: "Park Pass",
-      description: "Parks Canada Discovery Pass required. $145 for annual pass (best value for 7+ days). Daily passes $10-20. Free for under 18."
-    },
-    {
-      icon: Info,
-      title: "Essential Planning",
-      description: "Book accommodations 6+ months ahead for summer. Lake Louise parking reservation required. Icefields Parkway best done over 2 days. Bring layers."
-    }
-  ],
-  
-  highlights: [
-    "Sunrise at Moraine Lake",
-    "Drive Icefields Parkway",
-    "Hike to Lake Agnes Tea House",
-    "Soak in Banff Upper Hot Springs",
-    "Columbia Icefield glacier walk",
-    "Wildlife spotting throughout parks",
-    "Canoe on Emerald Lake",
-    "Johnston Canyon waterfalls",
-    "Sulphur Mountain gondola views",
-    "Maligne Lake boat cruise"
-  ],
-  
-  tips: [
-    "Visit Moraine Lake before 6am - parking fills by 6:30am in summer",
-    "Book hotels 6+ months in advance - limited options, high demand",
-    "Parks Canada Discovery Pass saves money if visiting 7+ days",
-    "Drive Icefields Parkway slowly - stop at every viewpoint",
-    "Carry bear spray on all hikes - know how to use it",
-    "Book popular restaurants in Banff weeks ahead",
-    "Bring layers - weather changes rapidly in mountains",
-    "Gas stations sparse - fill up when you see them",
-    "Jasper less crowded than Banff but equally beautiful",
-    "Visit in September for fall colors and fewer crowds"
-  ]
-},
-{
-  id: "mexico-cultural",
-  title: "Mexico Cultural Journey",
-  description: "Ancient ruins, colonial cities, and beach paradises",
-  image: "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=400&h=250&fit=crop",
-  continent: "North America",
-  rating: 4.8,
-  downloads: "8.1k",
-  pages: 96,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Culture", "History", "Beach"],
-  featured: false,
-  
-  subtitle: "Vibrant Culture, Ancient Ruins & Caribbean Beaches",
-  heroImage: "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "November-April (Dry season)",
-    duration: "10-14 days recommended",
-    budget: "$ - Budget Friendly",
-    highlights: 45,
-    language: "Spanish",
-    currency: "Mexican Peso (MXN)"
-  },
-  
-  overview: "Mexico captivates with its rich Mayan and Aztec heritage, colonial architecture, world-class beaches, and vibrant culture. Explore ancient pyramids at Chichen Itza and Teotihuacan, wander colorful colonial cities like San Miguel de Allende, relax on Tulum's pristine beaches, savor authentic tacos and mezcal, and experience the warmth of Mexican hospitality. From bustling Mexico City to peaceful Oaxaca, Mexico offers incredible diversity.",
-  
-  destinations: [
-    {
-      name: "Mexico City",
-      description: "Massive capital with world-class museums, ancient Teotihuacan pyramids, Frida Kahlo's house, Roma Norte cafes, and amazing street food.",
-      image: "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Oaxaca",
-      description: "Cultural heart with indigenous markets, mezcal distilleries, colonial architecture, vibrant art scene, and incredible mole cuisine.",
-      image: "https://images.unsplash.com/photo-1562059392-096320bccc7e?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Tulum & Riviera Maya",
-      description: "Caribbean coast with Mayan ruins overlooking beaches, cenotes for swimming, beach clubs, and laid-back jungle vibes.",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
-    },
-    {
-      name: "San Miguel de Allende",
-      description: "Charming colonial town with cobblestone streets, art galleries, rooftop bars, excellent restaurants, and picturesque central plaza.",
-      image: "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Getting Around",
-      description: "ADO buses comfortable and cheap between cities. Domestic flights for long distances. Colectivos (shared vans) in Yucatan. Mexico City metro excellent."
-    },
-    {
-      icon: Camera,
-      title: "Must-Visit Ruins",
-      description: "Teotihuacan (Mexico City), Chichen Itza (most famous), Tulum (beach views), Palenque (jungle setting), Monte Alban (Oaxaca). Go early to beat crowds."
-    },
-    {
-      icon: Users,
-      title: "Cultural Experiences",
-      description: "Day of Dead celebrations (Nov 1-2). Lucha libre wrestling. Cooking classes. Mezcal/tequila tastings. Indigenous markets. Traditional dance shows."
-    },
-    {
-      icon: Utensils,
-      title: "Mexican Cuisine",
-      description: "Street tacos $1-2. Mole in Oaxaca. Cochinita pibil in Yucatan. Pozole, tamales, fresh seafood. Try local specialties. Agua fresca everywhere."
-    },
-    {
-      icon: DollarSign,
-      title: "Budget Friendly",
-      description: "Very affordable. Nice hotels $30-80. Meals $5-15. Beer $2-3. Beaches free. ADO buses cheap. Can travel comfortably on $50-80/day."
-    },
-    {
-      icon: Info,
-      title: "Safety Tips",
-      description: "Generally safe in tourist areas. Avoid displaying wealth. Use ATMs inside banks. Don't drink tap water. Travel during day. Research current conditions."
-    }
-  ],
-  
-  highlights: [
-    "Climb Teotihuacan pyramids",
-    "Explore Mayan ruins at Chichen Itza",
-    "Swim in Yucatan cenotes",
-    "Street food tour in Mexico City",
-    "Mezcal tasting in Oaxaca",
-    "Beach time in Tulum",
-    "Visit Frida Kahlo's Blue House",
-    "Colonial architecture in San Miguel",
-    "Day of Dead celebrations",
-    "Snorkel in Caribbean waters"
-  ],
-  
-  tips: [
-    "Don't drink tap water - stick to bottled water or purified agua",
-    "Learn basic Spanish phrases - helps tremendously",
-    "Visit Chichen Itza early (8am) to avoid tour bus crowds",
-    "Use ADO buses between cities - comfortable and cheap",
-    "Bargain at markets but not in established shops",
-    "Tipping: 10-15% at restaurants, round up for taxis",
-    "Avoid Cancun hotel zone - overpriced and not authentic",
-    "Cenotes require biodegradable sunscreen - regular banned",
-    "Mexico City altitude (7,300ft) - take it easy first day",
-    "Try street food where locals eat - it's safe and delicious"
-  ]
-},
-{
-  id: "california-coast",
-  title: "California Coast Road Trip",
-  description: "San Francisco to San Diego via Highway 1",
-  image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=400&h=250&fit=crop",
-  continent: "North America",
-  rating: 4.9,
-  downloads: "7.9k",
-  pages: 85,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Road Trip", "Beach", "Nature"],
-  featured: false,
-  
-  subtitle: "Epic Pacific Coast Highway Adventure",
-  heroImage: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "April-October (Best weather)",
-    duration: "7-10 days recommended",
-    budget: "$$ - Moderate to High",
-    highlights: 40,
-    language: "English",
-    currency: "US Dollar (USD)"
-  },
-  
-  overview: "The California Coast is one of the world's most spectacular road trips. Drive Highway 1 from San Francisco to San Diego, passing through Big Sur's dramatic cliffs, charming coastal towns, world-famous wine country, pristine beaches, and endless ocean views. Experience tech hub San Francisco, laid-back Santa Barbara, trendy LA, and sunny San Diego. Combine urban culture with natural beauty on this unforgettable journey.",
-  
-  destinations: [
-    {
-      name: "San Francisco",
-      description: "Golden Gate Bridge, Alcatraz, cable cars, Fisherman's Wharf, diverse neighborhoods, tech culture, and foggy charm.",
-      image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Big Sur",
-      description: "Dramatic coastal cliffs, redwood forests, McWay Falls, Bixby Bridge, camping, hiking, and some of the most beautiful coastline on Earth.",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Los Angeles",
-      description: "Hollywood, beaches, Santa Monica Pier, Venice Beach, Griffith Observatory, diverse food scene, and entertainment capital of the world.",
-      image: "https://images.unsplash.com/photo-1534190239940-9ba8944ea261?w=800&h=600&fit=crop"
-    },
-    {
-      name: "San Diego",
-      description: "Perfect weather, Balboa Park, beaches, Gaslamp Quarter, craft beer scene, Mexican food, and laid-back Southern California vibe.",
-      image: "https://images.unsplash.com/photo-1521464302861-ce943915d1c3?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Road Trip Planning",
-      description: "Fly into SF, out of SD (or reverse). Rent car. Allow 7-10 days minimum. Drive north to south (right side closer to ocean). Book Big Sur lodging ahead."
-    },
-    {
-      icon: Camera,
-      title: "Can't-Miss Stops",
-      description: "Golden Gate Bridge, 17-Mile Drive, McWay Falls, Bixby Bridge, Hearst Castle, Morro Bay, Santa Barbara, Malibu beaches, La Jolla Cove."
-    },
-    {
-      icon: Users,
-      title: "Best Detours",
-      description: "Napa/Sonoma wine country, Monterey Aquarium, Carmel-by-the-Sea, Pismo Beach, Solvang Danish village, Channel Islands, Joshua Tree."
-    },
-    {
-      icon: Utensils,
-      title: "California Cuisine",
-      description: "Fresh seafood everywhere. Farm-to-table restaurants. Wine country dining. Taco trucks in LA. San Diego fish tacos. SF sourdough and dim sum."
-    },
-    {
-      icon: DollarSign,
-      title: "Budget Considerations",
-      description: "Gas expensive ($4-6/gallon). Parking fees common. Hotels pricey near coast. Camp in Big Sur for savings. City hotels $150-300+. Food adds up quickly."
-    },
-    {
-      icon: Info,
-      title: "Driving Tips",
-      description: "Highway 1 narrow and winding - take your time. Pullouts frequent for photos. Watch for cyclists. Gas stations sparse in Big Sur. Check road conditions."
-    }
-  ],
-  
-  highlights: [
-    "Drive across Golden Gate Bridge",
-    "Sunset at McWay Falls",
-    "Explore Hearst Castle",
-    "Wine tasting in Paso Robles",
-    "Beach time in Santa Barbara",
-    "Hollywood sign and Griffith Observatory",
-    "Santa Monica Pier at sunset",
-    "La Jolla seals and sea lions",
-    "Balboa Park museums",
-    "Redwoods in Big Sur"
-  ],
-  
-  tips: [
-    "Drive north to south - right lane hugs coast, better ocean views",
-    "Book Big Sur lodging 3-6 months ahead - limited options",
-    "Start early - most attractions open 9-10am, beat traffic",
-    "Gas up before Big Sur - stations 40+ miles apart",
-    "Pack layers - coastal weather unpredictable, fog common",
-    "Free parking rare in cities - budget for parking fees",
-    "17-Mile Drive ($11 entrance) worth it for coastal views",
-    "LA traffic brutal - avoid rush hours (7-9am, 4-7pm)",
-    "Camp in Big Sur state parks - incredible and affordable",
-    "Allow full day for driving SF to Monterey via Highway 1"
-  ]
-}
-  ],
-  "south-america": [{
-  id: "peru-machu-picchu",
-  title: "Peru & Machu Picchu Guide",
-  description: "Complete guide to Peru's ancient wonders and adventures",
-  image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=400&h=250&fit=crop",
-  continent: "South America",
-  rating: 4.9,
-  downloads: "7.8k",
-  pages: 98,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Adventure", "History", "Hiking"],
-  featured: true,
-  
-  subtitle: "Ancient Inca Empire & Andean Adventures",
-  heroImage: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "May-September (Dry season)",
-    duration: "10-14 days recommended",
-    budget: "$ - Budget to Moderate",
-    highlights: 42,
-    language: "Spanish & Quechua",
-    currency: "Peruvian Sol (PEN)"
-  },
-  
-  overview: "Peru is home to one of the world's most iconic archaeological sites - Machu Picchu. But this incredible country offers so much more: the vibrant capital Lima, colonial Cusco, mysterious Nazca Lines, floating islands of Lake Titicaca, Amazon rainforest adventures, and world-renowned cuisine. Trek the Inca Trail, explore ancient ruins, sample ceviche and pisco sours, and immerse yourself in Andean culture.",
-  
-  destinations: [
-    {
-      name: "Machu Picchu & Cusco",
-      description: "Lost city of the Incas perched high in the Andes. Cusco's colonial architecture, Sacred Valley ruins, and gateway to Machu Picchu via Inca Trail or train.",
-      image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Lima",
-      description: "Cosmopolitan capital with world-class restaurants, colonial center, Miraflores coastal cliffs, surfing, and Peru's culinary heart.",
-      image: "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Lake Titicaca",
-      description: "World's highest navigable lake with floating Uros Islands, traditional communities, stunning views, and gateway to Bolivia.",
-      image: "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Amazon Rainforest",
-      description: "Peruvian Amazon from Puerto Maldonado or Iquitos. Wildlife spotting, jungle lodges, river cruises, and incredible biodiversity.",
-      image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Getting to Machu Picchu",
-      description: "Inca Trail (4-day trek, book 6 months ahead). Train from Cusco/Ollantaytambo (Peru Rail/Inca Rail). Alternative treks: Salkantay, Lares. Altitude acclimatization crucial."
-    },
-    {
-      icon: Camera,
-      title: "Inca Trail Permits",
-      description: "Limited to 500 people daily (including guides/porters). Book 6+ months ahead for dry season. Alternative treks available without permits. Train tickets also sell out."
-    },
-    {
-      icon: Users,
-      title: "Altitude Sickness",
-      description: "Cusco at 11,150ft. Acclimatize 2-3 days before Machu Picchu or Inca Trail. Drink coca tea. Take it slow. Medication available (Diamox). Symptoms: headache, nausea."
-    },
-    {
-      icon: Utensils,
-      title: "Peruvian Cuisine",
-      description: "Ceviche, lomo saltado, anticuchos, cuy (guinea pig), causa. Lima has world's best restaurants (Central, Maido). Chicha morada, pisco sour. Street food safe."
-    },
-    {
-      icon: DollarSign,
-      title: "Budget Planning",
-      description: "Budget-friendly country. Hostels $10-20. Nice hotels $40-80. Meals $5-15. Inca Trail $500-600. Machu Picchu entry $50. Train $65-150 each way. Tours affordable."
-    },
-    {
-      icon: Info,
-      title: "Essential Tips",
-      description: "Visa-free for most nationalities. Cash essential outside cities. Sun strong at altitude - sunscreen crucial. Learn basic Spanish. Bargain at markets."
-    }
-  ],
-  
-  highlights: [
-    "Witness sunrise at Machu Picchu",
-    "Trek the legendary Inca Trail",
-    "Explore Sacred Valley ruins",
-    "Wander colonial Cusco streets",
-    "Sample Lima's world-class restaurants",
-    "Visit floating islands of Lake Titicaca",
-    "Fly over mysterious Nazca Lines",
-    "Hike Rainbow Mountain (Vinicunca)",
-    "Experience Amazon wildlife",
-    "Try authentic Peruvian ceviche"
-  ],
-  
-  tips: [
-    "Book Inca Trail permits 6+ months in advance - they sell out",
-    "Spend 2-3 days in Cusco to acclimatize before Machu Picchu",
-    "Arrive at Machu Picchu early (first bus at 5:30am) to beat crowds",
-    "Book train tickets to Machu Picchu well in advance",
-    "Drink coca tea for altitude - locals swear by it",
-    "Lima: Stay in Miraflores or Barranco, not central Lima",
-    "Rainbow Mountain is 17,000ft - only go if well-acclimatized",
-    "Negotiate prices for souvenirs - start at 40-50% of asking",
-    "Don't skip Sacred Valley - Ollantaytambo and Pisac ruins amazing",
-    "Try guinea pig (cuy) if adventurous - it's a delicacy"
-  ]
-},
-{
-  id: "brazil-complete",
-  title: "Brazil Complete Explorer",
-  description: "Rio, Amazon, beaches, and Brazilian culture",
-  image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=400&h=250&fit=crop",
-  continent: "South America",
-  rating: 4.7,
-  downloads: "6.4k",
-  pages: 112,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Beach", "Nature", "Culture"],
-  featured: true,
-  
-  subtitle: "Samba, Beaches & Amazon Rainforest",
-  heroImage: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "December-March (Summer), September-November (Spring)",
-    duration: "14-21 days recommended",
-    budget: "$$ - Moderate",
-    highlights: 48,
-    language: "Portuguese",
-    currency: "Brazilian Real (BRL)"
-  },
-  
-  overview: "Brazil is South America's giant - diverse, vibrant, and unforgettable. From Rio's iconic beaches and Christ the Redeemer to the mighty Amazon rainforest, from Salvador's Afro-Brazilian culture to Iguazu's thundering waterfalls, Brazil captivates. Experience Carnival, samba, caipirinha cocktails, pristine beaches, colonial towns, and the warmth of Brazilian hospitality. It's a country of superlatives and endless adventure.",
-  
-  destinations: [
-    {
-      name: "Rio de Janeiro",
-      description: "Iconic city with Christ the Redeemer, Sugarloaf Mountain, Copacabana and Ipanema beaches, Carnival, samba, and stunning coastal setting.",
-      image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Amazon Rainforest",
-      description: "World's largest rainforest accessed from Manaus. Jungle lodges, river cruises, wildlife spotting, indigenous communities, and incredible biodiversity.",
-      image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Iguazu Falls",
-      description: "Massive waterfalls on Brazil-Argentina border. 275 falls creating thunderous spectacle. Walkways get you close. Best viewed from both countries.",
-      image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Salvador da Bahia",
-      description: "Afro-Brazilian cultural heart. Colonial Pelourinho district, capoeira, candomblé religion, beaches, and incredible street food scene.",
-      image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Getting Around",
-      description: "Domestic flights essential - Brazil is huge. Buses comfortable for medium distances. Uber/99 in cities. Rio metro good. Amazon requires boats/planes."
-    },
-    {
-      icon: Camera,
-      title: "Must-Do Experiences",
-      description: "Christ the Redeemer at sunrise. Sunset from Sugarloaf. Carnival (book year ahead). Amazon wildlife tour. Iguazu Falls walkways. Beach time."
-    },
-    {
-      icon: Users,
-      title: "Safety Considerations",
-      description: "Stay alert in cities. Don't display valuables. Avoid favelas without guided tours. Use official taxis/Uber. Beach vendors persistent. Most tourist areas safe."
-    },
-    {
-      icon: Utensils,
-      title: "Brazilian Cuisine",
-      description: "Feijoada (black bean stew), churrasco (BBQ), açaí bowls, pão de queijo, brigadeiros. Fresh seafood. Caipirinha national cocktail. Rodizio steakhouses."
-    },
-    {
-      icon: DollarSign,
-      title: "Budget Planning",
-      description: "Moderate prices. Nice hotels $50-120. Meals $8-20. Domestic flights $100-200. Amazon tours pricey. Carnival prices spike. Street food cheap and good."
-    },
-    {
-      icon: Info,
-      title: "Essential Info",
-      description: "Visa requirements vary by nationality. Yellow fever vaccine recommended. Portuguese different from Spanish. Learn basic phrases. Card widely accepted."
-    }
-  ],
-  
-  highlights: [
-    "Visit Christ the Redeemer",
-    "Relax on Copacabana and Ipanema",
-    "Cable car up Sugarloaf Mountain",
-    "Experience Carnival in Rio",
-    "Explore Amazon rainforest",
-    "Walk among Iguazu Falls",
-    "Dance to samba and bossa nova",
-    "Discover colonial Salvador",
-    "Beach hop in Bahia",
-    "Try authentic Brazilian barbecue"
-  ],
-  
-  tips: [
-    "Book Carnival accommodations 6-12 months ahead - prices triple",
-    "Visit Christ the Redeemer early morning - less crowded, better photos",
-    "Don't walk on beach at night or display valuables during day",
-    "Learn basic Portuguese - 'Obrigado/a' goes a long way",
-    "Iguazu Falls: See both Brazil and Argentina sides (2 days)",
-    "Amazon: 3-4 days minimum at lodge for wildlife chances",
-    "Rio beaches: Ipanema safer/nicer than Copacabana",
-    "Use Uber/99 instead of street taxis - safer and cheaper",
-    "Yellow fever vaccine required for Amazon, recommended everywhere",
-    "Beach vendors persistent - firm 'não' (no) works"
-  ]
-},
-{
-  id: "argentina-chile",
-  title: "Argentina & Chile Patagonia",
-  description: "Patagonia, Buenos Aires, and Andes adventures",
-  image: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=400&h=250&fit=crop",
-  continent: "South America",
-  rating: 4.8,
-  downloads: "5.2k",
-  pages: 105,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Nature", "Adventure", "Wine"],
-  featured: true,
-  
-  subtitle: "Epic Glaciers, Wine Country & Tango",
-  heroImage: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "November-March (Patagonia summer), March-May (Wine harvest)",
-    duration: "14-21 days recommended",
-    budget: "$$ - Moderate",
-    highlights: 45,
-    language: "Spanish",
-    currency: "Argentine Peso (ARS) & Chilean Peso (CLP)"
-  },
-  
-  overview: "Argentina and Chile share dramatic Patagonia - a wilderness of glaciers, mountains, and pristine lakes. From Buenos Aires's tango culture to Mendoza's wine valleys, from Torres del Paine's peaks to Perito Moreno Glacier, from Chilean fjords to penguin colonies, this journey offers adventure and sophistication. Experience gaucho culture, world-class wines, spectacular hiking, and the raw beauty of South America's southern frontier.",
-  
-  destinations: [
-    {
-      name: "Patagonia (Argentina)",
-      description: "El Calafate's Perito Moreno Glacier, El Chaltén hiking (Fitz Roy), dramatic landscapes, estancias, and gateway to Torres del Paine.",
-      image: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Torres del Paine (Chile)",
-      description: "Chile's premier national park. W Trek, granite towers, Grey Glacier, turquoise lakes, guanacos, and world-class trekking.",
-      image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Buenos Aires",
-      description: "Sophisticated capital with tango shows, steakhouses, European architecture, colorful La Boca, Recoleta Cemetery, and vibrant neighborhoods.",
-      image: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Mendoza Wine Region",
-      description: "Argentina's wine capital at Andes foothills. Malbec vineyards, wine tours, cycling between bodegas, Aconcagua views, and gourmet dining.",
-      image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Getting Around",
-      description: "Fly Buenos Aires to El Calafate. Bus to El Chaltén. Cross to Chile (Puerto Natales/Torres del Paine). Long distances - flights save time. Buses comfortable."
-    },
-    {
-      icon: Camera,
-      title: "Patagonia Trekking",
-      description: "Torres del Paine W Trek (4-5 days) or O Circuit (8-9 days). Fitz Roy day hikes from El Chaltén. Book refugios/campsites ahead. Bring layers and rain gear."
-    },
-    {
-      icon: Users,
-      title: "Best Experiences",
-      description: "Perito Moreno glacier walk. Fitz Roy sunrise hike. Torres del Paine W Trek. Tango show in Buenos Aires. Wine tasting in Mendoza. Asado (BBQ)."
-    },
-    {
-      icon: Utensils,
-      title: "Food & Wine",
-      description: "Argentine steak unbeatable. Empanadas everywhere. Malbec wine. Dulce de leche desserts. Mate tea ritual. Chilean seafood and Carmenere wine."
-    },
-    {
-      icon: DollarSign,
-      title: "Budget Planning",
-      description: "Patagonia expensive (tourism season). Buenos Aires moderate. Hostels $15-30. Nice hotels $60-120. Meals $10-25. W Trek $800-1500 all-inclusive."
-    },
-    {
-      icon: Info,
-      title: "Seasonal Planning",
-      description: "Patagonia season Nov-Mar. Weather unpredictable - bring layers. Book Torres del Paine refugios 6+ months ahead. Buenos Aires year-round. Mendoza harvest Mar-Apr."
-    }
-  ],
-  
-  highlights: [
-    "Watch Perito Moreno Glacier calve",
-    "Hike to Fitz Roy at sunrise",
-    "Trek Torres del Paine W Circuit",
-    "Tango show in Buenos Aires",
-    "Wine tasting in Mendoza vineyards",
-    "Spot penguins in Punta Tombo",
-    "Kayak near glaciers",
-    "Experience authentic asado BBQ",
-    "Cross Andes by bus",
-    "Explore Ushuaia (world's southernmost city)"
-  ],
-  
-  tips: [
-    "Book Torres del Paine refugios/campsites 6+ months ahead for peak season",
-    "Patagonia weather unpredictable - pack for all seasons even in summer",
-    "El Chaltén is free camping vs. expensive Torres del Paine",
-    "Visit Perito Moreno on catamaran tour - get close to glacier",
-    "Buenos Aires: Take free walking tours, excellent and informative",
-    "Mendoza: Rent bikes and cycle between wineries - fun and scenic",
-    "Bring US dollars - better exchange rates than credit cards in Argentina",
-    "Layer up - Patagonia wind is serious even in summer",
-    "W Trek clockwise less crowded than counterclockwise",
-    "Don't skip El Chaltén - Fitz Roy hikes rival Torres del Paine"
-  ]
-},
-{
-  id: "colombia-adventure",
-  title: "Colombia Adventure Guide",
-  description: "Cartagena, Bogotá, coffee region, and Caribbean coast",
-  image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400&h=250&fit=crop",
-  continent: "South America",
-  rating: 4.6,
-  downloads: "4.1k",
-  pages: 82,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Culture", "Coffee", "Beach"],
-  featured: false,
-  
-  subtitle: "Colonial Gems, Coffee Culture & Caribbean Coast",
-  heroImage: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "December-March, July-August (Dry seasons)",
-    duration: "10-14 days recommended",
-    budget: "$ - Budget Friendly",
-    highlights: 38,
-    language: "Spanish",
-    currency: "Colombian Peso (COP)"
-  },
-  
-  overview: "Colombia has emerged as South America's hottest destination - combining colonial beauty, coffee culture, Caribbean beaches, and warm hospitality. Explore colorful Cartagena's old town, tour coffee plantations in Salento, experience Bogotá's vibrant art scene, trek to Lost City, and relax on Tayrona's pristine beaches. Colombia surprises visitors with its diversity, friendliness, and incredible transformation.",
-  
-  destinations: [
-    {
-      name: "Cartagena",
-      description: "Stunning colonial walled city on Caribbean coast. Colorful buildings, fortress walls, rooftop bars, beaches, and romantic old town wandering.",
-      image: "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Coffee Region (Eje Cafetero)",
-      description: "Salento, Filandia, and coffee plantations. Cocora Valley's wax palms, coffee tours, hacienda stays, and beautiful mountain scenery.",
-      image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Bogotá",
-      description: "High-altitude capital with colonial La Candelaria, world-class museums, Monserrate views, street art, craft beer, and dynamic cultural scene.",
-      image: "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Tayrona National Park",
-      description: "Caribbean coast paradise with jungle-backed beaches, hiking trails, hammock camping, and crystal-clear waters. Near Santa Marta.",
-      image: "https://images.unsplash.com/photo-1551244072-5d12893278ab?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Getting Around",
-      description: "Domestic flights cheap between cities. Buses comfortable but long distances. VIP buses for overnight. Avianca, LATAM, Viva Air. Uber in cities."
-    },
-    {
-      icon: Camera,
-      title: "Must-Do Experiences",
-      description: "Coffee farm tour in Salento. Wander Cartagena's walled city. Hike Cocora Valley. Street art tour in Bogotá. Tayrona beaches. Try bandeja paisa."
-    },
-    {
-      icon: Users,
-      title: "Safety Notes",
-      description: "Much safer than past reputation. Tourist areas safe. Don't display valuables. Avoid certain neighborhoods in cities. Ask locals. Overall very welcoming."
-    },
-    {
-      icon: Utensils,
-      title: "Colombian Cuisine",
-      description: "Bandeja paisa (massive platter), arepas, empanadas, ajiaco soup, fresh tropical fruit, coffee everywhere. Caribbean coast has excellent seafood."
-    },
-    {
-      icon: DollarSign,
-      title: "Budget Paradise",
-      description: "Very affordable. Hostels $10-20. Nice hotels $40-80. Meals $5-12. Coffee tours $25-40. Domestic flights $50-100. Great value overall."
-    },
-    {
-      icon: Info,
-      title: "Travel Tips",
-      description: "Most nationalities no visa needed. Yellow fever vaccine recommended for some areas. Spanish helpful. Altitude in Bogotá (8,600ft) - take it easy first day."
-    }
-  ],
-  
-  highlights: [
-    "Explore Cartagena's walled city",
-    "Tour coffee plantations in Salento",
-    "Hike Cocora Valley's wax palms",
-    "Discover Bogotá's street art",
-    "Relax on Tayrona's beaches",
-    "Try authentic Colombian coffee",
-    "Visit colorful Guatapé",
-    "Dance salsa in Cali",
-    "Trek to Lost City",
-    "Monserrate views over Bogotá"
-  ],
-  
-  tips: [
-    "Colombia safer than reputation - tourist areas very safe",
-    "Learn Spanish basics - English limited outside tourist zones",
-    "Cartagena can be very hot (90°F+) - visit Dec-Mar for better weather",
-    "Coffee region: Stay in finca (coffee farm) for authentic experience",
-    "Bogotá altitude 8,600ft - take first day easy, drink coca tea",
-    "Tayrona camping magical but bring all supplies including water",
-    "Domestic flights cheap - flying better than 12-hour bus rides",
-    "Try bandeja paisa - massive traditional meal (skip breakfast!)",
-    "Tipping not mandatory but 10% appreciated at restaurants",
-    "Cocora Valley hike: Start early to avoid afternoon clouds"
-  ]
-},
-{
-  id: "ecuador-galapagos",
-  title: "Ecuador & Galápagos Islands",
-  description: "Quito, Amazon, Andes, and unique Galápagos wildlife",
-  image: "https://images.unsplash.com/photo-1590089016763-f0fe8e4a5e3e?w=400&h=250&fit=crop",
-  continent: "South America",
-  rating: 4.8,
-  downloads: "5.6k",
-  pages: 92,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Wildlife", "Nature", "Adventure"],
-  featured: false,
-  
-  subtitle: "Darwin's Islands & Andean Diversity",
-  heroImage: "https://images.unsplash.com/photo-1590089016763-f0fe8e4a5e3e?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "June-November (Cooler, drier), December-May (Warmer)",
-    duration: "10-14 days recommended",
-    budget: "$$ - Moderate (Galápagos expensive)",
-    highlights: 40,
-    language: "Spanish",
-    currency: "US Dollar (USD)"
-  },
-  
-  overview: "Ecuador packs incredible diversity into a small country - volcanic Andes, Amazon rainforest, colonial Quito, indigenous markets, and the legendary Galápagos Islands. Walk among fearless wildlife found nowhere else on Earth, explore cloud forests, summit volcanoes, and experience authentic Andean culture. Despite its size, Ecuador offers some of South America's most unique experiences.",
-  
-  destinations: [
-    {
-      name: "Galápagos Islands",
-      description: "Unique wildlife paradise. Giant tortoises, marine iguanas, blue-footed boobies, sea lions. Snorkeling, island hopping, and Darwin's inspiration.",
-      image: "https://images.unsplash.com/photo-1590089016763-f0fe8e4a5e3e?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Quito",
-      description: "World's highest capital (9,350ft) with colonial old town, equator monument, cable car to volcano rim, and gateway to adventures.",
-      image: "https://images.unsplash.com/photo-1623773242944-3cd5b1c8357e?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Amazon Rainforest",
-      description: "Ecuadorian Amazon accessible from Tena or Coca. Wildlife lodges, canopy walks, indigenous communities, and incredible biodiversity.",
-      image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Otavalo & Andes",
-      description: "Famous indigenous market, crater lakes, Cotopaxi volcano, hot springs, and authentic highland culture. Beautiful mountain scenery.",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Galápagos Planning",
-      description: "Cruise (4-8 days, expensive but comprehensive) or island hopping (budget option, Santa Cruz base). Book flights and cruises well ahead. $100 park fee on arrival."
+ {
+      id: "alaska-guide",
+      title: "Alaska Travel Guide",
+      description: "Denali, glaciers, northern lights, bear watching and the Kenai Fjords",
+      image: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "United States", countrySlug: "usa", countryFlag: "🇺🇸",
+      rating: 4.9, downloads: "4.7k", pages: 88, price: "$14.99",
+      tags: ["Nature", "Wildlife", "Adventure"], featured: true, tag: "Bucket List", tagColor: "bg-blue-500",
+      subtitle: "America's Last Frontier — Denali, Glaciers & the Midnight Sun",
+      heroImage: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "June–August (summer), September–March (Northern Lights)", duration: "10–14 days", budget: "$$ Moderate to High", highlights: 40, language: "English", currency: "US Dollar (USD)" },
+      overview: "Alaska is America at its most wild and humbling — a state twice the size of Texas with 3.5 million lakes, 100,000 glaciers, and more coastline than the entire continental US. Denali (6,194 m) is North America's highest peak. Brown bears fish for salmon at Brooks Falls. Humpback whales breach in Kenai Fjords. And in summer, the sun barely sets.",
+      destinations: [
+        { name: "Denali National Park", description: "Six million acres of wilderness surrounding North America's highest peak. The park road (only one road, 145 km) is accessible only by park bus — extraordinary wildlife viewing.", image: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&h=600&fit=crop" },
+        { name: "Kenai Fjords & Seward", description: "Tidewater glaciers calving into the sea, humpback whales, orcas, sea otters, and puffins. Boat tours from Seward are essential.", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=600&fit=crop" },
+        { name: "Katmai & Brooks Falls", description: "The world's most spectacular bear viewing — brown bears catch sockeye salmon mid-leap at Brooks Falls. Peak viewing late July–September. Book months ahead.", image: "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=800&h=600&fit=crop" },
+        { name: "Fairbanks & Northern Lights", description: "The best city base for Aurora Borealis viewing (Sept–March). Chena Hot Springs, Iditarod culture, and the gold mining heritage of Alaska's interior.", image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly to Anchorage (ANC). Rent a car or campervan. Alaska Railroad connects Anchorage, Denali, and Fairbanks. Small planes essential for remote areas." },
+        { icon: Camera, title: "Wildlife Viewing", description: "Bears at Brooks Falls (book very early). Whale watching from Seward. Denali bus for caribou, moose, Dall sheep, and wolves. Bear spray essential." },
+        { icon: Users, title: "Northern Lights", description: "Best September–March in Fairbanks or northern Alaska. Download Space Weather app. Chena Hot Springs resort offers Aurora viewing packages." },
+        { icon: Utensils, title: "Alaska Food", description: "Wild Alaskan salmon (king, sockeye, coho), king crab, halibut, reindeer sausage, and wild blueberries. Fishing for your own dinner is possible on many packages." },
+        { icon: DollarSign, title: "Budget", description: "Alaska is expensive to reach but moderate within the state. Campervan saves accommodation costs. Book everything months ahead — limited capacity." },
+        { icon: Info, title: "Mosquitoes", description: "Alaskan mosquitoes are legendary June–July. DEET repellent is non-optional. Head nets recommended for Denali. They don't bite in coastal areas as much." },
+      ],
+      highlights: ["Spot bears at Brooks Falls fishing for salmon", "Whale watching in Kenai Fjords", "Denali park bus wildlife drive", "Northern Lights viewing from Fairbanks", "Glacier hike on Matanuska Glacier", "Flightseeing tour over Denali", "Soak in Chena Hot Springs under the aurora", "Kayaking in Prince William Sound", "Alaska Railroad Coastal Classic train", "Fly fishing for wild king salmon"],
+      tips: ["Brooks Falls bear viewing: Book Katmai permits 6+ months ahead — extremely limited", "Denali bus: Book early — peak season (July) fills months ahead", "Anchorage is just a base — get out quickly to the wilderness", "Mosquitoes are worst in June — pack serious DEET and consider a head net", "Northern Lights: Fairbanks is far better than Anchorage for viewing", "Salmon fishing: Book a half-day guided trip — unforgettable experience", "Campervans (RVs): Most practical way to see Alaska independently", "Weather changes fast — pack rain gear and warm layers even in July", "Alaska Railroad: The Coastal Classic (Anchorage–Seward) is spectacular", "Denali: Clear views of the peak only 30% of the time — set expectations"],
+    },
+ 
+    {
+      id: "yellowstone-guide",
+      title: "Yellowstone National Park Guide",
+      description: "Geysers, hot springs, bison herds and wolves in America's first national park",
+      image: "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "United States", countrySlug: "usa", countryFlag: "🇺🇸",
+      rating: 4.9, downloads: "6.8k", pages: 78, price: "$14.99",
+      tags: ["Geothermal", "Wildlife", "Nature"], featured: false,
+      subtitle: "America's First National Park — 10,000 Geothermal Wonders & America's Serengeti",
+      heroImage: "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "June–September (road access), April–May (bear viewing)", duration: "4–6 days", budget: "$$ Moderate", highlights: 35, language: "English", currency: "US Dollar (USD)" },
+      overview: "Yellowstone sits on a supervolcano caldera and contains over 10,000 geothermal features — more than any other place on Earth. Old Faithful erupts with clockwork regularity. Grand Prismatic Spring blazes in electric blues and oranges. The Lamar Valley offers the best wildlife viewing in North America — wolves, bears, bison, and pronghorn in vast grasslands that earned it the 'American Serengeti' nickname.",
+      destinations: [
+        { name: "Old Faithful & Upper Geyser Basin", description: "Old Faithful erupts every 44–125 minutes (average 90 min). The Upper Geyser Basin has the world's densest concentration of geysers — Morning Glory Pool, Castle Geyser.", image: "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=800&h=600&fit=crop" },
+        { name: "Grand Prismatic Spring", description: "Yellowstone's largest hot spring (112 m wide) glows in extraordinary rainbow colours — from deep blue in the centre to bright orange and red at the edges.", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=600&fit=crop" },
+        { name: "Lamar Valley", description: "The American Serengeti — open valleys where bison graze by the thousands, wolves hunt elk at dawn, and grizzly bears roam freely. Best at sunrise and sunset.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop" },
+        { name: "Grand Canyon of the Yellowstone", description: "The Yellowstone River drops 94 m at the Lower Falls into a 400 m deep canyon of yellow and orange rhyolite. Artist Point has the classic view.", image: "https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly to Jackson Hole (JAC), Bozeman (BZN), or Cody (COD). Rent a car — no public transport in the park. Book accommodation inside the park months ahead." },
+        { icon: Camera, title: "Wildlife Safety", description: "Stay 100 yards from bears and wolves, 25 yards from bison. Bison gore more visitors than bears annually — they're deceptively fast. Never approach any animal." },
+        { icon: Users, title: "Grand Teton", description: "Combine with Grand Teton National Park (30 min south) for one of America's greatest double-park itineraries. Jackson Hole is the best base for both." },
+        { icon: Utensils, title: "Food & Lodging", description: "Old Faithful Inn (a National Historic Landmark) is extraordinary — book 6–12 months ahead. Canyon Village and Mammoth Hot Springs also have dining options." },
+        { icon: DollarSign, title: "Park Pass", description: "$35 vehicle entry, or $80 America the Beautiful Annual Pass for all federal lands — pays for itself quickly if visiting multiple parks." },
+        { icon: Info, title: "Altitude & Safety", description: "Park sits at 2,000–3,000 m. Thermal features: Never leave boardwalks — the crust can be paper thin over boiling acidic water. People have died breaking this rule." },
+      ],
+      highlights: ["Watch Old Faithful erupt (multiple times)", "Grand Prismatic Spring from the overlook trail", "Lamar Valley wildlife at dawn", "Artist Point over the Grand Canyon of Yellowstone", "Wolves hunting in winter (January–February)", "Mammoth Hot Springs terraces", "Boiling River hot springs swim (seasonal)", "Watch bison migration in spring", "Norris Geyser Basin (hottest in the park)", "Sunrise at Hayden Valley for grizzly viewing"],
+      tips: ["Book Old Faithful Inn 6–12 months ahead — the most iconic hotel in any US national park", "Lamar Valley: Arrive before sunrise with a spotting scope for wolves", "Grand Prismatic: The overlook trail gives the aerial view — the boardwalk is too close", "Never leave boardwalks at thermal features — ground can be dangerously thin", "Timed entry reservations may be required in peak season — check nps.gov before arriving", "July–August: The most crowded months; traffic jams at wildlife sightings are common", "Combine with Grand Teton — same park pass covers both", "Bozeman, Montana is the best value airport/base for Yellowstone", "Winter (Dec–Feb): Snowcoach tours only but wolves visible and crowds absent", "America the Beautiful Pass ($80/year) covers all national parks — buy it"],
+    },
+ 
+    {
+      id: "washington-dc-guide",
+      title: "Washington DC Travel Guide",
+      description: "Free Smithsonian museums, monuments, the Mall and America's political heartland",
+      image: "https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "United States", countrySlug: "usa", countryFlag: "🇺🇸",
+      rating: 4.8, downloads: "5.5k", pages: 72, price: "$14.99",
+      tags: ["History", "Museums", "Politics"], featured: false,
+      subtitle: "Free World-Class Museums, Iconic Monuments & America's Story",
+      heroImage: "https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "March–June (cherry blossoms), September–November", duration: "4–6 days", budget: "$ Budget Friendly (most attractions free)", highlights: 38, language: "English", currency: "US Dollar (USD)" },
+      overview: "Washington DC is one of the world's great capital cities — and uniquely, almost all of its world-class attractions are completely free. The Smithsonian Institution's 19 museums include the National Museum of Natural History, National Air and Space Museum, and the National Museum of African American History and Culture. The National Mall's monuments tell America's story in stone and reflection pools.",
+      destinations: [
+        { name: "The National Mall & Monuments", description: "2-mile stretch from Capitol to Lincoln Memorial. Washington Monument, Vietnam Veterans Memorial, Korean War Memorial, Martin Luther King Jr. Memorial, and more — all free.", image: "https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=800&h=600&fit=crop" },
+        { name: "Smithsonian Museums", description: "19 free world-class museums — National Air and Space Museum, Natural History Museum (Hope Diamond), American History Museum, and the National Zoo.", image: "https://images.unsplash.com/photo-1584010673922-5f47c25dab96?w=800&h=600&fit=crop" },
+        { name: "NMAAHC & Holocaust Museum", description: "The National Museum of African American History and Culture (book timed entry months ahead) and the US Holocaust Memorial Museum are two of the most important museums in America.", image: "https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?w=800&h=600&fit=crop" },
+        { name: "Georgetown & Capitol Hill", description: "Georgetown's historic streets, canal walks, and independent restaurants. Capitol Hill: the Capitol building (free tours), Library of Congress, and the vibrant Eastern Market.", image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Three airports (DCA closest). Excellent Metro system covers all major sights. Most attractions on the Mall are walkable from each other." },
+        { icon: Camera, title: "Free Entry", description: "All Smithsonian museums, all National Mall monuments, Library of Congress, Supreme Court, and many other major attractions are completely free." },
+        { icon: Users, title: "Capitol & White House", description: "Capitol building tours require advance booking through your congressman's office (US citizens) or pre-registration. White House public tours limited and complex to arrange." },
+        { icon: Utensils, title: "Food Scene", description: "DC has a serious restaurant scene — Ethiopian food (largest Ethiopian diaspora outside Africa), the H Street corridor, Georgetown waterfront, and Union Market food hall." },
+        { icon: DollarSign, title: "Exceptional Value", description: "DC is one of America's best-value cities for a cultural trip — almost everything is free. Budget mainly for food, accommodation, and Uber." },
+        { icon: Info, title: "Cherry Blossoms", description: "Late March–early April cherry blossom season around the Tidal Basin is one of America's great annual spectacles. Book accommodation 6+ months ahead." },
+      ],
+      highlights: ["Lincoln Memorial at night", "Holocaust Museum (deeply moving)", "National Museum of African American History", "Cherry blossoms around the Tidal Basin (spring)", "Library of Congress reading room (free)", "Vietnam Veterans Memorial at dawn", "Capitol building exterior and grounds", "Georgetown canal walk", "National Zoo (free admission)", "Eastern Market on Saturday"],
+      tips: ["NMAAHC: Book timed entry passes 6+ months ahead — they're released monthly and disappear instantly", "Visit monuments at night — they're illuminated beautifully and far less crowded", "Cherry blossoms: Peak is just 1–2 weeks, usually late March — watch NPS forecasts", "Metro SmarTrip card for all transport — cheaper than single tickets", "The Mall is enormous — rent a Capital Bikeshare bike to cover it efficiently", "Holocaust Museum: Allow 3–4 hours; profoundly affecting — visit rested", "Georgetown: Walk the towpath along the C&O Canal for local atmosphere", "Free concerts at Kennedy Center (Millennium Stage, 6pm daily)", "DCA airport is the closest (Metro direct) — use over Dulles if possible", "Most museums: Best visited on weekdays — school groups dominate weekend mornings"],
+    },
+ 
+    {
+      id: "utah-guide",
+      title: "Utah Travel Guide",
+      description: "Arches, Zion, Bryce Canyon, Canyonlands and the Mighty Five national parks",
+      image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "United States", countrySlug: "usa", countryFlag: "🇺🇸",
+      rating: 4.9, downloads: "7.2k", pages: 95, price: "$14.99",
+      tags: ["Nature", "Hiking", "Canyons"], featured: true, tag: "Adventure", tagColor: "bg-orange-500",
+      subtitle: "The Mighty Five — America's Greatest Concentration of National Parks",
+      heroImage: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "March–May, September–November", duration: "7–10 days", budget: "$$ Moderate", highlights: 45, language: "English", currency: "US Dollar (USD)" },
+      overview: "Utah contains five of America's most spectacular national parks — Zion, Bryce Canyon, Capitol Reef, Canyonlands, and Arches — within a 500-km loop. Combine this with Monument Valley, Antelope Canyon, and Horseshoe Bend and Utah offers the greatest concentration of jaw-dropping scenery anywhere in North America.",
+      destinations: [
+        { name: "Zion National Park", description: "The Virgin River carved this extraordinary red canyon. Angels Landing (chains hike, permit required), The Narrows wading hike, and Emerald Pools are world-class.", image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=600&fit=crop" },
+        { name: "Bryce Canyon", description: "Not a canyon but an amphitheatre of hoodoos — orange limestone spires eroded into bizarre shapes. Sunrise from Bryce Point turns them gold.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
+        { name: "Arches National Park", description: "Over 2,000 natural sandstone arches including Delicate Arch (Utah's icon) and Landscape Arch (the world's longest natural arch). Timed entry now required.", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=600&fit=crop" },
+        { name: "Antelope Canyon & Horseshoe Bend", description: "The slot canyon near Page, Arizona glows with shafts of light at midday — Navajo Nation land (guided tours only). Horseshoe Bend's 270° river bend is a 1.5-mile walk from the car park.", image: "https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly to Las Vegas (LAS) or Salt Lake City (SLC). Rent a car — absolutely essential. The Mighty Five loop from Las Vegas is 7–10 days. From SLC is equally good." },
+        { icon: Camera, title: "Permits & Timed Entry", description: "Angels Landing lottery permit required. Arches timed entry reservation required May–October. Antelope Canyon tour-only booking. Book 3–6 months ahead." },
+        { icon: Users, title: "Mighty Five Loop", description: "Ideal order from Las Vegas: Zion → Bryce → Capitol Reef → Canyonlands → Arches (Moab). Return via Monument Valley and Page for Antelope Canyon." },
+        { icon: Utensils, title: "Moab & Springdale", description: "Moab (gateway to Arches and Canyonlands) has the best restaurant and accommodation scene. Springdale (Zion gateway) is charming and walkable." },
+        { icon: DollarSign, title: "Costs", description: "$35 per park or $80 America the Beautiful pass (buy it — pays for itself after 2 parks). Accommodation in Moab and Springdale gets expensive in peak season." },
+        { icon: Info, title: "Heat Warning", description: "Utah desert in June–August can exceed 45°C at canyon floor level. Carry 4+ litres of water per person per day. The Narrows and Angels Landing are dangerous in summer heat." },
+      ],
+      highlights: ["Angels Landing chains section in Zion", "The Narrows wading hike", "Delicate Arch at sunset", "Sunrise from Bryce Canyon amphitheatre", "Antelope Canyon light beams (midday)", "Horseshoe Bend overlook", "Mesa Arch sunrise in Canyonlands", "Dead Horse Point State Park views", "Monument Valley Navajo Tribal Park", "Canyonlands Island in the Sky"],
+      tips: ["Angels Landing permit: Apply for the lottery on recreation.gov — check monthly", "Arches timed entry: Book 3 months ahead on recreation.gov — fills immediately", "Antelope Canyon: Upper canyon for photographers, lower for hikers; tours sell out", "The Narrows: Best May–June after snowmelt. Avoid after heavy rain — flash flood danger", "America the Beautiful Pass ($80): Covers all 5 Utah national parks — buy it first", "Moab accommodation: Book months ahead for spring/fall — the town fills completely", "Drive Scenic Byway 12 between Bryce and Capitol Reef — one of America's best roads", "Bryce Canyon: Rim trail at sunset, then stay for extraordinary dark sky stargazing", "Summer heat is severe — hike before 9am and after 5pm in June–August", "Horseshoe Bend car park: Arrive before 8am or after 6pm — otherwise 2+ hour wait"],
+    },
+ 
+    {
+      id: "oahu-guide",
+      title: "Oahu Travel Guide",
+      description: "Waikiki Beach, Pearl Harbor, the North Shore's surf and Hawaiian culture",
+      image: "https://images.unsplash.com/photo-1542259009477-d625272157b7?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "United States", countrySlug: "usa", countryFlag: "🇺🇸",
+      rating: 4.7, downloads: "5.9k", pages: 72, price: "$14.99",
+      tags: ["Beach", "Surf", "History"], featured: false,
+      subtitle: "The Gathering Place — Surf, History & Aloha Spirit",
+      heroImage: "https://images.unsplash.com/photo-1542259009477-d625272157b7?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "April–June, September–November", duration: "5–8 days", budget: "$$ Moderate to High", highlights: 30, language: "English & Hawaiian", currency: "US Dollar (USD)" },
+      overview: "Oahu is the most visited Hawaiian island — home to the capital Honolulu, the iconic Waikiki Beach, and the solemn Pearl Harbor memorial. But beyond the tourist strip, Oahu has world-class surf (Pipeline, Sunset Beach on the North Shore), the dramatic Pali Lookout, the lush Manoa Valley, and the authentic local culture of Kailua town.",
+      destinations: [
+        { name: "Waikiki & Diamond Head", description: "The iconic beach backed by Honolulu hotels. Diamond Head crater hike (book in advance) for the best views over Waikiki. Surf lessons for beginners on the gentle waves.", image: "https://images.unsplash.com/photo-1542259009477-d625272157b7?w=800&h=600&fit=crop" },
+        { name: "Pearl Harbor", description: "USS Arizona Memorial (free, book early) sits directly above the sunken battleship. The Battleship Missouri, Pacific Aviation Museum, and the Bowfin submarine complete the day.", image: "https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=800&h=600&fit=crop" },
+        { name: "North Shore", description: "Winter (November–February) brings 9-metre waves for the Vans Triple Crown of Surfing at Pipeline and Sunset Beach. Summer brings calm snorkelling waters at Shark's Cove.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+        { name: "Kailua & Windward Coast", description: "Oahu's most beautiful beach town — Kailua Beach for kayaking to Mokulua Islands, Lanikai's calm turquoise water, and the lush Ko'olau mountain range backdrop.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Honolulu International (HNL). Rent a car for the North Shore and windward coast — essential. TheBus public transit covers central Oahu." },
+        { icon: Camera, title: "Pearl Harbor", description: "USS Arizona Memorial: Reserve free passes 60 days ahead online — they disappear instantly. Allow a full day for all the museums." },
+        { icon: Users, title: "Hawaiian Culture", description: "Respect the land and ocean — Hawaii has a deep conservation culture. Don't touch coral. Remove shoes when entering homes. Learn 'Mahalo' (thank you)." },
+        { icon: Utensils, title: "Local Food", description: "Plate lunch (rice + mac salad + protein), poke bowls (far better and cheaper than mainland), shave ice, malasadas from Leonard's Bakery, Loco Moco." },
+        { icon: DollarSign, title: "Costs", description: "Hawaii is expensive — most things cost 20–30% more than the mainland. Cook at home when possible. Farmers markets are great value." },
+        { icon: Info, title: "Ocean Safety", description: "Hawaiian waves can be deadly for inexperienced swimmers. Obey warning flags. The North Shore winter surf is for spectating only — not swimming." },
+      ],
+      highlights: ["Watch sunrise from Diamond Head crater", "USS Arizona Memorial at Pearl Harbor", "Pipeline surf viewing on the North Shore", "Kailua Beach kayak to the Mokulua Islands", "Manoa Falls hike through rainforest", "Pali Lookout for dramatic windward views", "Sunset at Lanikai Beach", "Waimea Bay cliff jump (summer only)", "Leonard's Bakery malasadas", "Polynesian Cultural Center day visit"],
+      tips: ["USS Arizona Memorial: Book free passes the moment they open (60 days ahead)", "Diamond Head: Book the trail reservation online — limited daily entry", "North Shore: November–February brings big waves — Pipeline is spectacular from the beach", "Kailua is far nicer than Waikiki for actually living the Hawaii experience", "Poke bowls: Buy from a grocery store (Times, Foodland) not a tourist restaurant — much better value", "Waikiki is the tourist centre — escape it as quickly as possible for real Hawaii", "Sunrise and sunset timing: Check daily — varies seasonally", "Hanauma Bay snorkelling: Book ahead, eco-certification required, no sunscreen (reef-safe only)", "TheBus: A $1 bus covers most of Honolulu — incredible value", "Rent a car for the North Shore drive — there's no good public transport"],
+    },
+ 
+    {
+      id: "maui-guide",
+      title: "Maui Travel Guide",
+      description: "Road to Hana, Haleakalā sunrise, whale watching and pristine beaches",
+      image: "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "United States", countrySlug: "usa", countryFlag: "🇺🇸",
+      rating: 4.9, downloads: "6.3k", pages: 78, price: "$14.99",
+      tags: ["Beach", "Whale Watching", "Hiking"], featured: false,
+      subtitle: "The Valley Isle — Road to Hana, Volcanic Summits & Whale Season",
+      heroImage: "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "April–May, September–November (whale season December–April)", duration: "7–10 days", budget: "$$$ Expensive", highlights: 30, language: "English & Hawaiian", currency: "US Dollar (USD)" },
+      overview: "Maui is Hawaii's most beloved island — a place of extraordinary diversity from the summit of Haleakalā volcano (3,055 m) to the pristine beaches of the west coast, the lush rainforests of the Road to Hana, and the whale nursery waters of the Au'au Channel (December–April). It's more relaxed and more beautiful than Oahu.",
+      destinations: [
+        { name: "Road to Hana", description: "The most scenic drive in Hawaii — 620 curves and 59 bridges over 85 km of lush coastline. Wai'anapanapa black sand beach, Twin Falls, Pipiwai trail bamboo forest.", image: "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=800&h=600&fit=crop" },
+        { name: "Haleakalā National Park", description: "The world's largest dormant volcano rises 3,055 m. Sunrise above the clouds is one of Hawaii's most powerful experiences — book the timed entry months ahead.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
+        { name: "Whale Watching (December–April)", description: "10,000+ North Pacific humpback whales winter in Maui's warm waters. Boat tours from Ma'alaea Harbor. Even shore-based sightings are common from December to March.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
+        { name: "Ka'anapali & West Maui", description: "Kā'anapali Beach (voted America's best multiple times), Black Rock cliff diving, Lahaina's historic Front Street, and snorkelling at Honolua Bay.", image: "https://images.unsplash.com/photo-1542259009477-d625272157b7?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly to OGG (Kahului). Rent a car — absolutely essential. No public transport for Hana or Haleakalā. Book rental early as demand is extreme." },
+        { icon: Camera, title: "Haleakalā Sunrise", description: "Timed entry reservation required 60 days ahead (opens at 7am HST). Drive up takes 2 hours from Kihei. Arrive 45 min before sunrise. It is cold (2°C) — pack layers." },
+        { icon: Users, title: "Road to Hana", description: "Start before 7am to beat traffic. Reserve Wai'anapanapa State Park (black sand beach) in advance. Allow a full day — 4–5 hours each way minimum." },
+        { icon: Utensils, title: "Maui Food", description: "Ono Seafood poke, Tin Roof plate lunch, Mama's Fish House (book a month ahead), banana bread at Aunty Sandy's on the Road to Hana, shave ice everywhere." },
+        { icon: DollarSign, title: "Expensive Island", description: "Maui is Hawaii's most expensive island. Car rental can be $80–150/day. Accommodation $200–500+/night in peak season. Cook in accommodation to save." },
+        { icon: Info, title: "Water Safety", description: "Maui has some of Hawaii's most dangerous ocean conditions — strong currents, rogue waves. South Maui beaches (Kihei, Wailea) are calmer. Always check conditions." },
+      ],
+      highlights: ["Haleakalā sunrise above the clouds", "Road to Hana's 620-curve journey", "Pipiwai Trail bamboo forest", "Whale watching from December to April", "Wai'anapanapa black sand beach", "Snorkelling at Molokini Crater", "Honolua Bay marine preserve", "Sunset from Ka'anapali Beach", "Twin Falls swimming holes", "Stargazing from Haleakalā summit"],
+      tips: ["Haleakalā sunrise: Reserve 60 days ahead at 7am Hawaii time — sell out instantly", "Road to Hana: Leave by 6:30am — traffic becomes gridlocked after 9am", "Wai'anapanapa: Book the separate state park reservation (not free)", "Car rental: Book 4–6 months ahead — Maui is chronically short of rental cars", "Lahaina: Devastated by 2023 wildfire — check current status before visiting", "Whale watching: December–February are best months; January is peak", "Molokini snorkel tour: Morning tours have calmer seas and better visibility", "South Maui (Kihei) is better value than west Maui (Ka'anapali) for accommodation", "Sunscreen: Hawaii requires mineral/reef-safe sunscreen by law", "Mama's Fish House: Book a month ahead — worth every cent for a special dinner"],
+    },
+ 
+    {
+      id: "yosemite-guide",
+      title: "Yosemite National Park Guide",
+      description: "Half Dome, El Capitan, Yosemite Falls and California's greatest wilderness",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "United States", countrySlug: "usa", countryFlag: "🇺🇸",
+      rating: 4.9, downloads: "8.1k", pages: 78, price: "$14.99",
+      tags: ["Hiking", "Rock Climbing", "Nature"], featured: false,
+      subtitle: "America's Most Beloved Valley — El Capitan, Half Dome & Ancient Sequoias",
+      heroImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–June (waterfalls), September–October (quiet)", duration: "3–5 days", budget: "$$ Moderate", highlights: 35, language: "English", currency: "US Dollar (USD)" },
+      overview: "Yosemite Valley is one of the world's most famous landscapes — an 11-km glacial valley of vertical granite walls rising 1,000 m, with the twin waterfalls of Yosemite Falls, the dome of Half Dome, and the vertical face of El Capitan (the world's most challenging rock climbing destination). John Muir called it 'the grandest of all special temples of Nature.' He was right.",
+      destinations: [
+        { name: "Yosemite Valley & El Capitan", description: "The 11-km valley floor with Tunnel View (the classic first view of El Cap), Valley Loop trail, and the best viewpoints of El Capitan — watch for climbers through binoculars.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
+        { name: "Half Dome", description: "The ultimate Yosemite hike — 24 km round trip with 1,400 m elevation gain, ending with a 50 m cable section on the dome's face. Permit required via lottery.", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=600&fit=crop" },
+        { name: "Glacier Point", description: "The 2,199 m viewpoint with the most dramatic perspective on the valley floor — Half Dome, Yosemite Falls, and the High Sierra simultaneously. Accessible by road or the Panorama Trail.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop" },
+        { name: "Mariposa Grove & Tuolumne Meadows", description: "Mariposa Grove's ancient giant sequoias (Grizzly Giant, 2,700 years old). Tuolumne Meadows in the High Sierra — open June–October for camping and hiking.", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Drive from San Francisco (3.5 hrs) or Fresno (1.5 hrs). Park entry reservation required May–October. Half Dome cables hike needs a separate day-use permit (lottery)." },
+        { icon: Camera, title: "Best Views", description: "Tunnel View at dawn (arrive before sunrise), Valley View, Sentinel Dome (sunset), and Glacier Point. Mirror Lake reflections best in spring mornings." },
+        { icon: Users, title: "Park Reservation", description: "Yosemite Valley requires a timed entry reservation May–October. Book on recreation.gov 2–3 months ahead. Free after 4pm — some use this to arrive late." },
+        { icon: Utensils, title: "Staying in the Park", description: "Ahwahnee Hotel (book 12 months ahead for summer). Half Dome Village tent cabins. Car camping — book 5 months ahead. Outside the park in El Portal or Mariposa." },
+        { icon: DollarSign, title: "Park Fees", description: "$35 vehicle entry (or America the Beautiful pass). Half Dome permit: $10 + $10 if done as a day hike add-on. Ahwahnee dinner reservation recommended." },
+        { icon: Info, title: "Seasonal", description: "May–June: Peak waterfalls from snowmelt. July–August: Crowded but warm. September–October: Quieter, golden light. Winter: Valley roads usually open, snow magic." },
+      ],
+      highlights: ["Half Dome cables hike (with permit)", "Tunnel View at sunrise", "El Capitan Meadow for watching climbers", "Glacier Point sunset", "Mist Trail to Vernal and Nevada Falls", "Ancient sequoias at Mariposa Grove", "Yosemite Falls trail (spring peak)", "Sentinel Dome easy hike for incredible views", "Tuolumne Meadows in summer", "Mirror Lake reflection in spring"],
+      tips: ["Timed entry reservation: Book on recreation.gov 2–3 months ahead — fills instantly", "Half Dome permit: Apply for the pre-season lottery in March — check nps.gov", "Arrive at Tunnel View before sunrise — parking fills by 6am in summer", "Valley Shuttle: Use it to avoid traffic — free and covers all major stops", "Mist Trail: Best in May–June when waterfalls are at peak; expect to get soaked", "Camp in the park if possible — waking to the valley at dawn is extraordinary", "El Capitan: Bring binoculars to watch climbers on the Dawn Wall", "America the Beautiful Pass ($80): Covers Yosemite, Sequoia, and all federal lands", "Avoid July 4th weekend — the most crowded day of the year", "September and October are the best months — golden light, cool temperatures, few crowds"],
+    },
+ 
+    {
+      id: "grand-canyon-guide",
+      title: "Grand Canyon Travel Guide",
+      description: "South Rim, North Rim, rim-to-rim hiking and Colorado River rafting",
+      image: "https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "United States", countrySlug: "usa", countryFlag: "🇺🇸",
+      rating: 4.9, downloads: "7.3k", pages: 75, price: "$14.99",
+      tags: ["Canyons", "Hiking", "Rafting"], featured: false,
+      subtitle: "One Mile Deep, 277 Miles Long — America's Greatest Natural Wonder",
+      heroImage: "https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "March–May, September–November", duration: "3–5 days", budget: "$$ Moderate", highlights: 28, language: "English", currency: "US Dollar (USD)" },
+      overview: "The Grand Canyon is 446 km long, up to 29 km wide, and over 1.6 km deep — a geological timeline exposed by the Colorado River over five million years. The South Rim is accessible year-round; the North Rim is open only mid-May to mid-October. Rim-to-rim hiking is one of America's great adventures. Colorado River rafting through the inner canyon is a bucket-list experience.",
+      destinations: [
+        { name: "South Rim", description: "The most accessible rim with Mather Point, Bright Angel Trail, Desert View Watchtower, and the Grand Canyon Village historic district. Open year-round.", image: "https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?w=800&h=600&fit=crop" },
+        { name: "Bright Angel Trail", description: "The most popular inner canyon trail — drops 1,350 m to the Colorado River over 15 km (one way). Most day hikers go to Indian Garden (9.6 km) and back.", image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=600&fit=crop" },
+        { name: "North Rim", description: "More remote, 300 m higher, and far less visited. The drive from the South Rim is 354 km (or 21 km as the condor flies). Open mid-May to mid-October only.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop" },
+        { name: "Havasu Falls", description: "The turquoise waterfall paradise on the Havasupai Tribal land requires a 16-km hike from the trailhead. Permits sell out in seconds when released each February.", image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly to Las Vegas (LAS, 4 hrs drive) or Phoenix (PHX, 3.5 hrs drive). Flagstaff is the closest city (1.5 hrs). Shuttle from Flagstaff and Williams available." },
+        { icon: Camera, title: "Sunrise & Sunset", description: "Mather Point and Yavapai Point for sunrise. Hopi Point and Pima Point for sunset (shuttle accessible). Desert View Watchtower for the full panorama." },
+        { icon: Users, title: "Hiking Safety", description: "Never attempt the river and back in one day in summer — this has killed many people. Descend in the morning, rest in shade at midday, ascend in late afternoon. Carry 4L of water." },
+        { icon: Utensils, title: "Phantom Ranch", description: "The only accommodation at the canyon bottom — book via lottery 15 months ahead. The steak dinner after a rim-to-rim hike is legendary." },
+        { icon: DollarSign, title: "Colorado Rafting", description: "Commercial Colorado River rafting trips through the inner canyon take 7–18 days and cost $4,000–7,000. Book 1–2 years ahead. One of the world's great adventures." },
+        { icon: Info, title: "Rim-to-Rim", description: "South Rim to North Rim (or reverse): 34 km via North Kaibab Trail and Bright Angel Trail. Usually done in 3 days with a night at Bright Angel Campground and Phantom Ranch." },
+      ],
+      highlights: ["Sunrise at Mather Point", "Bright Angel Trail down to Indian Garden", "Colorado River rafting multi-day trip", "Rim-to-rim hike (3 days)", "Havasu Falls permit hike", "Desert View Watchtower", "North Rim in autumn (fewer crowds)", "Helicopter flight over the canyon", "Condor spotting from the rim", "Night sky stargazing (Dark Sky Park)"],
+      tips: ["Never hike rim-to-river and back in one day in summer — it's genuinely dangerous", "Carry at minimum 4 litres of water for inner canyon hikes", "Havasu Falls permits: Released every February — set an alarm, sell out in seconds", "Phantom Ranch dinner: Book via lottery 15 months ahead (opens last day of relevant month)", "South Rim is accessible year-round; North Rim closes mid-October", "Rim shuttle is free — park the car and use it", "Sunrise is spectacular with few crowds — arrive 30 minutes before civil twilight", "Colorado rafting: Oar-powered trips ($4k+) are more intimate than motorised", "Mule rides to the river: Book 13 months ahead through Xanterra", "America the Beautiful Pass: $80 covers all national parks including this one"],
+    },
+ 
+    {
+      id: "smoky-mountains-guide",
+      title: "Smoky Mountains Travel Guide",
+      description: "America's most visited national park — waterfalls, elk, and autumn colours",
+      image: "https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "United States", countrySlug: "usa", countryFlag: "🇺🇸",
+      rating: 4.7, downloads: "4.3k", pages: 68, price: "$14.99",
+      tags: ["Hiking", "Wildlife", "Autumn"], featured: false,
+      subtitle: "America's Most Visited Park — Misty Mountains, Fireflies & Fall Colour",
+      heroImage: "https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "September–November (fall), May–June (wildflowers)", duration: "4–6 days", budget: "$ Moderate", highlights: 28, language: "English", currency: "US Dollar (USD)" },
+      overview: "Great Smoky Mountains National Park is America's most visited — over 12 million people per year — yet much of it remains genuinely wild. Named for the blue-grey mist that blankets the mountains, it spans Tennessee and North Carolina with over 800 miles of hiking trails, 100+ tree species creating extraordinary autumn colour, and the world's largest synchronised firefly display in June.",
+      destinations: [
+        { name: "Clingmans Dome & Newfound Gap", description: "The highest point in the park (2,025 m) with a futuristic observation ramp and sweeping views over the Smokies. The Appalachian Trail crosses Newfound Gap — walk a section.", image: "https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=800&h=600&fit=crop" },
+        { name: "Cades Cove", description: "The most popular valley in the Appalachians — a 17-km loop road through a historic pastoral landscape with black bears, deer, and preserved 19th-century homesteads.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
+        { name: "Alum Cave & Mt. LeConte", description: "The best day hike in the Smokies — 8 km to Alum Cave Bluffs (dramatic overhang) or the full 17 km to LeConte summit (5th highest peak in the east). LeConte Lodge needs booking.", image: "https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=800&h=600&fit=crop" },
+        { name: "Gatlinburg & Cherokee", description: "Gatlinburg is the kitschy, charming Tennessee gateway town. Cherokee (North Carolina side) is the home of the Eastern Band of Cherokee — the Museum of the Cherokee People is exceptional.", image: "https://images.unsplash.com/photo-1476189256191-40b7b8de1cf6?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly to Knoxville (TYS, 1 hr) or Asheville (AVL, 1.5 hrs). Rent a car — essential. No entry fee (the park has no entrance fee)." },
+        { icon: Camera, title: "Free Entry", description: "The Great Smoky Mountains is one of only a few national parks with no entrance fee. Budget mainly for accommodation (Gatlinburg hotels expensive in fall)." },
+        { icon: Users, title: "Synchronised Fireflies", description: "Mid-June: Elkmont campground hosts the world's most remarkable firefly synchronisation. Lottery permits required — extremely competitive." },
+        { icon: Utensils, title: "Regional Food", description: "Tennessee: Hot chicken, BBQ, and cornbread. Gatlinburg: Moonshine tasting at Ole Smoky Distillery. Asheville (nearby): Thriving craft beer and farm-to-table scene." },
+        { icon: DollarSign, title: "No Entry Fee", description: "The Smokies has no entrance fee — one of America's best-value national parks. Lodging in Gatlinburg is the main expense. Camping is the best way to experience the park." },
+        { icon: Info, title: "Black Bears", description: "The park has 1,500 black bears — the highest density in eastern America. Keep food in bear boxes. Never approach. They're often seen in Cades Cove and on roadsides." },
+      ],
+      highlights: ["Clingmans Dome sunrise above the clouds", "Cades Cove early morning wildlife drive", "Alum Cave hike to the bluffs", "Autumn foliage peak (mid-October)", "Synchronised fireflies at Elkmont (June)", "LeConte Lodge overnight stay", "Roaring Fork Motor Nature Trail", "Appalachian Trail section hike", "Abrams Falls waterfall hike", "Museum of the Cherokee People in Cherokee"],
+      tips: ["No park entry fee — one of America's great bargains", "Cades Cove: Wednesday and Saturday mornings are car-free — bike or walk the 17-km loop", "Fall colour peak: Mid-October. Book accommodation 6 months ahead — hotels fill completely", "Firefly lottery: Apply in May on recreation.gov — extremely competitive", "Bears: Use bear-proof canisters in camp, never leave food in car overnight", "Gatlinburg: Kitschy but fun — Ripley's and moonshine tasting are part of the experience", "LeConte Lodge: Book a year ahead — only accommodation on the summit", "Abrams Falls is 8 km and gorgeous — perfect introduction to Smokies hiking", "Newfound Gap: Walk 1 km of the Appalachian Trail just to say you have", "October weekends: Traffic jams on all roads — go mid-week for fall foliage"],
+    },
+ 
+    {
+      id: "acadia-guide",
+      title: "Acadia & Bar Harbor Guide",
+      description: "Cadillac Mountain, rocky coastline, lobster rolls and autumn in Maine",
+      image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "United States", countrySlug: "usa", countryFlag: "🇺🇸",
+      rating: 4.8, downloads: "3.7k", pages: 65, price: "$14.99",
+      tags: ["Nature", "Coastal", "Autumn"], featured: false,
+      subtitle: "Where Mountains Meet the Atlantic — Lobster, Lighthouses & Rocky Coastline",
+      heroImage: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "September–October (autumn), June–August (summer)", duration: "4–6 days", budget: "$$ Moderate", highlights: 25, language: "English", currency: "US Dollar (USD)" },
+      overview: "Acadia National Park on Mount Desert Island is the crown jewel of New England's coastline — a dramatic meeting of granite mountains and Atlantic Ocean. Cadillac Mountain is the first place in the US to see sunrise from late fall to early spring. Bar Harbor is the charming gateway town where lobster rolls are a way of life.",
+      destinations: [
+        { name: "Cadillac Mountain", description: "The highest peak on the US Atlantic coast (466 m). From October to March, it's the first place in the US to see sunrise. Timed vehicle entry reservation required in summer.", image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=800&h=600&fit=crop" },
+        { name: "Park Loop Road & Thunder Hole", description: "The 43-km scenic drive loops around the eastern half of the island past Sand Beach, Thunder Hole (a sea chasm that booms at high tide), and Otter Cliffs.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
+        { name: "Jordan Pond & Carriage Roads", description: "The pristine glacial pond with the classic view of the Bubbles mountains. 72 km of historic carriage roads (horse-drawn only) wind through the park's interior.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop" },
+        { name: "Bar Harbor", description: "Charming coastal town with lobster shacks, whale watching tours, kayak rentals, the Abbe Museum of Native American culture, and an excellent farmers' market.", image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly to Bangor (BGR, 1 hr drive) or Boston (BOS, 4.5 hrs drive). Rent a car — some areas accessible by Island Explorer free bus in summer." },
+        { icon: Camera, title: "Sunrise", description: "Cadillac Mountain sunrise: Reserve timed vehicle entry in advance for summer. From October–March: First sunrise in the US — arrive 30 min before civil dawn." },
+        { icon: Users, title: "Hiking", description: "Precipice Trail (serious iron rungs route), Beehive Trail, Gorham Mountain, and Ocean Path (easy, spectacular views) cover all difficulty levels." },
+        { icon: Utensils, title: "Lobster", description: "Lobster rolls: Thurston's Lobster Pound in Bass Harbor or Beal's Lobster Pier in Southwest Harbor for the most authentic experience. Blueberry pie is mandatory." },
+        { icon: DollarSign, title: "Costs", description: "$35 vehicle entry (America the Beautiful Pass covers it). Bar Harbor accommodation is expensive July–August — book months ahead." },
+        { icon: Info, title: "Autumn Peak", description: "Foliage peaks mid-October — the most beautiful time in all of Maine. Cool, clear days with spectacular colour. Also the most crowded — book early." },
+      ],
+      highlights: ["Cadillac Mountain sunrise (first in the US)", "Precipice Trail iron rung scramble", "Jordan Pond with the Bubbles view", "Thunder Hole at high tide", "Bike the historic carriage roads", "Whale watching from Bar Harbor", "Lobster roll at a proper shack", "Sea kayaking around the islands", "Ocean Path coastal walk", "Beehive Trail loop"],
+      tips: ["Cadillac Mountain vehicle reservation: Book on recreation.gov for May–October", "Precipice Trail is genuinely challenging — not for those with vertigo", "Island Explorer bus: Free in summer — use it to avoid parking nightmares", "Lobster: Order at a no-frills shack by the water, not a sit-down restaurant", "October foliage: Book accommodation 6 months ahead — fills completely", "Jordan Pond House: Famous for popovers and tea — go for afternoon snack", "Sand Beach: The Atlantic is very cold (13°C in August) — brave souls only", "Bar Harbor in July–August has cruise ship days — check before visiting", "Bike rental in Bar Harbor for the carriage roads is the perfect half-day", "Acadia sits in a national park — carry bear spray if hiking in early morning"],
+    },
+ 
+    {
+      id: "montreal-guide",
+      title: "Montréal Travel Guide",
+      description: "French Canadian culture, world-class food, festivals and Mount Royal",
+      image: "https://images.unsplash.com/photo-1560813962-ff3d8fcf59ba?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "Canada", countrySlug: "canada", countryFlag: "🇨🇦",
+      rating: 4.8, downloads: "4.4k", pages: 72, price: "$14.99",
+      tags: ["Culture", "Food", "Festivals"], featured: false,
+      subtitle: "North America's French Heart — Poutine, Jazz & Joie de Vivre",
+      heroImage: "https://images.unsplash.com/photo-1560813962-ff3d8fcf59ba?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "June–September (warm, festivals), February (winter festival)", duration: "4–6 days", budget: "$$ Moderate", highlights: 30, language: "French & English", currency: "Canadian Dollar (CAD)" },
+      overview: "Montréal is North America's most European city — an island city that seamlessly blends French and English cultures with vibrant arts, extraordinary food, and a festival calendar unmatched anywhere on the continent. The Jazz Festival, Just for Laughs Comedy, Osheaga Music Festival, and the Montréal International Fireworks Festival all happen in summer. The underground city (RÉSO) makes winter utterly survivable.",
+      destinations: [
+        { name: "Old Montréal (Vieux-Montréal)", description: "Cobblestone streets, the magnificent Notre-Dame Basilica (1829), Place Jacques-Cartier street performers, the Old Port with its waterfront terraces, and the Pointe-à-Callière archaeology museum.", image: "https://images.unsplash.com/photo-1560813962-ff3d8fcf59ba?w=800&h=600&fit=crop" },
+        { name: "Mount Royal Park", description: "Frederick Law Olmsted designed this 190-hectare park above the city. Beaver Lake, the lookout over the skyline, Tam-Tams Sunday drum circle, and cycling and cross-country skiing.", image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=800&h=600&fit=crop" },
+        { name: "Plateau-Mont-Royal & Mile End", description: "Montréal's bohemian heart — colourful Victorian duplexes with external staircases, the Main (Boulevard Saint-Laurent), bagels from Fairmount or St-Viateur, and the best cafés.", image: "https://images.unsplash.com/photo-1577048982768-5cb3e7ddfa23?w=800&h=600&fit=crop" },
+        { name: "Jean-Talon & Atwater Markets", description: "Two magnificent covered food markets — extraordinary Québec produce, maple products, fresh cheese curds, charcuterie, and local vegetables. Jean-Talon is North America's finest.", image: "https://images.unsplash.com/photo-1477495946615-20f5d5bd7a66?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Montréal-Trudeau Airport Metro to city (30 min). Excellent STM Métro network. Bixi bike share for the Plateau and Old Port. Underground RÉSO for winter." },
+        { icon: Camera, title: "Notre-Dame Basilica", description: "Montréal's most stunning interior — Gothic Revival with extraordinary blue and gold decorations. Book the Aura light show for an evening experience." },
+        { icon: Users, title: "Festivals", description: "Jazz Festival (late June), Just for Laughs (July), Osheaga (August), and the Francofolies music festival. All happen in a 10-week summer explosion of culture." },
+        { icon: Utensils, title: "Montréal Food", description: "Poutine (fries + cheese curds + gravy — the original), Montréal smoked meat (Schwartz's Deli), bagels (thinner, denser, wood-oven baked), and world-class restaurants on St-Denis." },
+        { icon: DollarSign, title: "Value", description: "Very good value by North American standards. Poutine €8. Smoked meat sandwich €12. Metro day pass €11. Much cheaper than Toronto." },
+        { icon: Info, title: "Language", description: "French is the official language — using 'Bonjour' first is not just politeness but expected. Montréalers will switch to English gracefully but appreciate the effort." },
+      ],
+      highlights: ["Notre-Dame Basilica Aura light show", "Smoked meat sandwich at Schwartz's", "Bagels from St-Viateur or Fairmount", "Mount Royal lookout at sunset", "Jazz Festival outdoor stages (free)", "Jean-Talon Market Saturday morning", "Bixi bike ride along the Lachine Canal", "Old Montréal cobblestone streets", "Underground city (RÉSO) in winter", "Tam-Tams drum circle on Mount Royal Sunday"],
+      tips: ["Say 'Bonjour' first — always. In shops, in restaurants, everywhere.", "Schwartz's smoked meat: Queue is always long, moves fast, totally worth it", "Bagels: The Montréal bagel debate (Fairmount vs St-Viateur) is unresolvable — try both", "Jazz Festival: Most outdoor concerts are free — the ticketed shows are smaller venues", "Winter (December–March): Dress in layers, use the RÉSO underground city, embrace it", "STM metro night buses run when the metro is closed — night owls covered", "Plateau neighbourhood is best explored on a Bixi bike", "Poutine: La Banquise (24-hour diner) for the most varieties", "Québec maple syrup: Buy at Jean-Talon market — nothing like supermarket versions", "Tipping: 15–20% expected in restaurants (higher than European norms)"],
+    },
+ 
+    {
+      id: "quebec-city-guide",
+      title: "Québec City Travel Guide",
+      description: "North America's only walled city — Château Frontenac, Old Town and Winter Carnival",
+      image: "https://images.unsplash.com/photo-1577048982768-5cb3e7ddfa23?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "Canada", countrySlug: "canada", countryFlag: "🇨🇦",
+      rating: 4.8, downloads: "3.3k", pages: 65, price: "$14.99",
+      tags: ["History", "Winter", "Culture"], featured: false,
+      subtitle: "North America's European Jewel — Ice Castles, Château & the St. Lawrence",
+      heroImage: "https://images.unsplash.com/photo-1577048982768-5cb3e7ddfa23?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "June–September (summer), January–February (Winter Carnival)", duration: "3–4 days", budget: "$$ Moderate", highlights: 22, language: "French (English spoken in tourism)", currency: "Canadian Dollar (CAD)" },
+      overview: "Québec City is the most European city in North America and one of the continent's most beautiful — a UNESCO World Heritage walled city dramatically positioned on the cliffs of Cap Diamant above the St. Lawrence River. The iconic Château Frontenac hotel dominates the skyline. The Vieux-Québec (Old City) is a perfectly preserved 17th-century French colonial city. In winter, the Carnaval de Québec transforms it into a magical ice kingdom.",
+      destinations: [
+        { name: "Vieux-Québec (Old City)", description: "The only walled city north of Mexico — two levels divided by the cliff. Upper Town: Château Frontenac, the Plains of Abraham, Dufferin Terrace. Lower Town: Petite-Champlain, Place Royale.", image: "https://images.unsplash.com/photo-1577048982768-5cb3e7ddfa23?w=800&h=600&fit=crop" },
+        { name: "Château Frontenac", description: "The world's most photographed hotel (1893) — staying here is extraordinary, but even tea in the lobby or walking the Dufferin Terrace boardwalk beside it is memorable.", image: "https://images.unsplash.com/photo-1476189256191-40b7b8de1cf6?w=800&h=600&fit=crop" },
+        { name: "Montmorency Falls", description: "Higher than Niagara Falls (83 m vs 57 m) and just 15 minutes from the city. Cable car or stairs, a suspension bridge over the falls, and ice climbing in winter.", image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=800&h=600&fit=crop" },
+        { name: "Winter Carnival", description: "The world's largest winter carnival (late January–February) — ice palace, toboggan slides on Dufferin Terrace, canoe racing on the frozen St. Lawrence, and Bonhomme Carnaval.", image: "https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly to Jean Lesage Airport (YQB, 15 min from Old City). VIA Rail train from Montréal (3.5 hrs). Old City is walkable once there." },
+        { icon: Camera, title: "Photography", description: "Château Frontenac from the ferry, sunrise from Cap Diamant, the Governors' Promenade (Dufferin Terrace), and the steep Escaliers (staircases) of the Lower Town." },
+        { icon: Users, title: "Petite-Champlain", description: "North America's oldest commercial street — narrow, steep, cobblestoned, with boutique galleries, restaurants, and one of the most charming streetscapes on the continent." },
+        { icon: Utensils, title: "Québec Food", description: "Tourtière (meat pie), poutine (the original), sugar pie, cretons (pork spread), and maple syrup in every form. Excellent table d'hôte dinners at local bistros." },
+        { icon: DollarSign, title: "Value", description: "Very reasonable. Old City restaurants €15–30 for mains. Many outdoor attractions free. Château Frontenac rooms from €250 — worth it for at least one night." },
+        { icon: Info, title: "Winter Magic", description: "Québec City in winter is extraordinary — the ice and snow transform the historic walls and architecture. Layer up: temperatures can hit −25°C in January." },
+      ],
+      highlights: ["Walk the old city walls", "Dufferin Terrace toboggan slide in winter", "Petite-Champlain neighbourhood", "Montmorency Falls cable car", "Ice Palace at Winter Carnaval", "Plains of Abraham historic battlefield", "St. Lawrence River ferry crossing", "Sugar shack maple experience (spring)", "Old Port market and ice fishing", "Fortifications National Historic Site"],
+      tips: ["Winter Carnaval (late January–February): Book accommodation 6 months ahead", "Dufferin Terrace toboggan slide is free and magical — try it even in summer", "Petite-Champlain is tourist-busy in summer — go in the morning or evening", "The city is small and walkable — 2 good walking shoes are your main need", "Montmorency Falls: The Pont de Québec (bridge) 20 min away is also spectacular", "VIA Rail from Montréal is more scenic and relaxing than flying", "Speaking French (even badly) opens doors dramatically in Québec City", "Maple syrup experience: Visit a sugar shack in March/April — extraordinary", "Château Frontenac: Afternoon tea in the lobby if not staying — worth the splurge", "Plains of Abraham: Walk the 100-acre urban battlefield — pivotal to Canadian history"],
     },
-    {
-      icon: Camera,
-      title: "Wildlife Viewing",
-      description: "Giant tortoises, blue-footed boobies, marine iguanas, sea lions, penguins, frigatebirds. Animals fearless - close encounters guaranteed. Snorkeling with sea turtles."
-    },
-    {
-      icon: Users,
-      title: "Altitude Considerations",
-      description: "Quito at 9,350ft. Acclimatize 1-2 days before volcano treks or Cotopaxi. Altitude sickness common. Coca tea helps. Take it slow initially."
-    },
-    {
-      icon: Utensils,
-      title: "Ecuadorian Food",
-      description: "Ceviche, llapingachos (potato cakes), hornado (roast pork), fresh seafood on coast. Guinea pig in highlands. Fresh juices everywhere. Uses US dollar."
-    },
-    {
-      icon: DollarSign,
-      title: "Budget & Costs",
-      description: "Mainland affordable. Galápagos expensive: cruises $2,000-10,000+. Island hopping budget option ($100-150/day). Park fees $100. Flights to Galápagos $400-500 roundtrip."
-    },
-    {
-      icon: Info,
-      title: "Best Itinerary",
-      description: "Quito (2 days) → Otavalo market (1 day) → Amazon (3-4 days) or Galápagos (4-8 days). Cotopaxi/Quilotoa loop popular. 10-14 days ideal."
-    }
-  ],
-  
-  highlights: [
-    "Snorkel with sea lions in Galápagos",
-    "See giant tortoises up close",
-    "Explore Quito's colonial center",
-    "Shop Otavalo's indigenous market",
-    "Trek to Quilotoa crater lake",
-    "Wildlife spotting in Amazon",
-    "Hike near Cotopaxi volcano",
-    "Stand on the equator",
-    "Blue-footed booby mating dance",
-    "Soak in Papallacta hot springs"
-  ],
-  
-  tips: [
-    "Book Galápagos cruise/flights 3-6 months ahead for best rates",
-    "Last-minute Galápagos cruise deals exist in Puerto Ayora (risky)",
-    "Bring $100 cash for Galápagos park entrance fee",
-    "Quito altitude: Take first day easy, drink coca tea, no alcohol initially",
-    "Island hopping cheaper than cruise but see less wildlife",
-    "Otavalo market best on Saturday - massive and authentic",
-    "Ecuador uses US dollars - bring small bills, ATMs common",
-    "Amazon: 3-4 day lodge stay minimum for wildlife chances",
-    "Pack layers - can be cold in highlands, hot in lowlands, hot in Galápagos",
-    "Book Amazon lodges that include activities - some charge extra for everything"
-  ]
-}
 ],
-  oceania: [
-    // Add these guides to the "oceania" array in your guidesData.ts file
 
-{
-  id: "australia-complete",
-  title: "Australia Complete Guide",
-  description: "East coast, Outback, and everything Australian",
-  image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=400&h=250&fit=crop",
-  continent: "Oceania",
-  rating: 4.9,
-  downloads: "10.5k",
-  pages: 125,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Beach", "Nature", "Adventure"],
-  featured: true,
-  
-  subtitle: "From Sydney to the Great Barrier Reef",
-  heroImage: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "September-November (Spring), March-May (Fall)",
-    duration: "14-21 days minimum",
-    budget: "$$$ - Expensive",
-    highlights: 52,
-    language: "English",
-    currency: "Australian Dollar (AUD)"
-  },
-  
-  overview: "Australia is a land of stunning contrasts - world-class cities, pristine beaches, ancient rainforests, the Great Barrier Reef, and the vast red Outback. From Sydney's iconic Opera House to Melbourne's laneway culture, from snorkeling with sea turtles to spotting koalas and kangaroos, Australia offers incredible diversity. Experience surf culture, Aboriginal heritage, unique wildlife, and laid-back Aussie hospitality in this massive island continent.",
-  
-  destinations: [
+  /* ═══════════════════════════════════════
+     SOUTH AMERICA
+  ═══════════════════════════════════════ */
+  "south-america": [
     {
-      name: "Sydney & New South Wales",
-      description: "Iconic Opera House, Harbour Bridge, Bondi Beach, Blue Mountains, wine country, and Australia's most famous city with beautiful harbor.",
-      image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=800&h=600&fit=crop"
+      id: "peru-machu-picchu",
+      title: "Peru & Machu Picchu Guide",
+      description: "Inca Trail, Sacred Valley, Amazon jungle and Lima's world-class food",
+      image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=800&h=500&fit=crop",
+      continent: "South America", continentSlug: "south-america",
+      country: "Peru", countrySlug: "peru", countryFlag: "🇵🇪",
+      rating: 4.9, downloads: "7.8k", pages: 98, price: "$14.99",
+      tags: ["Adventure", "History", "Hiking"], featured: true, tag: "Top Rated", tagColor: "bg-blue-500",
+      subtitle: "Ancient Inca Empire & Andean Adventures",
+      heroImage: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–September (dry season)", duration: "10–14 days", budget: "$ Budget to Moderate", highlights: 42, language: "Spanish & Quechua", currency: "Peruvian Sol (PEN)" },
+      overview: "Peru is home to one of the world's most iconic archaeological sites — Machu Picchu ('Old Peak' in Quechua). But this incredible country offers so much more: the vibrant capital Lima, colonial Cusco, mysterious Nazca Lines, floating islands of Lake Titicaca, Amazon rainforest, and world-renowned gastronomy that regularly tops the World's 50 Best Restaurants.",
+      destinations: [
+        { name: "Machu Picchu & Cusco", description: "The Inca citadel at 2,430 m, rediscovered by Hiram Bingham in 1911. Cusco — the Inca capital — has extraordinary colonial architecture built on Inca foundations.", image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=800&h=600&fit=crop" },
+        { name: "Lima", description: "Cosmopolitan Pacific capital with world-class restaurants (Central ranked #1 in Latin America), Miraflores coastal cliffs, surfing, and Peru's culinary revolution.", image: "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=800&h=600&fit=crop" },
+        { name: "Sacred Valley", description: "The fertile valley between Cusco and Machu Picchu with Ollantaytambo, Pisac market, salt flats of Maras, and circular Moray terraces.", image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=800&h=600&fit=crop" },
+        { name: "Lake Titicaca", description: "World's highest navigable lake (3,812 m) with the floating Uros reed islands, Taquile Island, and traditional communities maintaining pre-Inca traditions.", image: "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting to Machu Picchu", description: "Inca Trail (4-day trek, book 6 months ahead). Train from Ollantaytambo (Peru Rail/Inca Rail). Salkantay Trek alternative. Altitude acclimatization in Cusco is crucial." },
+        { icon: Camera, title: "Inca Trail Permits", description: "Limited to 500 people daily (including guides and porters). Book 6+ months ahead for May–September. Trains also sell out — book early." },
+        { icon: Users, title: "Altitude Sickness", description: "Cusco at 3,399 m. Acclimatize 2–3 days minimum. Drink coca tea (legal in Peru). Take it slow first day. Diamox medication available." },
+        { icon: Utensils, title: "Peruvian Cuisine", description: "Ceviche, lomo saltado, anticuchos, cuy (guinea pig), causa. Lima has some of the world's best restaurants. Pisco sour is the national cocktail." },
+        { icon: DollarSign, title: "Budget Planning", description: "Budget-friendly country. Hostels $10–20. Nice hotels $40–80. Inca Trail $500–600 all-inclusive. Machu Picchu entry $50. Train $65–150 each way." },
+        { icon: Info, title: "Essential Tips", description: "Visa-free for most nationalities. Cash essential outside cities. Sun very strong at altitude — sunscreen essential. Learn basic Spanish phrases." },
+      ],
+      highlights: ["Witness sunrise at Machu Picchu", "Trek the legendary 4-day Inca Trail", "Explore Sacred Valley ruins", "Wander colonial Cusco's plazas", "Sample Lima's world-class restaurants", "Visit floating islands of Lake Titicaca", "Fly over mysterious Nazca Lines", "Hike Rainbow Mountain (Vinicunca)", "Experience the Amazon at Puerto Maldonado", "Try authentic Peruvian ceviche"],
+      tips: ["Book Inca Trail permits 6+ months in advance — they sell out every year", "Spend 2–3 days in Cusco to acclimatize before Machu Picchu", "Arrive at Machu Picchu on the first bus (5:30 am) to beat crowds", "Book train tickets to Aguas Calientes well in advance", "Drink coca tea for altitude — locals swear by it", "Lima: Stay in Miraflores or Barranco, not central Lima", "Rainbow Mountain is at 5,200 m — only go if well acclimatized", "Negotiate prices for souvenirs — start at 40–50% of asking", "Don't skip Sacred Valley — Ollantaytambo and Pisac are extraordinary", "Try guinea pig (cuy) if adventurous — it's a traditional delicacy"],
     },
     {
-      name: "Great Barrier Reef & Queensland",
-      description: "World's largest coral reef system. Cairns, Port Douglas, Whitsunday Islands. Snorkeling, diving, sailing, and tropical paradise.",
-      image: "https://images.unsplash.com/photo-1587139223877-04cb899fa3e8?w=800&h=600&fit=crop"
+      id: "brazil-complete",
+      title: "Brazil Complete Explorer",
+      description: "Rio's carnival energy, Amazon depth, Iguazu falls and Bahia beaches",
+      image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=800&h=500&fit=crop",
+      continent: "South America", continentSlug: "south-america",
+      country: "Brazil", countrySlug: "brazil", countryFlag: "🇧🇷",
+      rating: 4.7, downloads: "6.4k", pages: 112, price: "$14.99",
+      tags: ["Beach", "Nature", "Culture"], featured: true,
+      subtitle: "Samba, Beaches & Amazon Rainforest",
+      heroImage: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "December–March (summer), September–November (spring)", duration: "14–21 days", budget: "$$ Moderate", highlights: 48, language: "Portuguese", currency: "Brazilian Real (BRL)" },
+      overview: "Brazil is South America's giant — diverse, vibrant, and unforgettable. From Rio's iconic beaches and Christ the Redeemer (completed 1931) to the mighty Amazon rainforest (covering 40% of the country), from Salvador's Afro-Brazilian culture to Iguazu's thundering falls, Brazil captivates at every scale.",
+      destinations: [
+        { name: "Rio de Janeiro", description: "Christ the Redeemer (one of the New Seven Wonders), Sugarloaf Mountain, Copacabana and Ipanema beaches, Carnaval, and the world's most dramatic urban setting.", image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=800&h=600&fit=crop" },
+        { name: "Amazon Rainforest", description: "The world's largest tropical rainforest covering 5.5 million km². Accessed from Manaus — jungle lodges, river cruises, wildlife spotting, and indigenous communities.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop" },
+        { name: "Iguazu Falls", description: "275 individual waterfalls stretching 2.7 km — wider than Victoria, taller than Niagara. See from both the Brazilian and Argentine sides for the complete experience.", image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop" },
+        { name: "Salvador da Bahia", description: "Afro-Brazilian cultural heart. The Pelourinho colonial district (UNESCO), capoeira, candomblé religion, and an infectious energy unlike anywhere in Brazil.", image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Domestic flights essential — Brazil is the size of a continent. Buses comfortable for medium distances. Uber/99 in cities. Amazon requires boats or small planes." },
+        { icon: Camera, title: "Safety", description: "Stay alert in cities. Don't display valuables or expensive cameras. Use official taxis/Uber. Beaches: watch your belongings. Most tourist areas are safe." },
+        { icon: Users, title: "Carnaval", description: "February/March. Book accommodation 6–12 months ahead — prices triple. Rio's Sambodromo parade, street blocos, and Salvador's street carnival are different experiences." },
+        { icon: Utensils, title: "Brazilian Cuisine", description: "Feijoada (black bean stew — national dish), churrasco (BBQ), açaí bowls, pão de queijo, moqueca (Bahian seafood stew). Caipirinha is the national cocktail." },
+        { icon: DollarSign, title: "Budget Planning", description: "Moderate prices. Hotels $50–120. Meals $8–20. Domestic flights $100–200. Amazon tours expensive but worth it. Carnaval period prices spike dramatically." },
+        { icon: Info, title: "Essential Info", description: "Visa requirements vary. Yellow fever vaccination recommended. Portuguese is NOT Spanish — learn a few phrases. Card widely accepted in cities." },
+      ],
+      highlights: ["Visit Christ the Redeemer", "Relax on Copacabana and Ipanema", "Cable car up Sugarloaf Mountain", "Experience Carnaval in Rio", "Explore Amazon rainforest wildlife", "Walk among Iguazu Falls with a raincoat", "Dance to samba and bossa nova", "Discover colonial Salvador", "Beach hop in Bahia", "Try authentic Brazilian churrasco BBQ"],
+      tips: ["Book Carnaval accommodation 6–12 months ahead — prices triple", "Visit Christ the Redeemer early morning — fewer crowds and better visibility", "Don't walk on beach at night or display valuables during the day", "Learn basic Portuguese — 'Obrigado/a' goes a long way", "Iguazu Falls: See both Brazil and Argentina sides (2 full days)", "Amazon: 3–4 nights at a lodge minimum for wildlife opportunities", "Rio beaches: Ipanema is safer and generally nicer than Copacabana", "Use Uber/99 instead of street taxis — safer and cheaper", "Yellow fever vaccine required for Amazon, recommended everywhere", "Beach vendors are persistent — a firm 'não' (no) works"],
     },
     {
-      name: "Melbourne & Great Ocean Road",
-      description: "Cultural capital with laneway cafes, street art, sports obsession. Great Ocean Road's Twelve Apostles, coastal beauty, and penguin parades.",
-      image: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=800&h=600&fit=crop"
+      id: "argentina-chile",
+      title: "Argentina & Chile Patagonia",
+      description: "Torres del Paine, Perito Moreno glacier, Buenos Aires tango and Malbec",
+      image: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800&h=500&fit=crop",
+      continent: "South America", continentSlug: "south-america",
+      country: "Argentina / Chile", countrySlug: "argentina-chile", countryFlag: "🇦🇷",
+      rating: 4.8, downloads: "5.2k", pages: 105, price: "$14.99",
+      tags: ["Nature", "Adventure", "Wine"], featured: true,
+      subtitle: "Epic Glaciers, Wine Country & Tango in the Southern Cone",
+      heroImage: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "November–March (Patagonia summer), March–May (wine harvest)", duration: "14–21 days", budget: "$$ Moderate", highlights: 45, language: "Spanish", currency: "Argentine Peso (ARS) & Chilean Peso (CLP)" },
+      overview: "Argentina and Chile share dramatic Patagonia — a wilderness of glaciers, mountains, and pristine lakes at the end of the world. From Buenos Aires's tango culture to Mendoza's wine valleys, from Torres del Paine's granite towers to Perito Moreno Glacier's thundering calving, this journey offers both adventure and sophistication.",
+      destinations: [
+        { name: "Buenos Aires", description: "Sophisticated capital called the 'Paris of South America'. Tango shows, world-class steakhouses, European-style architecture, colourful La Boca, and Recoleta Cemetery.", image: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800&h=600&fit=crop" },
+        { name: "Patagonia & Perito Moreno", description: "El Calafate's Perito Moreno Glacier (5 km wide, 60 m tall) calves with thunderous crashes. El Chaltén's Fitz Roy massif offers some of the world's best hiking.", image: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800&h=600&fit=crop" },
+        { name: "Torres del Paine (Chile)", description: "Chile's premier national park. The W Trek or O Circuit through granite towers, Grey Glacier, turquoise lakes, and wind-sculpted landscapes.", image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=600&fit=crop" },
+        { name: "Mendoza Wine Region", description: "Argentina's wine capital at the Andes foothills. Malbec vineyards, cycling between bodegas, Aconcagua (highest peak in the Americas) views, and excellent restaurants.", image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Fly Buenos Aires to El Calafate (3 hours). Bus to El Chaltén (3 hours). Cross to Chile (Puerto Natales for Torres del Paine). Long distances — fly to save days." },
+        { icon: Camera, title: "Patagonia Trekking", description: "Torres del Paine W Trek (4–5 days) or O Circuit (8–9 days). Fitz Roy day hikes from El Chaltén. Book hut reservations months ahead for high season." },
+        { icon: Users, title: "Best Experiences", description: "Perito Moreno glacier walk on the ice. Fitz Roy sunrise hike. W Trek in Torres del Paine. Tango lesson in Buenos Aires. Wine tasting in Mendoza." },
+        { icon: Utensils, title: "Food & Wine", description: "Argentine steak is genuinely the world's best — order it correctly (not well-done!). Malbec wine. Empanadas. Dulce de leche desserts. Mate tea ritual." },
+        { icon: DollarSign, title: "Budget Planning", description: "Patagonia expensive in peak season. Torres del Paine refugios $800–1500 for W Trek. Buenos Aires moderate. Mendoza wine country excellent value." },
+        { icon: Info, title: "Patagonian Weather", description: "Notoriously unpredictable. Four seasons in a day is not a cliché. Pack full waterproof layers even in November–March. Wind is your constant companion." },
+      ],
+      highlights: ["Watch Perito Moreno Glacier calve with thunderous cracks", "Hike to Fitz Roy viewpoint at sunrise", "Trek Torres del Paine W Circuit", "Tango show in Buenos Aires (and take a lesson)", "Wine tasting in Mendoza's bodegas", "Spot Magellanic penguins at Punta Tombo", "Kayak near glaciers", "Experience authentic asado BBQ", "Cross the Andes by spectacular bus route", "Reach Ushuaia — the world's southernmost city"],
+      tips: ["Book Torres del Paine refugios/campsites 6+ months ahead for peak season", "Patagonia weather unpredictable — pack for all seasons even in summer", "El Chaltén free camping vs. expensive Torres del Paine — hike both", "Perito Moreno boat tour gets you closer to the face — worth the extra cost", "Buenos Aires: Free tango shows in San Telmo neighbourhood on Sundays", "Mendoza: Rent bikes to cycle between wineries — a wonderful afternoon", "Bring US dollars to Argentina — better exchange rates for cash", "Torres del Paine W Trek: Do it anticlockwise — end with the Towers at dawn", "Don't skip El Chaltén — Fitz Roy hikes rival Torres del Paine", "Eat steak medium — well done is considered a crime in Argentina"],
     },
     {
-      name: "Uluru & Red Centre",
-      description: "Sacred Uluru (Ayers Rock), Kata Tjuta, Kings Canyon. Aboriginal culture, desert landscapes, and spiritual heart of Australia.",
-      image: "https://images.unsplash.com/photo-1598948485421-33a1655d3c18?w=800&h=600&fit=crop"
-    }
+      id: "colombia-adventure",
+      title: "Colombia Adventure Guide",
+      description: "Cartagena's colour, Bogotá's altitude, coffee hills and Caribbean coast",
+      image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&h=500&fit=crop",
+      continent: "South America", continentSlug: "south-america",
+      country: "Colombia", countrySlug: "colombia", countryFlag: "🇨🇴",
+      rating: 4.6, downloads: "4.1k", pages: 82, price: "$14.99",
+      tags: ["Culture", "Coffee", "Beach"], featured: false,
+      subtitle: "Colonial Gems, Coffee Culture & Caribbean Coast",
+      heroImage: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "December–March, July–August (dry seasons)", duration: "10–14 days", budget: "$ Budget Friendly", highlights: 38, language: "Spanish", currency: "Colombian Peso (COP)" },
+      overview: "Colombia has transformed itself into South America's most exciting destination — combining colonial beauty, coffee culture, Caribbean beaches, and extraordinary warmth. The country's remarkable turnaround over the past two decades makes it one of travel's great stories. Colourful Cartagena, coffee farms in the Eje Cafetero, Bogotá's thriving arts scene, and remote Tayrona all await.",
+      destinations: [
+        { name: "Cartagena", description: "Stunning walled colonial city on the Caribbean coast. Colourful Getsemaní and Old City buildings, rooftop bars, horse-drawn carriages, and warm Caribbean hospitality.", image: "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?w=800&h=600&fit=crop" },
+        { name: "Coffee Region (Eje Cafetero)", description: "Salento, Filandia, and coffee farms set among dramatic volcanic peaks. Cocora Valley's towering wax palms (Colombia's national tree), farm stays, and horse-riding.", image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&h=600&fit=crop" },
+        { name: "Bogotá", description: "High-altitude capital (2,640 m) with La Candelaria colonial centre, the Gold Museum (world's finest pre-Columbian gold collection), street art, and vibrant nightlife.", image: "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?w=800&h=600&fit=crop" },
+        { name: "Tayrona National Park", description: "Where the Sierra Nevada mountains meet the Caribbean. Hiking trails through jungle to stunning beaches, hammock camping, and crystal-clear Caribbean water.", image: "https://images.unsplash.com/photo-1551244072-5d12893278ab?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Domestic flights cheap between cities (Avianca, LATAM, Viva). Buses comfortable but long distances. Uber in cities. Colombia's geography means air travel saves significant time." },
+        { icon: Camera, title: "Coffee Farm Tours", description: "Stay at a finca (coffee farm) in Salento or Manizales. Guided tours show the full coffee process from picking to roasting. Colombia produces some of the world's finest Arabica." },
+        { icon: Users, title: "Safety", description: "Colombia has transformed dramatically. Tourist areas are safe and welcoming. Research areas before visiting. Use registered taxis or Uber. Overall, Colombians are extraordinarily warm." },
+        { icon: Utensils, title: "Colombian Cuisine", description: "Bandeja paisa (enormous traditional platter), arepas, empanadas, ajiaco soup, fresh tropical fruit, and the world's best coffee. Caribbean coast has excellent fresh seafood." },
+        { icon: DollarSign, title: "Budget Paradise", description: "Very affordable. Hostels $10–20. Meals $5–12. Coffee farm tours $25–40. Domestic flights $50–100. Excellent value throughout." },
+        { icon: Info, title: "Practical Tips", description: "Most Western nationalities need no visa. Yellow fever vaccine recommended for some areas. Bogotá altitude (2,640 m) — take it easy the first day." },
+      ],
+      highlights: ["Explore Cartagena's walled colonial city", "Tour coffee farms in the Eje Cafetero", "Hike Cocora Valley's towering wax palms", "Discover Bogotá's world-class street art", "Relax on Tayrona's jungle-backed beaches", "Try authentic Colombian coffee at origin", "Visit colourful Guatapé and climb El Peñol rock", "Dance salsa in Cali", "Trek to the Ciudad Perdida (Lost City)", "Monserrate views over Bogotá's sprawl"],
+      tips: ["Colombia is much safer than its reputation — tourist areas are very welcoming", "Learn Spanish basics — English limited outside major tourist zones", "Cartagena is very hot (35°C+) — visit December–March for better weather", "Coffee region: Stay in a finca (coffee farm) for authentic experience", "Bogotá altitude 2,640 m — take first day easy, drink agua de panela", "Tayrona National Park: limited camping — book in advance", "Domestic flights cheap — flying saves grueling bus hours", "Try bandeja paisa — Colombia's enormous traditional meal", "Tipping not mandatory but 10% appreciated at restaurants", "Cocora Valley: Start early to avoid afternoon clouds obscuring the palms"],
+    },
+    {
+      id: "argentina-guide",
+      title: "Argentina Travel Guide",
+      description: "Buenos Aires tango, Mendoza wine, Iguazu Falls and Patagonia's end of the world",
+      image: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800&h=500&fit=crop",
+      continent: "South America", continentSlug: "south-america",
+      country: "Argentina", countrySlug: "argentina", countryFlag: "🇦🇷",
+      rating: 4.8, downloads: "4.6k", pages: 95, price: "$14.99",
+      tags: ["Culture", "Wine", "Nature"], featured: false,
+      subtitle: "The Southern Giant — Tango, Steak, Wine & Patagonia",
+      heroImage: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "September–November (spring), March–May (autumn)", duration: "14–21 days", budget: "$$ Moderate (outstanding value)", highlights: 42, language: "Spanish (Rioplatense dialect)", currency: "Argentine Peso (ARS)" },
+      overview: "Argentina is South America's most European country — a nation of extraordinary contrasts from the subtropical north (Iguazu Falls, Salta) to the glacial south (Patagonia, Ushuaia). Buenos Aires is one of the world's great cities. Mendoza's Malbec wine is world-class. The country's economic challenges have made it extraordinary value for foreign visitors — exceptional steak, wine, and culture at low prices.",
+      destinations: [
+        { name: "Buenos Aires", description: "The 'Paris of South America' with European-style boulevards, world-class museums, authentic tango milongas, the colourful La Boca neighbourhood, and legendary steakhouses (parrillas).", image: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800&h=600&fit=crop" },
+        { name: "Mendoza Wine Country", description: "Argentina's wine capital at the Andes foothills. Malbec vineyards, cycle between bodegas, and views of Aconcagua — the highest peak outside the Himalayas (6,961 m).", image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=800&h=600&fit=crop" },
+        { name: "Iguazu Falls", description: "Argentina's side of the falls is more intimate and spectacular than Brazil's — the Devil's Throat (Garganta del Diablo) walkway puts you directly over the most powerful cascade.", image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop" },
+        { name: "Salta & the Northwest", description: "Colonial Salta, the colourful Quebrada de Humahuaca (UNESCO), the surreal Puna highlands, the dramatic Tren a las Nubes train, and the salt flats of Jujuy province.", image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Fly to Buenos Aires EZE. Domestic flights (Aerolíneas) connect major cities. Long-distance buses are comfortable and excellent value. Rent car in Mendoza and Salta." },
+        { icon: Camera, title: "Blue Dollar Rate", description: "Argentina has complex exchange rates — use legal exchange apps (Wise, etc.) or exchange through reputable agencies to get the best rate. Prices change frequently." },
+        { icon: Users, title: "Buenos Aires Tango", description: "Authentic milongas (tango halls) where locals dance — La Catedral, Salon Canning, La Viruta. Shows (tango shows for tourists) are less authentic but spectacular." },
+        { icon: Utensils, title: "Argentine Cuisine", description: "Asado (BBQ — a cultural institution), empanadas, medialunas (croissants), mate tea ritual, alfajores, and dulce de leche in everything. Order steak 'a punto' (medium)." },
+        { icon: DollarSign, title: "Exceptional Value", description: "Argentina's economic situation means foreign visitors get extraordinary value. Fine dining for €15–25. Wine from €3 a bottle. Steak restaurants (parrillas) from €8–15." },
+        { icon: Info, title: "Safety", description: "Buenos Aires: Stay alert in crowds. San Telmo and La Boca tourist areas have pickpockets. Mendoza and Salta are very safe. Interior of the country is generally relaxed." },
+      ],
+      highlights: ["Tango show and milonga in Buenos Aires", "Asado BBQ with locals", "Mendoza bodega cycling tour", "Iguazu Falls Devil's Throat walkway", "Quebrada de Humahuaca colours", "Aconcagua base camp trek (experienced hikers)", "La Boca neighbourhood in Buenos Aires", "Wine harvest festival in Mendoza (March)", "Recoleta Cemetery (Eva Perón's tomb)", "Perito Moreno Glacier calving"],
+      tips: ["Use Wise or similar for currency exchange — never exchange at the airport rate", "Steak: Order 'a punto' (medium) — Argentines overcook by default if you say nothing", "Tango milonga: Learn 5 basic steps before going — locals appreciate the effort", "Mendoza: Rent a bike to cycle between bodegas — 3 per day is perfect", "Iguazu: Spend 2 days — Argentine side Day 1, Brazilian side Day 2 (day trip available)", "Buenos Aires neighbourhood: Stay in Palermo or Recoleta, not the city centre", "Mate tea: Accept when offered — refusing is slightly rude; hold the gourd and drink", "Domestic flights: Book early — Aerolíneas prices rise sharply close to departure", "Buenos Aires has outstanding bookshop culture — El Ateneo Grand Splendid is unmissable", "Learn Argentine Spanish: 'Che' and 'boludo' (friendly insult) — locals love it when visitors try"],
+    },
+     {
+      id: "bonaire-guide",
+      title: "Bonaire Travel Guide",
+      description: "The Caribbean's best shore diving, pink flamingos and an undiscovered island",
+      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=500&fit=crop",
+      continent: "Caribbean", continentSlug: "caribbean",
+      country: "Bonaire", countrySlug: "bonaire", countryFlag: "🇧🇶",
+      rating: 4.8, downloads: "1.8k", pages: 58, price: "$14.99",
+      tags: ["Diving", "Nature", "Flamingos"], featured: false,
+      subtitle: "Diver's Paradise — The Caribbean's Best-Kept Secret",
+      heroImage: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "Year-round (outside hurricane belt)", duration: "7–10 days", budget: "$$ Moderate", highlights: 20, language: "Papiamentu, Dutch & English", currency: "US Dollar (USD)" },
+      overview: "Bonaire is the ABC island that most visitors skip — which makes it perfect for those who know. The entire western coastline is a protected marine park, making it the Caribbean's unrivalled shore diving destination. Sixty dive sites are accessible by simply wading in from the beach. Wild flamingos stalk the salt flats. Donkeys roam the island freely. And the almost total absence of crowds is Bonaire's greatest gift.",
+      destinations: [
+        { name: "Washington Slagbaai National Park", description: "The wild north of the island — rugged volcanic terrain, cactus forests, sea turtle nesting beaches, flamingo gathering spots, and some of the island's most remote diving.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
+        { name: "Kralendijk Town", description: "The quiet capital with pastel-coloured Dutch colonial buildings, the Fort Oranje, excellent restaurants, and the dive shop strip where every trip begins.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+        { name: "Salt Flats & Flamingos", description: "The southern salt pans are managed by Cargill and attract enormous concentrations of flamingos — hundreds feed in the brilliant pink shallows against the white salt piles.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=600&fit=crop" },
+        { name: "Klein Bonaire", description: "The uninhabited sister island a short kayak or boat ride away — pristine beaches, nesting sea turtles, and superb snorkelling on the surrounding reef.", image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly via Curaçao or Aruba (both 30 min) or direct from Amsterdam, Atlanta, or Miami. Pick-up truck rentals are the island vehicle of choice — practical and fun." },
+        { icon: Camera, title: "Shore Diving", description: "60 named dive sites accessible without a boat — park your truck, kit up, and wade in. Nature fee ($45/year) required for all diving. Visibility 30+ metres year-round." },
+        { icon: Users, title: "Dive Centres", description: "Buddy Dive, Dive Friends, and Captain Don's Habitat are the most respected operators. Week-long dive packages often include accommodation, equipment, and unlimited shore dives." },
+        { icon: Utensils, title: "Food", description: "Fresh seafood, keshi yena (the ABC island cheese dish), cachapa (Venezuelan corn pancakes from the large Venezuelan community), and surprisingly good Dutch-influenced baking." },
+        { icon: DollarSign, title: "Budget", description: "More affordable than Aruba or Curaçao. Week-long dive packages from $900–1,500 including accommodation. USD used everywhere (Bonaire uses the US dollar)." },
+        { icon: Info, title: "Conservation", description: "Bonaire is one of the world's most conservation-conscious islands — the marine park, flamingo protection, and donkey sanctuary are community priorities. Reef-safe sunscreen only." },
+      ],
+      highlights: ["Shore dive at a new site every day", "Flamingo viewing at the salt flats", "Snorkel Klein Bonaire's pristine reef", "Sunset at 1000 Steps dive site", "Washington Slagbaai Park wild drive", "Night dive on a reef full of octopus", "Sea turtle nesting at Lac Bay", "Windsurf at Sorobon (world-class)", "Kayak to Klein Bonaire island", "Wild donkey spotting throughout the island"],
+      tips: ["Rent a pick-up truck — the standard island transport; 4WD useful in the north", "Marine park fee ($45): Buy the nature tag before diving — mandatory", "Bring reef-safe/mineral sunscreen — reef protection taken very seriously here", "Week-long dive packages are better value than day-by-day rental", "Flamingos: Best in the morning at the salt flats, south of Kralendijk", "Klein Bonaire: Go by boat (cheap tour) rather than kayak — current can be strong", "Night diving: Some of the Caribbean's best — octopus, seahorses, sleeping turtles", "Sorobon Windsurfing: Reliable thermal winds make it world-class; lessons available", "No casinos, no cruise ship culture — Bonaire is genuinely peaceful", "Lac Bay mangroves: Kayak or paddleboard through for bonefish and juvenile reef fish"],
+    },
   ],
-  
-  essentialInfo: [
+
+  /* ═══════════════════════════════════════
+     OCEANIA
+  ═══════════════════════════════════════ */
+  oceania: [
     {
-      icon: Plane,
-      title: "Getting Around",
-      description: "Australia is huge - domestic flights essential. East coast: bus/train possible but slow. Rent car for flexibility. Campervan popular for coast trips."
+      id: "australia-complete",
+      title: "Australia Complete Guide",
+      description: "East coast road trip, Great Barrier Reef, Red Centre and Tasmania",
+      image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800&h=500&fit=crop",
+      continent: "Oceania", continentSlug: "oceania",
+      country: "Australia", countrySlug: "australia", countryFlag: "🇦🇺",
+      rating: 4.9, downloads: "10.5k", pages: 125, price: "$14.99",
+      tags: ["Beach", "Nature", "Adventure"], featured: true, tag: "New", tagColor: "bg-purple-500",
+      subtitle: "From Sydney to the Great Barrier Reef",
+      heroImage: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "September–November (spring), March–May (fall)", duration: "14–21 days minimum", budget: "$$$ Expensive", highlights: 52, language: "English", currency: "Australian Dollar (AUD)" },
+      overview: "Australia is a land of stunning contrasts — world-class cities, pristine beaches, ancient rainforests, the Great Barrier Reef (visible from space), and the vast red Outback. Australia is the world's sixth-largest country but has just 26 million people. The space, the wildlife, and the laid-back culture are extraordinary.",
+      destinations: [
+        { name: "Sydney & New South Wales", description: "Sydney Opera House (UNESCO), Harbour Bridge Climb, Bondi Beach surf, Blue Mountains Three Sisters, Hunter Valley wine country — Australia's iconic first city.", image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=800&h=600&fit=crop" },
+        { name: "Great Barrier Reef & Queensland", description: "The world's largest coral reef system (2,300 km). Cairns, Port Douglas, and the Whitsunday Islands as bases. Snorkelling, scuba diving, sailing, and helicopter tours.", image: "https://images.unsplash.com/photo-1587139223877-04cb899fa3e8?w=800&h=600&fit=crop" },
+        { name: "Melbourne & Great Ocean Road", description: "Cultural capital with laneway cafés, street art, sporting obsession, and excellent food. The Great Ocean Road's Twelve Apostles limestone stacks are magnificent.", image: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=800&h=600&fit=crop" },
+        { name: "Uluru & Red Centre", description: "Sacred Uluru (Ayers Rock) changes colour from orange to red to purple at sunrise and sunset. Kata Tjuta, Kings Canyon, and the ancient Anangu Aboriginal culture.", image: "https://images.unsplash.com/photo-1598948485421-33a1655d3c18?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Australia is huge — domestic flights essential. Car hire needed for flexibility. Good highways between eastern cities. Campervans popular for coast routes." },
+        { icon: Camera, title: "Great Barrier Reef", description: "Cairns or Port Douglas as bases. Day snorkelling trips from $100. Multi-day liveaboards best for diving. Book marine tours ahead — quality varies hugely." },
+        { icon: Users, title: "Wildlife Encounters", description: "Kangaroos, koalas, wombats, platypus, echidna, Tasmanian devils. Currumbin Wildlife Sanctuary, Lone Pine Koala Sanctuary. Wild kangaroos common near parks." },
+        { icon: Utensils, title: "Australian Food", description: "Outstanding coffee culture (Melbourne invented the flat white). Fresh seafood. Multicultural food scene. Vegemite is an acquired taste. Tim Tams are essential." },
+        { icon: DollarSign, title: "Budget Planning", description: "Expensive country. Hostels $25–45. Hotels $100–70+. Meals $15–30. Alcohol very expensive. Tours add up. Budget $80–150/day backpacking." },
+        { icon: Info, title: "Essential Tips", description: "Sun is intensely strong — sunscreen, hat, and UV shirt essential. Distances are enormous — plan realistically. Don't underestimate driving times." },
+      ],
+      highlights: ["Sydney Opera House and Harbour Bridge", "Snorkel the Great Barrier Reef", "Surf at Bondi Beach", "Drive the Great Ocean Road", "Sunrise and sunset at Uluru", "Spot koalas and kangaroos in the wild", "Explore Melbourne's laneways and cafés", "Sail the Whitsundays", "Hike in the Blue Mountains", "Explore ancient Daintree Rainforest"],
+      tips: ["Book domestic flights in advance — Australia is vast and flying saves days", "East coast hostel circuit is great for meeting travellers (Byron Bay to Cairns)", "Sun is intense — sunscreen, hat, and SPF shirt essential, even on cloudy days", "Great Barrier Reef: Port Douglas is less touristy than Cairns", "Melbourne coffee culture is serious — best flat whites anywhere in the world", "Uluru: Stay 2 nights to see sunset and sunrise (both utterly different)", "Working holiday visa (under 30–35) lets you fund travels while working", "Avoid Outback in summer (Dec–Feb) — dangerously hot above 45°C", "Groceries are expensive — shop at Woolworths or Coles and cook in hostels", "Download the Emergency+ app — useful for remote area safety"],
     },
     {
-      icon: Camera,
-      title: "Great Barrier Reef",
-      description: "Cairns or Port Douglas bases. Snorkeling trips from $100. Multi-day liveaboards best for diving. Whitsundays for sailing. Book marine tours ahead."
+      id: "new-zealand-adventure",
+      title: "New Zealand Adventure",
+      description: "Hobbiton to Milford Sound — the complete North & South Island guide",
+      image: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800&h=500&fit=crop",
+      continent: "Oceania", continentSlug: "oceania",
+      country: "New Zealand", countrySlug: "new-zealand", countryFlag: "🇳🇿",
+      rating: 4.9, downloads: "8.9k", pages: 108, price: "$14.99",
+      tags: ["Adventure", "Nature", "Hiking"], featured: true,
+      subtitle: "Middle Earth — Mountains, Fjords & Adventure Capital",
+      heroImage: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "December–February (summer), March–May (fall colours)", duration: "14–21 days", budget: "$$ Moderate to High", highlights: 48, language: "English & Te Reo Māori", currency: "New Zealand Dollar (NZD)" },
+      overview: "New Zealand is the adventure capital of the world — birthplace of commercial bungy jumping, the country that invented the modern backpacker culture, and home to some of Earth's most dramatic scenery. Nine Great Walks, two stunning islands, Māori culture, Middle-Earth landscapes, and the world's most extreme sports compressed into a country smaller than California.",
+      destinations: [
+        { name: "Queenstown & South Island", description: "Adventure capital with bungy jumping (AJ Hackett invented it here), skiing, Milford Sound, Lake Wanaka, and the most dramatic mountain scenery in the southern hemisphere.", image: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800&h=600&fit=crop" },
+        { name: "Fiordland & Milford Sound", description: "Milford Sound — 'the eighth wonder of the world'. Fiordland National Park (UNESCO) contains the most remote, rugged landscape in the country.", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=600&fit=crop" },
+        { name: "Rotorua & North Island", description: "Geothermal wonders with geysers (Pohutu — largest active in the Southern Hemisphere), hot mud pools, Māori culture, Hobbiton movie set, and volcanic Tongariro National Park.", image: "https://images.unsplash.com/photo-1568454537842-d933259bb258?w=800&h=600&fit=crop" },
+        { name: "Abel Tasman & Golden Bay", description: "Golden beaches, turquoise water, coastal kayaking, and the Abel Tasman Coastal Track — New Zealand's most popular Great Walk.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Rent car or campervan for flexibility. InterCity buses connect cities. Interislander or Bluebridge ferry between North and South Islands ($60–80). Drive on left." },
+        { icon: Camera, title: "Great Walks", description: "Book Great Walk huts months ahead (Milford, Routeburn, Tongariro, Abel Tasman). Huts $65/night. Day hikes everywhere free. Nine Great Walks to choose from." },
+        { icon: Users, title: "Adventure Activities", description: "Bungy jumping, skydiving, jet boating (Shotover River), canyon swinging, white-water rafting, glacier hiking, skiing (NZ has world-class ski fields)." },
+        { icon: Utensils, title: "Kiwi Cuisine", description: "Lamb, meat pies, fish and chips, pavlova, hokey pokey ice cream, Manuka honey. Excellent Central Otago Pinot Noir wine. Flat white coffee culture." },
+        { icon: DollarSign, title: "Budget Planning", description: "Moderate prices. Hostels $25–40. Hotels $80–150. Activities $100–300. Campervan saves on accommodation. Freedom camping popular. Budget $60–120/day." },
+        { icon: Info, title: "Essential Planning", description: "Book Great Walks 6+ months ahead. Summer crowded. South Island more dramatic scenery. North Island warmer and has Māori cultural experiences. Allow 3 weeks minimum." },
+      ],
+      highlights: ["Cruise Milford Sound", "Bungy jump in Queenstown", "Hike the Tongariro Alpine Crossing", "Visit the Hobbiton movie set", "Glacier hike on Franz Josef", "Kayak Abel Tasman National Park", "Soak in Rotorua geothermal hot springs", "Experience authentic Māori haka and culture", "Ski Remarkables or Coronet Peak", "Stargazing in a Dark Sky Reserve"],
+      tips: ["Book Great Walks 6+ months ahead — Milford Track fully books out", "Drive on the left — take it slow on winding mountain roads", "Campervans save on accommodation — freedom camping sites are excellent", "Queenstown is expensive — base in Wanaka instead (nearby and cheaper)", "Weather changes rapidly — pack layers even in summer", "Milford Sound: Take the morning cruise before tour buses arrive", "Tongariro Crossing: Start at 6–7 am, book shuttle transport ahead", "North Island deserves 4–5 days; South Island deserves 10+ days", "Buy groceries at New World or Countdown — eating out is expensive", "Learn te reo Māori basics: 'Kia ora' (hello), 'Kia kaha' (be strong)"],
     },
     {
-      icon: Users,
-      title: "Wildlife Encounters",
-      description: "Kangaroos, koalas, wombats, platypus, Tasmanian devils. Currumbin Sanctuary, Lone Pine Koala Sanctuary. Wild kangaroos common in bush."
+      id: "fiji-islands",
+      title: "Fiji Islands Paradise",
+      description: "Island hopping, diving coral reefs and barefoot luxury in the South Pacific",
+      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=500&fit=crop",
+      continent: "Oceania", continentSlug: "oceania",
+      country: "Fiji", countrySlug: "fiji", countryFlag: "🇫🇯",
+      rating: 4.7, downloads: "4.3k", pages: 65, price: "$14.99",
+      tags: ["Beach", "Islands", "Relaxation"], featured: true,
+      subtitle: "South Pacific Paradise — Beaches, Diving & Island Culture",
+      heroImage: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "May–October (dry season)", duration: "7–14 days", budget: "$$ Moderate to High", highlights: 30, language: "English, Fijian & Hindi", currency: "Fijian Dollar (FJD)" },
+      overview: "Fiji epitomizes tropical paradise — 333 islands with pristine beaches, crystal-clear waters, vibrant coral reefs, and the warmest hospitality on Earth. From luxury resorts on private islands to budget backpacker fales (beach huts), from world-class diving to traditional kava ceremonies, Fiji delivers authentic South Pacific experiences.",
+      destinations: [
+        { name: "Mamanuca Islands", description: "Most accessible islands near Nadi — day trips or short stays. Cloud 9 floating bar, Monuriki (Cast Away was filmed here), Mana, and Malolo Lailai.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
+        { name: "Yasawa Islands", description: "Remote island chain with budget beach fales, pristine beaches, swimming with reef sharks at Barefoot Kuata, and a laid-back backpacker vibe. Yasawa Flyer ferry connects islands.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+        { name: "Coral Coast (Viti Levu)", description: "Main island's southern coast with resorts, Sigatoka Sand Dunes National Park, village visits, traditional firewalking ceremonies, and easy access from Nadi.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
+        { name: "Taveuni & Northern Islands", description: "The 'Garden Island' with the International Date Line, Rainbow Reef (world-class soft coral diving), Des Voeux Peak hike, and spectacular waterfalls.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Nadi International Airport main hub. Yasawa Flyer boat for island hopping. Domestic flights to outer islands. Water taxis between nearby islands." },
+        { icon: Camera, title: "Best Activities", description: "Snorkelling, scuba diving (some of the world's best soft coral), swimming with manta rays and reef sharks, village visits, sunset cruises, and traditional lovo feast." },
+        { icon: Users, title: "Fijian Culture", description: "The infectious 'Bula!' greeting everywhere. Kava ceremony is an important social ritual. Village visits welcome — bring sevusevu (gift of kava root). Sunday is church day." },
+        { icon: Utensils, title: "Food & Drink", description: "Fresh seafood, kokoda (Fijian ceviche marinated in coconut milk), lovo (earth oven feast), curry influence from Indo-Fijian community. Fiji Bitter beer and Bounty rum." },
+        { icon: DollarSign, title: "Budget Options", description: "Yasawa backpacker islands very affordable ($40–80/night including meals). Resorts more expensive. Cash essential — limited ATMs on outer islands." },
+        { icon: Info, title: "Best For", description: "Honeymoons, diving, families, backpackers — Fiji suits all budgets. Avoid cyclone season (November–April). Dry season May–October is reliably beautiful." },
+      ],
+      highlights: ["Swim with manta rays", "Snorkel pristine coral reefs", "Island hop through the Yasawa chain", "Experience a traditional kava ceremony", "Relax on white sand beaches", "Dive Rainbow Reef's soft coral wonderland", "Visit traditional Fijian villages", "Watch traditional fire dancing", "Beach BBQ at sunset", "Explore limestone sea caves"],
+      tips: ["Yasawa Flyer boat: Buy multi-day pass for flexibility — more cost effective", "Book island accommodation ahead — limited beds on smaller islands", "Bring reef-safe sunscreen — regular sunscreen harms coral reefs", "Cash essential — most islands have no ATMs, limited card acceptance", "Visit villages with a guide — bring sevusevu (kava root) as a gift", "Sundays are quiet and respectful — many activities close", "Meal plans at island resorts save money vs. ordering separately", "Snorkel gear often available free at guesthouses — bring your own fins", "Cyclone season November–April — buy travel insurance", "Say 'Bula!' to absolutely everyone — Fijian friendliness is genuine and infectious"],
     },
     {
-      icon: Utensils,
-      title: "Australian Food",
-      description: "Great coffee culture. Fresh seafood. Asian fusion. BBQ (throw shrimp on the barbie). Vegemite, meat pies, Tim Tams, flat whites everywhere."
+      id: "sydney-guide",
+      title: "Sydney Travel Guide",
+      description: "Opera House, Harbour Bridge, Bondi Beach and the Blue Mountains",
+      image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=800&h=500&fit=crop",
+      continent: "Oceania", continentSlug: "oceania",
+      country: "Australia", countrySlug: "australia", countryFlag: "🇦🇺",
+      rating: 4.9, downloads: "7.6k", pages: 78, price: "$14.99",
+      tags: ["City", "Beach", "Iconic"], featured: true, tag: "Iconic", tagColor: "bg-blue-500",
+      subtitle: "The Harbour City — World's Greatest Urban Setting",
+      heroImage: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "September–November (spring), March–May (autumn)", duration: "5–7 days", budget: "$$$ Expensive", highlights: 38, language: "English", currency: "Australian Dollar (AUD)" },
+      overview: "Sydney is arguably the world's most beautiful harbour city — the Opera House and Harbour Bridge form one of architecture's greatest duets, framed by 240 km of natural harbour. Bondi Beach is iconic, the Blue Mountains are extraordinary, and the city's food scene is world-class. Sydney is Australia's gateway city and rewards visitors who stay longer than a few days to discover its diverse neighbourhoods.",
+      destinations: [
+        { name: "Sydney Opera House & Harbour", description: "Jørn Utzon's 1973 masterpiece is as astonishing close up as it is at distance. Tours run daily. A performance inside is a bucket-list experience. Circular Quay is the transport hub.", image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=800&h=600&fit=crop" },
+        { name: "Bondi Beach & Coastal Walk", description: "The 6-km Bondi to Coogee coastal walk is Sydney's most spectacular — sea pools, ocean cliffs, and local suburbs far from the tourist trail. Icebergs pool at Bondi is iconic.", image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=800&h=600&fit=crop" },
+        { name: "Harbour Bridge Climb", description: "The 3.5-hour climb to the summit of the Harbour Bridge (134 m) provides the most extraordinary 360° view of Sydney — expensive but genuinely unforgettable.", image: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=800&h=600&fit=crop" },
+        { name: "Blue Mountains", description: "90 minutes from Sydney — the Three Sisters rock formation, Scenic World (world's steepest railway), Leura village, and the vast forested canyon of the Greater Blue Mountains UNESCO park.", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Train from SYD airport to city (13 min). Opal card for all trains, buses, and ferries. Ferries are the most scenic way to cross the harbour. Walk between Circular Quay and The Rocks." },
+        { icon: Camera, title: "Best Views", description: "Mrs Macquarie's Chair at dawn, Pylon Lookout (cheap and great), McMahons Point for Opera House and Bridge together, and the Harbour Bridge climb for the ultimate view." },
+        { icon: Users, title: "Harbour Bridge Climb", description: "Book BridgeClimb weeks ahead for popular times. Various levels available (summit is best). Twilight climb offers extraordinary golden light. Child minimum age: 8 years." },
+        { icon: Utensils, title: "Sydney Food", description: "Outstanding seafood — Sydney rock oysters, barramundi, bugs (Moreton Bay lobster). World-class multicultural dining in Surry Hills and Newtown. Flat white coffee culture at its best.", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800&h=600&fit=crop" },
+        { icon: DollarSign, title: "Costs", description: "Sydney is expensive. Harbour Bridge Climb AU$300+. Opera House tour AU$45. Bondi Beach free. Day trip Blue Mountains AU$50 by train. Dining: AU$20–40 at good restaurants." },
+        { icon: Info, title: "Neighbourhoods", description: "The Rocks (historic), Surry Hills (restaurants), Newtown (alternative), Glebe (students), Paddington (fashion), Manly (beach lifestyle). Each has a distinct character worth exploring." },
+      ],
+      highlights: ["Opera House performance (book in advance)", "Harbour Bridge BridgeClimb", "Bondi to Coogee coastal walk", "Three Sisters at Blue Mountains", "Manly Beach by ferry from Circular Quay", "Sydney rock oysters at the Fish Market", "Mrs Macquarie's Chair at sunrise", "Taronga Zoo cable car with harbour views", "Darling Harbour and Barangaroo precinct", "Pylon Lookout for free(ish) bridge views"],
+      tips: ["Opera House tour: Book a performance — it's a completely different experience to a tour", "BridgeClimb: Book twilight for the best light — book 3+ weeks ahead", "Bondi to Coogee walk: Do it on a weekday morning — Bondi on weekends is packed", "Blue Mountains: Take the train from Central Station (Blue Mountains line) — cheap and scenic", "Opal card: Tap on and off for all transport — daily cap of AU$16.80 saves money", "Manly ferry: The most scenic 30-minute ride in Australia — better than any tour boat", "Neighbourhoods: Stay in Surry Hills or Newtown for restaurants and nightlife, not the CBD", "Sunscreen: Sydney's UV index is extreme — SPF50+ essential year-round", "Long weekend timing: Flights and hotels spike — avoid school holiday periods", "Taronga Zoo: Take the ferry from Circular Quay — the cable car up offers extraordinary harbour views"],
     },
-    {
-      icon: DollarSign,
-      title: "Budget Planning",
-      description: "Expensive country. Hostels $25-45. Hotels $100-200. Meals $15-30. Alcohol pricey. Tours add up. Budget $80-150/day backpacking, $200+ comfortable."
-    },
-    {
-      icon: Info,
-      title: "Essential Tips",
-      description: "Working holiday visa popular. Sun strong - slip, slop, slap. Deadly creatures exist but rarely encountered. Distances huge - plan accordingly."
-    }
   ],
-  
-  highlights: [
-    "Opera House and Harbour Bridge",
-    "Snorkel Great Barrier Reef",
-    "Surf at Bondi Beach",
-    "Drive Great Ocean Road",
-    "Sunrise at Uluru",
-    "Spot koalas in the wild",
-    "Explore Melbourne's laneways",
-    "Sail the Whitsundays",
-    "Blue Mountains hiking",
-    "Daintree Rainforest"
-  ],
-  
-  tips: [
-    "Book domestic flights in advance - Australia is huge, driving takes days",
-    "East coast hostel circuit great for meeting travelers (Byron Bay, Cairns)",
-    "Sun is intense - sunscreen and hat essential, even on cloudy days",
-    "Great Barrier Reef: Port Douglas less touristy than Cairns",
-    "Melbourne coffee culture is serious - best flat whites in the world",
-    "Uluru: Stay 2 nights to see sunset and sunrise, both spectacular",
-    "Drop bears and hoop snakes are jokes - don't worry about deadly animals",
-    "Working holiday visa (under 30) - fund travels by working in Australia",
-    "Avoid summer in Outback (Dec-Feb) - dangerously hot (110°F+)",
-    "Groceries expensive - shop at Woolworths/Coles, cook in hostels"
-  ]
-},
-{
-  id: "new-zealand-adventure",
-  title: "New Zealand Adventure",
-  description: "North and South Island complete adventure guide",
-  image: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=400&h=250&fit=crop",
-  continent: "Oceania",
-  rating: 4.9,
-  downloads: "8.9k",
-  pages: 108,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Adventure", "Nature", "Hiking"],
-  featured: true,
-  
-  subtitle: "Middle Earth - Mountains, Fjords & Adventure Capital",
-  heroImage: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "December-February (Summer), March-May (Fall colors)",
-    duration: "14-21 days recommended",
-    budget: "$$ - Moderate to High",
-    highlights: 48,
-    language: "English",
-    currency: "New Zealand Dollar (NZD)"
-  },
-  
-  overview: "New Zealand is the adventure capital of the world - dramatic mountains, pristine lakes, geothermal wonders, fjords, glaciers, and endless outdoor activities. From Queenstown's adrenaline sports to Milford Sound's majesty, from Hobbiton to Abel Tasman beaches, from geysers to star-filled skies, New Zealand delivers jaw-dropping scenery at every turn. Perfect for hikers, thrill-seekers, and nature lovers seeking Middle Earth magic.",
-  
-  destinations: [
-    {
-      name: "Queenstown & South Island",
-      description: "Adventure capital with bungy jumping, skiing, Milford Sound fjords, Lake Wanaka, stunning mountains, and adrenaline activities galore.",
-      image: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Fiordland & Milford Sound",
-      description: "Dramatic fjords with waterfalls, rainforest, seals, and New Zealand's most spectacular scenery. Milford Track one of world's greatest walks.",
-      image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Rotorua & North Island",
-      description: "Geothermal wonders with geysers, hot springs, mud pools, Maori culture, Hobbiton movie set, and volcanic landscape.",
-      image: "https://images.unsplash.com/photo-1568454537842-d933259bb258?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Abel Tasman & Golden Bay",
-      description: "Coastal paradise with golden beaches, kayaking, hiking trails, turquoise waters, and relaxed beach camping.",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Getting Around",
-      description: "Rent car/campervan for flexibility. InterCity buses connect cities. Small country but winding roads take time. Ferry between North and South Islands ($60-80)."
-    },
-    {
-      icon: Camera,
-      title: "Great Walks",
-      description: "Book Great Walks months ahead (Milford, Routeburn, Tongariro). Huts $65/night. Day hikes everywhere - free and spectacular. Prepare for all weather."
-    },
-    {
-      icon: Users,
-      title: "Adventure Activities",
-      description: "Bungy jumping (birthplace!), skydiving, jet boating, canyon swinging, glacier hiking, skiing/snowboarding, white water rafting. Queenstown adventure central."
-    },
-    {
-      icon: Utensils,
-      title: "Kiwi Cuisine",
-      description: "Lamb, meat pies, fish and chips, pavlova, hokey pokey ice cream. Great wine regions. Fresh seafood. Māori hangi. Flat whites and café culture."
-    },
-    {
-      icon: DollarSign,
-      title: "Budget Planning",
-      description: "Moderate prices. Hostels $25-40. Hotels $80-150. Meals $15-30. Activities $100-300. Campervan saves money. Freedom camping popular. Budget $60-120/day."
-    },
-    {
-      icon: Info,
-      title: "Essential Planning",
-      description: "Book Great Walks 6+ months ahead. Summer crowded. Shoulder seasons beautiful. North Island warmer. South Island more dramatic. Allow 3 weeks minimum."
-    }
-  ],
-  
-  highlights: [
-    "Cruise Milford Sound",
-    "Bungy jump in Queenstown",
-    "Hike Tongariro Alpine Crossing",
-    "Visit Hobbiton movie set",
-    "Glacier hike on Franz Josef",
-    "Kayak Abel Tasman",
-    "Soak in Rotorua hot springs",
-    "Experience Māori culture",
-    "Ski Queenstown mountains",
-    "Stargazing in dark sky reserve"
-  ],
-  
-  tips: [
-    "Book Great Walks (Milford, Routeburn) 6+ months ahead - sell out quickly",
-    "Drive on left side - take it slow on winding roads, allow extra time",
-    "Campervans save money but freedom camping sites filling up fast",
-    "Queenstown expensive - stay in Wanaka instead (nearby, cheaper)",
-    "Weather changes rapidly - pack layers even in summer",
-    "Milford Sound best early morning before tour buses arrive",
-    "Skip bungy if scared - canyon swing just as thrilling",
-    "Buy groceries at New World/Countdown - eating out expensive",
-    "Tongariro Crossing: Start early (6-7am), book shuttle ahead",
-    "North Island 3-4 days minimum, South Island deserves 10+ days"
-  ]
-},
-{
-  id: "fiji-islands",
-  title: "Fiji Islands Paradise",
-  description: "Island hopping and tropical paradise guide",
-  image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=250&fit=crop",
-  continent: "Oceania",
-  rating: 4.7,
-  downloads: "4.3k",
-  pages: 65,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Beach", "Islands", "Relaxation"],
-  featured: true,
-  
-  subtitle: "South Pacific Paradise - Beaches, Diving & Island Culture",
-  heroImage: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "May-October (Dry season)",
-    duration: "7-14 days recommended",
-    budget: "$$ - Moderate to High",
-    highlights: 30,
-    language: "English, Fijian & Hindi",
-    currency: "Fijian Dollar (FJD)"
-  },
-  
-  overview: "Fiji epitomizes tropical paradise - 333 islands with pristine beaches, crystal-clear waters, vibrant coral reefs, and the warmest hospitality on Earth. From luxury resorts to budget backpacker islands, from world-class diving to traditional village stays, Fiji offers authentic South Pacific experiences. Relax on white sand beaches, snorkel with manta rays, explore remote islands, and embrace the infectious 'Bula!' spirit.",
-  
-  destinations: [
-    {
-      name: "Mamanuca Islands",
-      description: "Most accessible islands near Nadi. Day trips available. Resorts for all budgets. Great snorkeling, diving, and island-hopping base.",
-      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Yasawa Islands",
-      description: "Remote island chain with budget beach bungalows, pristine beaches, manta rays, and laid-back backpacker vibe. Bure Kalou ferry connects islands.",
-      image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Coral Coast (Viti Levu)",
-      description: "Main island's southern coast with resorts, Sigatoka Sand Dunes, village visits, waterfalls, and easy access from Nadi.",
-      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Taveuni & Northern Islands",
-      description: "Garden Island with waterfalls, diving, Rainbow Reef, 180th meridian, and lush rainforest. Less touristy, more authentic.",
-      image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Getting Around",
-      description: "Nadi International Airport main hub. Yasawa Flyer boat (island hopping pass). Domestic flights to outer islands. Water taxis between nearby islands."
-    },
-    {
-      icon: Camera,
-      title: "Best Activities",
-      description: "Snorkeling/diving (soft coral capital), swimming with manta rays, village visits, beach time, sunset cruises, island hopping, traditional kava ceremonies."
-    },
-    {
-      icon: Users,
-      title: "Fijian Culture",
-      description: "Warm 'Bula!' greeting everywhere. Kava ceremony important ritual. Village visits welcome but bring sevusevu (gift). Sunday is church day - respect quiet."
-    },
-    {
-      icon: Utensils,
-      title: "Food & Drink",
-      description: "Fresh seafood, kokoda (Fijian ceviche), lovo (earth oven feast), curry influence. Resort food pricey. Island meal plans recommended. Fiji Bitter beer."
-    },
-    {
-      icon: DollarSign,
-      title: "Budget Options",
-      description: "Yasawa backpacker islands affordable ($40-80/night with meals). Resorts expensive. Bring cash - ATMs limited on islands. Meal plans avoid price shocks."
-    },
-    {
-      icon: Info,
-      title: "Best for",
-      description: "Honeymoons, diving, backpackers, families. Mix luxury resorts with budget islands. Avoid cyclone season (Nov-Apr). Dry season May-Oct best weather."
-    }
-  ],
-  
-  highlights: [
-    "Swim with manta rays",
-    "Snorkel pristine coral reefs",
-    "Island hop through Yasawas",
-    "Experience kava ceremony",
-    "Relax on white sand beaches",
-    "Dive Rainbow Reef",
-    "Visit traditional villages",
-    "Watch fire dancing",
-    "Sunset beach BBQs",
-    "Explore limestone caves"
-  ],
-  
-  tips: [
-    "Yasawa Flyer boat: Buy multi-day pass for flexibility island hopping",
-    "Book island accommodation ahead - limited beds, especially budget options",
-    "Bring reef-safe sunscreen - coral protection important",
-    "Cash essential - most islands have no ATMs, limited card acceptance",
-    "Visit villages with guide - bring sevusevu (kava root) as gift",
-    "Sundays quiet - respect church day, many activities closed",
-    "Meal plans at island resorts save money vs. ordering separately",
-    "Snorkel gear often free at accommodations - bring your own fins",
-    "Cyclone season Nov-Apr - avoid or get travel insurance",
-    "Say 'Bula!' to everyone - infectious Fijian friendliness"
-  ]
-},
-{
-  id: "tahiti-french-polynesia",
-  title: "Tahiti & French Polynesia",
-  description: "Bora Bora, Moorea, and paradise islands",
-  image: "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=400&h=250&fit=crop",
-  continent: "Oceania",
-  rating: 4.8,
-  downloads: "5.1k",
-  pages: 72,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Luxury", "Beach", "Islands"],
-  featured: false,
-  
-  subtitle: "Ultimate Luxury Paradise & Overwater Bungalows",
-  heroImage: "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "May-October (Dry season)",
-    duration: "7-10 days recommended",
-    budget: "$$$$ - Very Expensive",
-    highlights: 28,
-    language: "French & Tahitian",
-    currency: "CFP Franc (XPF)"
-  },
-  
-  overview: "French Polynesia represents the pinnacle of tropical luxury - turquoise lagoons, iconic overwater bungalows, pristine coral reefs, and stunning mountain scenery. Bora Bora's legendary beauty, Moorea's dramatic peaks, Tahiti's Polynesian culture, and remote atolls create dream honeymoon destinations. While expensive, the otherworldly beauty, world-class diving, and pure romance make French Polynesia an unforgettable once-in-a-lifetime experience.",
-  
-  destinations: [
-    {
-      name: "Bora Bora",
-      description: "Most famous island with iconic overwater bungalows, Mount Otemanu backdrop, crystal lagoon, luxury resorts, and ultimate romantic paradise.",
-      image: "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Moorea",
-      description: "Heart-shaped island near Tahiti. Dramatic mountain peaks, beautiful bays, more affordable than Bora Bora, excellent snorkeling, and laid-back vibe.",
-      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Tahiti",
-      description: "Main island with Papeete capital, black sand beaches, waterfalls, Polynesian culture, markets, and gateway to outer islands.",
-      image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Rangiroa & Tuamotu Atolls",
-      description: "World-class diving with sharks, dolphins, manta rays. Remote atolls, pristine nature, and incredible underwater visibility.",
-      image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Getting There",
-      description: "Tahiti (Papeete) main hub. Air Tahiti Nui from LAX, Paris. Air Tahiti for inter-island flights (expensive). Ferry to Moorea affordable alternative."
-    },
-    {
-      icon: Camera,
-      title: "Overwater Bungalows",
-      description: "Iconic but expensive ($500-2,000+/night). Bora Bora most famous. Moorea more affordable. Book directly with resorts. Honeymoon packages offer better value."
-    },
-    {
-      icon: Users,
-      title: "Best Experiences",
-      description: "Overwater bungalow stay, lagoon snorkeling, shark/ray feeding, sunset cruises, hiking, black pearl shopping, Polynesian dance shows, outrigger canoeing."
-    },
-    {
-      icon: Utensils,
-      title: "Food & Dining",
-      description: "French and Polynesian fusion. Fresh fish, poisson cru (raw fish), tropical fruits. Resort dining expensive. Roulottes (food trucks) in Papeete affordable."
-    },
-    {
-      icon: DollarSign,
-      title: "Budget Reality",
-      description: "Very expensive destination. Budget $300-500/day minimum. Overwater bungalows $500-2,000+. Meals $20-50. Activities $100-200. Moorea more affordable than Bora Bora."
-    },
-    {
-      icon: Info,
-      title: "Money Saving Tips",
-      description: "Stay Moorea instead of Bora Bora. Mix budget pensions with luxury. Grocery shop vs. dining out. Snorkel from beach vs. tours. Ferry vs. flights when possible."
-    }
-  ],
-  
-  highlights: [
-    "Stay in overwater bungalow",
-    "Snorkel in crystal lagoons",
-    "Watch sharks and rays",
-    "Hike Mount Rotui (Moorea)",
-    "Sunset cruise around islands",
-    "Shop for black pearls",
-    "Experience Polynesian culture",
-    "Dive with manta rays",
-    "Kayak turquoise waters",
-    "Beach picnics on motus"
-  ],
-  
-  tips: [
-    "Book 6-12 months ahead for best overwater bungalow rates",
-    "Moorea offers similar beauty to Bora Bora at half the price",
-    "Stay at pensions (guesthouses) to save money vs. luxury resorts",
-    "Bring reef-safe sunscreen - protect the pristine coral reefs",
-    "Ferry from Tahiti to Moorea ($15) much cheaper than flight ($90)",
-    "Grocery shop and cook when possible - dining out extremely expensive",
-    "Free snorkeling from many beaches - don't pay for expensive tours",
-    "Visit during shoulder season (May or Oct) for better rates",
-    "Some resorts offer complimentary activities - choose wisely",
-    "Learn basic French phrases - English limited outside resorts"
-  ]
-},
-{
-  id: "samoa-islands",
-  title: "Samoa Island Paradise",
-  description: "Authentic Polynesia, beaches, and village life",
-  image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=250&fit=crop",
-  continent: "Oceania",
-  rating: 4.6,
-  downloads: "2.8k",
-  pages: 58,
-  googleDriveUrl: "YOUR_GOOGLE_DRIVE_LINK_HERE",
-  tags: ["Culture", "Beach", "Budget"],
-  featured: false,
-  
-  subtitle: "Authentic Polynesia - Beaches, Waterfalls & Fa'a Samoa",
-  heroImage: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&h=1080&fit=crop",
-  
-  quickFacts: {
-    bestTime: "May-October (Dry season)",
-    duration: "7-10 days recommended",
-    budget: "$ - Budget Friendly",
-    highlights: 25,
-    language: "Samoan & English",
-    currency: "Samoan Tala (WST)"
-  },
-  
-  overview: "Samoa offers authentic Polynesian culture without the luxury resort prices. Beautiful beaches, dramatic waterfalls, traditional village life, and genuine Samoan hospitality make this an ideal South Pacific destination for travelers seeking cultural immersion. Experience fa'a Samoa (the Samoan way), stay in beach fales, swim in To Sua Ocean Trench, and discover one of the Pacific's friendliest and most welcoming nations.",
-  
-  destinations: [
-    {
-      name: "Upolu Island",
-      description: "Main island with capital Apia, To Sua Ocean Trench, waterfalls, beaches, markets, and Robert Louis Stevenson's estate.",
-      image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Savai'i Island",
-      description: "Larger, less developed island with lava fields, blowholes, traditional villages, and authentic Samoan lifestyle. Ferry from Upolu.",
-      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop"
-    },
-    {
-      name: "South Coast Beaches",
-      description: "Lalomanu Beach, Return to Paradise Beach. Beach fales (bungalows), snorkeling, swimming, and laid-back beach life.",
-      image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop"
-    },
-    {
-      name: "Aleipata District",
-      description: "To Sua Ocean Trench, pristine beaches, waterfalls, and beautiful coastal drives. Day trip or stay in beach fales.",
-      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop"
-    }
-  ],
-  
-  essentialInfo: [
-    {
-      icon: Plane,
-      title: "Getting Around",
-      description: "Faleolo Airport main entry. Rent car to explore (drive on right). Local buses cheap but infrequent. Ferry to Savai'i. Taxis available."
-    },
-    {
-      icon: Camera,
-      title: "Beach Fales",
-      description: "Traditional open-air beach huts ($20-50/night). Basic but authentic. Beachfront location. Shared facilities. Meals often included. Bring mosquito net."
-    },
-    {
-      icon: Users,
-      title: "Fa'a Samoa Culture",
-      description: "Strong traditional culture. Sunday sacred (church, no swimming). Dress modestly in villages. Respect chiefs. Learn about ava ceremony. Friendly people."
-    },
-    {
-      icon: Utensils,
-      title: "Samoan Food",
-      description: "Oka (raw fish), palusami (taro leaves in coconut), umu (earth oven), tropical fruits. Sunday to'ona'i (feast) amazing. Fresh seafood everywhere."
-    },
-    {
-      icon: DollarSign,
-      title: "Budget Paradise",
-      description: "Very affordable. Beach fales $20-50. Local meals $5-10. Rentals $50-70/day. Activities inexpensive. Budget $40-80/day easily. Much cheaper than French Polynesia."
-    },
-    {
-      icon: Info,
-      title: "Essential Tips",
-      description: "Conservative dress in villages. Sunday everything closed. Bring cash - ATMs limited. Cyclone season Nov-Apr. Friendly locals love to chat."
-    }
-  ],
-  
-  highlights: [
-    "Swim in To Sua Ocean Trench",
-    "Stay in beach fale",
-    "Visit Alofaaga Blowholes",
-    "Snorkel pristine reefs",
-    "Explore waterfalls",
-    "Experience Sunday to'ona'i feast",
-    "Ferry to Savai'i Island",
-    "Lalomanu Beach relaxation",
-    "Learn about Samoan culture",
-    "Attend church service (Sunday)"
-  ],
-  
-  tips: [
-    "Sunday is sacred - beaches closed, shops closed, attend church service",
-    "Beach fales are basic but authentic - bring mosquito net and flashlight",
-    "Dress modestly in villages - knees and shoulders covered",
-    "Rent car for flexibility - public buses infrequent and slow",
-    "To Sua Ocean Trench busy midday - arrive early morning or late afternoon",
-    "Bring cash - ATMs mainly in Apia, credit cards not widely accepted",
-    "Learn 'Talofa' (hello) and 'Fa'afetai' (thank you) - locals appreciate it",
-    "Visit Savai'i for more authentic, less touristy experience",
-    "Beach fale meals often included in price - clarify when booking",
-    "Respect local customs - ask before taking photos of people"
-  ]
-}
-  ]
+
 };
 
-// Helper function to get a specific guide
+/* ═══════════════════════════════════════
+   HELPER FUNCTIONS
+═══════════════════════════════════════ */
+
 export function getGuide(continent: string, guideId: string): Guide | null {
   const continentGuides = allGuidesData[continent];
   if (!continentGuides) return null;
-  return continentGuides.find(g => g.id === guideId) || null;
+  return continentGuides.find((g) => g.id === guideId) || null;
 }
 
-// Helper function to get all guides for a continent
 export function getContinentGuides(continent: string): Guide[] {
   return allGuidesData[continent] || [];
 }
 
-// Helper function to get all guides (for search/browse all)
 export function getAllGuides(): Guide[] {
   return Object.values(allGuidesData).flat();
+}
+
+export function getGuidesByCountry(continent: string): Record<string, Guide[]> {
+  const guides = getContinentGuides(continent);
+  return guides.reduce((acc, guide) => {
+    const key = guide.countrySlug;
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(guide);
+    return acc;
+  }, {} as Record<string, Guide[]>);
 }
