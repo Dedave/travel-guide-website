@@ -1,6 +1,7 @@
 import {
   Plane, Camera, Users, Utensils, DollarSign, Info, Shield, Globe,
   Clock, MapPin, Thermometer, BookOpen, LucideIcon
+  
 } from "lucide-react";
 
 interface QuickFacts {
@@ -22,6 +23,7 @@ interface EssentialInfo {
   icon: LucideIcon;
   title: string;
   description: string;
+  image?: string;
 }
 
 export interface Guide {
@@ -1578,7 +1580,6 @@ export const allGuidesData: ContinentGuides = {
   title: "Barbados Island Guide",
   description: "Rum punch, cricket, the Platinum Coast and Crop Over festival",
   image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=500&fit=crop",
-  // ↓↓ UPDATED from "Caribbean" / "caribbean" ↓↓
   continent: "North America", continentSlug: "north-america",
   country: "Barbados", countrySlug: "barbados", countryFlag: "🇧🇧",
   rating: 4.8, downloads: "3.4k", pages: 68, price: "$14.99",
