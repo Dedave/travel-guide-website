@@ -72,7 +72,7 @@ const affiliates = [
         tagline: "Skip-the-line tickets & local tours",
         logo: "🗺",
         url: (dest: string) =>
-          `https://www.getyourguide.com/s/?q=${encodeURIComponent(dest)}`,
+          `https://www.getyourguide.com/s/?q=${encodeURIComponent(dest)}&partner_id=VGDPALW&utm_medium=online_publisher`,
         cta: "Find Activities",
         note: "Free cancellation on most tours",
       },

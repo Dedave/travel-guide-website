@@ -80,7 +80,7 @@ const categories = [
         badgeColor: "bg-amber-500",
         note: "Free cancellation on most",
         url: (dest: string) =>
-          `https://www.getyourguide.com/s/?q=${encodeURIComponent(dest || "")}`,
+          `https://www.getyourguide.com/s/?q=${encodeURIComponent(dest || "")}&partner_id=VGDPALW&utm_medium=online_publisher`,
       },
       {
         name: "Viator",
