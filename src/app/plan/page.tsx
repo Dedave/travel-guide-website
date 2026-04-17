@@ -60,7 +60,7 @@ const categories = [
         badgeColor: "bg-fuchsia-500",
         note: "Exclusive member deals",
         url: (dest: string) =>
-          `https://www.agoda.com/search?city=${encodeURIComponent(dest || "")}`,
+        `https://www.agoda.com/partners/partnersearch.aspx?pcs=1&cid=1962595&city=${encodeURIComponent(dest || "")}`
       },
     ],
   },
@@ -129,7 +129,8 @@ const categories = [
         badge: "Best Value",
         badgeColor: "bg-rose-500",
         note: "From $45.08/month",
-        url: () => "https://safetywing.com/nomad-insurance",
+        url: () => "https://safetywing.com/nomad-insurance/?referenceID=26512570&utm_source=26512570&utm_medium=Ambassador",
+        
       },
       {
         name: "WorldNomads",
@@ -158,7 +159,7 @@ const categories = [
         badgeColor: "bg-indigo-500",
         note: "Install before you board",
         url: (dest: string) =>
-          `https://www.airalo.com/search?q=${encodeURIComponent(dest || "")}`,
+          'https://airalo.go.link/hCw9M',
       },
     ],
   },
