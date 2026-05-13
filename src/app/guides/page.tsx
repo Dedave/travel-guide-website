@@ -12,13 +12,13 @@ import { getAllGuides, Guide } from "@/data/guidesData";
 
 // ── Continent filters — 6 continents (Caribbean removed, guides redistributed) ─
 const continentFilters = [
-  { label: "All Guides",    value: "all",           icon: "🌎" },
-  { label: "Africa",        value: "africa",        icon: "🌍" },
-  { label: "Europe",        value: "europe",        icon: "🏰" },
-  { label: "Asia",          value: "asia",          icon: "🏯" },
-  { label: "North America", value: "north-america", icon: "🗽" },
-  { label: "South America", value: "south-america", icon: "🗿" },
-  { label: "Oceania",       value: "oceania",       icon: "🏝️" },
+  { label: "All Guides",    value: "all" },
+  { label: "Africa",        value: "africa" },
+  { label: "Europe",        value: "europe" },
+  { label: "Asia",          value: "asia" },
+  { label: "North America", value: "north-america" },
+  { label: "South America", value: "south-america" },
+  { label: "Oceania",       value: "oceania" },
 ];
 
 export default function AllGuidesPage() {
@@ -124,7 +124,6 @@ export default function AllGuidesPage() {
                       ? "bg-blue-600 text-white shadow-lg shadow-blue-900/40"
                       : "text-gray-400 hover:text-white hover:bg-white/8"
                   }`}>
-                  <span>{c.icon}</span>{c.label}
                 </button>
               ))}
               <div className="ml-auto pl-6 shrink-0 text-gray-600 text-xs font-body whitespace-nowrap">
@@ -273,7 +272,7 @@ export default function AllGuidesPage() {
                 { val: `${allGuidesData.length}+`, label: "Expert Guides",  icon: BookOpen, bg: "bg-blue-600" },
                 { val: "4.9★",                     label: "Avg Rating",     icon: Star,     bg: "bg-yellow-500" },
                 { val: "100k+",                    label: "Happy Readers",  icon: Users,    bg: "bg-white/8 border border-white/10" },
-                { val: "6",                        label: "Continents",     icon: Globe,    bg: "bg-purple-600" },
+                { val: "9",                        label: "Continents",     icon: Globe,    bg: "bg-purple-600" },
               ].map((s, i) => (
                 <div key={i} className={`${s.bg} rounded-2xl p-6 flex flex-col gap-6`}>
                   <s.icon className="h-5 w-5 text-white/70" />

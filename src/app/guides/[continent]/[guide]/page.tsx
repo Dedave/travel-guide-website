@@ -16,13 +16,7 @@ export async function generateMetadata({ params }: GuideDetailPageProps) {
   return {
     title: `${guide.title} | Wanderlust Guides`,
     description: guide.overview.slice(0, 160),
-    keywords: [
-      guide.country,
-      guide.continent,
-      "travel guide",
-      "travel tips",
-      ...guide.tags,
-    ].join(", "),
+    keywords: [guide.country, guide.continent, "travel guide", "travel tips", ...guide.tags].join(", "),
     openGraph: {
       title: guide.title,
       description: guide.subtitle,

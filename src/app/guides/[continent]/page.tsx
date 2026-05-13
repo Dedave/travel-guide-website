@@ -11,35 +11,35 @@ import { getContinentGuides, getGuidesByCountry, Guide } from "@/data/guidesData
 
 // ── Continent metadata — 6 continents (Caribbean removed) ─────────────────────
 const continentMeta: Record<string, {
-  name: string; icon: string; tagline: string; heroImage: string;
+  name: string; tagline: string; heroImage: string;
 }> = {
   africa: {
-    name: "Africa", icon: "🌍",
+    name: "Africa",
     tagline: "From the Maasai Mara to Zanzibar's white sands — Africa is raw, real, and unforgettable.",
     heroImage: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&h=900&fit=crop",
   },
   europe: {
-    name: "Europe", icon: "🏰",
+    name: "Europe",
     tagline: "Cobblestones, cathedrals, and café culture — Europe rewards those who go deeper.",
     heroImage: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1920&h=900&fit=crop",
   },
   asia: {
-    name: "Asia", icon: "🏯",
+    name: "Asia",
     tagline: "Where ancient ritual meets electric modernity — Asia is the world's most layered continent.",
     heroImage: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&h=900&fit=crop",
   },
   "north-america": {
-    name: "North America", icon: "🗽",
+    name: "North America",
     tagline: "From Yellowstone's geysers to New York's skyline — North America contains multitudes.",
     heroImage: "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=1920&h=900&fit=crop",
   },
   "south-america": {
-    name: "South America", icon: "🗿",
+    name: "South America",
     tagline: "Machu Picchu at dawn, Patagonia's silence, Rio's energy — South America moves you.",
     heroImage: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1920&h=900&fit=crop",
   },
   oceania: {
-    name: "Oceania", icon: "🏝️",
+    name: "Oceania",
     tagline: "The Great Barrier Reef, Milford Sound, Fiji's silence — Oceania is the world's best-kept secret.",
     heroImage: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=1920&h=900&fit=crop",
   },
@@ -107,7 +107,6 @@ export default function ContinentGuidesPage({ params }: { params: Promise<{ cont
 
         <div className="absolute bottom-0 left-0 right-0 px-4 sm:px-8 lg:px-20 pb-16 max-w-5xl">
           <div className="flex items-center gap-3 mb-5">
-            <span className="text-5xl">{meta.icon}</span>
             <span className="bg-white/15 backdrop-blur-sm border border-white/25 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full font-body">
               {guides.length} Guides · {countryList.length} {countryList.length === 1 ? "Country" : "Countries"}
             </span>
@@ -334,7 +333,6 @@ export default function ContinentGuidesPage({ params }: { params: Promise<{ cont
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-black/55 group-hover:bg-black/35 transition-colors" />
                       <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="text-xl mb-1">{m.icon}</span>
                         <span className="font-body text-white text-[10px] font-bold">{m.name}</span>
                       </div>
                     </div>

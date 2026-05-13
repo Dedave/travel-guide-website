@@ -84,12 +84,12 @@ const featuredGuides = [
 
 // ── Continents ────────────────────────────────────────────────────────────
 const continents = [
-  { name: "Africa",        slug: "africa",        icon: "🌍", count: 5,  image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&h=500&fit=crop" },
-  { name: "Europe",        slug: "europe",        icon: "🏰", count: 5,  image: "https://images.unsplash.com/photo-1520637736862-4d197d17c55a?w=400&h=500&fit=crop" },
-  { name: "Asia",          slug: "asia",          icon: "🏯", count: 5,  image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=400&h=500&fit=crop" },
-  { name: "North America", slug: "north-america", icon: "🗽", count: 4,  image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=500&fit=crop" },
-  { name: "South America", slug: "south-america", icon: "🗿", count: 5,  image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=400&h=500&fit=crop" },
-  { name: "Oceania",       slug: "oceania",       icon: "🏝️", count: 3,  image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=400&h=500&fit=crop" },
+  { name: "Africa",        slug: "africa",        count: 5,  image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&h=500&fit=crop" },
+  { name: "Europe",        slug: "europe",        count: 5,  image: "https://images.unsplash.com/photo-1520637736862-4d197d17c55a?w=400&h=500&fit=crop" },
+  { name: "Asia",          slug: "asia",          count: 5,  image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=400&h=500&fit=crop" },
+  { name: "North America", slug: "north-america", count: 4,  image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=500&fit=crop" },
+  { name: "South America", slug: "south-america", count: 5,  image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=400&h=500&fit=crop" },
+  { name: "Oceania",       slug: "oceania",       count: 3,  image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=400&h=500&fit=crop" },
 ];
 
 const stats = [
@@ -392,7 +392,6 @@ export default function Home() {
                 <img src={c.image} alt={c.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                <div className="absolute top-4 left-4 text-3xl">{c.icon}</div>
                 <div className="absolute bottom-0 left-0 right-0 p-5">
                   <div className="font-display text-lg font-bold text-white">{c.name}</div>
                   <div className="text-white/45 text-xs font-body mt-0.5">{c.count} guides</div>
