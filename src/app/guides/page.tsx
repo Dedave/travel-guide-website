@@ -102,7 +102,7 @@ export default function AllGuidesPage() {
               placeholder="Search by destination, country, tag or theme…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-white/8 backdrop-blur-sm border border-white/15 text-white placeholder-gray-500 rounded-2xl pl-14 pr-12 py-4 text-sm font-body focus:outline-none focus:border-blue-500 transition-all"
+              className="w-full bg-white/8 backdrop-blur-sm border border-white/15 text-black placeholder-gray-500 rounded-2xl pl-14 pr-12 py-4 text-sm font-body focus:outline-none focus:border-blue-500 transition-all"
             />
             {search && (
               <button onClick={() => setSearch("")}
