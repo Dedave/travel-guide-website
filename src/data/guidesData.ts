@@ -1,7 +1,7 @@
 import {
   Plane, Camera, Users, Utensils, DollarSign, Info, Shield, Globe,
   Clock, MapPin, Thermometer, BookOpen, LucideIcon
-  
+
 } from "lucide-react";
 
 interface QuickFacts {
@@ -409,13 +409,143 @@ export const allGuidesData: ContinentGuides = {
       tips: ["Book Colosseum, Vatican, and Uffizi Gallery tickets months in advance", "Avoid eating near major tourist attractions — overpriced and poor quality", "High-speed trains are excellent — no need to fly between cities", "Siesta is real — shops close 1–4 pm in smaller towns", "Free water fountains (nasoni) throughout Rome — bring a refillable bottle", "Gelato: if it's piled high in bright colours, it's a tourist trap", "Cover up in churches or you'll be turned away", "Visit Amalfi Coast in shoulder season — summer is dangerously crowded", "Florence: Stay in Oltrarno neighbourhood for authentic experience", "Rome's pasta portions are enormous — share a starter"],
     },
     {
+      id: "sicily-guide",
+      title: "Sicily Travel Guide",
+      description: "Mount Etna, Greek temples, Baroque hill towns and Italy's finest street food",
+      image: "https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=800&h=500&fit=crop",
+      continent: "Europe", continentSlug: "europe",
+      country: "Italy", countrySlug: "italy", countryFlag: "🇮🇹",
+      rating: 4.8, downloads: "4.1k", pages: 68, price: "$6.99",
+      gumroadUrl: "https://wanderlustguides.gumroad.com/l/zigyow",
+      amazonUrl: "",      tags: ["History", "Food", "Volcano"], featured: false,
+      tag: "Hidden Gem", tagColor: "bg-amber-500",
+      subtitle: "The Mediterranean's Greatest Island — Greek Ruins, Lava Fields & Arancini",
+      heroImage: "https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=1920&h=1080&fit=crop",
+      quickFacts: {
+        bestTime: "April–June, September–October",
+        duration: "7–10 days",
+        budget: "$ Budget Friendly",
+        highlights: 38,
+        language: "Italian (Sicilian dialect)",
+        currency: "Euro (EUR)",
+      },
+      overview:
+        "Sicily is Italy's largest island and arguably its most layered destination — a crossroads of civilisations where Greek temples predate Rome, Arabic-Norman cathedrals glow with Byzantine gold mosaics, and Baroque hill towns were rebuilt after a catastrophic 1693 earthquake. Mount Etna, Europe's highest active volcano (3,357 m), smoulders visibly above the east coast. The street food (arancini, panelle, cannoli) is among Italy's finest. And the pace of life — unhurried, warm, deeply rooted — is unlike anywhere else in the country.",
+      destinations: [
+        {
+          name: "Palermo & Monreale",
+          description:
+            "Sicily's raucous capital pulses around the Ballarò and Capo street markets — the best in Italy. The Palatine Chapel and Monreale Cathedral's 6,000 m² of golden Byzantine mosaics are among the world's most extraordinary interiors.",
+          image: "https://images.unsplash.com/photo-1549877452-9c387954fbc2?w=800&h=600&fit=crop",
+        },
+        {
+          name: "Mount Etna",
+          description:
+            "Europe's highest and most active volcano rises 3,357 m above the Ionian coast. Cable car and 4WD jeeps reach the summit craters. The lava fields, chestnut forests, and wine grown on volcanic soil are all extraordinary.",
+          image: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=800&h=600&fit=crop",
+        },
+        {
+          name: "Agrigento — Valley of the Temples",
+          description:
+            "Seven Doric temples from 580–430 BC line a UNESCO ridge above the sea — among the best-preserved Greek ruins anywhere in the world, more complete than Athens' Acropolis.",
+          image: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&h=600&fit=crop",
+        },
+        {
+          name: "Taormina & the Ionian Coast",
+          description:
+            "Taormina's clifftop Greek-Roman theatre frames a perfect view of Etna and the sea — one of the Mediterranean's most photogenic settings. Below: the black sand beaches of Giardini Naxos.",
+          image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800&h=600&fit=crop",
+        },
+        {
+          name: "Syracuse & Ortigia",
+          description:
+            "Syracuse was once as powerful as Athens. The old island of Ortigia is compact, golden, and stunning — the Greek theatre (still used for performances), the Ear of Dionysius cave, and the Fountain of Arethusa.",
+          image: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=600&fit=crop",
+        },
+        {
+          name: "Baroque Val di Noto",
+          description:
+            "Eight towns rebuilt in exuberant Baroque after the 1693 earthquake — Noto, Ragusa Ibla, Modica, and Scicli form a UNESCO World Heritage route of honeyed limestone architecture.",
+          image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
+        },
+      ],
+      essentialInfo: [
+        {
+          icon: Plane,
+          title: "Getting Around",
+          description:
+            "Rent a car — Sicily's best sights are spread across the island and public transport is slow. Motorways connect Palermo, Catania, and Messina. Drive carefully in city centres — traffic is chaotic.",
+        },
+        {
+          icon: Camera,
+          title: "Valley of the Temples",
+          description:
+            "Go at opening (8:30 am) or the evening archaeological park walk — golden-hour light on the temples is extraordinary. The Concordia Temple is Sicily's most iconic image.",
+        },
+        {
+          icon: Users,
+          title: "Mount Etna",
+          description:
+            "Cable car from Rifugio Sapienza + 4WD jeep to 2,900 m. Guided summit trek to 3,200 m available. Always check eruption status — minor activity is normal.",
+        },
+        {
+          icon: Utensils,
+          title: "Sicilian Cuisine",
+          description:
+            "Arancini (fried rice balls), panelle (chickpea fritters), caponata, pasta con le sarde, fresh swordfish and tuna, cassata cake, cannoli (filled to order only), and granita e brioche for breakfast.",
+        },
+        {
+          icon: DollarSign,
+          title: "Excellent Value",
+          description:
+            "Sicily is one of Italy's most affordable regions. Street food €2–4. Restaurant meals €10–18. Accommodation from €40. Much cheaper than mainland Italian cities.",
+        },
+        {
+          icon: Info,
+          title: "Practical Tips",
+          description:
+            "Roads in the interior are slow and winding — add 50% to Google's driving estimates. July–August is very hot (38°C+) and crowded. May, June, and September are ideal.",
+        },
+      ],
+      highlights: [
+        "Valley of the Temples at golden hour",
+        "Summit hike on Mount Etna with a guide",
+        "Palermo's Ballarò street market at 8 am",
+        "Palatine Chapel mosaics in the Royal Palace",
+        "Monreale Cathedral — the golden interior",
+        "Greek theatre of Taormina with Etna backdrop",
+        "Ortigia island in Syracuse at sunset",
+        "Baroque Noto and Ragusa Ibla",
+        "Cannoli filled to order at a Palermo pasticceria",
+        "Salt pans of Marsala at dusk (flamingos in autumn)",
+        "Swimming off the Aeolian Islands",
+        "Etna wine tasting on volcanic soil",
+      ],
+      tips: [
+        "Rent a car from Palermo or Catania airport — non-negotiable for the interior",
+        "Cannoli: The filling (ricotta) is piped fresh at the counter — pre-filled = stale",
+        "Palermo markets: Arrive by 8–9 am before the heat and crowds",
+        "Valley of the Temples: Book tickets online and arrive at opening",
+        "Etna summit: Check the INGV observatory website for current activity before booking",
+        "Taormina in July–August: Book accommodation months ahead — fills completely",
+        "Granita e brioche for breakfast is the local way — try pistachio or almond flavour",
+        "Noto: The main Corso is tourist-heavy — explore the side streets for local life",
+        "Avoid driving in central Palermo — park on the edge and walk or use taxi",
+        "The Aeolian Islands (Stromboli, Lipari, Vulcano) make an excellent 3-day ferry extension from Milazzo",
+        "Sicilian wine: Nero d'Avola (red) and Etna Bianco are world-class — ask for local DOC bottles",
+        "Don't compare Sicily to mainland Italy — it's a distinct culture, history, and cuisine",
+      ],
+    },
+    {
       id: "greece-islands",
       title: "Greek Islands Paradise",
       description: "Santorini sunsets, Mykonos beaches, Crete and ancient Athens",
       image: "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=800&h=500&fit=crop",
       continent: "Europe", continentSlug: "europe",
       country: "Greece", countrySlug: "greece", countryFlag: "🇬🇷",
-      rating: 4.9, downloads: "6.8k", pages: 88, price: "$14.99",
+      rating: 4.9, downloads: "4.1k", pages: 68, price: "$6.99",
+      gumroadUrl: "https://wanderlustguides.gumroad.com/l/wpvkg",
+      amazonUrl: "",      
       tags: ["Islands", "Beach", "History"], featured: true, tag: "Top Rated", tagColor: "bg-blue-500",
       subtitle: "Ancient Ruins, Azuze Waters & Island Paradise",
       heroImage: "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=1920&h=1080&fit=crop",
@@ -505,7 +635,9 @@ export const allGuidesData: ContinentGuides = {
       image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=800&h=500&fit=crop",
       continent: "Europe", continentSlug: "europe",
       country: "Iceland", countrySlug: "iceland", countryFlag: "🇮🇸",
-      rating: 4.9, downloads: "7.3k", pages: 96, price: "$6.99",
+      rating: 4.8, downloads: "4.1k", pages: 68, price: "$6.99",
+      gumroadUrl: "https://wanderlustguides.gumroad.com/l/yqlxcp",
+      amazonUrl: "",
       tags: ["Northern Lights", "Nature", "Adventure"], featured: true, tag: "Staff Pick", tagColor: "bg-amber-500",
       subtitle: "Fire, Ice & Northern Lights at the Edge of the World",
       heroImage: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=1920&h=1080&fit=crop",
@@ -535,7 +667,9 @@ export const allGuidesData: ContinentGuides = {
       image: "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=800&h=500&fit=crop",
       continent: "Europe", continentSlug: "europe",
       country: "Netherlands", countrySlug: "netherlands", countryFlag: "🇳🇱",
-      rating: 4.8, downloads: "6.1k", pages: 82, price: "$6.99",
+      rating: 4.8, downloads: "4.1k", pages: 68, price: "$6.99",
+      gumroadUrl: "https://wanderlustguides.gumroad.com/l/xincp",
+      amazonUrl: "",
       tags: ["City", "Art", "Canals"], featured: false,
       subtitle: "Golden Age Art, Canals & the World's Most Cycling-Friendly City",
       heroImage: "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=1920&h=1080&fit=crop",
@@ -597,7 +731,7 @@ export const allGuidesData: ContinentGuides = {
       continent: "Europe", continentSlug: "europe",
       country: "Ireland", countrySlug: "ireland", countryFlag: "🇮🇪",
       rating: 4.8, downloads: "5.1k", pages: 78, price: "$6.99",
-      gumroadUrl: "https://wanderlustguides.gumroad.com/l/xincp",
+      gumroadUrl: "https://wanderlustguides.gumroad.com/l/pvxpb",
       amazonUrl: "https://www.amazon.com/dp/B0GZQF99BN",
       tags: ["City", "Pubs", "History"], featured: false,
       subtitle: "The Fair City — Craic, Culture & Cobblestones",
@@ -621,7 +755,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Pull a pint of Guinness at the Storehouse", "See the Book of Kells at Trinity College", "Explore the Long Room library", "Wander Temple Bar's streets", "Visit Kilmainham Gaol", "Catch live trad music in a pub", "Walk along the Grand Canal", "Day trip to Howth for fresh seafood", "Tour the Chester Beatty Library (free, world-class)", "Stroll St. Stephen's Green"],
       tips: ["Book Book of Kells tickets online — queues are long", "Temple Bar pubs are tourist traps — explore Stoneybatter or Ranelagh instead", "Sundays are quiet — perfect for museums and parks", "Irish weather is unpredictable — always carry a waterproof", "Leap Card for unlimited bus/tram travel", "Most museums are free — Chester Beatty Library is a hidden gem", "Try a full Irish breakfast at a local café not a hotel", "Walk the coastline from Dún Laoghaire to Sandycove", "DART train along the coast is spectacular and cheap", "Respect the locals — don't call them British"],
     },
- 
+
     {
       id: "paris-guide",
       title: "Paris Travel Guide",
@@ -652,7 +786,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Climb the Eiffel Tower at sunset", "Explore the Louvre (allow a full day)", "Wander Montmartre's village streets", "Visit Notre-Dame (restored 2024)", "Walk along the Seine at night", "Day trip to Versailles Palace", "Browse Shakespeare and Company bookshop", "Eat croissants from Du Pain et des Idées", "Canal Saint-Martin picnic on a sunny afternoon", "Explore the covered passages (Galerie Vivienne)"],
       tips: ["Book Eiffel Tower tickets 60 days in advance — they sell out", "Visit the Louvre Wednesday or Friday evenings — less crowded", "Paris Museum Pass saves time and money at multiple sites", "Paris is very walkable — the Métro is faster but you miss so much", "Aperitivo culture: wine and snacks on the Seine banks in summer", "Try the plat du jour at a neighbourhood bistro — €12–15 for 2 courses", "Notre-Dame reopened December 2024 — book entry in advance", "Avoid eating on the Champs-Élysées — tourist trap prices", "The Marais is best explored without a plan — just wander", "Buy a carnet of 10 Métro tickets — cheaper than singles"],
     },
- 
+
     {
       id: "barcelona-guide",
       title: "Barcelona Travel Guide",
@@ -683,7 +817,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Marvel at the Sagrada Família interior", "Explore Park Güell's mosaic terraces", "Walk the Gothic Quarter's medieval lanes", "Tour Casa Batlló at night", "Swim at Barceloneta beach", "La Boqueria market in the morning", "Drinks at a rooftop bar at sunset", "Explore El Born neighbourhood", "See Picasso Museum", "Watch FC Barcelona at Camp Nou (if fixtures allow)"],
       tips: ["Book Sagrada Família 2–3 months ahead — it sells out completely", "Park Güell monumental zone: Book in advance; free areas are beautiful too", "Las Ramblas is for walking through, not lingering — pickpockets everywhere", "Best tapas in El Born and Gràcia neighbourhoods, not tourist areas", "Barcelona nightlife starts at midnight — don't arrive at a club before 1am", "T-Casual metro card — buy 10-trip card, much cheaper than singles", "Beaches get very crowded July–August — May/June or September are best", "Montjuïc hill by cable car for views and the Font Màgica fountains at night", "Set lunch menus at restaurants offer incredible value (€12–15)", "Casa Batlló evening experience is spectacular but expensive — worth it once"],
     },
- 
+
     {
       id: "lisbon-guide",
       title: "Lisbon Travel Guide",
@@ -714,7 +848,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Ride Tram 28 through Alfama", "Eat a fresh pastel de nata at Pastéis de Belém", "Watch fado in a candlelit Alfama restaurant", "Explore Jerónimos Monastery", "Sunrise from Miradouro da Graça", "Wander Mouraria neighbourhood", "Sunday market at LX Factory", "Day trip to Sintra's fairy-tale palaces", "Sunset from São Pedro de Alcântara miradouro", "Walk across the 25 de Abril bridge (or view it)"],
       tips: ["Tram 28 is packed — walk the Alfama route instead for the same experience", "Pastéis de Belém: Queue moves fast — worth every minute", "Hire a tuk-tuk for the steep hills if feet are tired", "Time Out Market: Great for lunch but expensive for dinner", "Day trip to Sintra is essential — buy combined train+palace ticket", "Alfama at night is magical but watch your belongings", "Most museums have free entry on Sunday mornings until 2pm", "Uber is cheap and excellent in Lisbon — better than taxis", "Learn 'Obrigado/a' (thank you) — locals genuinely appreciate it", "Avoid restaurants near Praça do Comércio — tourist trap prices"],
     },
- 
+
     {
       id: "porto-guide",
       title: "Porto Travel Guide",
@@ -747,7 +881,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Cross Dom Luís Bridge on foot at sunset", "Tour a port wine lodge in Gaia", "Stand inside São Bento station", "Walk Livraria Lello bookshop", "Explore Ribeira waterfront", "Eat a francesinha at Café Santiago", "View from Clérigos tower", "Day trip to Douro Valley by boat", "Explore Foz neighbourhood by tram", "Bica coffee standing at the bar"],
       tips: ["Livraria Lello charges entry (€8) — redeemable on book purchase", "Walk across Dom Luís Bridge upper level — incredible views, free", "Porto is hilly — good shoes essential", "Douro Valley day trip: Take the train from São Bento — spectacular scenery", "Port wine: Vintage port is incredible — splurge on at least one glass", "Francesinha: Only at lunch — too heavy for dinner", "Bom Jesus funicular in Braga is charming — great day trip", "Most churches are free — extraordinary azulejo interiors", "Porto card (1/2/3 days) covers transport and museum entry", "Foz neighbourhood is quieter and local — great for evening strolls"],
     },
- 
+
     {
       id: "dolomites-guide",
       title: "Dolomites Travel Guide",
@@ -778,7 +912,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Hike the Tre Cime di Lavaredo circuit", "Row a boat on Lago di Braies at dawn", "Via ferrata on the Cinque Torri", "Ski Val Gardena's Sella Ronda circuit", "Sunrise alpenglow on the Pale di San Martino", "Cable car up to Sass Pordoi for 360° views", "Multi-day Alta Via 1 trekking route", "Visit rifugio for local food mid-hike", "Explore Ortisei's Ladin culture", "Drive the Great Dolomites Road"],
       tips: ["Book Tre Cime parking in advance or use the shuttle — cars banned after 9am in summer", "Lago di Braies: Arrive before 7am or after 6pm — it gets overwhelmingly crowded", "Via ferrata kit: Helmet, harness, and lanyards required — rent in resort", "Alta Via 1: Book all rifugi 3–4 months ahead for July/August", "Alpenglow (enrosadira): Best in June when snow still on peaks", "South Tyrol has bilingual Italian/German signs — both languages used", "August is the busiest month — June/September much more peaceful", "Dolomite roads are narrow and winding — drive slowly", "Rifugi serve excellent food — lunch on the mountain is part of the experience", "Download the Komoot app for offline Dolomite trail maps"],
     },
- 
+
     {
       id: "lake-garda-guide",
       title: "Lake Garda Travel Guide",
@@ -786,7 +920,9 @@ export const allGuidesData: ContinentGuides = {
       image: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=800&h=500&fit=crop",
       continent: "Europe", continentSlug: "europe",
       country: "Italy", countrySlug: "italy", countryFlag: "🇮🇹",
-      rating: 4.7, downloads: "3.9k", pages: 68, price: "$6.89",
+      rating: 4.8, downloads: "4.1k", pages: 68, price: "$6.99",
+      gumroadUrl: "https://wanderlustguides.gumroad.com/l/trhgk",
+      amazonUrl: "",
       tags: ["Lake", "Villages", "Relaxation"], featured: false,
       subtitle: "La Dolce Vita by the Lake — Villas, Villages & Venetian Charm",
       heroImage: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1920&h=1080&fit=crop",
@@ -809,7 +945,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Swim in Limone's crystal-clear waters", "Ferry hop between villages", "Visit Sirmione's medieval castle", "Cable car to Monte Baldo summit", "Paraglide from Monte Baldo", "Windsurf at Riva del Garda", "Explore Roman ruins at Grotte di Catullo", "Sunset from Punta San Vigilio", "Taste Garda extra-virgin olive oil", "Drive the SS45bis lake road"],
       tips: ["Sirmione in July–August is unbearably crowded — visit in May or September", "Ferry passes offer great value — get the weekly pass if staying 5+ days", "Monte Baldo cable car: Book online and go early — long queues in summer", "Limone sul Garda is tourist-heavy — stay there to enjoy it at dawn and dusk", "Riva del Garda is better value than southern lake towns", "Lake water is coldest in May, warmest in August", "Gardaland theme park near Peschiera — families only, not for solo travellers", "Thermal spa in Sirmione: Book Aquaria weeks ahead in summer", "Garda olive oil is extraordinary — buy a bottle to take home", "The SS45bis road from Riva to Gargnano is one of Italy's most scenic drives"],
     },
- 
+
     {
       id: "santorini-guide",
       title: "Santorini Travel Guide",
@@ -817,7 +953,9 @@ export const allGuidesData: ContinentGuides = {
       image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&h=500&fit=crop",
       continent: "Europe", continentSlug: "europe",
       country: "Greece", countrySlug: "greece", countryFlag: "🇬🇷",
-      rating: 4.9, downloads: "8.7k", pages: 65, price: "$6.99",
+      rating: 4.8, downloads: "4.1k", pages: 68, price: "$6.99",
+      gumroadUrl: "https://wanderlustguides.gumroad.com/l/wpvkg",
+      amazonUrl: "",
       tags: ["Romance", "Views", "Islands"], featured: true, tag: "Most Romantic", tagColor: "bg-pink-500",
       subtitle: "The World's Most Iconic Sunset — Caldera Views & Aegean Magic",
       heroImage: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1920&h=1080&fit=crop",
@@ -840,7 +978,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Watch sunset from Oia (arrive very early)", "Sail to the volcanic hot springs", "Swim at Perissa's black sand beach", "Visit Akrotiri's Minoan excavations", "Wine tasting at Santo Wines winery", "Walk the caldera path from Fira to Oia", "Explore the village of Pyrgos", "Sunrise from Imerovigli is often better than the famous sunset", "Red Beach near Akrotiri", "Take the donkeys (or cable car) up from the old port"],
       tips: ["Oia sunset: Arrive 2 hours early or watch from a restaurant terrace with a glass of Assyrtiko", "Cave hotels are extraordinary but book a year ahead for peak season", "Rent an ATV — cheap, fun, and the easiest way to see the whole island", "Fira to Oia caldera walk (10 km) is beautiful — do it early morning", "Akrotiri archaeological site requires advance booking — exceptional and uncrowded", "Don't miss Assyrtiko wine — it's only grown on Santorini's volcanic soil", "Kamari and Perissa beaches are much cheaper than Fira/Oia restaurants", "Cable car from old port: Use it rather than the donkeys — donkey tourism is controversial", "Ferry from Athens is cheap and fun — overnight option available", "Book everything for summer 6+ months ahead — island capacity is limited"],
     },
- 
+
     {
       id: "crete-guide",
       title: "Crete Travel Guide",
@@ -871,7 +1009,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Walk the Samaria Gorge", "Explore Knossos Minoan palace", "Swim at Elafonisi's pink lagoon", "Explore Chania's Venetian harbour", "Balos lagoon by boat", "Visit Spinalonga Venetian island fortress", "Try Cretan mezze feast", "Hike through Imbros Gorge (less crowded than Samaria)", "Drive the coastal road from Rethymno to Chania", "Sunset from Chania lighthouse"],
       tips: ["Rent a car — western Crete's best beaches are inaccessible without one", "Samaria Gorge: Start the first bus down (leaves Chania at 6:15am)", "Knossos is controversial (Evans's reconstructions) but still extraordinary", "Elafonisi: Arrive before 9am or after 5pm — gets overwhelmingly crowded in July–August", "Chania old town is better than Heraklion for accommodation", "Cretan olive oil: Buy from local producers — far superior to supermarket", "Spinalonga: More powerful than Knossos for most visitors — allow half a day", "Car hire: Book through a local agency in Chania — cheaper than international brands", "Western Crete is wilder and more authentic than the eastern resort strip", "Rethymno is a beautiful, less-touristy alternative base to Heraklion and Chania"],
     },
- 
+
     {
       id: "munich-guide",
       title: "Munich Travel Guide",
@@ -902,7 +1040,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Watch the Glockenspiel at Marienplatz", "Beer garden at Englischer Garten", "Day trip to Neuschwanstein Castle", "Tour Nymphenburg Palace", "Deutsches Museum (allow a full day)", "Oktoberfest beer tents (if in season)", "Viktualienmarkt for breakfast", "BMW Museum and factory tour", "Walk along the Isar river", "Pinakothek der Moderne for contemporary art"],
       tips: ["Neuschwanstein: Book tickets online months ahead — they sell out", "Oktoberfest beer tents: Reserve a table at least 6 months ahead", "Weisswurst etiquette: Eaten before noon, suck the sausage from the skin", "Deutsches Museum: Allow 4+ hours — it's enormous", "Beer gardens: You can bring your own food but must buy drinks there", "MVG Rad bike share is excellent for the Englischer Garten", "Hofbräuhaus is mandatory but tourist-heavy — try Augustiner or Löwenbräu too", "Day trip to Salzburg is excellent on the Bayern ticket (cheap rail pass)", "Munich is very safe and clean — public transport is superb", "Bavarian Sunday: Shops mostly closed — plan accordingly"],
     },
- 
+
     {
       id: "berlin-guide",
       title: "Berlin Travel Guide",
@@ -933,7 +1071,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Visit the Holocaust Memorial", "Walk the East Side Gallery", "See the Pergamon altar and Ishtar Gate", "Reichstag dome at sunset (book free, online)", "Currywurst at Curry 36 in Kreuzberg", "Explore Prenzlauer Berg on a Sunday", "Day trip to Potsdam's Sanssouci Palace", "Street art tour in Friedrichshain", "Turkish market at Maybachufer", "Attempt Berghain (or dance at Tresor)"],
       tips: ["Reichstag dome: Book the free visit 2–4 weeks ahead online — it fills up", "Berghain: Dress dark, don't talk in the queue, go Sunday morning for best chance", "Berlin is enormous — pick 2–3 neighbourhoods per day, not a list of sights", "Bike hire is the best way to explore — Nextbike or Lime", "Holocaust Memorial: Walk through it slowly — the disorientation is intentional", "Döner: Mustafa's Gemüse Kebap in Kreuzberg has a queue but is genuinely the best", "Grocery stores (Aldi, Lidl) for cheap supplies — picnic in Tiergarten", "Museum Island: Buy the combined day ticket — €22 covers all 5 museums", "Berlin has no closing time — everything stays open very late", "Learn 'Bitte' (please) and 'Danke' — Germans appreciate basic effort"],
     },
- 
+
     {
       id: "copenhagen-guide",
       title: "Copenhagen Travel Guide",
@@ -942,7 +1080,7 @@ export const allGuidesData: ContinentGuides = {
       continent: "Europe", continentSlug: "europe",
       country: "Denmark", countrySlug: "denmark", countryFlag: "🇩🇰",
       rating: 4.8, downloads: "5.2k", pages: 72, price: "$6.89",
-      gumroadUrl: "https://wanderlustguides.gumroad.com/l/wpvkg",
+      gumroadUrl: "https://wanderlustguides.gumroad.com/l/npowjw",
       amazonUrl: "https://www.amazon.com/dp/B0GSFK52KJ",
       tags: ["Design", "Food", "Cycling"], featured: false,
       subtitle: "Hygge, Noma & the World's Most Cycling-Friendly Capital",
@@ -966,7 +1104,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Golden hour at Nyhavn", "Tivoli Gardens in the evening", "Cycle through the city like a local", "Louisiana Museum of Modern Art", "Smørrebrød at a traditional konditori", "Christiansborg palace tower (free, best views)", "Street food at Reffen market", "Round Tower for city panorama", "Visit Freetown Christiania", "Day trip to Frederiksborg Castle"],
       tips: ["Copenhagen Card covers metro, trains, and most museums — great value if visiting 3+ museums", "Cycling is mandatory for the full Copenhagen experience — rent for the day", "Louisiana Museum: Take the train from Østerport — stunning seaside setting", "Tivoli: Evening is the best time — lights and atmosphere are magical", "Copenhagen is very expensive — budget for it or cook in your accommodation", "Smørrebrød: Try Aamanns or Schønnemann for the real thing", "Noma reservations: Check the website — they do waves of bookings", "Danish pastry: A real 'danish' (wienerbrød) from a bakery is a revelation", "Happy hour beer: Most bars have deals 4–7pm — €4–6 for craft beers", "Danes speak flawless English — but 'Tak' (thank you) is always appreciated"],
     },
- 
+
     {
       id: "switzerland-guide",
       title: "Switzerland Travel Guide",
@@ -998,7 +1136,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Jungfraujoch by cogwheel train", "Glacier Express scenic rail journey", "Hike Lauterbrunnen Valley", "See the Matterhorn from Zermatt", "Chapel Bridge in Lucerne", "Lake Geneva boat trip", "Mount Pilatus cable car", "Cheese fondue in a mountain hut", "Schilthorn via ferrata", "Basel's world-class Art Basel museums"],
       tips: ["Swiss Travel Pass: Buy before arriving — significantly cheaper", "Jungfraujoch: Book ahead, go on a clear day, and take warm layers (−15°C at top)", "Glacier Express: Book months ahead for the panoramic car windows", "Switzerland is very expensive — budget CHF 150–200/day minimum", "Hiking trails are magnificently signposted — no GPS needed", "Zermatt is car-free — electric taxis only; arrive by train", "Cheese fondue etiquette: Dropping bread in the pot means buying a round of drinks", "Lauterbrunnen is far cheaper than Grindelwald for accommodation", "Migrate to local supermarkets (Migros, Coop) for breakfast and lunch", "Each Swiss region speaks different languages — a few words in the local language help"],
     },
- 
+
     {
       id: "croatia-plitvice-guide",
       title: "Croatia & Plitvice Lakes Guide",
@@ -1029,7 +1167,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Walk Plitvice's boardwalks above the lakes", "Walk Dubrovnik's city walls", "Explore Diocletian's Palace in Split", "Ferry to Hvar Island", "Swim at Stiniva Cove on Vis Island", "Cable car above Dubrovnik", "Kayak around Lokrum Island", "Try peka at a konoba restaurant", "Explore Korčula — claimed birthplace of Marco Polo", "Drive the Magistrala coastal road"],
       tips: ["Plitvice: Book tickets 2–3 months ahead for summer — genuinely sells out", "Dubrovnik walls: Walk them at 8am before tour groups — transformative difference", "Split: Explore Diocletian's Palace maze at night — magical atmosphere", "July–August cruise ship season makes Dubrovnik unbearable — go in shoulder season", "Ferry booking: Jadrolinija is reliable; book ahead for car ferries in summer", "Hvar town is expensive — stay in Stari Grad for better value", "Croatian wine: Plavac Mali (Dalmatia) and Malvazija (Istria) are excellent", "Peka: Order 24 hours ahead — it requires advance preparation at the konoba", "Parking in Dubrovnik: Old town car parks are expensive — use park and ride", "Learn 'Hvala' (thank you) — locals appreciate the effort"],
     },
- 
+
     {
       id: "malta-guide",
       title: "Malta Travel Guide",
@@ -1061,7 +1199,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Caravaggio at St. John's Co-Cathedral", "Walk Valletta's Baroque streets", "Explore Mdina at dawn", "Ferry to Gozo and the Dwejra Inland Sea", "Dive or snorkel the Blue Hole", "Visit the megalithic temples at Ħaġar Qim", "Grand Harbour views from Upper Barrakka", "Pastizzi from a street vendor", "Three Cities (Birgu, Senglea, Bormla) by water taxi", "Marsaxlokk Sunday fish market"],
       tips: ["Valletta in July–August is extremely hot — visit April/May or October", "St. John's Co-Cathedral: Book the Caravaggio tour — context makes it extraordinary", "Mdina at dawn or dusk — day visitors arrive late morning and leave by afternoon", "Day-Gozo-ferry: Take the early crossing and return in the evening", "Pastizzi: Buy from a pastizzerija, not a tourist café", "Malta bus network is cheap and excellent — no car needed", "Maltese drivers are aggressive — exercise caution if you do drive", "Summer evenings in Valletta are magical — outdoor concerts and festivals", "Marsaxlokk fish market is Sunday morning only — very local and authentic", "Maltese people are genuinely warm — the island's small-town friendliness is real"],
     },
- 
+
   ],
 
   /* ═══════════════════════════════════════
@@ -1255,8 +1393,9 @@ export const allGuidesData: ContinentGuides = {
       image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&h=500&fit=crop",
       continent: "Asia", continentSlug: "asia",
       country: "Indonesia", countrySlug: "indonesia", countryFlag: "🇮🇩",
-      rating: 4.8, downloads: "8.7k", pages: 90, price: "$6.99",
-      tags: ["Beach", "Culture", "Nature"], featured: true,
+      rating: 4.8, downloads: "4.1k", pages: 68, price: "$6.99",
+      gumroadUrl: "https://wanderlustguides.gumroad.com/l/nrqozj",
+      amazonUrl: "", tags: ["Beach", "Culture", "Nature"], featured: true,
       subtitle: "Island Paradise of Temples & Rice Terraces",
       heroImage: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1920&h=1080&fit=crop",
       quickFacts: { bestTime: "April–October (dry season)", duration: "10–14 days", budget: "$ Budget Friendly", highlights: 40, language: "Indonesian (Bahasa Indonesia)", currency: "Indonesian Rupiah (IDR)" },
@@ -1308,37 +1447,37 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Watch sunrise at the Taj Mahal", "Explore Amber Fort in Jaipur", "Experience Ganga Aarti ceremony in Varanasi", "Shop in Delhi's Chandni Chowk", "Visit Agra Fort and Fatehpur Sikri", "Ride an elephant up to Amber Fort", "Enjoy traditional Rajasthani thali", "Witness spiritual rituals on the Ganges", "Explore colourful bazaars everywhere", "Stay in a heritage haveli hotel"],
       tips: ["Book Taj Mahal tickets online in advance — skip long queues", "Visit Taj at sunrise — fewer crowds and incredible light", "Use reputable tour companies or guides — avoid street touts", "Drink only bottled water — check seal before opening", "Dress modestly — cover shoulders and knees at religious sites", "Bargain hard in markets — start at 30–40% of asking price", "Be firm with touts and scam artists — say no and walk away", "Book train tickets well in advance — Tatkal for last minute", "Delhi Belly: take medication, eat carefully at first", "Learn 'Namaste' and basic Hindi — locals deeply appreciate it"],
     },
-     {
-  id: "maldives-guide",
-  title: "Maldives Paradise Guide",
-  description: "Overwater bungalows, bioluminescent beaches and world-class diving",
-  image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&h=500&fit=crop",
-  continent: "Asia", continentSlug: "asia",
-  country: "Maldives", countrySlug: "maldives", countryFlag: "🇲🇻",
-  rating: 4.9, downloads: "5.8k", pages: 72, price: "$14.99",
-  tags: ["Luxury", "Diving", "Romance"], featured: true, tag: "Most Popular", tagColor: "bg-rose-500",
-  subtitle: "Earth's Last Paradise — Overwater Villas & the Indian Ocean",
-  heroImage: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=1920&h=1080&fit=crop",
-  quickFacts: { bestTime: "November–April (dry season)", duration: "7–10 days", budget: "$$$$ Very Expensive", highlights: 25, language: "Dhivehi & English", currency: "Maldivian Rufiyaa (MVR) / USD" },
-  overview: "The Maldives is the planet's lowest-lying nation (average elevation 1.5 m above sea level) and one of its most extraordinary destinations. 1,192 coral islands in the Indian Ocean, 26 atolls, and some of Earth's clearest water (visibility often 40+ metres). Famous for overwater bungalows, bioluminescent beaches on Vaadhoo Island, and world-class diving with whale sharks, manta rays, and hammerheads.",
-  destinations: [
-    { name: "North Malé Atoll", description: "Most accessible atoll near the capital. Popular resort islands close to the airport with excellent snorkelling and diving reefs.", image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&h=600&fit=crop" },
-    { name: "Baa Atoll (UNESCO Biosphere)", description: "UNESCO Biosphere Reserve and home to Hanifaru Bay — the world's largest gathering of manta rays (May–November).", image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&h=600&fit=crop" },
-    { name: "Vaadhoo Island", description: "Famous for bioluminescent beaches — phytoplankton light up in electric blue when disturbed at night, creating one of nature's most magical spectacles.", image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&h=600&fit=crop" },
-    { name: "Malé & Local Islands", description: "The densely packed capital city with colourful buildings, the Grand Friday Mosque, fish market, and nearby local islands at a fraction of resort prices.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
-  ],
-  essentialInfo: [
-    { icon: Plane, title: "Getting There", description: "Fly to Velana International Airport (Malé). Resorts provide speedboat transfers (30–90 mins) or seaplane transfers." },
-    { icon: Camera, title: "Overwater Bungalows", description: "Direct lagoon access steps into the water. Best for snorkelling from the room. Ask for sunrise or sunset-facing rooms." },
-    { icon: Users, title: "Diving", description: "40+ metre visibility in many atolls. Whale sharks (year-round in South Ari Atoll), manta rays (Baa Atoll, May–Nov)." },
-    { icon: Utensils, title: "Food & Drink", description: "Resorts offer all-inclusive packages (recommended). Alcohol only at resorts — not on local islands." },
-    { icon: DollarSign, title: "Budget Reality", description: "Entry-level overwater bungalows $300–500/night. Luxury $1,000–5,000+. All-inclusive packages offer better value." },
-    { icon: Info, title: "Important Notes", description: "Alcohol only permitted at resort islands. Modest dress required on local islands. Climate change threatens existence." },
-  ],
-  highlights: ["Stay in an overwater bungalow", "Swim with whale sharks in South Ari Atoll", "Dive with manta rays in Baa Atoll", "See bioluminescent beaches at night", "Snorkel the house reef at sunrise", "Sunset dolphin cruise", "Sandbank picnic on a deserted island", "Scuba dive world-class walls and pinnacles", "Experience Maldivian cuisine on a local island", "Watch underwater dining at Ithaa restaurant"],
-  tips: ["Book 6–12 months ahead — top overwater villas sell out that far in advance", "All-inclusive packages are much better value than paying per meal", "Baa Atoll for manta rays: Visit May–November for Hanifaru Bay aggregations", "Seaplane transfers are spectacular — worth it for the scenery", "South Ari Atoll for whale sharks — year-round sightings", "Local guest houses on inhabited islands are 10x cheaper than resorts", "Snorkel at dawn — marine life most active at first light", "Bring reef-safe sunscreen — regular sunscreen damages coral", "Climate change: visit responsibly", "Underwater restaurants: Book 'Ithaa' (Conrad) far in advance"],
-},
- {
+    {
+      id: "maldives-guide",
+      title: "Maldives Paradise Guide",
+      description: "Overwater bungalows, bioluminescent beaches and world-class diving",
+      image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&h=500&fit=crop",
+      continent: "Asia", continentSlug: "asia",
+      country: "Maldives", countrySlug: "maldives", countryFlag: "🇲🇻",
+      rating: 4.9, downloads: "5.8k", pages: 72, price: "$14.99",
+      tags: ["Luxury", "Diving", "Romance"], featured: true, tag: "Most Popular", tagColor: "bg-rose-500",
+      subtitle: "Earth's Last Paradise — Overwater Villas & the Indian Ocean",
+      heroImage: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "November–April (dry season)", duration: "7–10 days", budget: "$$$$ Very Expensive", highlights: 25, language: "Dhivehi & English", currency: "Maldivian Rufiyaa (MVR) / USD" },
+      overview: "The Maldives is the planet's lowest-lying nation (average elevation 1.5 m above sea level) and one of its most extraordinary destinations. 1,192 coral islands in the Indian Ocean, 26 atolls, and some of Earth's clearest water (visibility often 40+ metres). Famous for overwater bungalows, bioluminescent beaches on Vaadhoo Island, and world-class diving with whale sharks, manta rays, and hammerheads.",
+      destinations: [
+        { name: "North Malé Atoll", description: "Most accessible atoll near the capital. Popular resort islands close to the airport with excellent snorkelling and diving reefs.", image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&h=600&fit=crop" },
+        { name: "Baa Atoll (UNESCO Biosphere)", description: "UNESCO Biosphere Reserve and home to Hanifaru Bay — the world's largest gathering of manta rays (May–November).", image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&h=600&fit=crop" },
+        { name: "Vaadhoo Island", description: "Famous for bioluminescent beaches — phytoplankton light up in electric blue when disturbed at night, creating one of nature's most magical spectacles.", image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&h=600&fit=crop" },
+        { name: "Malé & Local Islands", description: "The densely packed capital city with colourful buildings, the Grand Friday Mosque, fish market, and nearby local islands at a fraction of resort prices.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting There", description: "Fly to Velana International Airport (Malé). Resorts provide speedboat transfers (30–90 mins) or seaplane transfers." },
+        { icon: Camera, title: "Overwater Bungalows", description: "Direct lagoon access steps into the water. Best for snorkelling from the room. Ask for sunrise or sunset-facing rooms." },
+        { icon: Users, title: "Diving", description: "40+ metre visibility in many atolls. Whale sharks (year-round in South Ari Atoll), manta rays (Baa Atoll, May–Nov)." },
+        { icon: Utensils, title: "Food & Drink", description: "Resorts offer all-inclusive packages (recommended). Alcohol only at resorts — not on local islands." },
+        { icon: DollarSign, title: "Budget Reality", description: "Entry-level overwater bungalows $300–500/night. Luxury $1,000–5,000+. All-inclusive packages offer better value." },
+        { icon: Info, title: "Important Notes", description: "Alcohol only permitted at resort islands. Modest dress required on local islands. Climate change threatens existence." },
+      ],
+      highlights: ["Stay in an overwater bungalow", "Swim with whale sharks in South Ari Atoll", "Dive with manta rays in Baa Atoll", "See bioluminescent beaches at night", "Snorkel the house reef at sunrise", "Sunset dolphin cruise", "Sandbank picnic on a deserted island", "Scuba dive world-class walls and pinnacles", "Experience Maldivian cuisine on a local island", "Watch underwater dining at Ithaa restaurant"],
+      tips: ["Book 6–12 months ahead — top overwater villas sell out that far in advance", "All-inclusive packages are much better value than paying per meal", "Baa Atoll for manta rays: Visit May–November for Hanifaru Bay aggregations", "Seaplane transfers are spectacular — worth it for the scenery", "South Ari Atoll for whale sharks — year-round sightings", "Local guest houses on inhabited islands are 10x cheaper than resorts", "Snorkel at dawn — marine life most active at first light", "Bring reef-safe sunscreen — regular sunscreen damages coral", "Climate change: visit responsibly", "Underwater restaurants: Book 'Ithaa' (Conrad) far in advance"],
+    },
+    {
       id: "bangkok-guide",
       title: "Bangkok Travel Guide",
       description: "Grand Palace, floating markets, Khao San Road and street food paradise",
@@ -1346,7 +1485,7 @@ export const allGuidesData: ContinentGuides = {
       continent: "Asia", continentSlug: "asia",
       country: "Thailand", countrySlug: "thailand", countryFlag: "🇹🇭",
       rating: 4.8, downloads: "8.9k", pages: 75, price: "$6.99",
-      gumroadUrl: "https://wanderlustguides.gumroad.com/l/nrqozj",
+      gumroadUrl: "https://wanderlustguides.gumroad.com/l/skwkng",
       amazonUrl: "https://www.amazon.com/dp/B0GZPXB17X",
       tags: ["Street Food", "Temples", "Nightlife"], featured: true, tag: "Bestseller", tagColor: "bg-rose-500",
       subtitle: "City of Angels — Temple Chaos, Street Food & Modern Bangkok",
@@ -1370,7 +1509,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Grand Palace at opening time (8:30am)", "Sunset at Wat Arun from the opposite bank", "Floating market day trip (Damnoen Saduak)", "Yaowarat Chinatown at night", "Chatuchak Weekend Market", "Jim Thompson House (Thai silk legend)", "Muay Thai boxing match", "Rooftop bar at Vertigo or Sky Bar", "Chao Phraya river boat tour", "Thai massage at Wat Pho school"],
       tips: ["Grand Palace: Arrive by 8:30am — by 10am it's overwhelmed by tour groups", "Temple touts: Ignore anyone who says a temple is 'closed today' — it's a scam for gem shops", "BTS Skytrain: Use it above the traffic — Grab below ground", "Tuk-tuks: Only use for short scenic rides; negotiate price before getting in", "Heat: January and February are the coolest months — still hot but manageable", "Pad Thai: Jay Fai (Michelin-starred street cook) has a 3-hour queue — worth planning ahead", "Chatuchak: Go early (9am) before the heat makes it unbearable", "Floating markets: Most are tourist traps — Amphawa on weekends is more authentic", "Massage: Wat Pho massage school is excellent and affordable (€8 for 30 min)", "SIM card: Buy at the airport — True Move or DTAC offer excellent tourist plans"],
     },
- 
+
     {
       id: "kyoto-guide",
       title: "Kyoto Travel Guide",
@@ -1401,10 +1540,10 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Fushimi Inari at dawn before crowds", "Arashiyama bamboo grove at 6am", "Spot a geisha in Gion at dusk", "Kinkaku-ji (Golden Pavilion) in morning light", "Tea ceremony at an authentic machiya", "Philosopher's Path in cherry blossom", "Ryoan-ji rock garden at opening", "Nishiki Market street food", "Nijo Castle's nightingale floors", "Sake brewery tour in Fushimi"],
       tips: ["Fushimi Inari: Go at 5:30am — completely empty and magical; avoid midday", "Arashiyama: Arrive before 7am — bamboo grove at 8am is already packed", "Geisha sightings: Walk Hanamikoji Street at 5:30–6:30pm on weekdays", "Kyoto Station: Buy your JR Kyoto-Osaka day pass here for Nara day trip", "Cherry blossom: Book accommodation 6+ months ahead for late March–mid April", "Autumn: Book the same — Eikan-do and Tofuku-ji for best foliage", "Day trip to Nara: 45-minute train, free deer wandering the grounds of Todai-ji", "Kyoto City Bus 1-day pass: Best value if visiting 3+ bus-accessible sights", "Nishiki Market: Morning is best before it gets crowded with tour groups", "Matcha: Try a whisked bowl at a proper tearoom, not a matcha KitKat (well, try that too)"],
     },
- 
+
     {
       id: "izmir-guide",
-      title: "İzmir & Aegean Turkey Guide",
+      title: "Izmir & Aegean Turkey Guide",
       description: "Ephesus ruins, Bodrum, the Aegean coast and authentic Turkish culture",
       image: "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=800&h=500&fit=crop",
       continent: "Asia", continentSlug: "asia",
@@ -1434,7 +1573,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Ephesus Library of Celsus at dawn", "Blue Voyage gulet sailing", "Pamukkale terraces at sunset", "Bodrum Castle underwater museum", "Kemeraltı bazaar in İzmir", "Hierapolis ancient city above Pamukkale", "Sunset from İzmir Kordon", "House of the Virgin Mary above Ephesus", "Aegean seafood meze at a waterfront taverna", "Day trip to Şirince wine village"],
       tips: ["Ephesus: Go at opening (8am) — avoid cruise ship rush after 10am", "Pamukkale: Stay overnight to see the terraces at sunrise — dramatic and nearly empty", "Gulet sailing: Book through reputable İzmir or Bodrum agencies; avoid street touts", "İzmir bazaar: Kemeraltı is far more authentic than Istanbul's Grand Bazaar", "Pamukkale pools: Most are preserved — only walk on designated areas barefoot", "Bodrum in August: Very crowded and expensive — May, June, or September better", "Şirince village: 8 km from Ephesus, produces excellent fruit wines, beautiful village", "House of the Virgin Mary: Near Ephesus, moving and quiet — far less visited than the main site", "Turkish breakfast (kahvaltı): Order the full spread at a proper café — extraordinary", "E-Visa: Required for most nationalities — get online before arrival"],
     },
-],
+  ],
 
   /* ═══════════════════════════════════════
      NORTH AMERICA
@@ -1535,6 +1674,119 @@ export const allGuidesData: ContinentGuides = {
       tips: ["Get OMNY contactless card — cheaper than single tickets", "Book Broadway tickets in advance or use TKTS for day-of discounts", "Walk across Brooklyn Bridge early morning to avoid crowds", "Many museums have pay-what-you-wish hours — check schedules", "Avoid eating in Times Square — tourist trap prices, mediocre food", "Stay in Brooklyn or Queens for cheaper hotels with easy subway access", "Download Citymapper app — best for NYC public transit", "Central Park free concerts and events in summer", "Explore neighbourhoods on foot — Greenwich Village, SoHo, Williamsburg", "New York bagels and pizza are genuinely different from elsewhere — experience them"],
     },
     {
+      id: "green-bay-guide",
+      title: "Green Bay & Door County Guide",
+      description: "Lambeau Field pilgrimages, Door County cherries, Lake Michigan shores and Wisconsin's best cheese",
+      image: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "United States", countrySlug: "usa", countryFlag: "🇺🇸",
+      rating: 4.6, downloads: "4.1k", pages: 68, price: "$6.99",
+      gumroadUrl: "https://wanderlustguides.gumroad.com/l/ylrqe",
+      amazonUrl: "",      tags: ["NFL", "Nature", "Food"], featured: false,
+      subtitle: "Titletown USA — Packers, Cheese Curds & Door County's Hidden Gem",
+      heroImage: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1920&h=1080&fit=crop",
+      quickFacts: {
+        bestTime: "June–September (warm), September–January (Packers season)",
+        duration: "4–7 days",
+        budget: "$ Budget Friendly",
+        highlights: 24,
+        language: "English",
+        currency: "US Dollar (USD)",
+      },
+      overview:
+        "Green Bay is Titletown — home of the Green Bay Packers, the NFL's only community-owned franchise, and the most storied team in American football history. The city of 110,000 people punches far above its weight: Lambeau Field is a genuine sports cathedral, Door County (45 minutes north) is one of the Midwest's most beautiful destinations — a limestone peninsula jutting into Lake Michigan with cherry orchards, lighthouses, and fish boil dinners. And Wisconsin's cheese and bratwurst culture is world unto itself.",
+      destinations: [
+        {
+          name: "Lambeau Field",
+          description:
+            "The NFL's most famous and beloved stadium — home since 1957, capacity 81,441, and the Packers Hall of Fame within. Game day on a Sunday in autumn is a bucket-list American sports experience. Tours run year-round even without a game.",
+          image: "https://images.unsplash.com/photo-1546519638405-a9d1b8e9edcc?w=800&h=600&fit=crop",
+        },
+        {
+          name: "Door County Peninsula",
+          description:
+            "A 112-km limestone peninsula with 300 miles of shoreline, 10 lighthouses, dozens of state parks, cherry and apple orchards, kayaking, wine tasting, and the famous fish boil dinner tradition — a theatrical outdoor cooking ritual.",
+          image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=800&h=600&fit=crop",
+        },
+        {
+          name: "Peninsula State Park",
+          description:
+            "Door County's crown jewel — 3,776 acres of bluffs, forests, and Lake Michigan shoreline. Bike trails, kayak launches, the Eagle Tower viewpoint, and incredible sunset views over Nicolet Bay.",
+          image: "https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=800&h=600&fit=crop",
+        },
+        {
+          name: "Green Bay Downtown & Waterfront",
+          description:
+            "The Fox River Waterfront Trail, the National Railroad Museum (one of America's best), the Neville Public Museum, and a revitalised restaurant and brewery scene centred on Broadway and the CityDeck walkway.",
+          image: "https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=800&h=600&fit=crop",
+        },
+      ],
+      essentialInfo: [
+        {
+          icon: Plane,
+          title: "Getting There",
+          description:
+            "Green Bay Austin Straubel Airport (GRB) with connections via Chicago or Minneapolis. Chicago O'Hare is 3 hours by car. Car rental is essential — there's no meaningful public transport.",
+        },
+        {
+          icon: Camera,
+          title: "Lambeau Field Tickets",
+          description:
+            "Regular season game tickets are nearly impossible to get (multi-year waitlist for season tickets). Check StubHub and SeatGeek. Preseason games are accessible. Tours run daily year-round from $25.",
+        },
+        {
+          icon: Users,
+          title: "Door County Tips",
+          description:
+            "Drive the peninsula's two sides — the Green Bay side and the Lake Michigan side have different characters. Stay overnight in Fish Creek, Ephraim, or Sister Bay for the best experience.",
+        },
+        {
+          icon: Utensils,
+          title: "Wisconsin Food",
+          description:
+            "Cheese curds (fresh, squeaky, and fried), bratwurst with Stadium Sauce, Friday night fish fry (supper clubs), Door County fish boil, local craft beer, and Spotted Cow ale from New Glarus Brewing.",
+        },
+        {
+          icon: DollarSign,
+          title: "Budget",
+          description:
+            "Very affordable Midwest destination. Good hotels $80–150/night. Dinner $15–25. Door County slightly pricier in peak summer. Game day hotel rates spike dramatically.",
+        },
+        {
+          icon: Info,
+          title: "Seasonal Planning",
+          description:
+            "Summer (June–August): Best for Door County outdoor activities. Fall (September–November): Peak foliage + Packers season. Winter is very cold (−15°C possible) but the Frozen Tundra experience is legendary.",
+        },
+      ],
+      highlights: [
+        "Lambeau Field stadium tour (or a game if you can get tickets)",
+        "Green Bay Packers Hall of Fame",
+        "Door County fish boil dinner at White Gull Inn or Old Post Office",
+        "Peninsula State Park bike trail and Eagle Tower sunset",
+        "Kayaking the Door County sea caves at Whitefish Dunes",
+        "Cherry picking in July (Door County orchards)",
+        "10 lighthouses road trip along the peninsula",
+        "Fresh cheese curds at a local dairy or Lambeau Field concession",
+        "National Railroad Museum in Green Bay",
+        "Sunset from the bluffs at Ellison Bay",
+      ],
+      tips: [
+        "Game day: Tailgating starts 4+ hours before kickoff — join the scene in the stadium parking lots",
+        "If you can't get game tickets, watch at a Green Bay bar — the atmosphere is still electric",
+        "Door County in July: Book accommodation 3–4 months ahead — cherry season fills every room",
+        "Fish boil: The flame-up is theatrical but the whitefish is genuinely excellent",
+        "Cheese curds: Buy from a local dairy (Widmer's, Henning's) not a souvenir shop — freshness matters",
+        "Peninsula State Park: Rent bikes in Fish Creek — the park road is car-congested in summer",
+        "Sea caves at Whitefish Dunes: Kayak tour companies run from Baileys Harbor (book ahead in summer)",
+        "Spotted Cow beer: New Glarus Brewing's flagship — only sold in Wisconsin, stock up",
+        "Green Bay winter games: Dress in full layers — Lambeau in January is genuinely brutal and glorious",
+        "Door County wine: Most is semi-sweet fruit wine, not for wine snobs — embrace it as a local tradition",
+        "The Packers are community-owned — no single owner can relocate them. This matters deeply to locals.",
+        "Combine with a Milwaukee day trip (2 hours south) for the Milwaukee Art Museum and Lakefront Brewery",
+      ],
+    },
+    {
       id: "canada-rockies",
       title: "Canadian Rockies Adventure",
       description: "Banff turquoise lakes, Jasper wildlife and Vancouver island life",
@@ -1595,66 +1847,66 @@ export const allGuidesData: ContinentGuides = {
       tips: ["Don't drink tap water — stick to bottled or purified water", "Learn basic Spanish — helps enormously", "Visit Chichén Itzá at 8 am to avoid tour bus crowds", "Use ADO buses between cities — comfortable and very cheap", "Bargain at markets but not in established shops", "Tipping: 10–15% at restaurants, round up for taxis", "Avoid Cancún hotel zone — overpriced and not authentically Mexican", "Cenotes require biodegradable sunscreen — regular sunscreen is banned", "Mexico City altitude (2,240 m) — take it easy the first day", "Try street food where locals eat — it's safe and delicious"],
     },
     {
-  id: "barbados-guide",
-  title: "Barbados Island Guide",
-  description: "Rum punch, cricket, the Platinum Coast and Crop Over festival",
-  image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=500&fit=crop",
-  continent: "North America", continentSlug: "north-america",
-  country: "Barbados", countrySlug: "barbados", countryFlag: "🇧🇧",
-  rating: 4.8, downloads: "3.4k", pages: 68, price: "$14.99",
-  tags: ["Beach", "Culture", "Rum"], featured: true, tag: "Top Rated", tagColor: "bg-blue-500",
-  subtitle: "The Caribbean's Most Sophisticated Island — Rum, Reefs & Rihanna's Homeland",
-  heroImage: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&h=1080&fit=crop",
-  quickFacts: { bestTime: "December–April (dry season)", duration: "7–10 days", budget: "$$$ Expensive", highlights: 28, language: "English", currency: "Barbadian Dollar (BBD) / US Dollar" },
-  overview: "Barbados punches above its weight as 'Little England' with proper infrastructure, world-class beaches, rum distilleries (Mount Gay has been producing since 1703 — the world's oldest rum brand), and a friendly, proud local culture. The Platinum Coast's calm waters sit in sharp contrast to the wild Atlantic East Coast surf. The Crop Over festival is one of the Caribbean's greatest carnivals.",
-  destinations: [
-    { name: "Platinum Coast (West Coast)", description: "Paynes Bay, Holetown, Mullins Bay — calm turquoise water, luxury hotels, excellent beach bars, and world-class catamaran sailing trips with sea turtles.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
-    { name: "Bridgetown", description: "The capital and a UNESCO World Heritage Site. Garrison Savannah, Parliament Buildings, National Heroes Square, and excellent local rum shops.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
-    { name: "East Coast & Bathsheba", description: "Wild Atlantic surf coast with Bathsheba's dramatic mushroom rocks, rolling waves (surfers' paradise), and the traditional rural heart of Bajan culture.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
-    { name: "Harrison's Cave & Interior", description: "Spectacular underground crystallized limestone caverns, Flower Forest botanical gardens, Andromeda Botanic Gardens, and parish churches dotting the inland landscape.", image: "https://images.unsplash.com/photo-1518259102261-b40117eabbc9?w=800&h=600&fit=crop" },
-  ],
-  essentialInfo: [
-    { icon: Plane, title: "Getting Around", description: "Rent a car — roads are well-maintained. Blue ZR buses cheap and local. Taxis everywhere but negotiate price first." },
-    { icon: Camera, title: "Rum Heritage", description: "Mount Gay Distillery (oldest rum in the world, 1703). St. Nicholas Abbey (working plantation and rum distillery, 1658)." },
-    { icon: Users, title: "Cricket Culture", description: "Barbados is the Caribbean's cricket heartland. Kensington Oval hosts Test matches. Extraordinary atmosphere." },
-    { icon: Utensils, title: "Bajan Cuisine", description: "Flying fish (national dish) with cou-cou, macaroni pie, pudding and souse, pepperpot stew. Oistins Fish Fry on Friday nights." },
-    { icon: DollarSign, title: "Budget Reality", description: "Barbados is the most expensive Eastern Caribbean island. Local rum shops and food vans are very affordable alternatives." },
-    { icon: Info, title: "Practical Tips", description: "Barbadians are called Bajans. No need for currency conversion from USD. Infrastructure is excellent." },
-  ],
-  highlights: ["Swim with sea turtles on a catamaran tour", "Tour Mount Gay Rum Distillery", "Friday night Oistins Fish Fry", "Surf the Atlantic waves at Bathsheba", "Explore Harrison's Cave", "Walk the Platinum Coast beaches", "Visit the UNESCO-listed Bridgetown Garrison", "Watch cricket at Kensington Oval", "Attend Crop Over carnival (July–August)", "Sunset cocktails at The Cliff restaurant"],
-  tips: ["Oistins Fish Fry on Friday nights is the social event of the week — don't miss it", "Swim with sea turtles: book catamaran tour rather than swimming directly", "Mount Gay Rum Tour is excellent even for non-rum-drinkers — great history", "East Coast and West Coast feel like different islands — see both", "Buy rum at the airport duty free — significantly cheaper", "Local rum shops serve rum and soda for $2 — embrace the Bajan way", "Crop Over (July–Aug) is phenomenal — book accommodation 6 months ahead", "Barbados tap water is safe to drink — among the Caribbean's best"],
-},
- {
-  id: "curacao-guide",
-  title: "Curaçao Travel Guide",
-  description: "Dutch colonial Willemstad, coral reefs and the ABC Islands",
-  image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=500&fit=crop",
-  continent: "North America", continentSlug: "north-america",
-  country: "Curaçao", countrySlug: "curacao", countryFlag: "🇨🇼",
-  rating: 4.7, downloads: "2.1k", pages: 62, price: "$14.99",
-  tags: ["Culture", "Diving", "Beach"], featured: false,
-  subtitle: "Colourful Dutch Caribbean — Outside the Hurricane Belt",
-  heroImage: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1920&h=1080&fit=crop",
-  quickFacts: { bestTime: "Year-round (outside hurricane belt)", duration: "5–8 days", budget: "$$ Moderate", highlights: 24, language: "Papiamentu, Dutch & English", currency: "Netherlands Antillean Guilder (ANG)" },
-  overview: "Curaçao (pronounced 'KYOOR-ah-sow') is a Dutch Caribbean island outside the hurricane belt, offering reliable year-round sunshine. Willemstad's colourful UNESCO-listed Handelskade waterfront is one of the Caribbean's most photographed streets. World-class shore diving, secluded beaches, and a laid-back multicultural atmosphere make Curaçao one of the region's most underrated destinations.",
-  destinations: [
-    { name: "Willemstad", description: "UNESCO World Heritage capital with pastel-coloured Dutch colonial buildings along Sint Annabaai, the Queen Emma pontoon bridge, Floating Market, and Fort Amsterdam.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
-    { name: "Westpunt & Beaches", description: "Cas Abao Beach (consistently rated Caribbean's best), Grote Knip's turquoise cove, and Klein Curaçao (uninhabited island with pristine reefs).", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
-    { name: "Diving Sites", description: "Over 65 dive sites accessible from shore — no boat needed. Wall diving from Watamula to Mushroom Forest. Visibility 30+ metres.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
-    { name: "Christoffel National Park", description: "Curaçao's natural lungs with the highest point (Mt. Christoffel, 375 m), hiking trails, orchids, white-tailed deer, and Arawak cave paintings.", image: "https://images.unsplash.com/photo-1518259102261-b40117eabbc9?w=800&h=600&fit=crop" },
-  ],
-  essentialInfo: [
-    { icon: Plane, title: "Getting Around", description: "Rent a car — excellent roads. Island is small (60 km long) — easily explored in a week by car." },
-    { icon: Camera, title: "Diving", description: "Shore diving paradise — park, kit up, and wade in. Klein Curaçao snorkelling outstanding." },
-    { icon: Users, title: "Culture", description: "Papiamentu is the local language — a fascinating Creole mix of Portuguese, Spanish, Dutch, and African languages." },
-    { icon: Utensils, title: "Local Food", description: "Keshi yena (stuffed Edam cheese), kadushi cactus soup, seafood, Gouda cheese everywhere, fresh local fish." },
-    { icon: DollarSign, title: "Value", description: "Very reasonable compared to other Caribbean islands. Tourism less inflated than Aruba or St. Maarten." },
-    { icon: Info, title: "Year-Round", description: "Curaçao sits below the hurricane belt — reliably sunny year-round. Water temperature constant 26°C." },
-  ],
-  highlights: ["Photograph Willemstad's colourful Handelskade", "Shore dive Curaçao's famous reefs", "Swim at Cas Abao beach", "Day trip to uninhabited Klein Curaçao", "Walk the Queen Emma floating bridge", "Explore Christoffel National Park", "Visit the Blue Curaçao liqueur distillery", "Snorkel the Mushroom Forest coral", "Taste keshi yena at a local restaurant"],
-  tips: ["Rent a car — it's the best way to explore and not expensive", "Shore diving is exceptional — you don't need a dive boat", "Willemstad photography: The coloured buildings are best at golden hour", "Cas Abao Beach charges a small entry fee — worth every cent", "Klein Curaçao day trip: Only go in calm weather — exposed ocean crossing", "Papiamentu: Learn 'Bon bini' (welcome) and 'Danki' (thank you)", "Sunscreen: Use mineral sunscreen only — chemical sunscreen destroys coral"],
-},
- {
+      id: "barbados-guide",
+      title: "Barbados Island Guide",
+      description: "Rum punch, cricket, the Platinum Coast and Crop Over festival",
+      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "Barbados", countrySlug: "barbados", countryFlag: "🇧🇧",
+      rating: 4.8, downloads: "3.4k", pages: 68, price: "$14.99",
+      tags: ["Beach", "Culture", "Rum"], featured: true, tag: "Top Rated", tagColor: "bg-blue-500",
+      subtitle: "The Caribbean's Most Sophisticated Island — Rum, Reefs & Rihanna's Homeland",
+      heroImage: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "December–April (dry season)", duration: "7–10 days", budget: "$$$ Expensive", highlights: 28, language: "English", currency: "Barbadian Dollar (BBD) / US Dollar" },
+      overview: "Barbados punches above its weight as 'Little England' with proper infrastructure, world-class beaches, rum distilleries (Mount Gay has been producing since 1703 — the world's oldest rum brand), and a friendly, proud local culture. The Platinum Coast's calm waters sit in sharp contrast to the wild Atlantic East Coast surf. The Crop Over festival is one of the Caribbean's greatest carnivals.",
+      destinations: [
+        { name: "Platinum Coast (West Coast)", description: "Paynes Bay, Holetown, Mullins Bay — calm turquoise water, luxury hotels, excellent beach bars, and world-class catamaran sailing trips with sea turtles.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+        { name: "Bridgetown", description: "The capital and a UNESCO World Heritage Site. Garrison Savannah, Parliament Buildings, National Heroes Square, and excellent local rum shops.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
+        { name: "East Coast & Bathsheba", description: "Wild Atlantic surf coast with Bathsheba's dramatic mushroom rocks, rolling waves (surfers' paradise), and the traditional rural heart of Bajan culture.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+        { name: "Harrison's Cave & Interior", description: "Spectacular underground crystallized limestone caverns, Flower Forest botanical gardens, Andromeda Botanic Gardens, and parish churches dotting the inland landscape.", image: "https://images.unsplash.com/photo-1518259102261-b40117eabbc9?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Rent a car — roads are well-maintained. Blue ZR buses cheap and local. Taxis everywhere but negotiate price first." },
+        { icon: Camera, title: "Rum Heritage", description: "Mount Gay Distillery (oldest rum in the world, 1703). St. Nicholas Abbey (working plantation and rum distillery, 1658)." },
+        { icon: Users, title: "Cricket Culture", description: "Barbados is the Caribbean's cricket heartland. Kensington Oval hosts Test matches. Extraordinary atmosphere." },
+        { icon: Utensils, title: "Bajan Cuisine", description: "Flying fish (national dish) with cou-cou, macaroni pie, pudding and souse, pepperpot stew. Oistins Fish Fry on Friday nights." },
+        { icon: DollarSign, title: "Budget Reality", description: "Barbados is the most expensive Eastern Caribbean island. Local rum shops and food vans are very affordable alternatives." },
+        { icon: Info, title: "Practical Tips", description: "Barbadians are called Bajans. No need for currency conversion from USD. Infrastructure is excellent." },
+      ],
+      highlights: ["Swim with sea turtles on a catamaran tour", "Tour Mount Gay Rum Distillery", "Friday night Oistins Fish Fry", "Surf the Atlantic waves at Bathsheba", "Explore Harrison's Cave", "Walk the Platinum Coast beaches", "Visit the UNESCO-listed Bridgetown Garrison", "Watch cricket at Kensington Oval", "Attend Crop Over carnival (July–August)", "Sunset cocktails at The Cliff restaurant"],
+      tips: ["Oistins Fish Fry on Friday nights is the social event of the week — don't miss it", "Swim with sea turtles: book catamaran tour rather than swimming directly", "Mount Gay Rum Tour is excellent even for non-rum-drinkers — great history", "East Coast and West Coast feel like different islands — see both", "Buy rum at the airport duty free — significantly cheaper", "Local rum shops serve rum and soda for $2 — embrace the Bajan way", "Crop Over (July–Aug) is phenomenal — book accommodation 6 months ahead", "Barbados tap water is safe to drink — among the Caribbean's best"],
+    },
+    {
+      id: "curacao-guide",
+      title: "Curaçao Travel Guide",
+      description: "Dutch colonial Willemstad, coral reefs and the ABC Islands",
+      image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=500&fit=crop",
+      continent: "North America", continentSlug: "north-america",
+      country: "Curaçao", countrySlug: "curacao", countryFlag: "🇨🇼",
+      rating: 4.7, downloads: "2.1k", pages: 62, price: "$14.99",
+      tags: ["Culture", "Diving", "Beach"], featured: false,
+      subtitle: "Colourful Dutch Caribbean — Outside the Hurricane Belt",
+      heroImage: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1920&h=1080&fit=crop",
+      quickFacts: { bestTime: "Year-round (outside hurricane belt)", duration: "5–8 days", budget: "$$ Moderate", highlights: 24, language: "Papiamentu, Dutch & English", currency: "Netherlands Antillean Guilder (ANG)" },
+      overview: "Curaçao (pronounced 'KYOOR-ah-sow') is a Dutch Caribbean island outside the hurricane belt, offering reliable year-round sunshine. Willemstad's colourful UNESCO-listed Handelskade waterfront is one of the Caribbean's most photographed streets. World-class shore diving, secluded beaches, and a laid-back multicultural atmosphere make Curaçao one of the region's most underrated destinations.",
+      destinations: [
+        { name: "Willemstad", description: "UNESCO World Heritage capital with pastel-coloured Dutch colonial buildings along Sint Annabaai, the Queen Emma pontoon bridge, Floating Market, and Fort Amsterdam.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
+        { name: "Westpunt & Beaches", description: "Cas Abao Beach (consistently rated Caribbean's best), Grote Knip's turquoise cove, and Klein Curaçao (uninhabited island with pristine reefs).", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
+        { name: "Diving Sites", description: "Over 65 dive sites accessible from shore — no boat needed. Wall diving from Watamula to Mushroom Forest. Visibility 30+ metres.", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop" },
+        { name: "Christoffel National Park", description: "Curaçao's natural lungs with the highest point (Mt. Christoffel, 375 m), hiking trails, orchids, white-tailed deer, and Arawak cave paintings.", image: "https://images.unsplash.com/photo-1518259102261-b40117eabbc9?w=800&h=600&fit=crop" },
+      ],
+      essentialInfo: [
+        { icon: Plane, title: "Getting Around", description: "Rent a car — excellent roads. Island is small (60 km long) — easily explored in a week by car." },
+        { icon: Camera, title: "Diving", description: "Shore diving paradise — park, kit up, and wade in. Klein Curaçao snorkelling outstanding." },
+        { icon: Users, title: "Culture", description: "Papiamentu is the local language — a fascinating Creole mix of Portuguese, Spanish, Dutch, and African languages." },
+        { icon: Utensils, title: "Local Food", description: "Keshi yena (stuffed Edam cheese), kadushi cactus soup, seafood, Gouda cheese everywhere, fresh local fish." },
+        { icon: DollarSign, title: "Value", description: "Very reasonable compared to other Caribbean islands. Tourism less inflated than Aruba or St. Maarten." },
+        { icon: Info, title: "Year-Round", description: "Curaçao sits below the hurricane belt — reliably sunny year-round. Water temperature constant 26°C." },
+      ],
+      highlights: ["Photograph Willemstad's colourful Handelskade", "Shore dive Curaçao's famous reefs", "Swim at Cas Abao beach", "Day trip to uninhabited Klein Curaçao", "Walk the Queen Emma floating bridge", "Explore Christoffel National Park", "Visit the Blue Curaçao liqueur distillery", "Snorkel the Mushroom Forest coral", "Taste keshi yena at a local restaurant"],
+      tips: ["Rent a car — it's the best way to explore and not expensive", "Shore diving is exceptional — you don't need a dive boat", "Willemstad photography: The coloured buildings are best at golden hour", "Cas Abao Beach charges a small entry fee — worth every cent", "Klein Curaçao day trip: Only go in calm weather — exposed ocean crossing", "Papiamentu: Learn 'Bon bini' (welcome) and 'Danki' (thank you)", "Sunscreen: Use mineral sunscreen only — chemical sunscreen destroys coral"],
+    },
+    {
       id: "alaska-guide",
       title: "Alaska Travel Guide",
       description: "Denali, glaciers, northern lights, bear watching and the Kenai Fjords",
@@ -1685,7 +1937,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Spot bears at Brooks Falls fishing for salmon", "Whale watching in Kenai Fjords", "Denali park bus wildlife drive", "Northern Lights viewing from Fairbanks", "Glacier hike on Matanuska Glacier", "Flightseeing tour over Denali", "Soak in Chena Hot Springs under the aurora", "Kayaking in Prince William Sound", "Alaska Railroad Coastal Classic train", "Fly fishing for wild king salmon"],
       tips: ["Brooks Falls bear viewing: Book Katmai permits 6+ months ahead — extremely limited", "Denali bus: Book early — peak season (July) fills months ahead", "Anchorage is just a base — get out quickly to the wilderness", "Mosquitoes are worst in June — pack serious DEET and consider a head net", "Northern Lights: Fairbanks is far better than Anchorage for viewing", "Salmon fishing: Book a half-day guided trip — unforgettable experience", "Campervans (RVs): Most practical way to see Alaska independently", "Weather changes fast — pack rain gear and warm layers even in July", "Alaska Railroad: The Coastal Classic (Anchorage–Seward) is spectacular", "Denali: Clear views of the peak only 30% of the time — set expectations"],
     },
- 
+
     {
       id: "yellowstone-guide",
       title: "Yellowstone National Park Guide",
@@ -1718,7 +1970,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Watch Old Faithful erupt (multiple times)", "Grand Prismatic Spring from the overlook trail", "Lamar Valley wildlife at dawn", "Artist Point over the Grand Canyon of Yellowstone", "Wolves hunting in winter (January–February)", "Mammoth Hot Springs terraces", "Boiling River hot springs swim (seasonal)", "Watch bison migration in spring", "Norris Geyser Basin (hottest in the park)", "Sunrise at Hayden Valley for grizzly viewing"],
       tips: ["Book Old Faithful Inn 6–12 months ahead — the most iconic hotel in any US national park", "Lamar Valley: Arrive before sunrise with a spotting scope for wolves", "Grand Prismatic: The overlook trail gives the aerial view — the boardwalk is too close", "Never leave boardwalks at thermal features — ground can be dangerously thin", "Timed entry reservations may be required in peak season — check nps.gov before arriving", "July–August: The most crowded months; traffic jams at wildlife sightings are common", "Combine with Grand Teton — same park pass covers both", "Bozeman, Montana is the best value airport/base for Yellowstone", "Winter (Dec–Feb): Snowcoach tours only but wolves visible and crowds absent", "America the Beautiful Pass ($80/year) covers all national parks — buy it"],
     },
- 
+
     {
       id: "washington-dc-guide",
       title: "Washington DC Travel Guide",
@@ -1749,7 +2001,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Lincoln Memorial at night", "Holocaust Museum (deeply moving)", "National Museum of African American History", "Cherry blossoms around the Tidal Basin (spring)", "Library of Congress reading room (free)", "Vietnam Veterans Memorial at dawn", "Capitol building exterior and grounds", "Georgetown canal walk", "National Zoo (free admission)", "Eastern Market on Saturday"],
       tips: ["NMAAHC: Book timed entry passes 6+ months ahead — they're released monthly and disappear instantly", "Visit monuments at night — they're illuminated beautifully and far less crowded", "Cherry blossoms: Peak is just 1–2 weeks, usually late March — watch NPS forecasts", "Metro SmarTrip card for all transport — cheaper than single tickets", "The Mall is enormous — rent a Capital Bikeshare bike to cover it efficiently", "Holocaust Museum: Allow 3–4 hours; profoundly affecting — visit rested", "Georgetown: Walk the towpath along the C&O Canal for local atmosphere", "Free concerts at Kennedy Center (Millennium Stage, 6pm daily)", "DCA airport is the closest (Metro direct) — use over Dulles if possible", "Most museums: Best visited on weekdays — school groups dominate weekend mornings"],
     },
- 
+
     {
       id: "utah-guide",
       title: "Utah Travel Guide",
@@ -1782,7 +2034,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Angels Landing chains section in Zion", "The Narrows wading hike", "Delicate Arch at sunset", "Sunrise from Bryce Canyon amphitheatre", "Antelope Canyon light beams (midday)", "Horseshoe Bend overlook", "Mesa Arch sunrise in Canyonlands", "Dead Horse Point State Park views", "Monument Valley Navajo Tribal Park", "Canyonlands Island in the Sky"],
       tips: ["Angels Landing permit: Apply for the lottery on recreation.gov — check monthly", "Arches timed entry: Book 3 months ahead on recreation.gov — fills immediately", "Antelope Canyon: Upper canyon for photographers, lower for hikers; tours sell out", "The Narrows: Best May–June after snowmelt. Avoid after heavy rain — flash flood danger", "America the Beautiful Pass ($80): Covers all 5 Utah national parks — buy it first", "Moab accommodation: Book months ahead for spring/fall — the town fills completely", "Drive Scenic Byway 12 between Bryce and Capitol Reef — one of America's best roads", "Bryce Canyon: Rim trail at sunset, then stay for extraordinary dark sky stargazing", "Summer heat is severe — hike before 9am and after 5pm in June–August", "Horseshoe Bend car park: Arrive before 8am or after 6pm — otherwise 2+ hour wait"],
     },
- 
+
     {
       id: "oahu-guide",
       title: "Oahu Travel Guide",
@@ -1815,7 +2067,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Watch sunrise from Diamond Head crater", "USS Arizona Memorial at Pearl Harbor", "Pipeline surf viewing on the North Shore", "Kailua Beach kayak to the Mokulua Islands", "Manoa Falls hike through rainforest", "Pali Lookout for dramatic windward views", "Sunset at Lanikai Beach", "Waimea Bay cliff jump (summer only)", "Leonard's Bakery malasadas", "Polynesian Cultural Center day visit"],
       tips: ["USS Arizona Memorial: Book free passes the moment they open (60 days ahead)", "Diamond Head: Book the trail reservation online — limited daily entry", "North Shore: November–February brings big waves — Pipeline is spectacular from the beach", "Kailua is far nicer than Waikiki for actually living the Hawaii experience", "Poke bowls: Buy from a grocery store (Times, Foodland) not a tourist restaurant — much better value", "Waikiki is the tourist centre — escape it as quickly as possible for real Hawaii", "Sunrise and sunset timing: Check daily — varies seasonally", "Hanauma Bay snorkelling: Book ahead, eco-certification required, no sunscreen (reef-safe only)", "TheBus: A $1 bus covers most of Honolulu — incredible value", "Rent a car for the North Shore drive — there's no good public transport"],
     },
- 
+
     {
       id: "maui-guide",
       title: "Maui Travel Guide",
@@ -1846,7 +2098,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Haleakalā sunrise above the clouds", "Road to Hana's 620-curve journey", "Pipiwai Trail bamboo forest", "Whale watching from December to April", "Wai'anapanapa black sand beach", "Snorkelling at Molokini Crater", "Honolua Bay marine preserve", "Sunset from Ka'anapali Beach", "Twin Falls swimming holes", "Stargazing from Haleakalā summit"],
       tips: ["Haleakalā sunrise: Reserve 60 days ahead at 7am Hawaii time — sell out instantly", "Road to Hana: Leave by 6:30am — traffic becomes gridlocked after 9am", "Wai'anapanapa: Book the separate state park reservation (not free)", "Car rental: Book 4–6 months ahead — Maui is chronically short of rental cars", "Lahaina: Devastated by 2023 wildfire — check current status before visiting", "Whale watching: December–February are best months; January is peak", "Molokini snorkel tour: Morning tours have calmer seas and better visibility", "South Maui (Kihei) is better value than west Maui (Ka'anapali) for accommodation", "Sunscreen: Hawaii requires mineral/reef-safe sunscreen by law", "Mama's Fish House: Book a month ahead — worth every cent for a special dinner"],
     },
- 
+
     {
       id: "yosemite-guide",
       title: "Yosemite National Park Guide",
@@ -1877,7 +2129,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Half Dome cables hike (with permit)", "Tunnel View at sunrise", "El Capitan Meadow for watching climbers", "Glacier Point sunset", "Mist Trail to Vernal and Nevada Falls", "Ancient sequoias at Mariposa Grove", "Yosemite Falls trail (spring peak)", "Sentinel Dome easy hike for incredible views", "Tuolumne Meadows in summer", "Mirror Lake reflection in spring"],
       tips: ["Timed entry reservation: Book on recreation.gov 2–3 months ahead — fills instantly", "Half Dome permit: Apply for the pre-season lottery in March — check nps.gov", "Arrive at Tunnel View before sunrise — parking fills by 6am in summer", "Valley Shuttle: Use it to avoid traffic — free and covers all major stops", "Mist Trail: Best in May–June when waterfalls are at peak; expect to get soaked", "Camp in the park if possible — waking to the valley at dawn is extraordinary", "El Capitan: Bring binoculars to watch climbers on the Dawn Wall", "America the Beautiful Pass ($80): Covers Yosemite, Sequoia, and all federal lands", "Avoid July 4th weekend — the most crowded day of the year", "September and October are the best months — golden light, cool temperatures, few crowds"],
     },
- 
+
     {
       id: "grand-canyon-guide",
       title: "Grand Canyon Travel Guide",
@@ -1908,7 +2160,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Sunrise at Mather Point", "Bright Angel Trail down to Indian Garden", "Colorado River rafting multi-day trip", "Rim-to-rim hike (3 days)", "Havasu Falls permit hike", "Desert View Watchtower", "North Rim in autumn (fewer crowds)", "Helicopter flight over the canyon", "Condor spotting from the rim", "Night sky stargazing (Dark Sky Park)"],
       tips: ["Never hike rim-to-river and back in one day in summer — it's genuinely dangerous", "Carry at minimum 4 litres of water for inner canyon hikes", "Havasu Falls permits: Released every February — set an alarm, sell out in seconds", "Phantom Ranch dinner: Book via lottery 15 months ahead (opens last day of relevant month)", "South Rim is accessible year-round; North Rim closes mid-October", "Rim shuttle is free — park the car and use it", "Sunrise is spectacular with few crowds — arrive 30 minutes before civil twilight", "Colorado rafting: Oar-powered trips ($4k+) are more intimate than motorised", "Mule rides to the river: Book 13 months ahead through Xanterra", "America the Beautiful Pass: $80 covers all national parks including this one"],
     },
- 
+
     {
       id: "smoky-mountains-guide",
       title: "Smoky Mountains Travel Guide",
@@ -1939,7 +2191,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Clingmans Dome sunrise above the clouds", "Cades Cove early morning wildlife drive", "Alum Cave hike to the bluffs", "Autumn foliage peak (mid-October)", "Synchronised fireflies at Elkmont (June)", "LeConte Lodge overnight stay", "Roaring Fork Motor Nature Trail", "Appalachian Trail section hike", "Abrams Falls waterfall hike", "Museum of the Cherokee People in Cherokee"],
       tips: ["No park entry fee — one of America's great bargains", "Cades Cove: Wednesday and Saturday mornings are car-free — bike or walk the 17-km loop", "Fall colour peak: Mid-October. Book accommodation 6 months ahead — hotels fill completely", "Firefly lottery: Apply in May on recreation.gov — extremely competitive", "Bears: Use bear-proof canisters in camp, never leave food in car overnight", "Gatlinburg: Kitschy but fun — Ripley's and moonshine tasting are part of the experience", "LeConte Lodge: Book a year ahead — only accommodation on the summit", "Abrams Falls is 8 km and gorgeous — perfect introduction to Smokies hiking", "Newfound Gap: Walk 1 km of the Appalachian Trail just to say you have", "October weekends: Traffic jams on all roads — go mid-week for fall foliage"],
     },
- 
+
     {
       id: "acadia-guide",
       title: "Acadia & Bar Harbor Guide",
@@ -1970,7 +2222,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Cadillac Mountain sunrise (first in the US)", "Precipice Trail iron rung scramble", "Jordan Pond with the Bubbles view", "Thunder Hole at high tide", "Bike the historic carriage roads", "Whale watching from Bar Harbor", "Lobster roll at a proper shack", "Sea kayaking around the islands", "Ocean Path coastal walk", "Beehive Trail loop"],
       tips: ["Cadillac Mountain vehicle reservation: Book on recreation.gov for May–October", "Precipice Trail is genuinely challenging — not for those with vertigo", "Island Explorer bus: Free in summer — use it to avoid parking nightmares", "Lobster: Order at a no-frills shack by the water, not a sit-down restaurant", "October foliage: Book accommodation 6 months ahead — fills completely", "Jordan Pond House: Famous for popovers and tea — go for afternoon snack", "Sand Beach: The Atlantic is very cold (13°C in August) — brave souls only", "Bar Harbor in July–August has cruise ship days — check before visiting", "Bike rental in Bar Harbor for the carriage roads is the perfect half-day", "Acadia sits in a national park — carry bear spray if hiking in early morning"],
     },
- 
+
     {
       id: "montreal-guide",
       title: "Montréal Travel Guide",
@@ -2001,7 +2253,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Notre-Dame Basilica Aura light show", "Smoked meat sandwich at Schwartz's", "Bagels from St-Viateur or Fairmount", "Mount Royal lookout at sunset", "Jazz Festival outdoor stages (free)", "Jean-Talon Market Saturday morning", "Bixi bike ride along the Lachine Canal", "Old Montréal cobblestone streets", "Underground city (RÉSO) in winter", "Tam-Tams drum circle on Mount Royal Sunday"],
       tips: ["Say 'Bonjour' first — always. In shops, in restaurants, everywhere.", "Schwartz's smoked meat: Queue is always long, moves fast, totally worth it", "Bagels: The Montréal bagel debate (Fairmount vs St-Viateur) is unresolvable — try both", "Jazz Festival: Most outdoor concerts are free — the ticketed shows are smaller venues", "Winter (December–March): Dress in layers, use the RÉSO underground city, embrace it", "STM metro night buses run when the metro is closed — night owls covered", "Plateau neighbourhood is best explored on a Bixi bike", "Poutine: La Banquise (24-hour diner) for the most varieties", "Québec maple syrup: Buy at Jean-Talon market — nothing like supermarket versions", "Tipping: 15–20% expected in restaurants (higher than European norms)"],
     },
- 
+
     {
       id: "quebec-city-guide",
       title: "Québec City Travel Guide",
@@ -2032,7 +2284,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Walk the old city walls", "Dufferin Terrace toboggan slide in winter", "Petite-Champlain neighbourhood", "Montmorency Falls cable car", "Ice Palace at Winter Carnaval", "Plains of Abraham historic battlefield", "St. Lawrence River ferry crossing", "Sugar shack maple experience (spring)", "Old Port market and ice fishing", "Fortifications National Historic Site"],
       tips: ["Winter Carnaval (late January–February): Book accommodation 6 months ahead", "Dufferin Terrace toboggan slide is free and magical — try it even in summer", "Petite-Champlain is tourist-busy in summer — go in the morning or evening", "The city is small and walkable — 2 good walking shoes are your main need", "Montmorency Falls: The Pont de Québec (bridge) 20 min away is also spectacular", "VIA Rail from Montréal is more scenic and relaxing than flying", "Speaking French (even badly) opens doors dramatically in Québec City", "Maple syrup experience: Visit a sugar shack in March/April — extraordinary", "Château Frontenac: Afternoon tea in the lobby if not staying — worth the splurge", "Plains of Abraham: Walk the 100-acre urban battlefield — pivotal to Canadian history"],
     },
-],
+  ],
 
   /* ═══════════════════════════════════════
      SOUTH AMERICA
@@ -2188,7 +2440,7 @@ export const allGuidesData: ContinentGuides = {
       highlights: ["Tango show and milonga in Buenos Aires", "Asado BBQ with locals", "Mendoza bodega cycling tour", "Iguazu Falls Devil's Throat walkway", "Quebrada de Humahuaca colours", "Aconcagua base camp trek (experienced hikers)", "La Boca neighbourhood in Buenos Aires", "Wine harvest festival in Mendoza (March)", "Recoleta Cemetery (Eva Perón's tomb)", "Perito Moreno Glacier calving"],
       tips: ["Use Wise or similar for currency exchange — never exchange at the airport rate", "Steak: Order 'a punto' (medium) — Argentines overcook by default if you say nothing", "Tango milonga: Learn 5 basic steps before going — locals appreciate the effort", "Mendoza: Rent a bike to cycle between bodegas — 3 per day is perfect", "Iguazu: Spend 2 days — Argentine side Day 1, Brazilian side Day 2 (day trip available)", "Buenos Aires neighbourhood: Stay in Palermo or Recoleta, not the city centre", "Mate tea: Accept when offered — refusing is slightly rude; hold the gourd and drink", "Domestic flights: Book early — Aerolíneas prices rise sharply close to departure", "Buenos Aires has outstanding bookshop culture — El Ateneo Grand Splendid is unmissable", "Learn Argentine Spanish: 'Che' and 'boludo' (friendly insult) — locals love it when visitors try"],
     },
-     {
+    {
       id: "bonaire-guide",
       title: "Bonaire Travel Guide",
       description: "The Caribbean's best shore diving, pink flamingos and an undiscovered island",
