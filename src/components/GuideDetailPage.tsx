@@ -20,9 +20,9 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
   const [selectedFormat, setSelectedFormat] = useState<"pdf"|"hardcover"|"bundle">("bundle");
 
   const formats = {
-    pdf:       { label: "Digital PDF",  price: "$14.99", original: null,     savings: null,    desc: "Instant download" },
-    hardcover: { label: "Hardcover",    price: "$34.99", original: null,     savings: null,    desc: "Printed & shipped" },
-    bundle:    { label: "Bundle",       price: "$44.99", original: "$49.98", savings: "$4.99", desc: "PDF + Hardcover" },
+    pdf:       { label: "Digital PDF",  price: "$6.99", original: null,     savings: null,    desc: "Instant download" },
+    hardcover: { label: "Hardcover",    price: "$14.99", original: null,     savings: null,    desc: "Printed & shipped" },
+    bundle:    { label: "Bundle",       price: "$16.99", original: "$21.98", savings: "$4.99", desc: "PDF + Paperback" },
   };
 
   if (!guide) {

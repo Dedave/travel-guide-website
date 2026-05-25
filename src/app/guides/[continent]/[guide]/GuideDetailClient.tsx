@@ -67,7 +67,7 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
   // Derive PDF price from guide.price (e.g. "$6.99") or fallback
   const pdfPrice = guide.price ?? "$6.99";
   const pdfPriceNum = parseFloat(pdfPrice.replace("$", "")) || 6.99;
-  const paperbackPrice = 34.99;
+  const paperbackPrice = 14.99;
   const bundlePrice = parseFloat((pdfPriceNum + paperbackPrice).toFixed(2));
 
   const formats = [
@@ -88,7 +88,7 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
       id: "paperback" as const,
       label: "Paperback Book",
       price: paperbackPrice,
-      originalPrice: 49.99,
+      originalPrice: 29.99,
       icon: Package,
       perks: [
         "Premium print quality",
