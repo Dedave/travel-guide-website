@@ -22,12 +22,12 @@ import {
 
 // ── Hero slides ───────────────────────────────────────────────────────────
 const heroSlides = [
-  { image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&h=1080&fit=crop", continent: "Africa",        label: "Safari & Soul",      headline: ["Where the","Wild Begins"],             sub: "From the Maasai Mara to Zanzibar",      slug: "africa",        guideId: "kenya-safari" },
-  { image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&h=1080&fit=crop", continent: "Asia",          label: "Ancient & Electric", headline: ["Temples,","Neon & Tea"],               sub: "Across Japan, Bali & beyond",           slug: "asia",          guideId: "japan-ultimate" },
-  { image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1920&h=1080&fit=crop", continent: "Europe",        label: "History & Flavour",  headline: ["Cobblestones,","Cafés & Cathedrals"],  sub: "Italy, France, Greece and more",        slug: "europe",        guideId: "italy-ultimate" },
-  { image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop", continent: "North America", label: "Wild & Urban",        headline: ["Parks, Cities,","Open Roads"],         sub: "From Yellowstone to New York City",     slug: "north-america", guideId: "usa-national-parks" },
-  { image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1920&h=1080&fit=crop", continent: "South America", label: "Adventure Awaits",   headline: ["Glaciers,","Jungles & Ruins"],         sub: "Machu Picchu to Patagonia",             slug: "south-america", guideId: "peru-machu-picchu" },
-  { image: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=1920&h=1080&fit=crop", continent: "Oceania",       label: "Paradise & Wild",    headline: ["Reefs, Ranges","& Red Earth"],         sub: "Australia, New Zealand & Fiji",         slug: "oceania",       guideId: "australia-complete" },
+  { image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&h=1080&fit=crop", continent: "Africa", label: "Safari & Soul", headline: ["Where the", "Wild Begins"], sub: "From the Maasai Mara to Zanzibar", slug: "africa", guideId: "kenya-safari" },
+  { image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&h=1080&fit=crop", continent: "Asia", label: "Ancient & Electric", headline: ["Temples,", "Neon & Tea"], sub: "Across Japan, Bali & beyond", slug: "asia", guideId: "japan-ultimate" },
+  { image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1920&h=1080&fit=crop", continent: "Europe", label: "History & Flavour", headline: ["Cobblestones,", "Cafés & Cathedrals"], sub: "Italy, France, Greece and more", slug: "europe", guideId: "italy-ultimate" },
+  { image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop", continent: "North America", label: "Wild & Urban", headline: ["Parks, Cities,", "Open Roads"], sub: "From Yellowstone to New York City", slug: "north-america", guideId: "usa-national-parks" },
+  { image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1920&h=1080&fit=crop", continent: "South America", label: "Adventure Awaits", headline: ["Glaciers,", "Jungles & Ruins"], sub: "Machu Picchu to Patagonia", slug: "south-america", guideId: "peru-machu-picchu" },
+  { image: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=1920&h=1080&fit=crop", continent: "Oceania", label: "Paradise & Wild", headline: ["Reefs, Ranges", "& Red Earth"], sub: "Australia, New Zealand & Fiji", slug: "oceania", guideId: "australia-complete" },
 ];
 
 // ── Featured guides ───────────────────────────────────────────────────────
@@ -84,23 +84,23 @@ const featuredGuides = [
 
 // ── Continents ────────────────────────────────────────────────────────────
 const continents = [
-  { name: "Africa",        slug: "africa",        count: 5,  image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&h=500&fit=crop" },
-  { name: "Europe",        slug: "europe",        count: 5,  image: "https://images.unsplash.com/photo-1520637736862-4d197d17c55a?w=400&h=500&fit=crop" },
-  { name: "Asia",          slug: "asia",          count: 5,  image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=400&h=500&fit=crop" },
-  { name: "North America", slug: "north-america", count: 4,  image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=500&fit=crop" },
-  { name: "South America", slug: "south-america", count: 5,  image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=400&h=500&fit=crop" },
-  { name: "Oceania",       slug: "oceania",       count: 3,  image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=400&h=500&fit=crop" },
+  { name: "Africa", slug: "africa", count: 5, image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&h=500&fit=crop" },
+  { name: "Europe", slug: "europe", count: 5, image: "https://images.unsplash.com/photo-1520637736862-4d197d17c55a?w=400&h=500&fit=crop" },
+  { name: "Asia", slug: "asia", count: 5, image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=400&h=500&fit=crop" },
+  { name: "North America", slug: "north-america", count: 4, image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=500&fit=crop" },
+  { name: "South America", slug: "south-america", count: 5, image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=400&h=500&fit=crop" },
+  { name: "Oceania", slug: "oceania", count: 3, image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=400&h=500&fit=crop" },
 ];
 
 const stats = [
-  { icon: FileText, value: "50+",   label: "Travel Guides"    },
-  { icon: MapPin,   value: "150+",  label: "Countries"        },
-  { icon: Users,    value: "100k+", label: "Happy Readers"    },
-  { icon: Star,     value: "4.9★",  label: "Average Rating"   },
+  { icon: FileText, value: "50+", label: "Travel Guides" },
+  { icon: MapPin, value: "150+", label: "Countries" },
+  { icon: Users, value: "100k+", label: "Happy Readers" },
+  { icon: Star, value: "4.9★", label: "Average Rating" },
 ];
 
 export default function Home() {
-  const [activeSlide, setActiveSlide]       = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
@@ -175,9 +175,8 @@ export default function Home() {
             <button
               key={i}
               onClick={() => goTo(i)}
-              className={`rounded-full transition-all duration-300 ${
-                i === activeSlide ? "w-2 h-8 bg-white" : "w-2 h-2 bg-white/30 hover:bg-white/60"
-              }`}
+              className={`rounded-full transition-all duration-300 ${i === activeSlide ? "w-2 h-8 bg-white" : "w-2 h-2 bg-white/30 hover:bg-white/60"
+                }`}
             />
           ))}
         </div>
@@ -223,9 +222,8 @@ export default function Home() {
               <button
                 key={i}
                 onClick={() => goTo(i)}
-                className={`font-body text-xs font-semibold transition-all ${
-                  i === activeSlide ? "text-white" : "text-white/30 hover:text-white/60"
-                }`}
+                className={`font-body text-xs font-semibold transition-all ${i === activeSlide ? "text-white" : "text-white/30 hover:text-white/60"
+                  }`}
               >
                 {s.continent}
               </button>
@@ -426,9 +424,9 @@ export default function Home() {
 
               <div className="space-y-6">
                 {[
-                  { icon: Compass,   title: "On-the-Ground Research",  body: "Every destination is visited in person. No recycled content — ever." },
-                  { icon: TrendingUp, title: "Updated Regularly",       body: "Visa rules, prices, and hidden gems refreshed so your info is always current." },
-                  { icon: Globe,     title: "Covers All Budgets",       body: "From backpacker trails to luxury resorts — options for every wallet." },
+                  { icon: Compass, title: "On-the-Ground Research", body: "Every destination is visited in person. No recycled content — ever." },
+                  { icon: TrendingUp, title: "Updated Regularly", body: "Visa rules, prices, and hidden gems refreshed so your info is always current." },
+                  { icon: Globe, title: "Covers All Budgets", body: "From backpacker trails to luxury resorts — options for every wallet." },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 mt-0.5">
@@ -455,10 +453,10 @@ export default function Home() {
             {/* Staggered stat mosaic */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { val: "50+",   label: "Guides Published",  bg: "bg-blue-600",  text: "text-white",     sub: "text-blue-200"  },
-                { val: "4.9★",  label: "Average Rating",    bg: "bg-yellow-400",text: "text-gray-900",   sub: "text-yellow-700", offset: "mt-6"  },
-                { val: "100k+", label: "Happy Readers",     bg: "bg-gray-900",  text: "text-white",     sub: "text-gray-400"  },
-                { val: "150+",  label: "Countries Covered", bg: "bg-green-500", text: "text-white",     sub: "text-green-100", offset: "-mt-6" },
+                { val: "50+", label: "Guides Published", bg: "bg-blue-600", text: "text-white", sub: "text-blue-200" },
+                { val: "4.9★", label: "Average Rating", bg: "bg-yellow-400", text: "text-gray-900", sub: "text-yellow-700", offset: "mt-6" },
+                { val: "100k+", label: "Happy Readers", bg: "bg-gray-900", text: "text-white", sub: "text-gray-400" },
+                { val: "150+", label: "Countries Covered", bg: "bg-green-500", text: "text-white", sub: "text-green-100", offset: "-mt-6" },
               ].map((s, i) => (
                 <div key={i} className={`${s.bg} rounded-2xl p-7 ${s.offset ?? ""}`}>
                   <div className={`font-display text-4xl font-black ${s.text}`}>{s.val}</div>
@@ -487,7 +485,9 @@ export default function Home() {
               <div className="relative z-10 flex flex-col h-full justify-between">
                 <div>
                   <div className="w-14 h-14 bg-red-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                    <Play className="h-7 w-7 text-white fill-white" />
+                    <Link target="_blank" href="https://www.youtube.com/@WanderlustTravelGuides">
+                      <Play className="h-7 w-7 text-white fill-white" />
+                    </Link>
                   </div>
                   <p className="text-red-400 text-xs font-bold tracking-[0.25em] uppercase font-body mb-2">Video Content</p>
                   <h3 className="font-display text-3xl font-black text-white mb-3">Watch Our Adventures</h3>
@@ -495,9 +495,12 @@ export default function Home() {
                     Destination reviews, packing guides, and travel vlogs — new videos every week from around the world.
                   </p>
                 </div>
-                <button className="mt-8 inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-bold font-body px-6 py-3 rounded-full text-sm transition-all w-fit">
-                  <Play className="h-4 w-4 fill-white" /> Watch on YouTube
-                </button>
+
+                <Link target="_blank" href="https://www.youtube.com/@WanderlustTravelGuides">
+                  <button className="mt-8 inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-bold font-body px-6 py-3 rounded-full text-sm transition-all w-fit">
+                    Watch on YouTube
+                  </button>
+                </Link>
               </div>
             </div>
 
