@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import ClientBody from "./ClientBody";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Wanderlust Guides - Your Ultimate Travel Companion",
@@ -27,6 +28,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning className="antialiased">
         <ClientBody>{children}</ClientBody>
+        <Analytics />
       </body>
     </html>
   );
