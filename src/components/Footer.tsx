@@ -102,7 +102,7 @@ export default function Footer() {
                 { href: "https://facebook.com/share/1Dd4n1vRRX/?mibextid=wwXIfr",   icon: Facebook,  hoverColor: "hover:text-blue-400", label: "Facebook"  },
                 { href: "https://x.com/WanderlustTravs",    icon: Twitter,   hoverColor: "hover:text-sky-400",  label: "Twitter"   },
                 { href: "https://tiktok.com/@wanderlust_travel_guide",    icon: TikTokIcon, hoverColor: "hover:text-pink-400", label: "TikTok"    },
-                { href: "https://pinterest.com/wanderlustTravs/",    icon: PinterestIcon, hoverColor: "hover:text-pink-400", label: "Pinterest"    },
+                { href: "https://pin.it/6R8ELu23U",    icon: PinterestIcon, hoverColor: "hover:text-pink-400", label: "Pinterest"    },
               ].map((social) => (
                 <a
                   key={social.label}
