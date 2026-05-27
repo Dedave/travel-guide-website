@@ -97,12 +97,12 @@ export default function Footer() {
             {/* Social links */}
             <div className="mt-6 flex items-center gap-3">
               {[
-                { href: "https://youtube.com/@wanderlustguides",   icon: Youtube,   hoverColor: "hover:text-red-400",  label: "YouTube"   },
-                { href: "https://instagram.com/wanderlustguides",  icon: Instagram, hoverColor: "hover:text-pink-400", label: "Instagram" },
-                { href: "https://facebook.com/wanderlustguides",   icon: Facebook,  hoverColor: "hover:text-blue-400", label: "Facebook"  },
-                { href: "https://twitter.com/wanderlustguides",    icon: Twitter,   hoverColor: "hover:text-sky-400",  label: "Twitter"   },
-                { href: "https://tiktok.com/@wanderlustguides",    icon: TikTokIcon, hoverColor: "hover:text-pink-400", label: "TikTok"    },
-                { href: "https://tiktok.com/@WanderlustTravs",    icon: PinterestIcon, hoverColor: "hover:text-pink-400", label: "Pinterest"    },
+                { href: "https://youtube.com/@WanderlustTravelGuides",   icon: Youtube,   hoverColor: "hover:text-red-400",  label: "YouTube"   },
+                { href: "https://instagram.com/wanderlusttravs_",  icon: Instagram, hoverColor: "hover:text-pink-400", label: "Instagram" },
+                { href: "https://facebook.com/share/1Dd4n1vRRX/?mibextid=wwXIfr",   icon: Facebook,  hoverColor: "hover:text-blue-400", label: "Facebook"  },
+                { href: "https://x.com/WanderlustTravs",    icon: Twitter,   hoverColor: "hover:text-sky-400",  label: "Twitter"   },
+                { href: "https://tiktok.com/@wanderlust_travel_guide",    icon: TikTokIcon, hoverColor: "hover:text-pink-400", label: "TikTok"    },
+                { href: "https://pinterest.com/wanderlustTravs/",    icon: PinterestIcon, hoverColor: "hover:text-pink-400", label: "Pinterest"    },
               ].map((social) => (
                 <a
                   key={social.label}
