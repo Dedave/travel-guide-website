@@ -134,7 +134,7 @@ export default function Navigation() {
                 <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-yellow-400 rounded-full ring-2 ring-white" />
               </Link>
 
-              <Link href="/youtube"
+              <Link href="https://www.youtube.com/@WanderlustTravelGuides"
                 className="inline-flex items-center gap-1.5 font-body text-sm font-semibold text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg hover:bg-gray-50 transition-all">
                 <Youtube className="h-3.5 w-3.5 text-red-500" />
                 YouTube
