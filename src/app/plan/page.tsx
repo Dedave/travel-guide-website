@@ -199,7 +199,7 @@ export default function PlanYourTripPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 font-sans">
+    <div className="min-h-screen bg-white-950 font-sans">
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
         .font-display { font-family: 'Playfair Display', Georgia, serif; }
@@ -282,7 +282,7 @@ export default function PlanYourTripPage() {
             {trustStats.map((s, i) => (
               <div key={i} className="flex flex-col items-center gap-1">
                 <s.icon className="h-4 w-4 text-yellow-400 mb-0.5" />
-                <div className="font-display text-xl font-black text-white">{s.val}</div>
+                <div className="font-display text-xl font-black text-gray-600">{s.val}</div>
                 <div className="text-gray-500 text-[10px] font-body uppercase tracking-wider">{s.label}</div>
               </div>
             ))}
@@ -299,7 +299,7 @@ export default function PlanYourTripPage() {
               {destination ? `Best deals for ${destination}` : "All categories"}
             </span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-black text-white mb-14 leading-tight">
+          <h2 className="font-display text-3xl sm:text-4xl font-black text-gray-700 mb-14 leading-tight">
             {destination
               ? <><span>Everything you need for </span><span className="text-yellow-400">{destination}</span></>
               : <><span>Book your entire trip</span><br /><span>from one place</span></>
@@ -363,7 +363,7 @@ export default function PlanYourTripPage() {
               <span className="text-blue-400 text-xs font-bold tracking-[0.3em] uppercase font-body">How it works</span>
               <div className="h-px w-6 bg-blue-500" />
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-black text-white">Three steps to your trip</h2>
+            <h2 className="font-display text-3xl sm:text-4xl font-black text-gray-700">Three steps to your trip</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -372,9 +372,9 @@ export default function PlanYourTripPage() {
               { step: "02", title: "Compare & book", body: "Click through to Skyscanner, Booking.com, GetYourGuide and the rest — all deep-linked to where you're going.", color: "text-blue-400", border: "border-blue-400/20" },
               { step: "03", title: "Read the guide", body: "Come back and grab the Wanderlust Guide for your destination — insider tips, itineraries, and essential info.", color: "text-purple-400", border: "border-purple-400/20" },
             ].map((item, i) => (
-              <div key={i} className={`bg-white/5 border ${item.border} rounded-2xl p-7`}>
-                <div className={`font-display text-4xl font-black ${item.color} mb-4 opacity-40`}>{item.step}</div>
-                <h3 className="font-display text-lg font-bold text-white mb-2">{item.title}</h3>
+              <div key={i} className={`bg-white/5 border border-[2px] ${item.border} rounded-2xl p-7`}>
+                <div className={`font-display text-4xl font-black ${item.color} mb-4 opacity-60`}>{item.step}</div>
+                <h3 className="font-display text-lg font-bold text-gray-600 mb-2">{item.title}</h3>
                 <p className="text-gray-500 font-body text-sm leading-relaxed">{item.body}</p>
               </div>
             ))}

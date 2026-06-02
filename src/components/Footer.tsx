@@ -23,33 +23,33 @@ export default function Footer() {
   };
 
   const continents = [
-    { name: "Africa",        slug: "africa"},
-    { name: "Europe",        slug: "europe"},
-    { name: "Asia",          slug: "asia" },
-    { name: "North America", slug: "north-america"},
-    { name: "South America", slug: "south-america"},
-    { name: "Oceania",       slug: "oceania"},
+    { name: "Africa", slug: "africa" },
+    { name: "Europe", slug: "europe" },
+    { name: "Asia", slug: "asia" },
+    { name: "North America", slug: "north-america" },
+    { name: "South America", slug: "south-america" },
+    { name: "Oceania", slug: "oceania" },
   ];
 
   const TikTokIcon = ({ className }: { className?: string }) => (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z" />
     </svg>
   );
   const PinterestIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
-  </svg>
-);
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
+    </svg>
+  );
 
   const quickLinks = [
-    { label: "Home",               href: "/",                  icon: Plane    },
-    { label: "All Travel Guides",  href: "/guides",            icon: BookOpen },
+    { label: "Home", href: "/", icon: Plane },
+    { label: "All Travel Guides", href: "/guides", icon: BookOpen },
     // ── Plan Your Trip — affiliate hub ──
-    { label: "Plan Your Trip",     href: "/plan",              icon: Compass  },
-    { label: "YouTube Channel",    href: "/youtube",           icon: Youtube  },
-    { label: "Travel Essentials",  href: "/travel-essentials", icon: ShoppingBag },
-    { label: "Contact Us",         href: "/contact",           icon: MessageCircle },
+    { label: "Plan Your Trip", href: "/plan", icon: Compass },
+    { label: "YouTube Channel", href: "/youtube", icon: Youtube },
+    { label: "Travel Essentials", href: "/travel-essentials", icon: ShoppingBag },
+    { label: "Contact Us", href: "/contact", icon: MessageCircle },
   ];
 
   return (
@@ -82,13 +82,13 @@ export default function Footer() {
 
           {/* ── Brand ── */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-2.5 group">
-              <div className="bg-blue-600 rounded-lg p-1.5 group-hover:bg-blue-500 transition-colors">
-                <Plane className="h-5 w-5 text-white" />
-              </div>
-              <span className="text-lg font-bold tracking-tight">Wanderlust Guides</span>
+            <Link href="/" className="inline-block">
+              <img
+                src="/images/banner.png"
+                alt="Wanderlust Guides"
+                className="h-21 object-contain"
+              />
             </Link>
-
             <p className="mt-4 text-sm text-gray-400 leading-relaxed">
               Your ultimate companion for discovering the world's most amazing destinations —
               from comprehensive travel guides to essential gear recommendations.
@@ -97,12 +97,12 @@ export default function Footer() {
             {/* Social links */}
             <div className="mt-6 flex items-center gap-3">
               {[
-                { href: "https://youtube.com/@WanderlustTravelGuides",   icon: Youtube,   hoverColor: "hover:text-red-400",  label: "YouTube"   },
-                { href: "https://instagram.com/wanderlusttravs_",  icon: Instagram, hoverColor: "hover:text-pink-400", label: "Instagram" },
-                { href: "https://facebook.com/share/1Dd4n1vRRX/?mibextid=wwXIfr",   icon: Facebook,  hoverColor: "hover:text-blue-400", label: "Facebook"  },
-                { href: "https://x.com/WanderlustTravs",    icon: Twitter,   hoverColor: "hover:text-sky-400",  label: "Twitter"   },
-                { href: "https://tiktok.com/@wanderlust_travel_guide",    icon: TikTokIcon, hoverColor: "hover:text-pink-400", label: "TikTok"    },
-                { href: "https://pin.it/6R8ELu23U",    icon: PinterestIcon, hoverColor: "hover:text-pink-400", label: "Pinterest"    },
+                { href: "https://youtube.com/@WanderlustTravelGuides", icon: Youtube, hoverColor: "hover:text-red-400", label: "YouTube" },
+                { href: "https://instagram.com/wanderlusttravs_", icon: Instagram, hoverColor: "hover:text-pink-400", label: "Instagram" },
+                { href: "https://facebook.com/share/1Dd4n1vRRX/?mibextid=wwXIfr", icon: Facebook, hoverColor: "hover:text-blue-400", label: "Facebook" },
+                { href: "https://x.com/WanderlustTravs", icon: Twitter, hoverColor: "hover:text-sky-400", label: "Twitter" },
+                { href: "https://tiktok.com/@wanderlust_travel_guide", icon: TikTokIcon, hoverColor: "hover:text-pink-400", label: "TikTok" },
+                { href: "https://pin.it/6R8ELu23U", icon: PinterestIcon, hoverColor: "hover:text-pink-400", label: "Pinterest" },
               ].map((social) => (
                 <a
                   key={social.label}
@@ -128,15 +128,13 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`group flex items-center gap-2 text-sm transition-colors ${
-                      link.href === "/plan"
+                    className={`group flex items-center gap-2 text-sm transition-colors ${link.href === "/plan"
                         ? "text-yellow-400 hover:text-yellow-300 font-semibold"
                         : "text-gray-400 hover:text-white"
-                    }`}
+                      }`}
                   >
-                    <ChevronRight className={`h-3 w-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all ${
-                      link.href === "/plan" ? "text-yellow-400" : "text-blue-500"
-                    }`} />
+                    <ChevronRight className={`h-3 w-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all ${link.href === "/plan" ? "text-yellow-400" : "text-blue-500"
+                      }`} />
                     {link.label}
                     {link.href === "/plan" && (
                       <span className="ml-1 bg-yellow-400 text-gray-900 text-[8px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded-full">
@@ -203,11 +201,10 @@ export default function Footer() {
               <Button
                 type="submit"
                 disabled={isSubscribed}
-                className={`w-full rounded-xl font-semibold transition-all text-sm ${
-                  isSubscribed
+                className={`w-full rounded-xl font-semibold transition-all text-sm ${isSubscribed
                     ? "bg-green-600 hover:bg-green-600 text-white"
                     : "bg-blue-600 hover:bg-blue-500 text-white"
-                }`}
+                  }`}
               >
                 {isSubscribed ? <>✓ Subscribed!</> : <><Mail className="mr-2 h-3.5 w-3.5" />Subscribe</>}
               </Button>
@@ -228,8 +225,8 @@ export default function Footer() {
           </p>
           <div className="flex flex-wrap gap-5">
             {[
-              { label: "Privacy Policy",       href: "/privacy" },
-              { label: "Terms of Service",     href: "/terms" },
+              { label: "Privacy Policy", href: "/privacy" },
+              { label: "Terms of Service", href: "/terms" },
               { label: "Affiliate Disclosure", href: "/affiliate-disclosure" },
             ].map((l) => (
               <Link key={l.href} href={l.href} className="text-xs text-gray-500 hover:text-gray-300 transition-colors">

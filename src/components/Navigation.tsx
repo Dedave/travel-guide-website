@@ -8,18 +8,18 @@ import {
 } from "lucide-react";
 
 const continents = [
-  { name: "Africa",        slug: "africa",        icon: "🌍", desc: "Safari, culture & ancient wonders" },
-  { name: "Europe",        slug: "europe",        icon: "🏰", desc: "History, food & coastal beauty"     },
-  { name: "Asia",          slug: "asia",          icon: "🏯", desc: "Temples, neon & ancient trails"     },
-  { name: "North America", slug: "north-america", icon: "🗽", desc: "Parks, cities & open roads"         },
-  { name: "South America", slug: "south-america", icon: "🗿", desc: "Glaciers, jungles & Inca ruins"     },
-  { name: "Oceania",       slug: "oceania",       icon: "🏝️", desc: "Reefs, rainforests & red earth"    },
+  { name: "Africa", slug: "africa", icon: "🌍", desc: "Safari, culture & ancient wonders" },
+  { name: "Europe", slug: "europe", icon: "🏰", desc: "History, food & coastal beauty" },
+  { name: "Asia", slug: "asia", icon: "🏯", desc: "Temples, neon & ancient trails" },
+  { name: "North America", slug: "north-america", icon: "🗽", desc: "Parks, cities & open roads" },
+  { name: "South America", slug: "south-america", icon: "🗿", desc: "Glaciers, jungles & Inca ruins" },
+  { name: "Oceania", slug: "oceania", icon: "🏝️", desc: "Reefs, rainforests & red earth" },
 ];
 
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [guidesOpen, setGuidesOpen] = useState(false);
-  const [scrolled, setScrolled]     = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -42,23 +42,20 @@ export default function Navigation() {
         .font-body    { font-family: 'DM Sans', system-ui, sans-serif; }
       `}</style>
 
-      <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
+      <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled
           ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100"
           : "bg-white/90 backdrop-blur-sm border-b border-gray-100"
-      }`}>
+        }`}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? "h-14" : "h-16"}`}>
 
-            {/* ── Logo ── */}
-            <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-blue-200 transition-shadow">
-                <Globe className="h-4 w-4 text-white" />
-              </div>
-              <div>
-                <span className="font-display text-base font-black text-gray-900 leading-none block">Wanderlust</span>
-                <span className="font-body text-[9px] font-bold text-blue-600 uppercase tracking-[0.2em] leading-none block">Guides</span>
-              </div>
+            {/* ── Logo ──  */}
+            <Link href="/" className="shrink-0">
+              <img
+                src="/images/wanderlust-logo-transparent.png"
+                alt="Wanderlust Guides"
+                className={`object-contain transition-all duration-300 ${scrolled ? "h-10" : "h-12"}`}
+              />
             </Link>
 
             {/* ── Desktop nav ── */}
@@ -73,9 +70,8 @@ export default function Navigation() {
               <div className="relative" onClick={(e) => e.stopPropagation()}>
                 <button
                   onClick={() => setGuidesOpen((v) => !v)}
-                  className={`inline-flex items-center gap-1.5 font-body text-sm font-semibold px-3 py-2 rounded-lg transition-all ${
-                    guidesOpen ? "bg-blue-50 text-blue-600" : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                  }`}
+                  className={`inline-flex items-center gap-1.5 font-body text-sm font-semibold px-3 py-2 rounded-lg transition-all ${guidesOpen ? "bg-blue-50 text-blue-600" : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                    }`}
                 >
                   <MapPin className="h-3.5 w-3.5" />
                   Travel Guides
