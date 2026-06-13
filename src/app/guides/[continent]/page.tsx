@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { getContinentGuides, getGuidesByCountry, Guide } from "@/data/guidesData";
 
-// ── Continent metadata — 6 continents (Caribbean removed) ─────────────────────
+// ── Continent metadata ─────────────────────────────────────────────────────────
 const continentMeta: Record<string, {
   name: string; tagline: string; heroImage: string;
 }> = {
@@ -73,8 +73,8 @@ export default function ContinentGuidesPage({ params }: { params: Promise<{ cont
 
   const countryList = Object.entries(guidesByCountry).map(([slug, countryGuides]) => ({
     slug,
-    name:  countryGuides[0].country,
-    flag:  countryGuides[0].countryFlag,
+    name:   countryGuides[0].country,
+    flag:   countryGuides[0].countryFlag,
     guides: countryGuides,
   }));
 
@@ -169,7 +169,7 @@ export default function ContinentGuidesPage({ params }: { params: Promise<{ cont
                     <div className="absolute top-4 right-4 flex items-center gap-1.5">
                       <span className="text-lg">{guide.countryFlag}</span>
                       <span className="bg-gray-950/80 backdrop-blur-sm text-yellow-400 text-xs font-black px-3 py-1.5 rounded-full font-body border border-yellow-400/20">
-                        {guide.price ?? "$14.99"}
+                        {guide.price ?? "$6.99"}
                       </span>
                     </div>
 
@@ -218,7 +218,7 @@ export default function ContinentGuidesPage({ params }: { params: Promise<{ cont
             </span>
           </div>
           <h2 className="font-display text-4xl font-black text-gray-900 mb-14">
-            {featured.length > 0 ? `Browse by Country` : `All ${meta.name} Guides`}
+            {featured.length > 0 ? "Browse by Country" : `All ${meta.name} Guides`}
           </h2>
 
           {countryList.map(({ slug, name, flag, guides: cGuides }) => (
@@ -250,7 +250,7 @@ export default function ContinentGuidesPage({ params }: { params: Promise<{ cont
                       )}
                       <div className="absolute top-4 right-4">
                         <span className="bg-gray-950/80 backdrop-blur-sm text-yellow-400 text-xs font-black px-3 py-1.5 rounded-full font-body border border-yellow-400/20">
-                          {guide.price ?? "$14.99"}
+                          {guide.price ?? "$6.99"}
                         </span>
                       </div>
 

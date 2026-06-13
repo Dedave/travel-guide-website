@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { getAllGuides, Guide } from "@/data/guidesData";
 
-// ── Continent filters — 6 continents (Caribbean removed, guides redistributed) ─
+// ── Continent filters ──────────────────────────────────────────────────────────
 const continentFilters = [
   { label: "All Guides",    value: "all" },
   { label: "Africa",        value: "africa" },
@@ -22,7 +22,7 @@ const continentFilters = [
 ];
 
 export default function AllGuidesPage() {
-  const [search, setSearch]               = useState("");
+  const [search, setSearch]                   = useState("");
   const [activeContinent, setActiveContinent] = useState("all");
 
   const allGuidesData: Guide[] = getAllGuides();
@@ -57,8 +57,13 @@ export default function AllGuidesPage() {
 
       {/* ── HERO ── */}
       <section className="relative overflow-hidden bg-gray-950 pt-20 pb-0">
-        <div className="absolute inset-0 opacity-[0.03]"
-          style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "28px 28px" }} />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
+            backgroundSize: "28px 28px",
+          }}
+        />
 
         {/* 6-panel collage */}
         <div className="absolute inset-0 grid grid-cols-6 opacity-[0.15] pointer-events-none">
@@ -92,7 +97,7 @@ export default function AllGuidesPage() {
           </h1>
 
           <p className="text-gray-400 font-body text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-            Expert-written, on-the-ground research. PDF + Hardcover from $14.99.
+            Expert-written, on-the-ground research. Instant PDF download from {allGuidesData[0]?.price ?? "$6.99"}.
           </p>
 
           <div className="relative max-w-lg mx-auto">
@@ -102,11 +107,13 @@ export default function AllGuidesPage() {
               placeholder="Search by destination, country, tag or theme…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-white/8 backdrop-blur-sm border border-white/15 text-black placeholder-gray-500 rounded-2xl pl-14 pr-12 py-4 text-sm font-body focus:outline-none focus:border-blue-500 transition-all"
+              className="w-full bg-white/8 backdrop-blur-sm border border-white/15 text-white placeholder-gray-500 rounded-2xl pl-14 pr-12 py-4 text-sm font-body focus:outline-none focus:border-blue-500 transition-all"
             />
             {search && (
-              <button onClick={() => setSearch("")}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors">
+              <button
+                onClick={() => setSearch("")}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors"
+              >
                 <X className="h-4 w-4" />
               </button>
             )}
@@ -118,17 +125,23 @@ export default function AllGuidesPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide py-3">
               {continentFilters.map((c) => (
-                <button key={c.value} onClick={() => setActiveContinent(c.value)}
+                <button
+                  key={c.value}
+                  onClick={() => setActiveContinent(c.value)}
                   className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all font-body ${
                     activeContinent === c.value
                       ? "bg-blue-600 text-white shadow-lg shadow-blue-900/40"
                       : "text-gray-400 hover:text-white hover:bg-white/8"
-                  }`}>
+                  }`}
+                >
+                  {c.label}
                 </button>
               ))}
               <div className="ml-auto pl-6 shrink-0 text-gray-600 text-xs font-body whitespace-nowrap">
                 <span className="text-white font-bold">{filtered.length}</span> guide{filtered.length !== 1 ? "s" : ""}
-                {activeContinent !== "all" && <> in <span className="text-white font-bold">{activeName}</span></>}
+                {activeContinent !== "all" && (
+                  <> in <span className="text-white font-bold">{activeName}</span></>
+                )}
               </div>
             </div>
           </div>
@@ -151,12 +164,21 @@ export default function AllGuidesPage() {
                 {filtered.map((guide, i) => {
                   const isFeatured = i % 7 === 0;
                   return (
-                    <Link key={guide.id} href={`/guides/${guide.continentSlug}/${guide.id}`}
-                      className={isFeatured ? "lg:col-span-2" : ""}>
-                      <div className={`group relative overflow-hidden rounded-3xl cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${isFeatured ? "h-[380px]" : "h-[340px]"}`}>
-
-                        <img src={guide.image} alt={guide.title}
-                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <Link
+                      key={guide.id}
+                      href={`/guides/${guide.continentSlug}/${guide.id}`}
+                      className={isFeatured ? "lg:col-span-2" : ""}
+                    >
+                      <div
+                        className={`group relative overflow-hidden rounded-3xl cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
+                          isFeatured ? "h-[380px]" : "h-[340px]"
+                        }`}
+                      >
+                        <img
+                          src={guide.image}
+                          alt={guide.title}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/5" />
                         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent" />
 
@@ -178,7 +200,7 @@ export default function AllGuidesPage() {
                         {/* Price */}
                         <div className="absolute top-4 right-4">
                           <span className="bg-gray-950/70 backdrop-blur-sm text-yellow-400 text-xs font-black px-3 py-1.5 rounded-full font-body border border-yellow-400/20">
-                            {guide.price ?? "$14.99"}
+                            {guide.price ?? "$6.99"}
                           </span>
                         </div>
 
@@ -186,13 +208,20 @@ export default function AllGuidesPage() {
                         <div className="absolute bottom-0 left-0 right-0 p-6">
                           <div className="flex flex-wrap gap-1.5 mb-3">
                             {guide.tags.map((tag, j) => (
-                              <span key={j} className="text-[9px] font-semibold bg-white/10 backdrop-blur-sm border border-white/15 text-white/70 px-2 py-0.5 rounded-full font-body">
+                              <span
+                                key={j}
+                                className="text-[9px] font-semibold bg-white/10 backdrop-blur-sm border border-white/15 text-white/70 px-2 py-0.5 rounded-full font-body"
+                              >
                                 {tag}
                               </span>
                             ))}
                           </div>
 
-                          <h3 className={`font-display font-black text-white leading-tight mb-1.5 group-hover:text-blue-300 transition-colors ${isFeatured ? "text-2xl" : "text-lg"}`}>
+                          <h3
+                            className={`font-display font-black text-white leading-tight mb-1.5 group-hover:text-blue-300 transition-colors ${
+                              isFeatured ? "text-2xl" : "text-lg"
+                            }`}
+                          >
                             {guide.title}
                           </h3>
 
@@ -227,8 +256,10 @@ export default function AllGuidesPage() {
               <p className="text-gray-400 font-body text-sm mb-8 max-w-xs mx-auto">
                 Try a different keyword or clear the continent filter.
               </p>
-              <button onClick={() => { setSearch(""); setActiveContinent("all"); }}
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-full text-sm transition-colors font-body">
+              <button
+                onClick={() => { setSearch(""); setActiveContinent("all"); }}
+                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-full text-sm transition-colors font-body"
+              >
                 <X className="h-4 w-4" /> Clear filters
               </button>
             </div>
@@ -243,14 +274,19 @@ export default function AllGuidesPage() {
             <div>
               <div className="flex items-center gap-2 mb-5">
                 <div className="h-px w-6 bg-blue-500" />
-                <span className="text-blue-400 text-xs font-bold tracking-[0.3em] uppercase font-body">Can't decide?</span>
+                <span className="text-blue-400 text-xs font-bold tracking-[0.3em] uppercase font-body">
+                  Can&apos;t decide?
+                </span>
               </div>
               <h2 className="font-display text-4xl sm:text-5xl font-black text-white leading-tight mb-5">
                 Not sure where<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">to go next?</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                  to go next?
+                </span>
               </h2>
               <p className="text-gray-400 font-body text-lg leading-relaxed mb-8 max-w-md">
-                Start with our most popular guide and experience what a Wanderlust Guide feels like before committing to a destination.
+                Start with our most popular guide and experience what a Wanderlust Guide feels like
+                before committing to a destination.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link href="/guides/asia/japan-ultimate">
@@ -267,12 +303,13 @@ export default function AllGuidesPage() {
                 </Link>
               </div>
             </div>
+
             <div className="grid grid-cols-2 gap-4">
               {[
-                { val: `${allGuidesData.length}+`, label: "Expert Guides",  icon: BookOpen, bg: "bg-blue-600" },
-                { val: "4.9★",                     label: "Avg Rating",     icon: Star,     bg: "bg-yellow-500" },
+                { val: `${allGuidesData.length}+`, label: "Expert Guides",  icon: BookOpen, bg: "bg-blue-600"             },
+                { val: "4.9★",                     label: "Avg Rating",     icon: Star,     bg: "bg-yellow-500"           },
                 { val: "100k+",                    label: "Happy Readers",  icon: Users,    bg: "bg-white/8 border border-white/10" },
-                { val: "9",                        label: "Continents",     icon: Globe,    bg: "bg-purple-600" },
+                { val: "6",                        label: "Continents",     icon: Globe,    bg: "bg-purple-600"           },
               ].map((s, i) => (
                 <div key={i} className={`${s.bg} rounded-2xl p-6 flex flex-col gap-6`}>
                   <s.icon className="h-5 w-5 text-white/70" />

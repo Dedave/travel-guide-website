@@ -43,7 +43,7 @@ export default function InlineCTA({
   continentSlug,
   guideId,
   guideName,
-  price = "$14.99",
+  price = "$6.99",
   destinationCount,
   tipCount,
 }: InlineCTAProps) {

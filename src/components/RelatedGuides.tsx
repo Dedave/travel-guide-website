@@ -48,7 +48,7 @@ export default function RelatedGuides({
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
                 <div className="absolute top-4 right-4">
                   <span className="bg-gray-950/70 backdrop-blur-sm text-yellow-400 text-xs font-black px-3 py-1.5 rounded-full border border-yellow-400/20">
-                    {guide.price ?? "$14.99"}
+                    {guide.price ?? "$6.99"}
                   </span>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-5">

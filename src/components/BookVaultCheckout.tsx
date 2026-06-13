@@ -26,7 +26,7 @@ interface CheckoutModalProps {
   isOpen:      boolean;
   onClose:     () => void;
   guideTitle:  string;         // e.g. "Ultimate Japan Travel Guide"
-  guidePrice:  number;         // e.g. 14.99
+  guidePrice:  number;         // e.g. 6.99
   /** The BookVault productId for THIS guide's paperback.
    *  Get this from your Bookvault portal → Library → your title → Product ID */
   bvProductId: string;

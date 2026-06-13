@@ -17,17 +17,12 @@ import {
   Globe,
   BookOpen,
   Share2,
-  ShoppingCart,
-  Package,
   CheckCircle2,
   ChevronRight,
-  Sparkles,
   Heart,
   Camera,
   Compass,
   Shield,
-  RotateCcw,
-  Truck,
   Download,
 } from "lucide-react";
 import { getGuide } from "@/data/guidesData";
@@ -42,7 +37,6 @@ interface GuideDetailPageProps {
 export default function GuideDetailPage({ params }: GuideDetailPageProps) {
   const resolvedParams = use(params);
   const guide = getGuide(resolvedParams.continent, resolvedParams.guide);
-  const [selectedFormat, setSelectedFormat] = useState<"ebook" | "paperback" | "bundle">("ebook");
 
   if (!guide) {
     return (
@@ -51,7 +45,7 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
         <div className="mx-auto max-w-7xl px-4 py-24 text-center">
           <h1 className="text-4xl font-bold mb-4">Guide not found</h1>
           <p className="text-gray-600 mb-8">
-            The guide you're looking for doesn't exist or has been moved.
+            The guide you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
           <Link href="/guides">
             <button className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-full hover:bg-blue-700 transition-colors">
@@ -64,57 +58,9 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
     );
   }
 
-  // Derive PDF price from guide.price (e.g. "$6.99") or fallback
   const pdfPrice = guide.price ?? "$6.99";
   const pdfPriceNum = parseFloat(pdfPrice.replace("$", "")) || 6.99;
-  const paperbackPrice = 14.99;
-  const bundlePrice = parseFloat((pdfPriceNum + paperbackPrice).toFixed(2));
-
-  const formats = [
-    {
-      id: "ebook" as const,
-      label: "Digital PDF",
-      price: pdfPriceNum,
-      originalPrice: parseFloat((pdfPriceNum * 2).toFixed(2)),
-      icon: Download,
-      perks: [
-        "Instant download",
-        "Read on any device",
-        "Searchable & zoomable",
-        "Lifetime access",
-      ],
-    },
-    {
-      id: "paperback" as const,
-      label: "Paperback Book",
-      price: paperbackPrice,
-      originalPrice: 29.99,
-      icon: Package,
-      perks: [
-        "Premium print quality",
-        "Ships worldwide",
-        "Lay-flat binding",
-        "Full-color photography",
-      ],
-    },
-    {
-      id: "bundle" as const,
-      label: "PDF + Paperback",
-      price: bundlePrice,
-      originalPrice: parseFloat((pdfPriceNum * 2 + 49.99).toFixed(2)),
-      icon: Sparkles,
-      perks: [
-        "Best value deal",
-        "Instant PDF access",
-        "Physical copy ships",
-        "Bonus digital maps",
-      ],
-      badge: "Best Value",
-    },
-  ];
-
-  const selected = formats.find((f) => f.id === selectedFormat)!;
-  const savings = Math.round((1 - selected.price / selected.originalPrice) * 100);
+  const originalPrice = parseFloat((pdfPriceNum * 2).toFixed(2));
 
   return (
     <div className="min-h-screen bg-white">
@@ -163,7 +109,7 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a href="#purchase">
                 <button className="group inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-7 py-3.5 rounded-full text-sm shadow-lg hover:shadow-xl transition-all">
-                  <ShoppingCart className="h-4 w-4" />
+                  <Download className="h-4 w-4" />
                   Get This Guide
                   <ChevronRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
                 </button>
@@ -336,7 +282,7 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
           <div className="grid lg:grid-cols-2 gap-16">
             <div>
               <p className="text-blue-600 text-xs font-bold tracking-[0.25em] uppercase mb-3">
-                What's Covered
+                What&apos;s Covered
               </p>
               <h2 className="text-3xl font-bold text-gray-900 mb-8">
                 {guide.highlights.length} Curated Experiences
@@ -424,8 +370,8 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
 
       {/* ── PURCHASE SECTION ── */}
       <section id="purchase" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white">
-        <div className="mx-auto max-w-5xl">
-          <div className="text-center mb-14">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center mb-10">
             <p className="text-yellow-400 text-xs font-bold tracking-[0.25em] uppercase mb-3">
               Get Your Copy
             </p>
@@ -433,165 +379,89 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
               Start Your {guide.continent} Journey
             </h2>
             <p className="text-gray-400 max-w-xl mx-auto text-sm leading-relaxed">
-              Choose your format below. Every purchase includes expert itineraries, hand-picked
-              insider tips, and full destination coverage.
+              Instant PDF download — expert itineraries, insider tips, and full destination
+              coverage. Read on any device, forever.
             </p>
-          </div>
-
-          {/* Format cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-            {formats.map((fmt) => {
-              const Icon = fmt.icon;
-              const isSelected = selectedFormat === fmt.id;
-              const savePct = Math.round((1 - fmt.price / fmt.originalPrice) * 100);
-              return (
-                <button
-                  key={fmt.id}
-                  onClick={() => setSelectedFormat(fmt.id)}
-                  className={`relative text-left rounded-2xl border-2 p-6 transition-all cursor-pointer ${
-                    isSelected
-                      ? "border-yellow-400 bg-yellow-400/10"
-                      : "border-white/10 bg-white/5 hover:border-white/20"
-                  }`}
-                >
-                  {fmt.badge && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="bg-yellow-400 text-gray-900 text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full whitespace-nowrap shadow">
-                        {fmt.badge}
-                      </span>
-                    </div>
-                  )}
-                  <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-colors ${
-                      isSelected ? "bg-yellow-400" : "bg-white/10"
-                    }`}
-                  >
-                    <Icon
-                      className={`h-5 w-5 ${isSelected ? "text-gray-900" : "text-white"}`}
-                    />
-                  </div>
-                  <div className="text-white font-bold text-sm mb-0.5">{fmt.label}</div>
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <span
-                      className={`text-2xl font-black ${
-                        isSelected ? "text-yellow-400" : "text-white"
-                      }`}
-                    >
-                      ${fmt.price}
-                    </span>
-                    <span className="text-gray-500 text-sm line-through">
-                      ${fmt.originalPrice}
-                    </span>
-                  </div>
-                  <div className="text-green-400 text-[10px] font-bold mb-4">
-                    Save {savePct}%
-                  </div>
-                  <ul className="space-y-2">
-                    {fmt.perks.map((perk, i) => (
-                      <li key={i} className="flex items-center gap-2 text-xs text-gray-400">
-                        <CheckCircle2
-                          className={`h-3.5 w-3.5 shrink-0 ${
-                            isSelected ? "text-yellow-400" : "text-gray-600"
-                          }`}
-                        />
-                        {perk}
-                      </li>
-                    ))}
-                  </ul>
-                </button>
-              );
-            })}
           </div>
 
           {/* CTA block */}
           <div className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:p-10">
-            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+            <div className="flex flex-col items-center text-center gap-6">
+
+              {/* Price display */}
               <div>
-                <p className="text-gray-400 text-sm mb-1">
-                  Selected:{" "}
-                  <span className="text-white font-semibold">{selected.label}</span>
-                </p>
-                <div className="flex items-baseline gap-3 mb-2">
-                  <span className="text-5xl font-black text-white">${selected.price}</span>
-                  <span className="text-gray-500 line-through text-xl">
-                    ${selected.originalPrice}
-                  </span>
-                  <span className="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded-full">
-                    {savings}% OFF
+                <div className="flex items-baseline justify-center gap-3 mb-2">
+                  <span className="text-5xl font-black text-white">{pdfPrice}</span>
+                  <span className="text-gray-500 line-through text-xl">${originalPrice}</span>
+                  <span className="bg-green-500/20 text-green-400 text-xs font-bold px-2.5 py-1 rounded-full">
+                    50% OFF
                   </span>
                 </div>
                 <p className="text-gray-400 text-sm">
-                  {guide.pages}-page guide · {guide.rating}★ · {guide.downloads} happy readers
+                  {guide.pages}-page PDF · {guide.rating}★ · {guide.downloads} happy readers
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3 w-full lg:w-auto min-w-[260px]">
-
-                {/* ── PDF via Gumroad (primary) ── */}
-                {(selectedFormat === "ebook" || selectedFormat === "bundle") && (
-                  guide.gumroadUrl ? (
-                    <a
-                      href={guide.gumroadUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-black px-8 py-4 rounded-2xl text-sm tracking-wide transition-all shadow-lg hover:shadow-xl"
-                    >
-                      <Download className="h-4 w-4" />
-                      Buy PDF — {pdfPrice}
-                      <ChevronRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
-                    </a>
-                  ) : (
-                    <div className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-gray-500 px-8 py-4 rounded-2xl text-sm cursor-not-allowed">
-                      <Download className="h-4 w-4" />
-                      PDF — Coming Soon
-                    </div>
-                  )
-                )}
-
-                {/* ── Paperback via Amazon ── */}
-                {(selectedFormat === "paperback" || selectedFormat === "bundle") && (
+              {/* Buy buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
+                {/* Gumroad */}
+                {guide.gumroadUrl ? (
                   <a
-                    href={guide.amazonUrl ?? "https://www.amazon.com"}
+                    href={guide.gumroadUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group inline-flex items-center justify-center gap-2 font-black px-8 py-4 rounded-2xl text-sm tracking-wide transition-all shadow-lg hover:shadow-xl ${
-                      selectedFormat === "paperback"
-                        ? "bg-yellow-400 hover:bg-yellow-300 text-gray-900"
-                        : "bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold"
-                    }`}
+                    className="group flex-1 inline-flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-black px-6 py-4 rounded-2xl text-sm tracking-wide transition-all shadow-lg hover:shadow-xl"
                   >
-                    <ShoppingCart className="h-4 w-4" />
-                    Buy on Amazon
+                    <Download className="h-4 w-4" />
+                    Buy on Gumroad
                     <ChevronRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
                   </a>
+                ) : (
+                  <div className="flex-1 inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-gray-500 px-6 py-4 rounded-2xl text-sm cursor-not-allowed">
+                    <Download className="h-4 w-4" />
+                    Gumroad — Coming Soon
+                  </div>
                 )}
 
-                {/* ── Share ── */}
-                <button
-                  className="inline-flex items-center justify-center gap-2 text-gray-500 hover:text-gray-300 text-xs font-medium transition-colors"
-                  onClick={() => {
-                    if (navigator.share) {
-                      navigator.share({ title: guide.title, url: window.location.href });
-                    } else {
-                      navigator.clipboard?.writeText(window.location.href);
-                    }
-                  }}
-                >
-                  <Share2 className="h-3.5 w-3.5" />
-                  Share this guide
-                </button>
+                {/* Selar */}
+                {guide.selarUrl ? (
+                  <a
+                    href={guide.selarUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex-1 inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 text-white font-bold px-6 py-4 rounded-2xl text-sm tracking-wide transition-all shadow-lg hover:shadow-xl"
+                  >
+                    <Download className="h-4 w-4" />
+                    Buy on Selar
+                    <ChevronRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+                  </a>
+                ) : null}
               </div>
+
+              {/* Share */}
+              <button
+                className="inline-flex items-center justify-center gap-2 text-gray-500 hover:text-gray-300 text-xs font-medium transition-colors"
+                onClick={() => {
+                  if (navigator.share) {
+                    navigator.share({ title: guide.title, url: window.location.href });
+                  } else {
+                    navigator.clipboard?.writeText(window.location.href);
+                  }
+                }}
+              >
+                <Share2 className="h-3.5 w-3.5" />
+                Share this guide
+              </button>
             </div>
 
             {/* Trust signals */}
-            <div className="mt-8 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="mt-8 pt-8 border-t border-white/10 grid grid-cols-3 gap-4">
               {[
-                { icon: Shield,    label: "Secure checkout"         },
-                { icon: Download,  label: "Instant PDF delivery"    },
-                { icon: Truck,     label: "Paperback ships worldwide"},
-                { icon: Star,      label: `${guide.rating}★ avg. rating` },
+                { icon: Shield,   label: "Secure checkout"         },
+                { icon: Download, label: "Instant PDF delivery"    },
+                { icon: Star,     label: `${guide.rating}★ avg. rating` },
               ].map((t, i) => (
-                <div key={i} className="flex items-center gap-2 text-gray-400 text-xs">
+                <div key={i} className="flex items-center justify-center gap-2 text-gray-400 text-xs">
                   <t.icon className="h-4 w-4 text-yellow-400 shrink-0" />
                   {t.label}
                 </div>
@@ -600,7 +470,7 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
           </div>
 
           <p className="text-center text-gray-600 text-xs mt-6">
-            PDF delivered instantly via Gumroad · Paperback fulfilled via Amazon ·{" "}
+            PDF delivered instantly via Gumroad or Selar ·{" "}
             <Link
               href="/contact"
               className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2"
