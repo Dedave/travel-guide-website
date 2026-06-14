@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import PlanTripModal from "@/components/PlanTripModal";
+
 import {
   ArrowRight,
   Play,
@@ -22,12 +24,12 @@ import {
 
 // ── Hero slides ───────────────────────────────────────────────────────────
 const heroSlides = [
-  { image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&h=1080&fit=crop", continent: "Africa", label: "Safari & Soul", headline: ["Where the", "Wild Begins"], sub: "From the Maasai Mara to Zanzibar", slug: "africa", guideId: "kenya-safari" },
+  { image: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=1920&h=1080&fit=crop", continent: "Oceania", label: "Paradise & Wild", headline: ["Reefs, Ranges", "& Red Earth"], sub: "Australia, New Zealand & Fiji", slug: "oceania", guideId: "australia-complete" },
   { image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&h=1080&fit=crop", continent: "Asia", label: "Ancient & Electric", headline: ["Temples,", "Neon & Tea"], sub: "Across Japan, Bali & beyond", slug: "asia", guideId: "japan-ultimate" },
+  { image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&h=1080&fit=crop", continent: "Africa", label: "Safari & Soul", headline: ["Where the", "Wild Begins"], sub: "From the Maasai Mara to Zanzibar", slug: "africa", guideId: "kenya-safari" },
   { image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1920&h=1080&fit=crop", continent: "Europe", label: "History & Flavour", headline: ["Cobblestones,", "Cafés & Cathedrals"], sub: "Italy, France, Greece and more", slug: "europe", guideId: "italy-ultimate" },
   { image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop", continent: "North America", label: "Wild & Urban", headline: ["Parks, Cities,", "Open Roads"], sub: "From Yellowstone to New York City", slug: "north-america", guideId: "usa-national-parks" },
   { image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1920&h=1080&fit=crop", continent: "South America", label: "Adventure Awaits", headline: ["Glaciers,", "Jungles & Ruins"], sub: "Machu Picchu to Patagonia", slug: "south-america", guideId: "peru-machu-picchu" },
-  { image: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=1920&h=1080&fit=crop", continent: "Oceania", label: "Paradise & Wild", headline: ["Reefs, Ranges", "& Red Earth"], sub: "Australia, New Zealand & Fiji", slug: "oceania", guideId: "australia-complete" },
 ];
 
 // ── Featured guides ───────────────────────────────────────────────────────
@@ -152,7 +154,7 @@ export default function Home() {
         .hero-fade { transition: opacity 0.4s ease, transform 0.4s ease; }
         .hero-hidden { opacity: 0; transform: translateY(14px); }
       `}</style>
-
+      <PlanTripModal />
       <Navigation />
 
       {/* ════════════════════════════════════════
