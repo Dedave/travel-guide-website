@@ -125,7 +125,7 @@ const affiliates = [
         // Fixed: was generic URL — now uses real affiliate link
         url: () => "https://www.anrdoezrs.net/click-101729714-15403748",
         cta: "Get a Quote",
-        note: "150+ activities covered",
+        note: "50+ activities covered",
       },
     ],
   },

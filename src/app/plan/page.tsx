@@ -136,7 +136,7 @@ const categories = [
         emoji: "🌐",
         badge: "Best for Adventure",
         badgeColor: "bg-pink-500",
-        note: "150+ activities covered",
+        note: "50+ activities covered",
         url: () => "https://www.anrdoezrs.net/click-101729714-15403748",
       },
     ],

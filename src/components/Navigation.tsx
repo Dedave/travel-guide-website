@@ -8,12 +8,12 @@ import {
 } from "lucide-react";
 
 const continents = [
-  { name: "Africa", slug: "africa", icon: "🌍", desc: "Safari, culture & ancient wonders" },
-  { name: "Europe", slug: "europe", icon: "🏰", desc: "History, food & coastal beauty" },
-  { name: "Asia", slug: "asia", icon: "🏯", desc: "Temples, neon & ancient trails" },
-  { name: "North America", slug: "north-america", icon: "🗽", desc: "Parks, cities & open roads" },
-  { name: "South America", slug: "south-america", icon: "🗿", desc: "Glaciers, jungles & Inca ruins" },
-  { name: "Oceania", slug: "oceania", icon: "🏝️", desc: "Reefs, rainforests & red earth" },
+  { name: "Africa", slug: "africa", desc: "Safari, culture & ancient wonders" },
+  { name: "Europe", slug: "europe", desc: "History, food & coastal beauty" },
+  { name: "Asia", slug: "asia", desc: "Temples, neon & ancient trails" },
+  { name: "North America", slug: "north-america", desc: "Parks, cities & open roads" },
+  { name: "South America", slug: "south-america", desc: "Glaciers, jungles & Inca ruins" },
+  { name: "Oceania", slug: "oceania", desc: "Reefs, rainforests & red earth" },
 ];
 
 export default function Navigation() {
@@ -96,7 +96,6 @@ export default function Navigation() {
                         <Link key={c.slug} href={`/guides/${c.slug}`}
                           onClick={() => setGuidesOpen(false)}
                           className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white transition-all group">
-                          <span className="text-xl shrink-0">{c.icon}</span>
                           <div className="min-w-0">
                             <div className="font-body text-sm font-bold text-gray-800 group-hover:text-blue-600 transition-colors leading-tight">
                               {c.name}
@@ -194,7 +193,6 @@ export default function Navigation() {
                     <Link key={c.slug} href={`/guides/${c.slug}`}
                       onClick={() => setMobileOpen(false)}
                       className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-gray-50 transition-colors">
-                      <span className="text-base">{c.icon}</span>
                       <span className="font-body text-sm font-semibold text-gray-700">{c.name}</span>
                     </Link>
                   ))}

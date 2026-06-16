@@ -96,8 +96,8 @@ const continents = [
 
 const stats = [
   { icon: FileText, value: "50+", label: "Travel Guides" },
-  { icon: MapPin, value: "150+", label: "Countries" },
-  { icon: Users, value: "100k+", label: "Happy Readers" },
+  { icon: MapPin, value: "50+", label: "Countries" },
+  { icon: Users, value: "10k+", label: "Happy Readers" },
   { icon: Star, value: "4.9★", label: "Average Rating" },
 ];
 
@@ -456,11 +456,11 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-4">
               {[
                 { val: "50+", label: "Guides Published", bg: "bg-blue-600", text: "text-white", sub: "text-blue-200" },
-                { val: "4.9★", label: "Average Rating", bg: "bg-yellow-400", text: "text-gray-900", sub: "text-yellow-700", offset: "mt-6" },
-                { val: "100k+", label: "Happy Readers", bg: "bg-gray-900", text: "text-white", sub: "text-gray-400" },
-                { val: "150+", label: "Countries Covered", bg: "bg-green-500", text: "text-white", sub: "text-green-100", offset: "-mt-6" },
+                { val: "4.9★", label: "Average Rating", bg: "bg-yellow-400", text: "text-gray-900", sub: "text-yellow-700"},
+                { val: "10k+", label: "Happy Readers", bg: "bg-gray-900", text: "text-white", sub: "text-gray-400" },
+                { val: "50+", label: "Countries Covered", bg: "bg-green-500", text: "text-white", sub: "text-green-100" },
               ].map((s, i) => (
-                <div key={i} className={`${s.bg} rounded-2xl p-7 ${s.offset ?? ""}`}>
+                <div key={i} className={`${s.bg} rounded-2xl p-7`}>
                   <div className={`font-display text-4xl font-black ${s.text}`}>{s.val}</div>
                   <div className={`font-body text-xs font-semibold mt-1 ${s.sub}`}>{s.label}</div>
                 </div>
