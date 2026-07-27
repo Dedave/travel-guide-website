@@ -385,6 +385,8 @@ export const allGuidesData: ContinentGuides = {
       image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800&h=500&fit=crop",
       continent: "Europe", continentSlug: "europe",
       country: "Italy", countrySlug: "italy", countryFlag: "🇮🇹",
+      gumroadUrl: "https://wanderlustguides.gumroad.com/l/okmvj",
+      selarUrl: "https://selar.com/72qtp1g791",
       rating: 4.9, downloads: "9.2k", pages: 120, price: "$6.99",
       tags: ["Cities", "Food", "History"], featured: true, tag: "Bestseller", tagColor: "bg-rose-500",
       subtitle: "La Dolce Vita — Art, History & Culinary Paradise",
@@ -1230,7 +1232,7 @@ continent: "Asia", continentSlug: "asia",
 country: "Japan", countrySlug: "japan", countryFlag: "🇯🇵",
 
 rating: 4.9, downloads: "12.3k", pages: 135, price: "$6.99",
-gumroadUrl: "wanderlustguides.gumroad.com/l/koawdq",
+gumroadUrl: "https://wanderlustguides.gumroad.com/l/koawdq",
 selarUrl: "https://selar.com/d18585666q",
 
 tags: ["Culture", "Food", "Technology"], featured: true, tag: "Bestseller", tagColor: "bg-rose-500",
@@ -3368,7 +3370,7 @@ image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800&h=500
 continent: "Oceania", continentSlug: "oceania",
 
 country: "Australia", countrySlug: "australia", countryFlag: "🇦🇺",
-gumroadUrl: "wanderlustguides.gumroad.com/l/yinvql",
+gumroadUrl: "https://wanderlustguides.gumroad.com/l/yinvql",
 selarUrl: "https://selar.com/757w1l7717",
 rating: 4.9, downloads: "10.5k", pages: 125, price: "$6.99",
 
