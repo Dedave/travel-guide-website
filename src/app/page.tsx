@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PlanTripModal from "@/components/PlanTripModal";
+import SearchBar from "@/components/Searchbar";
+
 
 import {
   ArrowRight,
@@ -231,12 +233,24 @@ export default function Home() {
               </button>
             ))}
           </div>
+          
         </div>
 
         {/* Scroll hint */}
         <div className="absolute bottom-7 left-1/2 animate-subtleBounce">
           <ChevronDown className="h-5 w-5 text-white/40" />
         </div>
+      </section>
+
+         {/* ════════════════════════════════════════
+          QUICK SEARCH
+      ════════════════════════════════════════ */}
+      <section className="relative z-20 px-6 sm:px-10 lg:px-16 max-w-3xl mx-auto -mt-8 mb-4">
+        <SearchBar
+          variant="light"
+          placeholder="Search Japan, safaris, beaches, hiking…"
+          className="shadow-2xl"
+        />
       </section>
 
       {/* ════════════════════════════════════════
@@ -456,7 +470,7 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-4">
               {[
                 { val: "50+", label: "Guides Published", bg: "bg-blue-600", text: "text-white", sub: "text-blue-200" },
-                { val: "4.9★", label: "Average Rating", bg: "bg-yellow-400", text: "text-gray-900", sub: "text-yellow-700"},
+                { val: "4.9★", label: "Average Rating", bg: "bg-yellow-400", text: "text-gray-900", sub: "text-yellow-700" },
                 { val: "10k+", label: "Happy Readers", bg: "bg-gray-900", text: "text-white", sub: "text-gray-400" },
                 { val: "50+", label: "Countries Covered", bg: "bg-green-500", text: "text-white", sub: "text-green-100" },
               ].map((s, i) => (

@@ -9,20 +9,23 @@ import {
   ChevronRight, Users, X, Globe,
 } from "lucide-react";
 import { getAllGuides, Guide } from "@/data/guidesData";
+import { useSearchParams } from "next/navigation";
 
 // ── Continent filters ──────────────────────────────────────────────────────────
 const continentFilters = [
-  { label: "All Guides",    value: "all" },
-  { label: "Africa",        value: "africa" },
-  { label: "Europe",        value: "europe" },
-  { label: "Asia",          value: "asia" },
+  { label: "All Guides", value: "all" },
+  { label: "Africa", value: "africa" },
+  { label: "Europe", value: "europe" },
+  { label: "Asia", value: "asia" },
   { label: "North America", value: "north-america" },
   { label: "South America", value: "south-america" },
-  { label: "Oceania",       value: "oceania" },
+  { label: "Oceania", value: "oceania" },
 ];
 
 export default function AllGuidesPage() {
-  const [search, setSearch]                   = useState("");
+  const searchParams = useSearchParams();
+  const [search, setSearch] = useState(searchParams.get("q") ?? "");
+
   const [activeContinent, setActiveContinent] = useState("all");
 
   const allGuidesData: Guide[] = getAllGuides();
@@ -107,7 +110,7 @@ export default function AllGuidesPage() {
               placeholder="Search by destination, country, tag or theme…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-white/8 backdrop-blur-sm border border-white/15 text-white placeholder-gray-500 rounded-2xl pl-14 pr-12 py-4 text-sm font-body focus:outline-none focus:border-blue-500 transition-all"
+              className="w-full bg-white/8 backdrop-blur-sm border border-white/15 text-gray placeholder-gray-500 rounded-2xl pl-14 pr-12 py-4 text-sm font-body focus:outline-none focus:border-blue-500 transition-all"
             />
             {search && (
               <button
@@ -128,11 +131,10 @@ export default function AllGuidesPage() {
                 <button
                   key={c.value}
                   onClick={() => setActiveContinent(c.value)}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all font-body ${
-                    activeContinent === c.value
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all font-body ${activeContinent === c.value
                       ? "bg-blue-600 text-white shadow-lg shadow-blue-900/40"
                       : "text-gray-400 hover:text-white hover:bg-white/8"
-                  }`}
+                    }`}
                 >
                   {c.label}
                 </button>
@@ -170,9 +172,8 @@ export default function AllGuidesPage() {
                       className={isFeatured ? "lg:col-span-2" : ""}
                     >
                       <div
-                        className={`group relative overflow-hidden rounded-3xl cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
-                          isFeatured ? "h-[380px]" : "h-[340px]"
-                        }`}
+                        className={`group relative overflow-hidden rounded-3xl cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${isFeatured ? "h-[380px]" : "h-[340px]"
+                          }`}
                       >
                         <img
                           src={guide.image}
@@ -218,9 +219,8 @@ export default function AllGuidesPage() {
                           </div>
 
                           <h3
-                            className={`font-display font-black text-white leading-tight mb-1.5 group-hover:text-blue-300 transition-colors ${
-                              isFeatured ? "text-2xl" : "text-lg"
-                            }`}
+                            className={`font-display font-black text-white leading-tight mb-1.5 group-hover:text-blue-300 transition-colors ${isFeatured ? "text-2xl" : "text-lg"
+                              }`}
                           >
                             {guide.title}
                           </h3>
@@ -306,10 +306,10 @@ export default function AllGuidesPage() {
 
             <div className="grid grid-cols-2 gap-4">
               {[
-                { val: `${allGuidesData.length}+`, label: "Expert Guides",  icon: BookOpen, bg: "bg-blue-600"             },
-                { val: "4.9★",                     label: "Avg Rating",     icon: Star,     bg: "bg-yellow-500"           },
-                { val: "100k+",                    label: "Happy Readers",  icon: Users,    bg: "bg-white/8 border border-white/10" },
-                { val: "6",                        label: "Continents",     icon: Globe,    bg: "bg-purple-600"           },
+                { val: `${allGuidesData.length}+`, label: "Expert Guides", icon: BookOpen, bg: "bg-blue-600" },
+                { val: "4.9★", label: "Avg Rating", icon: Star, bg: "bg-yellow-500" },
+                { val: "100k+", label: "Happy Readers", icon: Users, bg: "bg-white/8 border border-white/10" },
+                { val: "6", label: "Continents", icon: Globe, bg: "bg-purple-600" },
               ].map((s, i) => (
                 <div key={i} className={`${s.bg} rounded-2xl p-6 flex flex-col gap-6`}>
                   <s.icon className="h-5 w-5 text-white/70" />

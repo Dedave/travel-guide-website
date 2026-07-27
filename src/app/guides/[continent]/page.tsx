@@ -8,6 +8,7 @@ import {
   ArrowLeft, Star, FileText, Users, ChevronRight, ArrowRight, BookOpen,
 } from "lucide-react";
 import { getContinentGuides, getGuidesByCountry, Guide } from "@/data/guidesData";
+import SearchBar from "@/components/Searchbar";
 
 // ── Continent metadata ─────────────────────────────────────────────────────────
 const continentMeta: Record<string, {
@@ -134,6 +135,17 @@ export default function ContinentGuidesPage({ params }: { params: Promise<{ cont
           </div>
         </div>
       </section>
+
+      <section className="px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
+  <div className="mx-auto max-w-2xl">
+    <SearchBar
+      variant="light"
+      placeholder={`Search within ${meta.name}…`}
+      continentSlug={continent}
+      className="shadow-2xl"
+    />
+  </div>
+</section>
 
       {/* ── FEATURED GUIDES ── */}
       {featured.length > 0 && (
