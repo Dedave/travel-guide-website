@@ -233,7 +233,7 @@ export default function Home() {
               </button>
             ))}
           </div>
-          
+
         </div>
 
         {/* Scroll hint */}
@@ -242,10 +242,10 @@ export default function Home() {
         </div>
       </section>
 
-         {/* ════════════════════════════════════════
+      {/* ════════════════════════════════════════
           QUICK SEARCH
       ════════════════════════════════════════ */}
-      <section className="relative z-20 px-6 sm:px-10 lg:px-16 max-w-3xl mx-auto -mt-8 mb-4">
+      <section className="relative z-20 px-6 sm:px-10 lg:px-16 max-w-3xl mx-auto -mt-16 mb-2">
         <SearchBar
           variant="light"
           placeholder="Search Japan, safaris, beaches, hiking…"
