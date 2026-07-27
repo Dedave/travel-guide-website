@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -22,7 +22,7 @@ const continentFilters = [
   { label: "Oceania", value: "oceania" },
 ];
 
-export default function AllGuidesPage() {
+function GuidesContent() {
   const searchParams = useSearchParams();
   const [search, setSearch] = useState(searchParams.get("q") ?? "");
 
@@ -326,5 +326,17 @@ export default function AllGuidesPage() {
 
       <Footer />
     </div>
+  );
+}
+
+export default function AllGuidesPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-gray-400 font-body text-sm">Loading guides…</div>
+      </div>
+    }>
+      <GuidesContent />
+    </Suspense>
   );
 }
