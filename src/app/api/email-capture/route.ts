@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import os from "os";
+import { sendLeadMagnetEmail } from "@/lib/email";
 
 /* ─── POST /api/email-capture ────────────────────────────────────────────────
    Body: { email: string, source?: string }
@@ -97,11 +98,21 @@ export async function POST(req: NextRequest) {
   // filesystem is read-only.
   console.log("[email-capture]", JSON.stringify(lead), { stored, duplicate });
 
+  // Automatically deliver the free guide by email (Resend). New sign-ups
+  // always get it; duplicates are re-sent the download link too. Delivery
+  // never blocks a successful capture — if it fails or isn't configured yet,
+  // the lead is still stored.
+  const emailResult = await sendLeadMagnetEmail(email);
+  if (!emailResult.sent && !emailResult.skipped) {
+    console.error("[email-capture] delivery failed:", emailResult.error);
+  }
+
   return NextResponse.json({
     success: true,
     duplicate,
+    emailSent: emailResult.sent,
     message: duplicate
-      ? "You're already on the list — your free guide is on its way!"
+      ? "You're already on the list — we've re-sent your free guide!"
       : "Success! Check your inbox for your free guide.",
   });
 }
