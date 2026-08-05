@@ -84,6 +84,7 @@ export default function RootLayout({
         />
 
         <meta name="agd-partner-manual-verification" />
+        <meta name="google-site-verification" content="zTYaE7K6In7oAhEjl36h4bYri6GBud-WUnMXkqdKJ8E" />
 
         <script
           type="application/ld+json"
