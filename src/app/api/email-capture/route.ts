@@ -115,11 +115,14 @@ export async function POST(req: NextRequest) {
   const debug = wantsDebug
     ? {
         emailStatus: emailResult.sent
-          ? "sent"
+          ? emailResult.usedFallback
+            ? "sent_via_sandbox_fallback"
+            : "sent"
           : emailResult.skipped
             ? "skipped_not_configured"
             : "resend_error",
         emailError: emailResult.error ?? null,
+        usedFallback: Boolean(emailResult.usedFallback),
         hasApiKey: Boolean(process.env.RESEND_API_KEY),
         hasFrom: Boolean(process.env.EMAIL_FROM),
         // Show only the domain part of EMAIL_FROM so you can confirm it matches
