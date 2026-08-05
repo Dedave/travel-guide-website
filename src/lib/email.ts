@@ -88,6 +88,89 @@ function buildText(): string {
   ].join("\n");
 }
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+export interface ContactMessage {
+  name: string;
+  email: string;
+  subject?: string;
+  message: string;
+}
+
+/**
+ * Forwards a contact-form submission to the site owner via Resend.
+ * Never throws — returns a result object so the API route can respond
+ * gracefully even if email delivery is misconfigured or fails.
+ */
+export async function sendContactEmail(msg: ContactMessage): Promise<SendResult> {
+  const apiKey = process.env.RESEND_API_KEY;
+  const from = process.env.EMAIL_FROM;
+  // Where contact messages are delivered. Falls back to a hello@ address on the
+  // site domain if CONTACT_TO isn't set.
+  const to =
+    process.env.CONTACT_TO ||
+    `hello@${SITE_URL.replace(/^https?:\/\//, "").replace(/^www\./, "")}`;
+
+  if (!apiKey || !from) {
+    console.warn(
+      "[email] RESEND_API_KEY or EMAIL_FROM not set — skipping contact email delivery."
+    );
+    return { sent: false, skipped: true };
+  }
+
+  const subject = msg.subject?.trim()
+    ? `[Contact] ${msg.subject.trim()}`
+    : `[Contact] New message from ${msg.name}`;
+
+  const html = `<!doctype html>
+<html><body style="font-family:Helvetica,Arial,sans-serif;color:#1f2937;line-height:1.6;">
+  <h2 style="margin:0 0 16px;">New contact form submission</h2>
+  <p><strong>Name:</strong> ${escapeHtml(msg.name)}</p>
+  <p><strong>Email:</strong> ${escapeHtml(msg.email)}</p>
+  ${msg.subject ? `<p><strong>Subject:</strong> ${escapeHtml(msg.subject)}</p>` : ""}
+  <p><strong>Message:</strong></p>
+  <p style="white-space:pre-wrap;background:#f4f4f5;padding:16px;border-radius:8px;">${escapeHtml(msg.message)}</p>
+</body></html>`;
+
+  const text = `New contact form submission
+
+Name: ${msg.name}
+Email: ${msg.email}
+${msg.subject ? `Subject: ${msg.subject}\n` : ""}Message:
+${msg.message}`;
+
+  try {
+    const resend = new Resend(apiKey);
+    const { error } = await resend.emails.send({
+      from,
+      to,
+      replyTo: msg.email,
+      subject,
+      html,
+      text,
+    });
+    if (error) {
+      const e = error as { name?: string; message?: string };
+      const m =
+        typeof error === "object" && error !== null
+          ? `${e.name ?? "error"}: ${e.message ?? JSON.stringify(error)}`
+          : String(error);
+      return { sent: false, error: m };
+    }
+    return { sent: true };
+  } catch (err) {
+    const m = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
+    return { sent: false, error: m };
+  }
+}
+
 /**
  * Sends the lead-magnet welcome email via Resend.
  * Never throws — returns a result object so the API route can respond
