@@ -6,6 +6,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PlanTripModal from "@/components/PlanTripModal";
 import SearchBar from "@/components/Searchbar";
+import EmailCapture from "@/components/EmailCapture";
 
 
 import {
@@ -204,18 +205,22 @@ export default function Home() {
             {slide.headline.map((line, i) => <span key={i} className="block">{line}</span>)}
           </h1>
 
-          {/* Sub + CTAs */}
-          <div className={`hero-fade flex flex-col sm:flex-row items-start sm:items-center gap-4 ${isTransitioning ? "hero-hidden" : ""}`}>
-            <p className="text-white/65 font-body text-base sm:text-lg sm:mr-4">{slide.sub}</p>
-            <Link href={`/guides/${slide.slug}/${slide.guideId}`}>
-              <button className="group inline-flex items-center gap-2 bg-white hover:bg-yellow-400 text-gray-900 font-bold font-body px-7 py-3.5 rounded-full text-sm transition-all shadow-xl hover:shadow-2xl hover:shadow-yellow-400/30 whitespace-nowrap">
-                View Guide
-                <ChevronRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+          {/* Sub-headline */}
+          <p className={`hero-fade text-white/70 font-body text-base sm:text-lg mb-6 max-w-xl ${isTransitioning ? "hero-hidden" : ""}`}>
+            Hidden gems • Local tips • Ready-made itineraries • Budget advice
+          </p>
+
+          {/* Primary CTA — single clear next step */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+            <Link href="/guides/europe/italy-ultimate" className="w-full sm:w-auto">
+              <button className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-black font-body px-8 py-4 rounded-full text-sm sm:text-base transition-all shadow-xl hover:shadow-2xl hover:shadow-yellow-400/40 whitespace-nowrap">
+                Explore Italy Guides
+                <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
             </Link>
-            <Link href={`/guides/${slide.slug}`}>
-              <button className="inline-flex items-center gap-2 text-white/65 hover:text-white font-body text-sm border border-white/20 hover:border-white/50 px-5 py-3.5 rounded-full transition-all whitespace-nowrap">
-                All {slide.continent} guides
+            <Link href="/guides" className="w-full sm:w-auto">
+              <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-white/80 hover:text-white font-body text-sm border border-white/25 hover:border-white/60 px-6 py-4 rounded-full transition-all whitespace-nowrap">
+                Browse all guides
               </button>
             </Link>
           </div>
@@ -483,6 +488,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ════════════════════════════════════════
+          EMAIL CAPTURE — Free Italy lead magnet
+      ════════════════════════════════════════ */}
+      <EmailCapture />
 
       {/* ════════════════════════════════════════
           YOUTUBE + ESSENTIALS — Dark image cards
