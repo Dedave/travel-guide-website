@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import AffiliateLinks from "@/components/AffiliateLinks";
 import InlineCTA from "@/components/InlineCTA";
 import RelatedGuides from "@/components/RelatedGuides";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import GuideSalesSection from "@/components/GuideSalesSection";
 import {
   ArrowLeft,
   Star,
@@ -66,6 +68,15 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
     <div className="min-h-screen bg-white">
       <Navigation />
 
+      {/* ── BREADCRUMBS ── */}
+      <Breadcrumbs
+        items={[
+          { label: "Guides", href: "/guides" },
+          { label: guide.continent, href: `/guides/${resolvedParams.continent}` },
+          { label: guide.country ?? guide.title },
+        ]}
+      />
+
       {/* ── HERO ── */}
       <section className="relative h-[85vh] min-h-[580px] overflow-hidden">
         <img
@@ -106,17 +117,17 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
               {guide.subtitle}
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <a href="#purchase">
-                <button className="group inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-7 py-3.5 rounded-full text-sm shadow-lg hover:shadow-xl transition-all">
+            <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
+              <a href="#purchase" className="w-full sm:w-auto">
+                <button className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-7 py-4 rounded-full text-sm shadow-lg hover:shadow-xl transition-all">
                   <Download className="h-4 w-4" />
-                  Get This Guide
+                  Get This Guide — {pdfPrice}
                   <ChevronRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </a>
               <a
                 href="#destinations"
-                className="text-white/70 hover:text-white text-sm font-medium underline underline-offset-4 transition-colors"
+                className="text-center text-white/70 hover:text-white text-sm font-medium underline underline-offset-4 transition-colors"
               >
                 Preview contents ↓
               </a>
@@ -224,6 +235,17 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
         guideId={resolvedParams.guide}
         guideName={guide.continent}
         price={pdfPrice}
+      />
+
+      {/* ── SALES / PERSUASION SECTIONS ── */}
+      <GuideSalesSection
+        continent={guide.continent}
+        country={guide.country ?? guide.continent}
+        pages={guide.pages}
+        destinationCount={guide.destinations.length}
+        tipCount={guide.tips.length}
+        rating={guide.rating}
+        downloads={guide.downloads}
       />
 
       {/* ── DESTINATIONS ── */}
