@@ -26,6 +26,25 @@ export interface SendResult {
   sent: boolean;
   skipped?: boolean;
   error?: string;
+  usedFallback?: boolean;
+}
+
+// Resend's shared sandbox sender. Works WITHOUT a verified domain, but can
+// only deliver to the email address of your own Resend account. Perfect for
+// confirming the pipeline works while your real domain finishes verifying.
+const RESEND_SANDBOX_FROM = "Wanderlust Travel Guides <onboarding@resend.dev>";
+
+// Looks like a "domain not verified / not allowed to send from this address"
+// rejection from Resend (HTTP 422).
+function isDomainVerificationError(msg: string): boolean {
+  const m = msg.toLowerCase();
+  return (
+    m.includes("not verified") ||
+    m.includes("verify a domain") ||
+    m.includes("domain is not") ||
+    m.includes("testing emails") ||
+    m.includes("validation_error")
+  );
 }
 
 function buildHtml(): string {
@@ -188,31 +207,53 @@ export async function sendLeadMagnetEmail(to: string): Promise<SendResult> {
     return { sent: false, skipped: true };
   }
 
-  try {
-    const resend = new Resend(apiKey);
-    const { error } = await resend.emails.send({
-      from,
-      to,
-      subject: "🇮🇹 Your free guide: 25 Hidden Places in Italy",
-      html: buildHtml(),
-      text: buildText(),
-    });
+  const resend = new Resend(apiKey);
 
-    if (error) {
-      console.error("[email] Resend error:", error);
-      // Resend returns a structured error object; serialize it so the message
-      // (e.g. "domain is not verified") is actually readable in diagnostics.
-      const e = error as { name?: string; message?: string };
-      const msg =
-        typeof error === "object" && error !== null
+  // Helper: attempt a send from a given sender, return a readable error string
+  // (or null on success).
+  const attempt = async (sender: string): Promise<string | null> => {
+    try {
+      const { error } = await resend.emails.send({
+        from: sender,
+        to,
+        subject: "🇮🇹 Your free guide: 25 Hidden Places in Italy",
+        html: buildHtml(),
+        text: buildText(),
+      });
+      if (error) {
+        // Resend returns a structured error object; serialize it so the message
+        // (e.g. "domain is not verified") is actually readable in diagnostics.
+        const e = error as { name?: string; message?: string };
+        return typeof error === "object" && error !== null
           ? `${e.name ?? "error"}: ${e.message ?? JSON.stringify(error)}`
           : String(error);
-      return { sent: false, error: msg };
+      }
+      return null;
+    } catch (err) {
+      return err instanceof Error ? `${err.name}: ${err.message}` : String(err);
     }
-    return { sent: true };
-  } catch (err) {
-    console.error("[email] Unexpected send failure:", err);
-    const msg = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
-    return { sent: false, error: msg };
+  };
+
+  // 1) Try the configured branded sender first.
+  const firstError = await attempt(from);
+  if (!firstError) return { sent: true };
+
+  console.error("[email] Resend error (primary sender):", firstError);
+
+  // 2) If it failed because the domain isn't verified yet, automatically retry
+  //    from Resend's sandbox sender so delivery still works today. This only
+  //    reaches your own Resend account email until the domain is verified —
+  //    once it is, step 1 succeeds and this fallback is never used.
+  const allowFallback = process.env.EMAIL_FALLBACK_SANDBOX !== "false";
+  if (allowFallback && isDomainVerificationError(firstError)) {
+    console.warn(
+      "[email] Domain not verified — retrying from onboarding@resend.dev sandbox."
+    );
+    const fallbackError = await attempt(RESEND_SANDBOX_FROM);
+    if (!fallbackError) return { sent: true, usedFallback: true };
+    console.error("[email] Resend error (sandbox fallback):", fallbackError);
+    return { sent: false, error: fallbackError };
   }
+
+  return { sent: false, error: firstError };
 }
