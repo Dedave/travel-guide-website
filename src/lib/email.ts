@@ -117,11 +117,19 @@ export async function sendLeadMagnetEmail(to: string): Promise<SendResult> {
 
     if (error) {
       console.error("[email] Resend error:", error);
-      return { sent: false, error: String(error) };
+      // Resend returns a structured error object; serialize it so the message
+      // (e.g. "domain is not verified") is actually readable in diagnostics.
+      const e = error as { name?: string; message?: string };
+      const msg =
+        typeof error === "object" && error !== null
+          ? `${e.name ?? "error"}: ${e.message ?? JSON.stringify(error)}`
+          : String(error);
+      return { sent: false, error: msg };
     }
     return { sent: true };
   } catch (err) {
     console.error("[email] Unexpected send failure:", err);
-    return { sent: false, error: String(err) };
+    const msg = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
+    return { sent: false, error: msg };
   }
 }

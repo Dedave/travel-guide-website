@@ -107,6 +107,29 @@ export async function POST(req: NextRequest) {
     console.error("[email-capture] delivery failed:", emailResult.error);
   }
 
+  // Optional diagnostics: append ?debug=wanderlust to the request URL to see
+  // exactly why an email did or didn't send. Safe to leave in — it never
+  // exposes secrets, only the delivery status and any Resend error text.
+  const wantsDebug =
+    new URL(req.url).searchParams.get("debug") === "wanderlust";
+  const debug = wantsDebug
+    ? {
+        emailStatus: emailResult.sent
+          ? "sent"
+          : emailResult.skipped
+            ? "skipped_not_configured"
+            : "resend_error",
+        emailError: emailResult.error ?? null,
+        hasApiKey: Boolean(process.env.RESEND_API_KEY),
+        hasFrom: Boolean(process.env.EMAIL_FROM),
+        // Show only the domain part of EMAIL_FROM so you can confirm it matches
+        // a verified Resend domain, without leaking the full address.
+        fromDomain: process.env.EMAIL_FROM
+          ? process.env.EMAIL_FROM.split("@").pop()?.replace(/>$/, "") ?? null
+          : null,
+      }
+    : undefined;
+
   return NextResponse.json({
     success: true,
     duplicate,
@@ -114,5 +137,6 @@ export async function POST(req: NextRequest) {
     message: duplicate
       ? "You're already on the list — we've re-sent your free guide!"
       : "Success! Check your inbox for your free guide.",
+    ...(debug ? { debug } : {}),
   });
 }
