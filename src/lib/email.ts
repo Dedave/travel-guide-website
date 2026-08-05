@@ -16,8 +16,11 @@ const SITE_URL =
   process.env.SITE_URL?.replace(/\/$/, "") ||
   "https://www.wanderlusttravelguides.com";
 
+// The free PDF ships with the site at /downloads/25-hidden-places-in-italy.pdf.
+// Override with LEAD_MAGNET_URL if you host it elsewhere (e.g. a CDN).
 const LEAD_MAGNET_URL =
-  process.env.LEAD_MAGNET_URL || `${SITE_URL}/guides/europe/italy-ultimate`;
+  process.env.LEAD_MAGNET_URL ||
+  `${SITE_URL}/downloads/25-hidden-places-in-italy.pdf`;
 
 export interface SendResult {
   sent: boolean;
