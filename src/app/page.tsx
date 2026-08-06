@@ -90,7 +90,7 @@ const featuredGuides = [
 // ── Continents ────────────────────────────────────────────────────────────
 const continents = [
   { name: "Africa", slug: "africa", count: 5, image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&h=500&fit=crop" },
-  { name: "Europe", slug: "europe", count: 5, image: "https://images.unsplash.com/photo-1520637736862-4d197d17c55a?w=400&h=500&fit=crop" },
+  { name: "Europe", slug: "europe", count: 5, image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&h=500&fit=crop" },
   { name: "Asia", slug: "asia", count: 5, image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=400&h=500&fit=crop" },
   { name: "North America", slug: "north-america", count: 4, image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=500&fit=crop" },
   { name: "South America", slug: "south-america", count: 5, image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=400&h=500&fit=crop" },
