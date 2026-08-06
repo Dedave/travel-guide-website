@@ -66,8 +66,10 @@ function buildHtml(): string {
                 <p style="margin:0 0 24px;font-size:16px;line-height:1.6;">As promised, here's your free PDF: <strong>25 Hidden Places in Italy Most Tourists Miss</strong> — the little corners of Italy that locals love and guidebooks skip.</p>
                 <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 28px;">
                   <tr>
-                    <td align="center" style="border-radius:10px;background:#0891b2;">
-                      <a href="${LEAD_MAGNET_URL}" style="display:inline-block;padding:14px 32px;color:#ffffff;font-size:16px;font-weight:bold;text-decoration:none;border-radius:10px;">Download your free guide →</a>
+                    <td align="center" style="border-radius:10px;">
+                      <a href="${LEAD_MAGNET_URL}" style="display:block;padding:14px 32px;color:#ffffff;font-size:16px;font-weight:bold;text-decoration:none;border-radius:10px;background:#0891b2;mso-padding-alt:0;text-align:center;">
+                        <span style="mso-text-raise:0;">Download your free guide →</span>
+                      </a>
                     </td>
                   </tr>
                 </table>
