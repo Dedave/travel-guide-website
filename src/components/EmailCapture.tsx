@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import { Mail, CheckCircle2, Loader2, Gift, MapPin } from "lucide-react";
+import { Mail, CheckCircle2, Loader2, Gift, MapPin, Download } from "lucide-react";
+
+// The free PDF ships with the site in /public/downloads.
+const LEAD_MAGNET_PDF = "/downloads/25-hidden-places-in-italy.pdf";
 
 /* Free lead-magnet email capture. Posts to /api/email-capture (no external
    provider). Designed to drop into the homepage but reusable anywhere. */
@@ -92,6 +96,16 @@ export default function EmailCapture() {
                     You&apos;re in! 🎉
                   </h3>
                   <p className="text-gray-500 font-body text-sm">{message}</p>
+                  <p className="text-gray-500 font-body text-sm mb-5">{message}</p>
+                  <a
+                    href={LEAD_MAGNET_PDF}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download
+                    className="w-full inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-black font-body text-sm px-6 py-3.5 rounded-xl transition-all shadow-lg hover:shadow-xl"
+                  >
+                    <Download className="h-4 w-4" /> Download your free guide now
+                  </a>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">

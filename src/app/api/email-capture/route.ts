@@ -3,6 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import os from "os";
+<<<<<<< HEAD
+=======
+import { sendLeadMagnetEmail } from "@/lib/email";
+>>>>>>> 43f394e294ed03e9765fbf5615ebc94c9d9eade6
 
 /* ─── POST /api/email-capture ────────────────────────────────────────────────
    Body: { email: string, source?: string }
@@ -97,11 +101,57 @@ export async function POST(req: NextRequest) {
   // filesystem is read-only.
   console.log("[email-capture]", JSON.stringify(lead), { stored, duplicate });
 
+<<<<<<< HEAD
   return NextResponse.json({
     success: true,
     duplicate,
     message: duplicate
       ? "You're already on the list — your free guide is on its way!"
       : "Success! Check your inbox for your free guide.",
+=======
+  // Automatically deliver the free guide by email (Resend). New sign-ups
+  // always get it; duplicates are re-sent the download link too. Delivery
+  // never blocks a successful capture — if it fails or isn't configured yet,
+  // the lead is still stored.
+  const emailResult = await sendLeadMagnetEmail(email);
+  if (!emailResult.sent && !emailResult.skipped) {
+    console.error("[email-capture] delivery failed:", emailResult.error);
+  }
+
+  // Optional diagnostics: append ?debug=wanderlust to the request URL to see
+  // exactly why an email did or didn't send. Safe to leave in — it never
+  // exposes secrets, only the delivery status and any Resend error text.
+  const wantsDebug =
+    new URL(req.url).searchParams.get("debug") === "wanderlust";
+  const debug = wantsDebug
+    ? {
+        emailStatus: emailResult.sent
+          ? emailResult.usedFallback
+            ? "sent_via_sandbox_fallback"
+            : "sent"
+          : emailResult.skipped
+            ? "skipped_not_configured"
+            : "resend_error",
+        emailError: emailResult.error ?? null,
+        usedFallback: Boolean(emailResult.usedFallback),
+        hasApiKey: Boolean(process.env.RESEND_API_KEY),
+        hasFrom: Boolean(process.env.EMAIL_FROM),
+        // Show only the domain part of EMAIL_FROM so you can confirm it matches
+        // a verified Resend domain, without leaking the full address.
+        fromDomain: process.env.EMAIL_FROM
+          ? process.env.EMAIL_FROM.split("@").pop()?.replace(/>$/, "") ?? null
+          : null,
+      }
+    : undefined;
+
+  return NextResponse.json({
+    success: true,
+    duplicate,
+    emailSent: emailResult.sent,
+    message: duplicate
+      ? "You're already on the list — we've re-sent your free guide!"
+      : "Success! Check your inbox for your free guide.",
+    ...(debug ? { debug } : {}),
+>>>>>>> 43f394e294ed03e9765fbf5615ebc94c9d9eade6
   });
 }

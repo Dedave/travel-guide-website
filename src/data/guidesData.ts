@@ -113,7 +113,7 @@ export const allGuidesData: ContinentGuides = {
       overview: "Morocco captivates with its vibrant souks, ancient medinas, and stunning desert landscapes. Experience the magic of Marrakech, explore the blue streets of Chefchaouen, trek the Atlas Mountains, and spend nights under stars in the Sahara Desert.",
       destinations: [
         { name: "Marrakech", description: "The Red City with bustling souks, stunning palaces, and the famous Jemaa el-Fnaa square. A feast for all senses.", image: "https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=800&h=600&fit=crop" },
-        { name: "Chefchaouen", description: "The Blue Pearl of Morocco with stunning blue-washed buildings nestled in the Rif Mountains.", image: "https://images.unsplash.com/photo-1558969997-659ee628c2d7?w=800&h=600&fit=crop" },
+        { name: "Chefchaouen", description: "The Blue Pearl of Morocco with stunning blue-washed buildings nestled in the Rif Mountains.", image: "https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?w=800&h=600&fit=crop" },
         { name: "Sahara Desert", description: "Experience camel treks, desert camps, and unforgettable sunrises over golden sand dunes near Merzouga.", image: "https://images.unsplash.com/photo-1509027572446-af8401acfdc3?w=800&h=600&fit=crop" },
         { name: "Fès", description: "Ancient medina with the world's oldest university (al-Qarawiyyin, founded 859 AD) and traditional tanneries.", image: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=800&h=600&fit=crop" },
       ],
@@ -132,13 +132,13 @@ export const allGuidesData: ContinentGuides = {
       id: "tanzania-adventure",
       title: "Tanzania Adventure Guide",
       description: "Kilimanjaro, Serengeti migration & Zanzibar's white-sand beaches",
-      image: "https://images.unsplash.com/photo-1580500064590-dcbf3b6db11b?w=800&h=500&fit=crop",
+      image: "https://images.unsplash.com/photo-1772175246692-675e70b84c5f?w=800&h=500&fit=crop",
       continent: "Africa", continentSlug: "africa",
       country: "Tanzania", countrySlug: "tanzania", countryFlag: "🇹🇿",
       rating: 4.9, downloads: "4.1k", pages: 95, price: "$6.99",
       tags: ["Adventure", "Safari", "Beach"], featured: true,
       subtitle: "Climb Africa's Highest Peak & Safari Paradise",
-      heroImage: "https://images.unsplash.com/photo-1580500064590-dcbf3b6db11b?w=1920&h=1080&fit=crop",
+      heroImage: "https://images.unsplash.com/photo-1772175246692-675e70b84c5f?w=1920&h=1080&fit=crop",
       quickFacts: { bestTime: "June–October (dry season)", duration: "10–14 days", budget: "$$ Moderate", highlights: 42, language: "Swahili & English", currency: "Tanzanian Shilling (TZS)" },
       overview: "Tanzania offers the ultimate African adventure combining world-class safari with beach paradise and mountain climbing. Home to Mount Kilimanjaro (5,895 m), the vast Serengeti, the stunning Ngorongoro Crater, and tropical Zanzibar, Tanzania delivers unforgettable experiences.",
       destinations: [
@@ -272,7 +272,7 @@ export const allGuidesData: ContinentGuides = {
       destinations: [
         { name: "Westminster & Royal London", description: "Buckingham Palace, Westminster Abbey, the Houses of Parliament, Big Ben, and St. James's Park. The ceremonial heart of Britain.", image: "https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?w=800&h=600&fit=crop" },
         { name: "The City & Tower of London", description: "The ancient walled City of London, the Tower of London housing the Crown Jewels, Tower Bridge, and the modern Shard skyscraper.", image: "https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=800&h=600&fit=crop" },
-        { name: "South Bank & Museums", description: "The Tate Modern, Shakespeare's Globe, Borough Market, Southwark Cathedral, and the London Eye all line the south bank of the Thames.", image: "https://images.unsplash.com/photo-1520637736862-4d197d17c55a?w=800&h=600&fit=crop" },
+        { name: "South Bank & Museums", description: "The Tate Modern, Shakespeare's Globe, Borough Market, Southwark Cathedral, and the London Eye all line the south bank of the Thames.", image: "https://images.unsplash.com/photo-1543832923-44667a44c804?w=800&h=600&fit=crop" },
         { name: "Notting Hill & West London", description: "The famous Portobello Road market, colourful Victorian terraces, Hyde Park, Kensington Palace, and the Victoria & Albert Museum.", image: "https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=800&h=600&fit=crop" },
       ],
       essentialInfo: [
@@ -335,7 +335,7 @@ export const allGuidesData: ContinentGuides = {
         { name: "Dublin", description: "Trinity College housing the Book of Kells, the Guinness Storehouse, Temple Bar, Georgian squares, and some of Europe's best pub culture.", image: "https://images.unsplash.com/photo-1549180030-48bf079fb38a?w=800&h=600&fit=crop" },
         { name: "Cliffs of Moher & the Burren", description: "Ireland's most iconic cliffs plunge 214 m into the Atlantic. The adjacent Burren limestone landscape hosts unique Arctic and Mediterranean flora side by side.", image: "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?w=800&h=600&fit=crop" },
         { name: "Ring of Kerry", description: "Ireland's most famous scenic drive through County Kerry, passing Killarney National Park, Torc Waterfall, and coastal peninsulas.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
-        { name: "Galway & Connemara", description: "Ireland's most vibrant small city with a thriving arts and food scene. Connemara's bogs, mountains, and white-sand beaches are breathtaking.", image: "https://images.unsplash.com/photo-1565073624497-7144969bd4ac?w=800&h=600&fit=crop" },
+        { name: "Galway & Connemara", description: "Ireland's most vibrant small city with a thriving arts and food scene. Connemara's bogs, mountains, and white-sand beaches are breathtaking.", image: "https://images.unsplash.com/photo-1564474909926-25216918aade?w=800&h=600&fit=crop" },
       ],
       essentialInfo: [
         { icon: Plane, title: "Getting Around", description: "Rent a car for the best experience. Drive on the left. Roads are narrow in the west. Dublin Bus and DART rail cover the capital." },
@@ -365,7 +365,7 @@ export const allGuidesData: ContinentGuides = {
         { name: "Lisbon", description: "Portugal's hilly capital with Alfama's Moorish alleyways, the grand Belém Tower, electric trams, viewpoints (miradouros), and world-class pastries.", image: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=600&fit=crop" },
         { name: "Porto", description: "A UNESCO World Heritage riverside city. The Ribeira quarter, port wine lodges in Vila Nova de Gaia, azulejo tiles, and Livraria Lello bookshop.", image: "https://images.unsplash.com/photo-1564594985645-4427056e22e2?w=800&h=600&fit=crop" },
         { name: "Algarve Coast", description: "Portugal's sun-drenched south coast with golden limestone cliffs, sea caves, golden beaches, and charming fishing villages around Lagos and Sagres.", image: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=800&h=600&fit=crop" },
-        { name: "Sintra", description: "A UNESCO-listed fairy-tale town 30 minutes from Lisbon with Pena Palace, Quinta da Regaleira's Initiation Well, and misty forest walks.", image: "https://images.unsplash.com/photo-1513735539098-54517a5e197c?w=800&h=600&fit=crop" },
+        { name: "Sintra", description: "A UNESCO-listed fairy-tale town 30 minutes from Lisbon with Pena Palace, Quinta da Regaleira's Initiation Well, and misty forest walks.", image: "https://images.unsplash.com/photo-1697394494123-c6c1323a14f7?w=800&h=600&fit=crop" },
       ],
       essentialInfo: [
         { icon: Plane, title: "Getting Around", description: "Excellent intercity trains (CP) and Rede Expressos buses. Lisbon and Porto have good urban transport. Rent car for Algarve and inland areas." },
@@ -396,7 +396,7 @@ export const allGuidesData: ContinentGuides = {
       destinations: [
         { name: "Rome", description: "The Eternal City — Colosseum, Vatican Museums, Trevi Fountain, and incredible food in every neighbourhood for 3,000 years of history.", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&h=600&fit=crop" },
         { name: "Venice", description: "The floating city of canals, gondolas, and stunning Gothic architecture. St. Mark's Basilica, Doge's Palace, and endless romantic charm.", image: "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=800&h=600&fit=crop" },
-        { name: "Florence", description: "Birthplace of the Renaissance. The Duomo, Uffizi Gallery, Michelangelo's David, and the Tuscan countryside beyond.", image: "https://images.unsplash.com/photo-1541832676-9b763b7548c6?w=800&h=600&fit=crop" },
+        { name: "Florence", description: "Birthplace of the Renaissance. The Duomo, Uffizi Gallery, Michelangelo's David, and the Tuscan countryside beyond.", image: "https://images.unsplash.com/photo-1770462956717-bec14ee61eec?w=800&h=600&fit=crop" },
         { name: "Amalfi Coast", description: "Stunning cliff-hanging villages like Positano and Ravello, turquoise waters, lemon groves, and Mediterranean paradise.", image: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=800&h=600&fit=crop" },
       ],
       essentialInfo: [
@@ -585,7 +585,7 @@ export const allGuidesData: ContinentGuides = {
       overview: "France embodies elegance, romance, and the art of living well. From Paris's iconic landmarks to Provence's lavender fields, from the French Riviera's glamorous beaches to Burgundy's wine estates, France offers endless charm. Experience world-class cuisine, magnificent châteaux, and the je ne sais quoi that makes France unforgettable.",
       destinations: [
         { name: "Paris", description: "The City of Light with the Eiffel Tower, the Louvre, Notre-Dame Cathedral (restored 2024), and café culture along the Seine.", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&h=600&fit=crop" },
-        { name: "Provence", description: "Lavender fields, hilltop villages, Roman ruins, and Provençal markets. Aix-en-Provence, Avignon, and the Luberon valley.", image: "https://images.unsplash.com/photo-1549577705-d2eb1a7a3367?w=800&h=600&fit=crop" },
+        { name: "Provence", description: "Lavender fields, hilltop villages, Roman ruins, and Provençal markets. Aix-en-Provence, Avignon, and the Luberon valley.", image: "https://images.unsplash.com/photo-1673423050436-103ef4d5ecb6?w=800&h=600&fit=crop" },
         { name: "French Riviera", description: "The glamorous Côte d'Azur: Nice, Cannes, Monaco, and Saint-Tropez with beaches, luxury yachts, and stunning coastal beauty.", image: "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=800&h=600&fit=crop" },
         { name: "Loire Valley", description: "Fairy-tale châteaux along the Loire River — Chambord, Chenonceau, and Amboise — amid beautiful gardens and excellent wines.", image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&h=600&fit=crop" },
       ],
@@ -742,7 +742,7 @@ export const allGuidesData: ContinentGuides = {
       overview: "Dublin is one of Europe's most sociable capitals — a city where Georgian architecture, Viking history, and some of the world's most celebrated literature meet an irresistible pub culture. Trinity College, the Guinness Storehouse, and the cobblestoned Temple Bar quarter make Dublin endlessly walkable and endlessly welcoming.",
       destinations: [
         { name: "Trinity College & Book of Kells", description: "Ireland's oldest university (est. 1592) houses the stunning Long Room library and the 9th-century illuminated Book of Kells manuscript.", image: "https://images.unsplash.com/photo-1549180030-48bf079fb38a?w=800&h=600&fit=crop" },
-        { name: "Temple Bar & the Liffey", description: "Dublin's cultural quarter buzzes with galleries, street performers, markets, and the city's most characterful pubs.", image: "https://images.unsplash.com/photo-1565073624497-7144969bd4ac?w=800&h=600&fit=crop" },
+        { name: "Temple Bar & the Liffey", description: "Dublin's cultural quarter buzzes with galleries, street performers, markets, and the city's most characterful pubs.", image: "https://images.unsplash.com/photo-1564474909926-25216918aade?w=800&h=600&fit=crop" },
         { name: "Guinness Storehouse", description: "Seven floors tracing the history of Ireland's most famous export, crowned by the Gravity Bar with 360° city views.", image: "https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=800&h=600&fit=crop" },
         { name: "Phoenix Park & Kilmainham", description: "One of Europe's largest city parks (1,750 acres), home to deer, the Irish President's residence, and historic Kilmainham Gaol nearby.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
       ],
@@ -835,7 +835,7 @@ export const allGuidesData: ContinentGuides = {
       overview: "Lisbon is Europe's most enchanting capital — a sun-drenched city of yellow trams climbing impossibly steep hills, Moorish alleyways in Alfama, Art Nouveau cafés, and the melancholic beauty of fado music drifting from a doorway. And the pastéis de nata from Pastéis de Belém alone are worth the flight.",
       destinations: [
         { name: "Alfama & São Jorge Castle", description: "Lisbon's oldest district — a Moorish labyrinth of tiled houses, laundry lines, miradouros (viewpoints), and fado restaurants.", image: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=600&fit=crop" },
-        { name: "Belém", description: "UNESCO Jerónimos Monastery, the Tower of Belém, Monument to the Discoveries, and the original Pastéis de Belém bakery (queue is worth it).", image: "https://images.unsplash.com/photo-1513735539098-54517a5e197c?w=800&h=600&fit=crop" },
+        { name: "Belém", description: "UNESCO Jerónimos Monastery, the Tower of Belém, Monument to the Discoveries, and the original Pastéis de Belém bakery (queue is worth it).", image: "https://images.unsplash.com/photo-1697394494123-c6c1323a14f7?w=800&h=600&fit=crop" },
         { name: "Baixa & Chiado", description: "Pombaline grid of the lower city, Rossio Square, the Time Out Market, and Chiado's bookshops, cafés, and Pessoa statue.", image: "https://images.unsplash.com/photo-1564594985645-4427056e22e2?w=800&h=600&fit=crop" },
         { name: "LX Factory & Alcântara", description: "Converted 19th-century industrial complex now housing restaurants, vintage shops, a Sunday market, and Lisbon's coolest creative spaces.", image: "https://images.unsplash.com/photo-1558369981-f9ca78462e61?w=800&h=600&fit=crop" },
       ],
@@ -870,7 +870,7 @@ export const allGuidesData: ContinentGuides = {
         { name: "Ribeira & Dom Luís Bridge", description: "UNESCO-listed riverside quarter with colourful terraced houses, outdoor restaurants, and the double-deck iron bridge (1886) crossing the Douro.", image: "https://images.unsplash.com/photo-1564594985645-4427056e22e2?w=800&h=600&fit=crop" },
         { name: "Vila Nova de Gaia (Port Wine)", description: "The south bank of the Douro is lined with port wine lodge warehouses. Tour Sandeman, Graham's, or Taylor's and taste the real thing at source.", image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=800&h=600&fit=crop" },
         { name: "São Bento Station", description: "Portugal's most beautiful train station covered floor-to-ceiling with 20,000 azulejo tiles depicting Portuguese history. Entirely free to enter.", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" },
-        { name: "Clerigos & Foz", description: "The baroque Clérigos tower for panoramic views, Livraria Lello bookshop (one of the world's most beautiful), and the Atlantic-facing Foz neighbourhood.", image: "https://images.unsplash.com/photo-1513735539098-54517a5e197c?w=800&h=600&fit=crop" },
+        { name: "Clerigos & Foz", description: "The baroque Clérigos tower for panoramic views, Livraria Lello bookshop (one of the world's most beautiful), and the Atlantic-facing Foz neighbourhood.", image: "https://images.unsplash.com/photo-1697394494123-c6c1323a14f7?w=800&h=600&fit=crop" },
       ],
       essentialInfo: [
         { icon: Plane, title: "Getting There", description: "Porto Airport (OPO) well-connected. Metro Line E direct to city centre (€2.60, 30 min). Most sights walkable from the centre." },
@@ -903,7 +903,7 @@ export const allGuidesData: ContinentGuides = {
         { name: "Tre Cime di Lavaredo", description: "The Dolomites' most iconic landmark — three colossal rock towers rising from a plateau at 2,999 m. The 10-km circular trail is unmissable.", image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=800&h=600&fit=crop" },
         { name: "Val Gardena & Sassolungo", description: "The most beautiful valley in the Dolomites. Ortisei, Santa Cristina, and Selva are charming Ladin-speaking mountain towns with exceptional cable cars.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
         { name: "Cortina d'Ampezzo", description: "Italy's glamorous ski resort and 2026 Winter Olympics host. Stunning setting beneath the Tofane and Cinque Torri formations.", image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=800&h=600&fit=crop" },
-        { name: "Lago di Braies", description: "The emerald jewel of the Dolomites — a glacial lake surrounded by vertical walls. Row a wooden boat at sunrise before the crowds arrive.", image: "https://images.unsplash.com/photo-1534282810564-3e43ff28efee?w=800&h=600&fit=crop" },
+        { name: "Lago di Braies", description: "The emerald jewel of the Dolomites — a glacial lake surrounded by vertical walls. Row a wooden boat at sunrise before the crowds arrive.", image: "https://images.unsplash.com/photo-1601893920982-b69daa66bbb3?w=800&h=600&fit=crop" },
       ],
       essentialInfo: [
         { icon: Plane, title: "Getting There", description: "Fly to Venice (VCE), Innsbruck, or Verona. Rent a car — essential for exploring. Many valleys have summer shuttle buses to reduce traffic." },
@@ -1029,7 +1029,7 @@ export const allGuidesData: ContinentGuides = {
       overview: "Munich is Germany's most liveable city and Bavaria's elegant capital — a city of great museums, baroque palaces, world-class art, enormous English Garden parks, and a beer culture that is genuinely central to Bavarian identity. Oktoberfest (late September–early October) is the world's largest beer festival, but Munich rewards visitors year-round.",
       destinations: [
         { name: "Marienplatz & Old Town", description: "Munich's central square with the Gothic New Town Hall (1908) and the famous Glockenspiel chimes at 11am and 12pm. Viktualienmarkt food market nearby.", image: "https://images.unsplash.com/photo-1577048982768-5cb3e7ddfa23?w=800&h=600&fit=crop" },
-        { name: "Englischer Garten", description: "One of the world's largest urban parks (larger than Central Park) with beer gardens, a Japanese teahouse, and an artificial river wave where surfers ride year-round.", image: "https://images.unsplash.com/photo-1476189256191-40b7b8de1cf6?w=800&h=600&fit=crop" },
+        { name: "Englischer Garten", description: "One of the world's largest urban parks (larger than Central Park) with beer gardens, a Japanese teahouse, and an artificial river wave where surfers ride year-round.", image: "https://images.unsplash.com/photo-1585938389612-a552a28d6914?w=800&h=600&fit=crop" },
         { name: "Nymphenburg Palace", description: "The stunning Baroque summer palace of the Wittelsbach dynasty, with 200 hectares of formal gardens, canals, and the royal porcelain manufactory.", image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&h=600&fit=crop" },
         { name: "Deutsches Museum", description: "One of the world's greatest science and technology museums — 73,000 exhibits including original aircraft, submarines, and space exploration artefacts.", image: "https://images.unsplash.com/photo-1508669232496-137b159c1cdb?w=800&h=600&fit=crop" },
       ],
@@ -1060,8 +1060,8 @@ export const allGuidesData: ContinentGuides = {
       overview: "Berlin is Europe's most exciting city — raw, creative, historically profound, and gloriously affordable. The Berlin Wall divided this city for 28 years; today its remnants stand as a powerful memorial while reunified Berlin has become a global capital of art, music, techno culture, and culinary creativity. Few cities offer this combination of historic weight and present-day energy.",
       destinations: [
         { name: "Brandenburg Gate & Memorial", description: "Berlin's most iconic landmark, built in 1791. Nearby Holocaust Memorial (2,711 concrete slabs), the Reichstag dome (book free visit), and Potsdamer Platz.", image: "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=800&h=600&fit=crop" },
-        { name: "Berlin Wall & East Side Gallery", description: "The longest remaining section of the Wall (1.3 km) transformed into an open-air gallery with 105 murals by international artists. Checkpoint Charlie nearby.", image: "https://images.unsplash.com/photo-1564769610726-59cebb6fc68d?w=800&h=600&fit=crop" },
-        { name: "Museum Island & Pergamon", description: "UNESCO World Heritage island in the Spree with five world-class museums. The Pergamon Museum houses the reconstructed Gate of Miletus and Ishtar Gate.", image: "https://images.unsplash.com/photo-1584010673922-5f47c25dab96?w=800&h=600&fit=crop" },
+        { name: "Berlin Wall & East Side Gallery", description: "The longest remaining section of the Wall (1.3 km) transformed into an open-air gallery with 105 murals by international artists. Checkpoint Charlie nearby.", image: "https://images.unsplash.com/photo-1664820489719-6aaaf22c1059?w=800&h=600&fit=crop" },
+        { name: "Museum Island & Pergamon", description: "UNESCO World Heritage island in the Spree with five world-class museums. The Pergamon Museum houses the reconstructed Gate of Miletus and Ishtar Gate.", image: "https://images.unsplash.com/photo-1777907158664-aeaa420df056?w=800&h=600&fit=crop" },
         { name: "Kreuzberg & Neukölln", description: "Berlin's most creative neighbourhoods — Turkish market at Maybachufer, street art, vinyl record shops, natural wine bars, and the best international food scene.", image: "https://images.unsplash.com/photo-1577048982768-5cb3e7ddfa23?w=800&h=600&fit=crop" },
       ],
       essentialInfo: [
@@ -1093,7 +1093,7 @@ export const allGuidesData: ContinentGuides = {
       overview: "Copenhagen is Scandinavia's most accessible and joyful capital — home to the world-changing New Nordic cuisine movement, extraordinary design culture, the concept of hygge (cosy contentment), and some of the world's happiest people. Nyhavn's colourful canal-side buildings are Instagram-famous, but Copenhagen's real character lives in Nørrebro's independent shops, Frederiksberg's quiet elegance, and Tivoli Gardens at night.",
       destinations: [
         { name: "Nyhavn", description: "The 17th-century canal lined with colourful townhouses, sailing ships, and outdoor restaurants. Hans Christian Andersen lived here. Best in golden hour.", image: "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=800&h=600&fit=crop" },
-        { name: "Tivoli Gardens", description: "One of the world's oldest amusement parks (1843, inspiration for Disneyland). Magical in summer evenings and extraordinary at Christmas.", image: "https://images.unsplash.com/photo-1476189256191-40b7b8de1cf6?w=800&h=600&fit=crop" },
+        { name: "Tivoli Gardens", description: "One of the world's oldest amusement parks (1843, inspiration for Disneyland). Magical in summer evenings and extraordinary at Christmas.", image: "https://images.unsplash.com/photo-1585938389612-a552a28d6914?w=800&h=600&fit=crop" },
         { name: "Nørrebro & Vesterbro", description: "Copenhagen's creative heartlands — vintage shops, coffee roasters, natural wine bars, Torvehallerne food market, and the city's best independent restaurants.", image: "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=800&h=600&fit=crop" },
         { name: "Christiansborg & Museums", description: "The royal palace and parliament, the National Museum of Denmark, Glyptoteket sculpture museum (free on Sundays), and the stunning Copenhagen Opera House.", image: "https://images.unsplash.com/photo-1508669232496-137b159c1cdb?w=800&h=600&fit=crop" },
       ],
@@ -1193,7 +1193,7 @@ tips: ["Copenhagen Card covers metro, trains, and most museums — great value i
   overview: "Malta is one of the world's smallest countries (316 km²) and one of the most historically dense — home to the oldest free-standing structures on Earth (the megalithic temples, 3,600 BC), Valletta (Europe's smallest capital and a UNESCO World Heritage Site), the medieval walled city of Mdina, and extraordinary World War II history. And the Mediterranean is warm, clear, and excellent for diving.",
   destinations: [
     { name: "Valletta", description: "Europe's smallest capital is a Baroque masterpiece built by the Knights of St. John. St. John's Co-Cathedral (Caravaggio's masterpiece inside), the Upper Barrakka Gardens, and the Grand Harbour.", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" },
-    { name: "Mdina (Silent City)", description: "The walled medieval capital at the island's centre — car-free, honey-coloured limestone streets, a Baroque cathedral, and extraordinary views across Malta.", image: "https://images.unsplash.com/photo-1571406384174-60f5a1ac1eed?w=800&h=600&fit=crop" },
+    { name: "Mdina (Silent City)", description: "The walled medieval capital at the island's centre — car-free, honey-coloured limestone streets, a Baroque cathedral, and extraordinary views across Malta.", image: "https://images.unsplash.com/photo-1674393371426-df5dbfdce43c?w=800&h=600&fit=crop" },
     { name: "Gozo Island", description: "Malta's quieter sister island — Azure Window (collapsed 2017 but the area remains dramatic), Dwejra inland sea, Ramla Bay's red sand, and world-class diving.", image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop" },
     { name: "Megalithic Temples", description: "Ħaġar Qim and Mnajdra temples (3,600 BC) — older than Stonehenge and the Egyptian pyramids. UNESCO World Heritage and often overlooked by visitors.", image: "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=800&h=600&fit=crop" },
   ],
@@ -1253,7 +1253,7 @@ destinations: [
 
 { name: "Mount Fuji & Hakone", description: "Japan's iconic sacred peak (3,776 m). Hike the summit July–August or admire it from Hakone's hot spring ryokans with perfect reflections in the lake.", image: "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&h=600&fit=crop" },
 
-{ name: "Osaka", description: "Japan's kitchen and nightlife capital. Dotonbori's neon signs, Kuromon Market, takoyaki and okonomiyaki street food, and Osaka Castle.", image: "https://images.unsplash.com/photo-1589452271712-64eaee10844e?w=800&h=600&fit=crop" },
+{ name: "Osaka", description: "Japan's kitchen and nightlife capital. Dotonbori's neon signs, Kuromon Market, takoyaki and okonomiyaki street food, and Osaka Castle.", image: "https://images.unsplash.com/photo-1584505489290-96eb4e406d08?w=800&h=600&fit=crop" },
 
 ],
 
@@ -1489,11 +1489,11 @@ destinations: [
 
 { name: "Doha Corniche & West Bay", description: "The futuristic skyline along the Corniche waterfront, the Museum of Islamic Art, and the gleaming towers of West Bay business district.", image: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&h=600&fit=crop" },
 
-{ name: "Souq Waqif", description: "Restored traditional market with spice stalls, falconry shops, Arabic coffee, shisha cafés, and authentic Middle Eastern atmosphere.", image: "https://images.unsplash.com/photo-1561621127-5d3d8f7e6e6e?w=800&h=600&fit=crop" },
+{ name: "Souq Waqif", description: "Restored traditional market with spice stalls, falconry shops, Arabic coffee, shisha cafés, and authentic Middle Eastern atmosphere.", image: "https://images.unsplash.com/photo-1735852786632-4660a171e5c8?w=800&h=600&fit=crop" },
 
 { name: "Museum of Islamic Art", description: "I.M. Pei's masterpiece housing 1,400 years of Islamic art and artefacts from three continents. One of the world's most important cultural collections.", image: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&h=600&fit=crop" },
 
-{ name: "The Inland Sea (Khor Al Adaid)", description: "UNESCO-recognised natural wonder where sand dunes plunge into the sea. 4WD desert safaris, camping, and camel treks in the silence.", image: "https://images.unsplash.com/photo-1502291383928-4bb33f9fd612?w=800&h=600&fit=crop" },
+{ name: "The Inland Sea (Khor Al Adaid)", description: "UNESCO-recognised natural wonder where sand dunes plunge into the sea. 4WD desert safaris, camping, and camel treks in the silence.", image: "https://images.unsplash.com/photo-1695671662056-bef718b638d8?w=800&h=600&fit=crop" },
 
 ],
 
@@ -1617,7 +1617,7 @@ destinations: [
 
 { name: "Borobudur, Java", description: "The world's largest Buddhist temple (9th century, UNESCO), with 2,672 relief panels and 504 Buddha statues. Sunrise tours are extraordinary.", image: "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=800&h=600&fit=crop" },
 
-{ name: "Komodo National Park", description: "Home to Komodo dragons (the world's largest lizard), pristine diving, Pink Beach, and dramatic volcanic landscapes. Multi-day boat trips are the way.", image: "https://images.unsplash.com/photo-1555400082-2c8c6b90e3c9?w=800&h=600&fit=crop" },
+{ name: "Komodo National Park", description: "Home to Komodo dragons (the world's largest lizard), pristine diving, Pink Beach, and dramatic volcanic landscapes. Multi-day boat trips are the way.", image: "https://images.unsplash.com/photo-1604560929658-bbc3c2ba6a36?w=800&h=600&fit=crop" },
 
 ],
 
@@ -1799,7 +1799,7 @@ destinations: [
 
 { name: "Wat Pho & Wat Arun", description: "The enormous reclining Buddha at Wat Pho (46 m long) and the iconic Temple of Dawn (Wat Arun) across the river — best at sunset when it's illuminated.", image: "https://images.unsplash.com/photo-1534008897995-27a23e859048?w=800&h=600&fit=crop" },
 
-{ name: "Chatuchak Weekend Market", description: "The world's largest weekend market — 15,000 stalls selling everything from vintage clothing to street food to live animals. Saturday and Sunday only, 9am–6pm.", image: "https://images.unsplash.com/photo-1477495946615-20f5d5bd7a66?w=800&h=600&fit=crop" },
+{ name: "Chatuchak Weekend Market", description: "The world's largest weekend market — 15,000 stalls selling everything from vintage clothing to street food to live animals. Saturday and Sunday only, 9am–6pm.", image: "https://images.unsplash.com/photo-1696437492959-b9a8c37df4ad?w=800&h=600&fit=crop" },
 
 { name: "Chinatown (Yaowarat) & Street Food", description: "Bangkok's Chinatown is a neon-lit street food paradise at night — roast duck, seafood, dim sum, and Chinese-Thai fusion dishes along Yaowarat Road.", image: "https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=800&h=600&fit=crop" },
 
@@ -2142,7 +2142,7 @@ description:
 
 "The NFL's most famous and beloved stadium — home since 1957, capacity 81,441, and the Packers Hall of Fame within. Game day on a Sunday in autumn is a bucket-list American sports experience. Tours run year-round even without a game.",
 
-image: "https://images.unsplash.com/photo-1546519638405-a9d1b8e9edcc?w=800&h=600&fit=crop",
+image: "https://images.unsplash.com/photo-1696542095245-512b4c03edfe?w=800&h=600&fit=crop",
 
 },
 
@@ -2348,7 +2348,7 @@ destinations: [
 
 { name: "Icefields Parkway", description: "One of the world's most scenic drives (230 km between Banff and Jasper). Columbia Icefield, Peyto Lake viewpoint, numerous waterfalls and glaciers.", image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop" },
 
-{ name: "Vancouver & Victoria", description: "World-class city with Stanley Park, Granville Island market, whale watching, and the ferry to Victoria's British charm, Butchart Gardens, and whale-watching from the Pacific.", image: "https://images.unsplash.com/photo-1561584948-1b4e3b22fa5d?w=800&h=600&fit=crop" },
+{ name: "Vancouver & Victoria", description: "World-class city with Stanley Park, Granville Island market, whale watching, and the ferry to Victoria's British charm, Butchart Gardens, and whale-watching from the Pacific.", image: "https://images.unsplash.com/photo-1519181258491-889c2b001485?w=800&h=600&fit=crop" },
 
 ],
 
@@ -2663,7 +2663,7 @@ tips: ["Brooks Falls bear viewing: Book Katmai permits 6+ months ahead — extre
   overview: "Washington DC is one of the world's great capital cities — and uniquely, almost all of its world-class attractions are completely free. The Smithsonian Institution's 19 museums include the National Museum of Natural History, National Air and Space Museum, and the National Museum of African American History and Culture. The National Mall's monuments tell America's story in stone and reflection pools.",
   destinations: [
     { name: "The National Mall & Monuments", description: "2-mile stretch from Capitol to Lincoln Memorial. Washington Monument, Vietnam Veterans Memorial, Korean War Memorial, Martin Luther King Jr. Memorial, and more — all free.", image: "https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=800&h=600&fit=crop" },
-    { name: "Smithsonian Museums", description: "19 free world-class museums — National Air and Space Museum, Natural History Museum (Hope Diamond), American History Museum, and the National Zoo.", image: "https://images.unsplash.com/photo-1584010673922-5f47c25dab96?w=800&h=600&fit=crop" },
+    { name: "Smithsonian Museums", description: "19 free world-class museums — National Air and Space Museum, Natural History Museum (Hope Diamond), American History Museum, and the National Zoo.", image: "https://images.unsplash.com/photo-1777907158664-aeaa420df056?w=800&h=600&fit=crop" },
     { name: "NMAAHC & Holocaust Museum", description: "The National Museum of African American History and Culture (book timed entry months ahead) and the US Holocaust Memorial Museum are two of the most important museums in America.", image: "https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?w=800&h=600&fit=crop" },
     { name: "Georgetown & Capitol Hill", description: "Georgetown's historic streets, canal walks, and independent restaurants. Capitol Hill: the Capitol building (free tours), Library of Congress, and the vibrant Eastern Market.", image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&h=600&fit=crop" },
   ],
@@ -2873,7 +2873,7 @@ tips: ["Never hike rim-to-river and back in one day in summer — it's genuinely
     { name: "Clingmans Dome & Newfound Gap", description: "The highest point in the park (2,025 m) with a futuristic observation ramp and sweeping views over the Smokies. The Appalachian Trail crosses Newfound Gap — walk a section.", image: "https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=800&h=600&fit=crop" },
     { name: "Cades Cove", description: "The most popular valley in the Appalachians — a 17-km loop road through a historic pastoral landscape with black bears, deer, and preserved 19th-century homesteads.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" },
     { name: "Alum Cave & Mt. LeConte", description: "The best day hike in the Smokies — 8 km to Alum Cave Bluffs (dramatic overhang) or the full 17 km to LeConte summit (5th highest peak in the east). LeConte Lodge needs booking.", image: "https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=800&h=600&fit=crop" },
-    { name: "Gatlinburg & Cherokee", description: "Gatlinburg is the kitschy, charming Tennessee gateway town. Cherokee (North Carolina side) is the home of the Eastern Band of Cherokee — the Museum of the Cherokee People is exceptional.", image: "https://images.unsplash.com/photo-1476189256191-40b7b8de1cf6?w=800&h=600&fit=crop" },
+    { name: "Gatlinburg & Cherokee", description: "Gatlinburg is the kitschy, charming Tennessee gateway town. Cherokee (North Carolina side) is the home of the Eastern Band of Cherokee — the Museum of the Cherokee People is exceptional.", image: "https://images.unsplash.com/photo-1585938389612-a552a28d6914?w=800&h=600&fit=crop" },
   ],
   essentialInfo: [
     { icon: Plane, title: "Getting There", description: "Fly to Knoxville (TYS, 1 hr) or Asheville (AVL, 1.5 hrs). Rent a car — essential. No entry fee (the park has no entrance fee)." },
@@ -2935,7 +2935,7 @@ tips: ["Never hike rim-to-river and back in one day in summer — it's genuinely
     { name: "Old Montréal (Vieux-Montréal)", description: "Cobblestone streets, the magnificent Notre-Dame Basilica (1829), Place Jacques-Cartier street performers, the Old Port with its waterfront terraces, and the Pointe-à-Callière archaeology museum.", image: "https://images.unsplash.com/photo-1560813962-ff3d8fcf59ba?w=800&h=600&fit=crop" },
     { name: "Mount Royal Park", description: "Frederick Law Olmsted designed this 190-hectare park above the city. Beaver Lake, the lookout over the skyline, Tam-Tams Sunday drum circle, and cycling and cross-country skiing.", image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=800&h=600&fit=crop" },
     { name: "Plateau-Mont-Royal & Mile End", description: "Montréal's bohemian heart — colourful Victorian duplexes with external staircases, the Main (Boulevard Saint-Laurent), bagels from Fairmount or St-Viateur, and the best cafés.", image: "https://images.unsplash.com/photo-1577048982768-5cb3e7ddfa23?w=800&h=600&fit=crop" },
-    { name: "Jean-Talon & Atwater Markets", description: "Two magnificent covered food markets — extraordinary Québec produce, maple products, fresh cheese curds, charcuterie, and local vegetables. Jean-Talon is North America's finest.", image: "https://images.unsplash.com/photo-1477495946615-20f5d5bd7a66?w=800&h=600&fit=crop" },
+    { name: "Jean-Talon & Atwater Markets", description: "Two magnificent covered food markets — extraordinary Québec produce, maple products, fresh cheese curds, charcuterie, and local vegetables. Jean-Talon is North America's finest.", image: "https://images.unsplash.com/photo-1696437492959-b9a8c37df4ad?w=800&h=600&fit=crop" },
   ],
   essentialInfo: [
     { icon: Plane, title: "Getting Around", description: "Montréal-Trudeau Airport Metro to city (30 min). Excellent STM Métro network. Bixi bike share for the Plateau and Old Port. Underground RÉSO for winter." },
@@ -2964,7 +2964,7 @@ tips: ["Never hike rim-to-river and back in one day in summer — it's genuinely
   overview: "Québec City is the most European city in North America and one of the continent's most beautiful — a UNESCO World Heritage walled city dramatically positioned on the cliffs of Cap Diamant above the St. Lawrence River. The iconic Château Frontenac hotel dominates the skyline. The Vieux-Québec (Old City) is a perfectly preserved 17th-century French colonial city. In winter, the Carnaval de Québec transforms it into a magical ice kingdom.",
   destinations: [
     { name: "Vieux-Québec (Old City)", description: "The only walled city north of Mexico — two levels divided by the cliff. Upper Town: Château Frontenac, the Plains of Abraham, Dufferin Terrace. Lower Town: Petite-Champlain, Place Royale.", image: "https://images.unsplash.com/photo-1577048982768-5cb3e7ddfa23?w=800&h=600&fit=crop" },
-    { name: "Château Frontenac", description: "The world's most photographed hotel (1893) — staying here is extraordinary, but even tea in the lobby or walking the Dufferin Terrace boardwalk beside it is memorable.", image: "https://images.unsplash.com/photo-1476189256191-40b7b8de1cf6?w=800&h=600&fit=crop" },
+    { name: "Château Frontenac", description: "The world's most photographed hotel (1893) — staying here is extraordinary, but even tea in the lobby or walking the Dufferin Terrace boardwalk beside it is memorable.", image: "https://images.unsplash.com/photo-1585938389612-a552a28d6914?w=800&h=600&fit=crop" },
     { name: "Montmorency Falls", description: "Higher than Niagara Falls (83 m vs 57 m) and just 15 minutes from the city. Cable car or stairs, a suspension bridge over the falls, and ice climbing in winter.", image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=800&h=600&fit=crop" },
     { name: "Winter Carnival", description: "The world's largest winter carnival (late January–February) — ice palace, toboggan slides on Dufferin Terrace, canoe racing on the frozen St. Lawrence, and Bonhomme Carnaval.", image: "https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=800&h=600&fit=crop" },
   ],

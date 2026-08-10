@@ -90,7 +90,7 @@ const featuredGuides = [
 // ── Continents ────────────────────────────────────────────────────────────
 const continents = [
   { name: "Africa", slug: "africa", count: 5, image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&h=500&fit=crop" },
-  { name: "Europe", slug: "europe", count: 5, image: "https://images.unsplash.com/photo-1520637736862-4d197d17c55a?w=400&h=500&fit=crop" },
+  { name: "Europe", slug: "europe", count: 5, image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&h=500&fit=crop" },
   { name: "Asia", slug: "asia", count: 5, image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=400&h=500&fit=crop" },
   { name: "North America", slug: "north-america", count: 4, image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=500&fit=crop" },
   { name: "South America", slug: "south-america", count: 5, image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=400&h=500&fit=crop" },
@@ -505,7 +505,7 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-3xl bg-gray-900 p-10 group cursor-pointer hover:shadow-2xl transition-shadow min-h-[340px] flex flex-col justify-between">
               <div className="absolute inset-0">
                 <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=500&fit=crop"
-                  alt="YouTube" className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
+                  alt="Wanderlust travel adventures on YouTube" className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent" />
               </div>
               <div className="relative z-10 flex flex-col h-full justify-between">
@@ -534,7 +534,7 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-3xl bg-gray-900 p-10 group cursor-pointer hover:shadow-2xl transition-shadow min-h-[340px] flex flex-col justify-between">
               <div className="absolute inset-0">
                 <img src="https://images.unsplash.com/photo-1553531384-397c80973a0b?w=800&h=500&fit=crop"
-                  alt="Gear" className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
+                  alt="Travel essentials and gear recommendations" className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent" />
               </div>
               <div className="relative z-10 flex flex-col h-full justify-between">
