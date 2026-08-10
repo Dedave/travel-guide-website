@@ -110,15 +110,77 @@ export default function RootLayout({
     fbq('track', 'PageView');
   `}
 </Script>
-<noscript>
-  <img
-    height="1"
-    width="1"
-    style={{ display: "none" }}
-    src="https://www.facebook.com/tr?id=4447136008867394&ev=PageView&noscript=1"
-    alt=""
-  />
-</noscript>
+{/* NEW: Universal Button Tracker */}
+  <Script id="universal-button-tracker" strategy="afterInteractive">
+    {`
+      (function(){
+        const BUTTON_SELECTOR = 'button, [role="button"], a[href], input[type="button"], input[type="submit"], .btn, .button';
+
+        function hasTrackingConsent(){
+          // If you integrate a CMP later, plug in here.
+          try { return true; } catch(e){ return false; }
+        }
+
+        function getMeta(el){
+          if(!el) return {};
+          const tag = el.tagName ? el.tagName.toLowerCase() : null;
+          const text = (el.innerText || el.textContent || '').trim().replace(/\\s+/g,' ').slice(0,200);
+          const id = el.id || null;
+          const classes = (typeof el.className === 'string') ? el.className : null;
+          const href = (tag === 'a') ? el.getAttribute('href') : null;
+          const trackName = el.getAttribute && (el.getAttribute('data-track-name') || el.getAttribute('data-analytics-name'));
+          const dataset = {};
+          if(el.dataset){
+            for(const k in el.dataset) if(Object.prototype.hasOwnProperty.call(el.dataset,k)) dataset[k]=el.dataset[k];
+          }
+          return { name: trackName || text || id || (classes ? classes.split(' ')[0] : 'unknown_button'), id, classes, href, dataset };
+        }
+
+        document.addEventListener('click', function(e){
+          const el = e.target.closest ? e.target.closest(BUTTON_SELECTOR) : null;
+          if(!el) return;
+
+          if(!hasTrackingConsent()) {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: 'button_click',
+              button_name: 'consent_blocked',
+              consent: false,
+              ts: new Date().toISOString()
+            });
+            return;
+          }
+
+          const m = getMeta(el);
+          const payload = {
+            event: 'button_click',
+            button_name: m.name,
+            button_id: m.id,
+            button_classes: m.classes,
+            button_href: m.href,
+            button_dataset: m.dataset,
+            page_location: window.location.href,
+            page_path: window.location.pathname,
+            referrer: document.referrer || null,
+            ts: new Date().toISOString()
+          };
+
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push(payload);
+        }, true);
+      })();
+    `}
+  </Script>
+
+  <noscript>
+    <img
+      height="1"
+      width="1"
+      style={{ display: "none" }}
+      src="https://www.facebook.com/tr?id=4447136008867394&ev=PageView&noscript=1"
+      alt=""
+    />
+  </noscript>
         <ClientBody>{children}</ClientBody>
         <Analytics />
       </body>
