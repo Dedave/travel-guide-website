@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, CheckCircle2, Loader2, Gift, MapPin } from "lucide-react";
 import { Mail, CheckCircle2, Loader2, Gift, MapPin, Download } from "lucide-react";
 
 // The free PDF ships with the site in /public/downloads.
@@ -95,7 +94,6 @@ export default function EmailCapture() {
                   <h3 className="font-display text-xl font-black text-gray-900 mb-2">
                     You&apos;re in! 🎉
                   </h3>
-                  <p className="text-gray-500 font-body text-sm">{message}</p>
                   <p className="text-gray-500 font-body text-sm mb-5">{message}</p>
                   <a
                     href={LEAD_MAGNET_PDF}
