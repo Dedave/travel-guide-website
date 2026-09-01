@@ -1,7 +1,8 @@
 "use client";
 
-import { use, useState } from "react";
+import { use, useState, useEffect, Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AffiliateLinks from "@/components/AffiliateLinks";
@@ -36,9 +37,23 @@ interface GuideDetailPageProps {
   }>;
 }
 
-export default function GuideDetailPage({ params }: GuideDetailPageProps) {
+function GuideDetailContent({ params }: GuideDetailPageProps) {
   const resolvedParams = use(params);
   const guide = getGuide(resolvedParams.continent, resolvedParams.guide);
+  const [showStickyBuy, setShowStickyBuy] = useState(false);
+
+  const searchParams = useSearchParams();
+  // Paid-traffic mode: any visitor tagged with ?src=ads gets the focused,
+  // no-distraction version of the page (no affiliate links, no "browse more" prompts).
+  const isAdsTraffic = searchParams.get("src") === "ads";
+
+  useEffect(() => {
+    const onScroll = () => {
+      setShowStickyBuy(window.scrollY > window.innerHeight * 0.9);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   if (!guide) {
     return (
@@ -67,6 +82,23 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
+
+      {/* ── STICKY BUY BUTTON ── */}
+      <div
+        className={`fixed bottom-5 right-5 z-40 transition-all duration-300 ${
+          showStickyBuy
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 translate-y-3 pointer-events-none"
+        }`}
+      >
+        <a href="#purchase">
+          <button className="group inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold pl-5 pr-4 py-3.5 rounded-full text-sm shadow-xl hover:shadow-2xl transition-all">
+            <Download className="h-4 w-4" />
+            Get Guide — {pdfPrice}
+            <ChevronRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+          </button>
+        </a>
+      </div>
 
       {/* ── BREADCRUMBS ── */}
       <Breadcrumbs
@@ -383,13 +415,6 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
         </div>
       </section>
 
-      {/* ── AFFILIATE LINKS ── */}
-      <AffiliateLinks
-        destination={guide.country ?? guide.continent}
-        country={guide.countrySlug}
-        continent={guide.continent}
-      />
-
       {/* ── PURCHASE SECTION ── */}
       <section id="purchase" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white">
         <div className="mx-auto max-w-3xl">
@@ -503,6 +528,16 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
         </div>
       </section>
 
+      {/* ── AFFILIATE LINKS ── */}
+      {/* Skipped for paid-ad traffic: no reason to send a click you paid for to a third-party booking site. */}
+      {!isAdsTraffic && (
+        <AffiliateLinks
+          destination={guide.country ?? guide.continent}
+          country={guide.countrySlug}
+          continent={guide.continent}
+        />
+      )}
+
       {/* ── PHOTO STRIP ── */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="mx-auto max-w-7xl">
@@ -535,30 +570,50 @@ export default function GuideDetailPage({ params }: GuideDetailPageProps) {
       </section>
 
       {/* ── BROWSE MORE CTA ── */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-blue-600">
-        <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <h3 className="text-white font-bold text-lg">
-              Explore more {guide.continent} guides
-            </h3>
-            <p className="text-blue-100 text-sm">We have more destinations ready for you.</p>
+      {/* Skipped for paid-ad traffic: don't invite a click you paid for to wander to a page you don't monetize directly. */}
+      {!isAdsTraffic && (
+        <section className="py-12 px-4 sm:px-6 lg:px-8 bg-blue-600">
+          <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <h3 className="text-white font-bold text-lg">
+                Explore more {guide.continent} guides
+              </h3>
+              <p className="text-blue-100 text-sm">We have more destinations ready for you.</p>
+            </div>
+            <Link href={`/guides/${resolvedParams.continent}`}>
+              <button className="inline-flex items-center gap-2 bg-white text-blue-600 font-bold px-6 py-3 rounded-full text-sm hover:bg-blue-50 transition-colors shadow whitespace-nowrap">
+                Browse all {guide.continent} guides
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </Link>
           </div>
-          <Link href={`/guides/${resolvedParams.continent}`}>
-            <button className="inline-flex items-center gap-2 bg-white text-blue-600 font-bold px-6 py-3 rounded-full text-sm hover:bg-blue-50 transition-colors shadow whitespace-nowrap">
-              Browse all {guide.continent} guides
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </Link>
-        </div>
-      </section>
+        </section>
+      )}
 
-      <RelatedGuides
-        currentGuideId={resolvedParams.guide}
-        continentSlug={resolvedParams.continent}
-        continent={guide.continent}
-      />
+      {/* Skipped for paid-ad traffic for the same reason — keep the exit to checkout only. */}
+      {!isAdsTraffic && (
+        <RelatedGuides
+          currentGuideId={resolvedParams.guide}
+          continentSlug={resolvedParams.continent}
+          continent={guide.continent}
+        />
+      )}
 
       <Footer />
     </div>
+  );
+}
+
+export default function GuideDetailClient({ params }: GuideDetailPageProps) {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-white flex items-center justify-center">
+          <div className="text-gray-400 text-sm">Loading guide…</div>
+        </div>
+      }
+    >
+      <GuideDetailContent params={params} />
+    </Suspense>
   );
 }
